@@ -16,6 +16,9 @@ def parse_fms90(
 
     """ Parse an FMS90 results directory into a Trajectory.
 
+    This uses information in positions.*.xyz, Amps.*, S.dat, and Spawn.log to
+    populate a density matrix by mulliken or saddle point rules.
+
     Params:
         filepath (str) - the path to the FMS run directory
         scheme (str) - 'mulliken' or 'saddle' to indicate the approximation
@@ -24,10 +27,11 @@ def parse_fms90(
         trajectory (Trajectory) - the Trajectory object.
     """
 
-    # The files
+    # The files (these are standard textual output from FMS90)
     posfiles = glob.glob('%s/positions.*.xyz' % filepath)
     Cfiles = glob.glob('%s/Amp.*' % filepath)
     Sfile = '%s/S.dat' % filepath
+    Spawnfile = '%s/Spawn.log' % filepath
     if len(posfiles) != len(Cfiles):
         raise RuntimeError('xyz and C files not same number of TBF')
 
@@ -35,6 +39,7 @@ def parse_fms90(
     posfiles = { int(re.match(r'%s/positions\.(\d+)\.xyz' % filepath, path).group(1)) : path for path in posfiles }
     Cfiles = { int(re.match(r'%s/Amp\.(\d+)' % filepath, path).group(1)) : path for path in Cfiles }
 
+    # Read the Amp and postions files
     C2s = {}
     N2s = {}
     xyz2s = {}
@@ -76,6 +81,7 @@ def parse_fms90(
         N2s[I] = Ns
         xyz2s[I] = xyzs
 
+    # Read the overlap matrix
     Ss = {}
     lines = open(Sfile).readlines()
     tinds = []
@@ -100,7 +106,16 @@ def parse_fms90(
         Smat = np.array(Spart)
         Ss[t] = Smat
 
-    # Swap to put time on slow axis
+    # Read the Spawn.log to figure out electronic states
+    states = {}
+    lines = open(Spawnfile).readlines()[1:]
+    for lind, line in enumerate(lines):
+        # match groups are TBF ID, parent TBF ID, TBF state, parent TBF state
+        mobj = re.match(r'^\s*\S+\s+\S+\s+\S+\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)', line)
+        states[int(mobj.group(1))] = int(mobj.group(3))
+        states[int(mobj.group(2))] = int(mobj.group(4)) # Redundant, but captures IC TBFs
+
+    # Swap to put time on slow axis (C3s[t][I] instead of C2s[I][t])
     C3s = {}
     for I, C2 in C2s.iteritems():
         for t, C in C2.iteritems():
@@ -114,31 +129,31 @@ def parse_fms90(
         for t, N in N2.iteritems():
             N3s.setdefault(t, {})[I] = N
      
-    # Build frames
+    # Build Frames from parsed data
     frames = []
     for t, S in Ss.iteritems():
         Cs = C3s[t]
         xyzs = xyz3s[t]
         Ns = N3s[t]
-
         Isort = list(sorted(Cs.keys()))
-
         if scheme == 'mulliken':
             for I2, I in enumerate(Isort):
                 q = 0.0
                 for J2, J in enumerate(Isort):
+                    if states[I] != states[J]: continue # Electronic orthogonality
                     q += np.real(0.5 * np.conj(Cs[I]) * S[I2, J2] * Cs[J] + \
                                  0.5 * np.conj(Cs[J]) * S[J2, I2] * Cs[I])
                 frame = traj.Frame(
                     label=I,
                     t=t,
                     w=q,
-                    I=0,
+                    I=states[I],
                     N=Ns,
                     xyz=xyzs,
                     )
                 frames.append(frame)
         elif scheme == 'saddle':
+            # TODO: Code up saddle point (make sure to use cutoff)
             raise NotImplementedError('This')
         else:
             raise RuntimeError('Invalid scheme: %s' % scheme)
@@ -151,4 +166,4 @@ if __name__ == '__main__':
     traj = parse_fms90('/home/hweir/stilbene/5-aims/aims_0000/job2')
     
     for t in traj.ts: 
-        print sum([x.w for x in traj.subset_by_t(t).frames])
+       print sum([x.w for x in traj.subset_by_t(t).frames])
