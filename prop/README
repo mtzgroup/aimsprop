@@ -1,0 +1,2 @@
+traj.py - Frame/Trajectory classes to represent AIMS trajectories
+fms90.py - Parser for FMS90 outputs

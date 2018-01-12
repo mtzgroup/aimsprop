@@ -1,0 +1,153 @@
+\documentclass[fleqn,oneside,12pt]{article}
+\date{}
+\newcommand{\up}[1]{a_{#1}^{\dagger}}
+\newcommand{\down}[1]{a_{#1}}
+\newcommand{\ud}{\mathrm{d}}
+\newcommand{\EE}{\mathrm{E}}
+\newcommand{\diff}[2]{\frac{\ud {#1}}{\ud {#2}}}
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\fl}{\mathrm{fl}}
+\newcommand{\sqrtfrac}[2]{\sqrt{\frac{#1}{#2}}}
+\newcommand{\ui}{\mathbf{i}}
+\newcommand{\uj}{\mathbf{j}}
+\newcommand{\ua}{\mathbf{a}}
+\newcommand{\ub}{\mathbf{b}}
+\newcommand{\bi}{\bar{i}}
+\newcommand{\bj}{\bar{j}}
+\newcommand{\ba}{\bar{a}}
+\newcommand{\bb}{\bar{b}}
+\newcommand{\tb}{\phantom{}^{Q} \hat b}
+\newcommand{\erf}{\mathrm{erf}}
+\newcommand{\erfc}{\mathrm{erfc}}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\setlength{\parindent}{0pt}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage[super]{cite}
+\usepackage{amssymb}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\pagestyle{fancyplain}
+\begin{document}
+\lhead{Cheesy Time-Dependent Properties in AIMS}
+\rhead{Rob Parrish}
+
+\textbf{Definitions:} The AIMS wavefunction is,
+\[
+| \Psi (x, t) \rangle
+\equiv
+\sum_{I}
+c_{I} (t)
+| \chi_{I} (x, t) \rangle
+| I \rangle
+\]
+where $c_{I} (t)$ is the TBF amplitude, $| \chi_{I} (x,t) \rangle$ is a frozen
+Gaussian nuclear basis function, and $| I \rangle$ is the adiabatic electronic
+state.
+
+\textbf{Approximation 1:} We wish to compute an arbitrary time-dependent
+observable depending on the nuclear coordinates,
+\[
+\bar O (t)
+\equiv
+\langle \Psi (x, t) |
+O (x)
+| \Psi (x, t) \rangle
+\]
+Plugging in, this is,
+\[
+\bar O(t)
+=
+\sum_{IJ}
+c_{I}^{*}
+c_{J}
+\delta_{IJ}^{\mathrm{e}}
+\langle \chi_{I} (x, t) |
+O (x)
+| \chi_{J} (x, t) \rangle
+\]
+I think an OK approximation is,
+\[
+\bar O(t)
+\approx
+\sum_{IJ}
+c_{I}^{*} (t)
+S_{IJ} (t)
+c_{J} (t)
+O (\bar x_{IJ} (t)) 
+\]
+Here,
+\[
+\bar x_{IJ} (t)
+\equiv
+\frac{\langle \chi_{I} (x, t) | x | \chi_{J} (x, t) \rangle}
+{\langle \chi_{I} (x, t) | \chi_{J} (x, t) \rangle}
+=
+\frac{\alpha_{I} x_{I} (t) + \alpha_{J} x_{J} (t)}{\alpha_{I} + \alpha_{J}}
+=
+\frac{1}{2}
+\left [
+\bar x_{I} (t)
++
+\bar x_{J} (t)
+\right ]
+\]
+Here the last equality holds only for $\alpha_{I} = \alpha_{J}$ (common in
+AIMS).
+
+The approximation invoked above is,
+\[
+\langle \chi_{I} (x, t) | O (x) | \chi_{J} (x, t) \rangle
+\approx
+\langle \chi_{I} (x, t) | O (\bar x_{IJ}) | \chi_{J} (x, t) \rangle
+=
+S_{IJ}
+O(\bar x_{IJ})
+\]
+This will be accurate if $O(x)$ varies slowly from $O(\bar x_{IJ})$ relative to
+the integration weight $\chi_{I}^{*} (x, t) \chi_{J} (x, t)$. In AIMS, the TBFs
+are quite narrow, so this is probably a fine approximation.
+
+\textbf{Approximation 2:} Another possible approximation is,
+\[
+\bar O(t)
+\approx
+\sum_{IJ}
+c_{I}^{*} (t)
+S_{IJ} (t)
+c_{J} (t)
+\frac{1}{2}
+\left [
+O(\bar x_{I} (t))
++
+O(\bar x_{J} (t))
+\right ]
+\]
+\[
+=
+\sum_{I}
+O (\bar x_I (t))
+\sum_{J}
+\frac{1}{2}
+\left [
+c_{I}^{*} (t)
+S_{IJ} (t)
+c_{J} (t) 
++
+c_{J}^{*} (t)
+S_{JI} (t) 
+c_{I} (t)
+\right ]
+\]
+\[
+\equiv
+\sum_{I}
+O (\bar x_I (t))
+q_{I} (t)
+\]
+This is the Mulliken-charge-based estimate, or as Todd prefers, the ``bra-ket
+averaged Taylor approximation''
+
+\end{document}
