@@ -1,2 +1,8 @@
+Trajectory Skeleton:    
 traj.py - Frame/Trajectory classes to represent AIMS trajectories
+
+Parsers:
 fms90.py - Parser for FMS90 outputs
+
+Properties:
+geom.py - Easy geometric properties like bond length, bond angle, torsion angle, and out-of-plane angles
