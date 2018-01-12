@@ -1,4 +1,5 @@
 import numpy as np
+import copy
 
 class Frame(object):
 
@@ -91,22 +92,77 @@ class Trajectory(object):
     def subset_by_t(
         self,
         t,
+        eps=1.0E-14,
         ):
 
-        """ Return a subset of this trajectory containing all frames with a given time (Frame-sorted) """
-        return Trajectory(list(sorted([x for x in self.frames if x.t == t])))
+        """ Return a subset of this trajectory containing all frames with a given time (Frame-sorted). 
+
+            Note that due to possible weirdness with ULP errors in float t
+            values, we grab all times within eps relative error of t. 
+        """
+        return Trajectory(list(sorted([x for x in self.frames if x.t == t or abs(x.t - t) < abs(eps * t)])))
 
     def subset_by_I(
         self,
         I,
         ):
 
-        """ Return a subset of this trajectory containing all frames with a given time (Frame-sorted) """
+        """ Return a subset of this trajectory containing all frames with a given I (Frame-sorted) """
         return Trajectory(list(sorted([x for x in self.frames if x.I == I])))
     
     def __add__(
         self,
         other,
         ):
-        """ Concatenation operator """
+        """ Concatenation operator to merge two trajectories """
         return Trajectory(self.frames + other.frames)
+
+    def __mul__(
+        self,
+        weight,
+        ):
+
+        """ Return a new Trajectory with all Frame objects
+        multiplied by weight. This is useful to provide a weight on
+        the initial condition due to e.g., oscillator strength
+        and/or conformational population. """
+        frames = []
+        for frame in self.frames:
+            frame2 = copy.copy(frame)
+            frame2.w *= weight
+            frames.append(frame2)
+        return 
+    
+    __rmul__ = __mul__
+
+    def interpolate_nearest(
+        self,
+        ts,
+        ):
+
+        """ Return a new trajectory with frame objects interpolated by nearest
+            neighbor interpolation if t is inside the range of times of self's
+            frames for each label (e.g., no extrapolation is performed).
+
+        Params:
+            ts (list of float) - times to interpolated new Trajectory to
+        Returns:
+            traj (Trajectory) - new trajectory with interpolated frames.
+        """
+
+        frames = []
+        for label in self.labels:
+            traj2 = self.subset_by_label(label)
+            t2s = traj2.ts
+            for t in ts:
+                if t < min(t2s) or t > max(t2s): continue # Out of range (TODO: eps bounds)
+                t2 = min(t2s, key=lambda x:abs(x - t)) # Closest value in t2s
+                frames += traj2.subset_by_t(t2).frames
+        return Trajectory(list(sorted(frames)))
+
+    # TODO: linear interpolation
+                
+                 
+        
+    
+         

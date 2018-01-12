@@ -148,8 +148,8 @@ def parse_fms90(
                     t=t,
                     w=q,
                     I=states[I],
-                    N=Ns,
-                    xyz=xyzs,
+                    N=Ns[I],
+                    xyz=xyzs[I],
                     )
                 frames.append(frame)
         elif scheme == 'saddle':
@@ -164,6 +164,18 @@ def parse_fms90(
 if __name__ == '__main__':
 
     traj = parse_fms90('/home/hweir/stilbene/5-aims/aims_0000/job2')
+
+    print traj.ts
+    print np.arange(0.0, 11620.1, 20.0)
+    print traj.interpolate_nearest(np.arange(0.0, 11620.1, 20.0)).ts
+
+    import geom
+    geom.compute_bond(traj, 0, 1)
+    geom.compute_angle(traj, 0, 1, 2)
     
-    for t in traj.ts: 
-       print sum([x.w for x in traj.subset_by_t(t).frames])
+    print traj.frames[0].properties
+
+    
+    # for t in traj.ts: 
+    #   print sum([x.w for x in traj.subset_by_t(t).frames])
+
