@@ -7,7 +7,7 @@ semi-uniform manner.
 
 Directories:
 
-prop - the Python AIMS trajectory/property code
+aimsprop - the Python AIMS trajectory/property code
 notes - notes used in implementing
 
 Authors/Users:
