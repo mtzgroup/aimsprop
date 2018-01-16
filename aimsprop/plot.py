@@ -135,7 +135,7 @@ def plot_vector(
             cticks = [0,+int(vmax)]
 
     plt.clf()
-    hs = plt.contourf(ts,ys,Vs.T,levels=levels,cmap=cmap,extend='both')
+    hs = plt.contourf(time_scale * ts,ys,Vs.T,levels=levels,cmap=cmap,extend='both')
     for h in hs.collections:
         h.set_edgecolor('face')
     plt.colorbar(ticks=cticks)
