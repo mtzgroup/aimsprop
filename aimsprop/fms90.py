@@ -161,22 +161,3 @@ def parse_fms90(
     trajectory = traj.Trajectory(frames)
     return trajectory
 
-if __name__ == '__main__':
-
-    trajs = [parse_fms90('/home/hweir/stilbene/5-aims/aims_%04d/job2' % x) for x in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]]
-    traj2 = traj.Trajectory.merge(trajs, [1.0 / len(trajs)] * len(trajs))
-    ts = np.arange(0.0, max(traj2.ts), 40.0) # TODO: Cleaner edges
-    traj2 = traj2.interpolate_nearest(ts)
-
-    import geom
-    geom.compute_bond(traj2, 'R01', 7, 8)
-
-    import ued
-    R = np.linspace(1.0,6.0,50)
-    ued.compute_ued_simple(traj2, 'UED', R=R, alpha=8.0)
-
-    import plot
-    plot.plot_scalar('R.pdf', traj2, 'R01', ylabel=r'$R_{CC} [\AA{}]$', time_units='fs', state_colors=['r', 'b'])
-    plot.plot_vector('U.pdf', traj2, 'UED', y=R, ylabel=r'$R [\AA{}]$', time_units='fs', diff=True)
-    
-
