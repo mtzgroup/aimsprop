@@ -163,19 +163,25 @@ def parse_fms90(
 
 if __name__ == '__main__':
 
-    traj = parse_fms90('/home/hweir/stilbene/5-aims/aims_0000/job2')
-
-    print traj.ts
-    print np.arange(0.0, 11620.1, 20.0)
-    print traj.interpolate_nearest(np.arange(0.0, 11620.1, 20.0)).ts
+    trajs = [parse_fms90('/home/hweir/stilbene/5-aims/aims_%04d/job2' % x) for x in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]]
+    # trajs = [parse_fms90('/home/hweir/stilbene/5-aims/aims_%04d/job2' % x) for x in [0,1,2]]
+    traj2 = traj.Trajectory.merge(trajs, [1.0 / len(trajs)] * len(trajs))
+    ts = np.arange(0.0, max(traj2.ts), 40.0) # TODO: Cleaner edges
+    traj2 = traj2.interpolate_nearest(ts)
 
     import geom
-    geom.compute_bond(traj, 0, 1)
-    geom.compute_angle(traj, 0, 1, 2)
-    
-    print traj.frames[0].properties
+    geom.compute_bond(traj2, 'R01', 7, 8)
+    # geom.compute_angle(traj2, 'A012', 0, 1, 2)
 
+    import ued
+    # R = np.linspace(1.0,6.0,100)
+    # ued.compute_ued_simple(traj2, 'UED', R=R, alpha=8.0)
+
+    # print traj2.frames[0].properties
+    # print traj2.extract_property('R01')
+    # print traj2.extract_property('UED').shape
+
+    import plot
+    plot.plot_scalar('R.pdf', traj2, 'R01', ylabel=r'$R_{CC} [\AA{}]$', time_units='fs')
     
-    # for t in traj.ts: 
-    #   print sum([x.w for x in traj.subset_by_t(t).frames])
 

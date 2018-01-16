@@ -6,6 +6,7 @@ import math
     
 def compute_bond(
     traj,
+    key,
     A,
     B,
     ):
@@ -15,22 +16,24 @@ def compute_bond(
     Params:
         traj - the Trajectory object to compute the property for (modified in
             place)
+        key - the name of the property
         A - the index of the first atom
         B - the index of the second atom
     Result/Return:
         traj - reference to the input Trajectory object. The property
-            "bond_A_B" is set to the float value of the bond length for the
+            key is set to the float value of the bond length for the
             indices A and B.
     """
 
     for frame in traj.frames:
         xyz = frame.xyz
         rAB = xyz[A,:] - xyz[B,:]
-        frame.properties['bond_%d_%d' % (A,B)] = math.sqrt(sum(rAB**2))
+        frame.properties[key] = math.sqrt(sum(rAB**2))
     return traj
             
 def compute_angle(
     traj,
+    key,
     A,
     B,
     C,
@@ -41,12 +44,13 @@ def compute_angle(
     Params:
         traj - the Trajectory object to compute the property for (modified in
             place)
+        key - the name of the property
         A - the index of the first atom
         B - the index of the second atom
         C - the index of the third atom
     Result/Return:
         traj - reference to the input Trajectory object. The property
-            "angle_A_B_C" is set to the float value of the bond angle for the
+            key is set to the float value of the bond angle for the
             indices A, B and C
     """
 
@@ -54,7 +58,7 @@ def compute_angle(
         xyz = frame.xyz
         rAB = xyz[A,:] - xyz[B,:]
         rCB = xyz[C,:] - xyz[B,:]
-        frame.properties['angle_%d_%d_%d' % (A,B,C)] = 180.0 / math.pi * math.acos(sum(rAB * rCB) / math.sqrt(sum(rAB**2) * sum(rCB**2)))
+        frame.properties[key] = 180.0 / math.pi * math.acos(sum(rAB * rCB) / math.sqrt(sum(rAB**2) * sum(rCB**2)))
     return traj
             
 # TODO: torsion, OOP, etc

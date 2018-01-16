@@ -119,7 +119,7 @@ class Trajectory(object):
 
     def __mul__(
         self,
-        weight,
+        w,
         ):
 
         """ Return a new Trajectory with all Frame objects
@@ -129,11 +129,39 @@ class Trajectory(object):
         frames = []
         for frame in self.frames:
             frame2 = copy.copy(frame)
-            frame2.w *= weight
+            frame2.w *= w
             frames.append(frame2)
-        return 
+        return Trajectory(frames)
     
     __rmul__ = __mul__
+
+    @staticmethod
+    def merge(
+        trajs,
+        ws,
+        update_labels=True,
+        ):
+
+        """ Merge a list of trajectories together, with weighting factors.
+    
+        Params:
+            trajs (list of Trajectory) - trajectories to merge
+            ws (list of float) - weight factors of trajectories (e.g., from
+                oscillator strength or conformational well).
+            update_labels (bool) - Update Frame labels to (traj_ind, frame_label) compound labels?  
+        Returns:
+            (Trajectory) - a single merged Trajectory with updated weights (and labels)
+        """
+
+        frames = []
+        for I, traj in enumerate(trajs):
+            for frame in traj.frames:
+                frame2 = copy.copy(frame)
+                frame2.w *= ws[I]
+                if update_labels:
+                    frame2.label = (I, frame2.label)
+                frames.append(frame2)
+        return Trajectory(frames)
 
     def interpolate_nearest(
         self,
@@ -158,11 +186,42 @@ class Trajectory(object):
                 if t < min(t2s) or t > max(t2s): continue # Out of range (TODO: eps bounds)
                 t2 = min(t2s, key=lambda x:abs(x - t)) # Closest value in t2s
                 frames += traj2.subset_by_t(t2).frames
+                # TODO: change times to interpolated times
         return Trajectory(list(sorted(frames)))
 
     # TODO: linear interpolation
                 
-                 
-        
+
+    def extract_property(
+        self,
+        key,
+        normalize=True,
+        ):
+
+        """ Return a numpy array containing the time-history of a property,
+            averaged over all Frames at each time (with frame weight applied).
+
+        Params:
+            key (str) - the property key
+            normalize (bool) - normalize the property by the sum of weights in
+                each time?
+        Returns:
+            V (np.ndarray of shape (ntime, sizeof(prop))) - the property
+            expectation value. Time is always on the rows. If the property is
+            scalar, this array will have ndim = 1. If the property is vector,
+            this array with have ndim = 2. And so forth.
+        """
+
+        Vs = []
+        for t in self.ts:
+            traj = self.subset_by_t(t)
+            V = np.zeros_like(traj.frames[0].properties[key])
+            W = 0.0
+            for frame in traj.frames:
+                V += frame.w * frame.properties[key]
+                W += frame.w
+            if normalize: V /= W
+            Vs.append(V)
+        return np.array(Vs)
     
          
