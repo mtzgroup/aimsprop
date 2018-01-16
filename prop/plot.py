@@ -58,7 +58,6 @@ def plot_scalar(
         color = colors[Iind]
         for label in traj2.labels:
             traj3 = traj2.subset_by_label(label)
-            print I, label
             plt.plot(time_scale * np.array(traj3.ts), traj3.extract_property(key), '-', color=color, linewidth=1.0)
 
     plt.xlabel('t [%s]' % time_units)
