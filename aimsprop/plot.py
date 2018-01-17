@@ -11,6 +11,7 @@ def plot_scalar(
     time_units='au',
     legend_loc=1,
     state_colors=None,
+    plot_average=True,
     clf=True,
     ):
 
@@ -26,6 +27,7 @@ def plot_scalar(
         state_colors (list of colors) - list of colors to use for state
             plotting. None defaults to interpolation on jet colormap. For two
             or three states, many people prefer ['r', 'b', 'g'] or similar.
+        plot_average (bool) - Plot averages for each state and total?
         clf (bool) - clear plot or not?
     Result/Returns:
         returns plt handle for further modification
@@ -46,25 +48,26 @@ def plot_scalar(
         colors = [cmap(float(x) / (len(traj.Is) - 1)) for x in reversed(range(len(traj.Is)))]
 
     if clf: plt.clf()
-    # Plot average
-    plt.plot(time_scale * np.array(traj.ts), traj.extract_property(key), '-k', linewidth=3.0)
-    # Plot state averages
-    for Iind, I in enumerate(traj.Is):
-        traj2 = traj.subset_by_I(I)
-        color = colors[Iind]
-        plt.plot(time_scale * np.array(traj2.ts), traj2.extract_property(key), '-', color=color, linewidth=2.0)
+    if plot_average:
+        # Plot average
+        plt.plot(time_scale * np.array(traj.ts), traj.extract_property(key), '-k', linewidth=3.0)
+        # Plot state averages
+        for Iind, I in enumerate(traj.Is):
+            traj2 = traj.subset_by_I(I)
+            color = colors[Iind]
+            plt.plot(time_scale * np.array(traj2.ts), traj2.extract_property(key), '-', color=color, linewidth=2.0)
     # Plot individual frames
     for Iind, I in enumerate(traj.Is):
         traj2 = traj.subset_by_I(I)
         color = colors[Iind]
-        for label in traj2.labels:
+        for lind, label in enumerate(traj2.labels):
             traj3 = traj2.subset_by_label(label)
-            plt.plot(time_scale * np.array(traj3.ts), traj3.extract_property(key), '-', color=color, linewidth=1.0)
+            plt.plot(time_scale * np.array(traj3.ts), traj3.extract_property(key), '-', color=color, linewidth=1.0, label=('State=%d' % I if lind == 0 else None))
 
     plt.xlabel('t [%s]' % time_units)
     plt.ylabel(ylabel if ylabel else key)
     plt.axis('tight') # TODO: Does not seem to respect this
-    plt.legend(['Average'] + ['State=%d' % (I) for I in traj.Is], loc=legend_loc)
+    plt.legend(loc=legend_loc)
     plt.savefig(filename)
     return plt
 

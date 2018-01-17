@@ -27,7 +27,7 @@ ai.blur_property(traj, 'R01', 'Rblur', R, alpha=8.0)
 # Plot the heat map of blurred bond distance
 # ai.plot_vector('R2.pdf', traj, 'Rblur', y=R, ylabel=r'$R [\AA{}]$', time_units='fs', twosided=False, cmap=plt.get_cmap('viridis'))
 ai.plot_vector('R2.pdf', traj, 'Rblur', y=R, ylabel=r'$R [\AA{}]$', time_units='fs', nlevel=64)
-ai.plot_scalar('R.pdf', traj, 'R01', ylabel=r'$R_{CC} [\AA{}]$', time_units='fs', state_colors=['r', 'b'], clf=False)
+ai.plot_scalar('R.pdf', traj, 'R01', ylabel=r'$R_{CC} [\AA{}]$', time_units='fs', state_colors=['r', 'b'], clf=False, plot_average=False)
 
 # => UED Cross Section <= #
 
