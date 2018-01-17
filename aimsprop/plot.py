@@ -11,6 +11,7 @@ def plot_scalar(
     time_units='au',
     legend_loc=1,
     state_colors=None,
+    clf=True,
     ):
 
     """ Plot an AIMS scalar property (e.g., a "spaghetti plot" for a bond distance).
@@ -25,6 +26,7 @@ def plot_scalar(
         state_colors (list of colors) - list of colors to use for state
             plotting. None defaults to interpolation on jet colormap. For two
             or three states, many people prefer ['r', 'b', 'g'] or similar.
+        clf (bool) - clear plot or not?
     Result/Returns:
         returns plt handle for further modification
         saves figure to filename
@@ -43,7 +45,7 @@ def plot_scalar(
         cmap = matplotlib.cm.get_cmap('jet')
         colors = [cmap(float(x) / (len(traj.Is) - 1)) for x in reversed(range(len(traj.Is)))]
 
-    plt.clf()
+    if clf: plt.clf()
     # Plot average
     plt.plot(time_scale * np.array(traj.ts), traj.extract_property(key), '-k', linewidth=3.0)
     # Plot state averages
@@ -78,6 +80,7 @@ def plot_vector(
     levels=None, 
     nlevel=65, 
     twosided=True, 
+    clf=True,
     ):
 
     """ Plot an AIMS vector property (e.g., a heatmap of a UED or PES signal).
@@ -97,6 +100,7 @@ def plot_vector(
         nlevel (np.ndarray) - number of evenly spaced contour levels to
             saturate data (2nd priority).
         twosided (bool) - is the colormap two-sided (used only with nlevel)
+        clf (bool) - clear plot or not?
     Result/Returns:
         returns plt handle for further modification
         saves figure to filename
@@ -134,7 +138,7 @@ def plot_vector(
         else:
             cticks = [0,+int(vmax)]
 
-    plt.clf()
+    if clf: plt.clf()
     hs = plt.contourf(time_scale * ts,ys,Vs.T,levels=levels,cmap=cmap,extend='both')
     for h in hs.collections:
         h.set_edgecolor('face')
