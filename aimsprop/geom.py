@@ -1,4 +1,39 @@
 import math
+import numpy as np
+
+# => Utility Math functions <= #
+
+def _normalize(
+    vec,
+    ):
+
+    """ Return a normalized version of vec """
+
+    return vec / math.sqrt(sum(vec**2))
+
+def _dot(
+    vec1,
+    vec2,
+    ):
+
+    """ Dot product between vec1 and vec2 """
+
+    return sum(vec1 * vec2)
+
+def _cross(
+    vec1,
+    vec2,
+    ):
+
+    """ Cross product between vec1 and vec2 in R^3 """
+
+    vec3 = np.zeros((3,))
+    vec3[0] = + (vec1[1] * vec2[2] - vec1[2] * vec2[1])
+    vec3[1] = - (vec1[0] * vec2[2] - vec1[2] * vec2[0])
+    vec3[2] = + (vec1[0] * vec2[1] - vec1[1] * vec2[0])
+    return vec3
+
+# => Geometric Properties <= #
 
 """ Compute common geometric properties of Trajectory objects, such as bond
     distances, bond angles, torsion angles, and out-of-plane angles. 
@@ -86,8 +121,22 @@ def compute_torsion(
             indices A, B, C, and D
     """
 
-    # TODO: Google Sherrill Geometry Analysis Program for nice definitions
-    raise RuntimeError('Not Implemented')
+    for frame in traj.frames:
+        xyz = frame.xyz
+        rAB = xyz[B,:] - xyz[A,:]
+        rBC = xyz[C,:] - xyz[B,:]
+        rCD = xyz[D,:] - xyz[C,:]
+        eAB = _normalize(rAB)
+        eBC = _normalize(rBC)
+        eCD = _normalize(rCD)
+        n1 = _normalize(_cross(eAB, eBC))
+        n2 = _normalize(_cross(eBC, eCD))
+        m1 = _cross(n1, eBC)
+        x = _dot(n1, n2)
+        y = _dot(m1, n2)
+        theta = 180.0 / math.pi * math.atan2(y, x)
+        frame.properties[key] = theta
+    return traj
 
 def compute_oop(
     traj,
@@ -117,5 +166,6 @@ def compute_oop(
     """
 
     # TODO
+    # TODO: Google Sherrill Geometry Analysis Program for nice definitions
     raise RuntimeError('Not Implemented')
 

@@ -12,6 +12,7 @@ _N_table = {
 def parse_fms90(
     filepath,
     scheme='mulliken',
+    cutoff_time=None,
     ):
 
     """ Parse an FMS90 results directory into a Trajectory.
@@ -23,6 +24,8 @@ def parse_fms90(
         filepath (str) - the path to the FMS run directory
         scheme (str) - 'mulliken' or 'saddle' to indicate the approximation
             used for property evaluation.
+        cutoff_time (float) - cutoff time to stop reading trajectory info after
+            (None reads all times).
     Returns:
         trajectory (Trajectory) - the Trajectory object.
     """
@@ -39,18 +42,19 @@ def parse_fms90(
     posfiles = { int(re.match(r'%s/positions\.(\d+)\.xyz' % filepath, path).group(1)) : path for path in posfiles }
     Cfiles = { int(re.match(r'%s/Amp\.(\d+)' % filepath, path).group(1)) : path for path in Cfiles }
 
-    # Read the Amp and postions files
+    # Read the Amp and positions files
     C2s = {}
     N2s = {}
     xyz2s = {}
     for I, Cfile in Cfiles.iteritems():
         posfile = posfiles[I]
-
         lines = open(Cfile).readlines()[1:]
         Cs = {}
         for line in lines:
+            # (t) Norm (Real) (Imag)
             mobj = re.match(r'^\s*(\S+)\s+\S+\s+(\S+)\s+(\S+)\s*$', line)
             if mobj:
+                if cutoff_time and float(mobj.group(1)) > cutoff_time: continue
                 Cs[float(mobj.group(1))] = complex(float(mobj.group(2)), float(mobj.group(3)))
             else:
                 raise RuntimeError('Invalid Amp line: %s' % line)
@@ -66,6 +70,7 @@ def parse_fms90(
             lines2 = lines[A * (natom + 2) : (A+1) * (natom+2)]
             mobj = re.match(r'^\s*Time:\s+(\S+),\s+Trajectory:\d+\s*$', lines2[1])
             t = float(mobj.group(1))
+            if cutoff_time and t > cutoff_time: continue
             N = []
             xyz = np.zeros((natom, 3))
             for A, line in enumerate(lines2[2:]):
@@ -76,7 +81,6 @@ def parse_fms90(
                 xyz[A,2] = float(mobj.group(4))
             Ns[t] = N
             xyzs[t] = xyz
-
         C2s[I] = Cs
         N2s[I] = Ns
         xyz2s[I] = xyzs
@@ -93,6 +97,7 @@ def parse_fms90(
             ts.append(float(mobj.group(1)))
     tinds.append(len(lines))
     for A, t in enumerate(ts):
+        if cutoff_time and t > cutoff_time: continue
         lines2 = lines[tinds[A]+1:tinds[A+1]]
         Spart = []
         for line in lines2:
