@@ -123,6 +123,9 @@ def compute_torsion(
 
     for frame in traj.frames:
         xyz = frame.xyz
+        # TODO: I took this from : https://math.stackexchange.com/questions/47059/how-do-i-calculate-a-dihedral-angle-given-cartesian-coordinates
+        # I do not know if it works
+        # RMP
         rAB = xyz[B,:] - xyz[A,:]
         rBC = xyz[C,:] - xyz[B,:]
         rCD = xyz[D,:] - xyz[C,:]
