@@ -6,3 +6,4 @@ from .wrap import *
 from .rotate import *
 from .ued import *
 from .plot import *
+import xray

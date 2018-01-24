@@ -1,0 +1,43 @@
+import aimsprop as ai
+import numpy as np
+
+# => Parse/Align/Weight/Clean <= #
+
+# Parse a series of FMS90 trajectories that Hayley has run for Stilbene
+# Troubles: 11, 12 (not finished), 15
+# trajs = [ai.parse_fms90('/home/hweir/stilbene/5-aims/s0_extension/aims_%04d/job1' % x) for x in range(1,16+1) if x not in [11, 12, 15]]
+trajs = [ai.parse_fms90('/home/hweir/stilbene/5-aims/s0_extension/aims_%04d/job1' % x) for x in [1,2]]
+# TODO: Align trajectories to IC transition dipole moment (on z) and weight by oscillator strength at IC
+# Merge the trajectories into one super-big Trajectory with uniform weights
+traj = ai.Trajectory.merge(trajs, [1.0 / len(trajs)] * len(trajs))
+# Compute properties at ~1 fs intervals, removing nonsense due to adaptive timesteps
+ts = np.arange(0.0, max(traj.ts), 400.0) # TODO: Cleaner edges
+traj = traj.interpolate_nearest(ts)
+
+# => Tag with X-Ray Scattering Signal <= #
+
+# Grab form factors for all atoms in this trajectory (extracted from table by atomic symbol)
+factor_map = {
+    6 : ai.xray.AtomicFormFactor.factors()['C'],
+    1 : ai.xray.AtomicFormFactor.factors()['H'],
+}
+factors = [factor_map[N] for N in traj.frames[0].N]
+# The q values to compute scattering cross section at (in A^-1)
+q = np.linspace(0.5, 3.0, 100)
+# Compute the diffraction pattern
+ai.xray.compute_diffraction(
+    traj=traj,
+    key='xray',
+    q=q,
+    factors=factors,
+    nlebedev=74,
+    nlebedev2=74,
+    nomega2=12,
+    nlegendre=4,
+    print_level=True,
+    )
+# Plots of the result
+ai.plot_vector('I0.pdf', traj, 'xray-0', y=q, ylabel=r'$q [\AA{}^{-1}]$', time_units='fs', diff=True)
+ai.plot_vector('I2.pdf', traj, 'xray-2', y=q, ylabel=r'$q [\AA{}^{-1}]$', time_units='fs', diff=True)
+ai.plot_vector('I4.pdf', traj, 'xray-4', y=q, ylabel=r'$q [\AA{}^{-1}]$', time_units='fs', diff=True) # should be zero
+    
