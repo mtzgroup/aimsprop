@@ -7,8 +7,11 @@ fms90.py - Parser for FMS90 outputs
 Properties:
 geom.py - Easy geometric properties like bond length, bond angle, torsion angle, and out-of-plane angles
 ued.py - Simple pairwise distance-based I(R) properties for ultrafast electron diffraction (UED)
+
+Utility:
 blur.py - Gaussian blurring of properties (makes a nice projection of the density matrix)
 wrap.py - Wrap/unwrap periodic properties
+rotate.py - Rotate xyz coordinates by a given rotation matrix
 
 Plotting:
 plot.py - Generic interfaces for plotting scalar and vector data associated with Frame objects.
