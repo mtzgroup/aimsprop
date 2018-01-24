@@ -102,7 +102,7 @@ class Trajectory(object):
 
     def copy(self):
         """ Return a new Trajectory with frames copied according to Frame.copy()."""
-        return Trajectory([frame.copy() for frame in self.frames()])
+        return Trajectory([frame.copy() for frame in self.frames])
     
     def subset_by_label(
         self,
@@ -212,9 +212,9 @@ class Trajectory(object):
             for t in ts:
                 if t < min(t2s - delta) or t > max(t2s + delta): continue # Out of range (no extrapolation)
                 t2 = min(t2s, key=lambda x:abs(x - t)) # Closest value in t2s
-                frames2 += traj2.subset_by_t(t2).copy().frames
+                frames2 = traj2.subset_by_t(t2).copy().frames
                 for frame2 in frames2:
-                    frames2.t = t
+                    frame2.t = t
                 frames += frames2
         return Trajectory(list(sorted(frames)))
 
