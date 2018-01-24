@@ -1,5 +1,4 @@
 import numpy as np
-import copy
 
 class Frame(object):
 
@@ -41,17 +40,36 @@ class Frame(object):
         self.xyz = xyz
         self.properties = properties.copy()
 
+    def copy(self):
+        """ Make a copy of self that is sufficiently deep to prevent
+        modification of self by modification of the copy's attributes or
+        properties keys / references (property values are not deep copied). """
+        return Frame(
+            label=self.label, 
+            t=self.t, 
+            w=self.w, 
+            I=self.I, 
+            N=self.N, 
+            xyz=self.xyz, 
+            properties=self.properties, # __init__ makes a copy of this
+            )
+
     def __cmp__(
         self,
         other,
         ):
-        """ Comparator, to help with sorting. """
+        """ Comparator, to help with sorting : Comparator basis is (t, label, I). """
         return cmp((self.t, self.label, self.I), (other.t, other.label, other.I))
 
 class Trajectory(object):
 
     """ Class Trajectory represents a list of Frames, with utility methods to
         extract and merge Trajectories. 
+
+        Note that many methods below (e.g., subset_by_*) return shallow copies
+        or "views" of the current Trajectory object's frames. If a deeper copy
+        is needed, one can easily call Trajectory.copy(), which relies on
+        Frame.copy().
     """
 
     def __init__(
@@ -81,40 +99,44 @@ class Trajectory(object):
     def Is(self):
         """ return all unique Is in this trajectory, in sorted order. """
         return list(sorted(set([x.I for x in self.frames])))
+
+    def copy(self):
+        """ Return a new Trajectory with frames copied according to Frame.copy()."""
+        return Trajectory([frame.copy() for frame in self.frames()])
     
     def subset_by_label(
         self,
         label,
         ):
-        """ Return a subset of this trajectory containing all frames with a given label (Frame-sorted) """
+        """ Return a subset of this trajectory containing all frames with a given label (Frame-sorted) (view) """
         return Trajectory(list(sorted([x for x in self.frames if x.label == label])))
 
     def subset_by_t(
         self,
         t,
-        eps=1.0E-14,
+        delta=1.0E-11,
         ):
 
-        """ Return a subset of this trajectory containing all frames with a given time (Frame-sorted). 
+        """ Return a subset of this trajectory containing all frames with a given time (Frame-sorted) (view). 
 
             Note that due to possible weirdness with ULP errors in float t
-            values, we grab all times within eps relative error of t. 
+            values, we grab all times within delta absolute error of t
         """
-        return Trajectory(list(sorted([x for x in self.frames if x.t == t or abs(x.t - t) < abs(eps * t)])))
+        return Trajectory(list(sorted([x for x in self.frames if abs(x.t - t) < delta])))
 
     def subset_by_I(
         self,
         I,
         ):
 
-        """ Return a subset of this trajectory containing all frames with a given I (Frame-sorted) """
+        """ Return a subset of this trajectory containing all frames with a given I (Frame-sorted) (view) """
         return Trajectory(list(sorted([x for x in self.frames if x.I == I])))
     
     def __add__(
         self,
         other,
         ):
-        """ Concatenation operator to merge two trajectories """
+        """ Concatenation operator to merge two trajectories (view-based) """
         return Trajectory(self.frames + other.frames)
 
     def __mul__(
@@ -122,13 +144,13 @@ class Trajectory(object):
         w,
         ):
 
-        """ Return a new Trajectory with all Frame objects
-        multiplied by weight. This is useful to provide a weight on
-        the initial condition due to e.g., oscillator strength
-        and/or conformational population. """
+        """ Return a new Trajectory with all Frame objects multiplied by
+        weight (new copy). This is useful to provide a weight on the initial
+        condition due to e.g., oscillator strength and/or conformational population.
+        """
         frames = []
         for frame in self.frames:
-            frame2 = copy.copy(frame)
+            frame2 = frame.copy()
             frame2.w *= w
             frames.append(frame2)
         return Trajectory(frames)
@@ -142,7 +164,7 @@ class Trajectory(object):
         update_labels=True,
         ):
 
-        """ Merge a list of trajectories together, with weighting factors.
+        """ Merge a list of trajectories together, with weighting factors (new copy).
     
         Params:
             trajs (list of Trajectory) - trajectories to merge
@@ -156,7 +178,7 @@ class Trajectory(object):
         frames = []
         for I, traj in enumerate(trajs):
             for frame in traj.frames:
-                frame2 = copy.copy(frame)
+                frame2 = frame.copy()
                 frame2.w *= ws[I]
                 if update_labels:
                     frame2.label = (I, frame2.label)
@@ -166,11 +188,16 @@ class Trajectory(object):
     def interpolate_nearest(
         self,
         ts,
+        delta=1.0E-11,
         ):
 
         """ Return a new trajectory with frame objects interpolated by nearest
             neighbor interpolation if t is inside the range of times of self's
-            frames for each label (e.g., no extrapolation is performed).
+            frames for each label (e.g., no extrapolation is performed). (new
+            copy).
+
+            Note that due to possible weirdness with ULP errors in float t
+            values, we grab all times within delta absolute error of t
 
         Params:
             ts (list of float) - times to interpolated new Trajectory to
@@ -183,15 +210,16 @@ class Trajectory(object):
             traj2 = self.subset_by_label(label)
             t2s = traj2.ts
             for t in ts:
-                if t < min(t2s) or t > max(t2s): continue # Out of range (TODO: eps bounds)
+                if t < min(t2s - delta) or t > max(t2s + delta): continue # Out of range (no extrapolation)
                 t2 = min(t2s, key=lambda x:abs(x - t)) # Closest value in t2s
-                frames += traj2.subset_by_t(t2).frames
-                # TODO: change times to interpolated times
+                frames2 += traj2.subset_by_t(t2).copy().frames
+                for frame2 in frames2:
+                    frames2.t = t
+                frames += frames2
         return Trajectory(list(sorted(frames)))
 
     # TODO: linear interpolation
                 
-
     def extract_property(
         self,
         key,
