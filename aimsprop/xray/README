@@ -1,0 +1,9 @@
+User-Visible Files:
+
+diffraction.py - x-ray diffraction in the independent atom model (IAM)
+formfactor.py - AtomicFormFactor and standard table thereof
+
+Utility Files:
+lebedev.py - Lebedev quadrature grids for S(2)
+legendre.py - Legendre polynomials and zonal harmonics
+rotation.py - Rotation quadratures for SO(3)

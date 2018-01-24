@@ -1,0 +1,278 @@
+\documentclass[fleqn,oneside,12pt]{article}
+\date{}
+\newcommand{\up}[1]{a_{#1}^{\dagger}}
+\newcommand{\down}[1]{a_{#1}}
+\newcommand{\ud}{\mathrm{d}}
+\newcommand{\EE}{\mathrm{E}}
+\newcommand{\diff}[2]{\frac{\ud {#1}}{\ud {#2}}}
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\fl}{\mathrm{fl}}
+\newcommand{\sqrtfrac}[2]{\sqrt{\frac{#1}{#2}}}
+\newcommand{\ui}{\mathbf{i}}
+\newcommand{\uj}{\mathbf{j}}
+\newcommand{\ua}{\mathbf{a}}
+\newcommand{\ub}{\mathbf{b}}
+\newcommand{\bi}{\bar{i}}
+\newcommand{\bj}{\bar{j}}
+\newcommand{\ba}{\bar{a}}
+\newcommand{\bb}{\bar{b}}
+\newcommand{\tb}{\phantom{}^{Q} \hat b}
+\newcommand{\erf}{\mathrm{erf}}
+\newcommand{\erfc}{\mathrm{erfc}}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\setlength{\parindent}{0pt}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage[super]{cite}
+\usepackage{amssymb}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\pagestyle{fancyplain}
+\begin{document}
+\lhead{Ultrafast X-Ray Scattering}
+\rhead{Rob Parrish and Todd Mart\'inez}
+
+\section{Development}
+
+\textbf{Geometry:} Consider an ultrafast time-resolved optical pump and elastic
+X-ray scattering probe experiment in a perpendicular arrangement, as shown in
+Figure \ref{fig:schem}. Initially, the samples are all oriented randomly, but
+the optical pump preferentially excites chromophores with transition dipoles
+$\mu$ oriented along $\hat z$, with probability $P (\hat \mu) \equiv \hat
+\mu_z^2 = \cos^2 (\zeta_{\mu})$, where $\zeta_{\mu}$ is the polar angle from
+$\hat z$.  This anisotropic absorption will induce anisotropy in the subsequent
+X-ray scattering signal.
+
+In the independent atom model (IAM), the X-ray scattering signal is,
+\[
+I (\vec q, t)
+\equiv
+\frac{1}{N_I}
+\sum_{I}
+\left |
+\sum_{A}
+f_{A} (q)
+e^{i \vec q \cdot \vec r_A^I (t)}
+\right |^2
+\]
+Here $\vec r_A^I (t)$ are the nuclear coordinates of atom $A$ as a function of
+delay time $t$, for trajectory $I$ [from molecular dynamics trajectories on the
+relevant electronic state(s)]). By averaging over many trajectories, and by
+weighting to account for the $\cos^2 (\zeta_{\mu})$ anisotropy of the initial
+conditions, the time-resolved X-ray scattering signal can be obtained on a
+one-to-one footing with the experiment. The $f_A (q)$ are atom- and
+X-ray-beam-specific scattering cross sections, and have been tabulated online in
+a standard Gaussian form.
+
+The X-ray scattering signal is best written in spherical coordinates as $I(\vec
+q, t) \equiv I(q, \zeta, \phi, t)$. Here $q$ is the scattering amplitude,
+$\zeta$ is the polar angle from $\hat z$, and $\phi$ is the azimuthal angle in
+$\hat x$-$\hat y$. Note that we expect the signal to be isotropic in $\phi$, but
+not in $\zeta$. 
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=11cm]{figures/schem}
+\end{center}
+\caption{An illustration of ultrafast X-ray diffraction. The X-ray probe arrives
+a delay of $t$ with respect to the optical pump. In the perpendicular
+experimental arrangement (shown here), the polarization vector $\vec E \propto
+\hat z$ of the optical pump pulse is perpendicular to the incident wave vector
+$\vec k_0 \equiv k \hat y$ of the X-ray probe pulse. The incident X-ray photons
+scatter at angle $\theta$ with respect to $\vec k_0$, and azimuthal angle $\eta$
+with respect to $\vec E$. These two angles fully describe the scattering in the
+elastic regime, as $|\vec k_0|$ = $|\vec k_s|$. The scattering vector $\vec q$
+is the difference between the incident and scattered wave vectors $\vec q \equiv
+\vec k_0 - \vec k_s$. The amplitude of the scattering vector is $q \equiv |\vec
+q| = 2 k \sin \theta / 2$. Figure adapted to our notation from Kent Wilson's
+excellent 1998 ultrafast scattering paper in JPCA [Jianshu Cao and Kent R.
+Wilson, \emph{J. Phys. Chem. A} \textbf{102}, 9523 (1998)].}
+\label{fig:schem}
+\end{figure}
+
+\textbf{Spherical Harmonic Transformation:} A useful transformation of the X-ray
+scattering signal involves the (complete) projection onto spherical harmonics,
+\[
+I (\vec q, t)
+=
+\sum_{lm}
+Y_{lm} (\zeta, \phi)
+I_{lm} (q, t)
+\]
+where,
+\[
+I_{lm} (q, t)
+\equiv
+\int_{\Omega}
+\mathrm{d} \Omega \
+Y_{lm}^{*} (\Omega)
+I (q, \Omega, t)
+\]
+The solid angle $\Omega$ is shorthand for the set of $<\zeta, \phi>$
+coordinates.  Here the spherical harmonics are defined to be fully orthonormal
+on the unit sphere,
+\[
+\int_{\Omega}
+\mathrm{d} \Omega \
+Y_{lm}^{*} (\Omega)
+Y_{l'm'} (\Omega)
+=
+\delta_{ll'}
+\delta_{mm'}
+\]
+Due to parity, the odd-$l$ spherical harmonic contributions must be zero. Due to
+isotropy in $\phi$, the $m \neq 0$ spherical harmonic contributions must be
+zero. Thus, the only surviving contributions are the even zonal spherical
+harmonics $Y_{l0}$ where $l$ is even.
+
+The normalized zonal spherical harmonics are,
+\[
+Y_{l0} (\zeta, \phi)
+\equiv
+N_{l} 
+P_{l} (\cos \zeta)
+\]
+The Legendre polynomials are,
+\[
+P_{0} (x) = 1
+\]
+\[
+P_{1} (x) = x
+\]
+\[
+P_{l+1} (x)
+=
+\frac{1}{l+1}
+\left [
+(2l + 1) x P_{l} (x)
+-
+l P_{l-1} (x)
+\right ]
+\]
+The normalization factors are,
+\[
+N_{l}
+\equiv
+\sqrt{\frac{2l + 1}{4 \pi}}
+\]
+
+\textbf{Tasking:} For a set of trajectories $r_{A}^{I} (t)$ aligned so that
+$\vec \mu (t = 0) = \mu \hat z$, we must compute,
+\[
+I_{l0} (q, t)
+\equiv
+\frac{1}{N_{I}}
+\sum_{I}
+\int_{\mathrm{SO}(3)}
+\mathrm{d} \hat R \
+\hat R_{z}^{2}
+\int_{\Omega}
+\mathrm{d} \Omega \
+Y_{l0}^{*} (\Omega)
+\left |
+\sum_{A}
+f_{A} (q)
+e^{i \vec q \cdot [\hat R \vec r_A^I (t)]}
+\right |^2
+\]
+Colloquially, this says ``rotate each trajectory through the full set of
+rotations $\hat R$, and weight these by the square of the projection of the
+rotation on $\hat z$ ($\hat R_z^2 \Leftrightarrow \cos^2 [\zeta (\hat R)]$) to
+account for the excitational anisotropy. For each trajectory and rotation,
+compute the diffraction signal in $\vec q$, and project onto spherical harmonic
+contributions $I_{l0}^{I, \hat R} (q, t)$. Average these over all rotations and
+all trajectories.''
+
+A key observation is that one can apply the rotations to the diffraction
+patterns, rather than to the trajectories, which allows for interchange of
+summation,
+\[
+\left |
+\sum_{A}
+f_{A} (q)
+e^{i \vec q \cdot [\hat R \vec r_A^I (t)]}
+\right |^2
+=
+\left |
+\sum_{A}
+f_{A} (q)
+e^{i [\hat R^\dagger \vec q] \cdot \vec r_A^I (t)}
+\right |^2
+\]
+This amounts to switching working variable from $\vec q = <q, \Omega>$ to $\vec
+q' = <q, \hat R^\dagger \Omega>$ and leaving the trajectories in $\hat z$ frame.
+The observable may now be written as,
+\[
+I_{l0} (q, t)
+\equiv
+\int_{\Omega}
+\mathrm{d} \Omega \
+\int_{\mathrm{SO}(3)}
+\mathrm{d} \hat R \
+\hat R_{z}^2
+Y_{l0}^{*} (\hat R^\dagger \Omega)
+\underbrace{
+\frac{1}{N_{I}}
+\sum_{I}
+\left |
+\sum_{A}
+f_{A} (q)
+e^{i \vec q' \cdot \vec r_A^I (t)}
+\right |^2
+}_{
+I^{\hat z} (\vec q', t)
+}
+\]
+
+\textbf{Computational Procedure:} 
+
+\begin{enumerate}
+\item Compute $N_I$ trajectories $r_{A}^{I} (t)$ and align these so that 
+$\vec \mu (t = 0) = \mu \hat z$.
+\item Lay out a regular grid $q_P$ and a Lebedev grid $<\Omega_Q, w_Q>$ to form
+a 3D spherical grid $\vec q_R \equiv q_{P} \otimes \Omega_{Q}$.
+\item Evaluate,
+\[
+I^{\hat z} (\vec q_R, t)
+\equiv
+\frac{1}{N_I}
+\sum_{I}
+\left |
+\sum_{A}
+f (q_R)
+e^{i \vec q_R \cdot r_A (t)}
+\right |^2
+\]
+\item Generate a covering sequence of rotation matrices and affiliated weights
+$<\hat R_{M}, w_{M}>$ to integrate SO$(3)$. A particularly nice way to do this
+is to exploit the ``rotate around $\hat z$ by angle $\omega$, then rotate down
+to a uniform spherical angle $\Omega$'' method for generating uniform random
+rotation matrices, but adapting this to the appropriate regular quadrature grids
+for $\omega$ and $\Omega$ (Fourier and Lebedev).  That is, lay out uniform
+Fourier grid $\omega_{T} \equiv 2 \pi T / (N_{T} + 1)$ and $w_T = 1 / N_{T}$ and
+a Lebedev grid $<\Omega_{U}, w_{U}>$. Then form the direct product grid
+$\Phi_{M} \equiv \omega_{T} \otimes \Omega_{U}$ and $w_{M} \equiv (w_{T} \otimes
+w_{U}) / 4 \pi$.  For each $M$ point, start with the identity matrix, rotate
+about $\hat z$ by $\omega_T$ (a simple Given's rotation), and then rotate
+directly down from $\hat z$ to $\Omega_M$ (a Householder reflection + parity
+inversion) to obtain the rotation matrix $\hat R_M$.
+
+\item Form the observable,
+\[
+I_{l0} (q_{P}, t)
+=
+\sum_{Q}
+w_{Q}
+\sum_{M}
+w_{M}
+(\hat R_{M}^{z})^2
+Y_{l0} (\hat R_{M}^{\dagger} \Omega_{Q})
+I^{\hat z}
+(q_{P}, \Omega_{Q}, t)
+\]
+
+\end{enumerate}
+
+\end{document}
