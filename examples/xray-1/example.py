@@ -18,8 +18,8 @@ traj = traj.interpolate_nearest(ts)
 
 # Grab form factors for all atoms in this trajectory (extracted from table by atomic symbol)
 factor_map = {
-    6 : ai.iam.AtomicFormFactor.build_factor(symbol='C', Z=6, mode='xray',
-    1 : ai.iam.AtomicFormFactor.build_factor(symbol='G', Z=1, mode='xray',
+    6 : ai.iam.AtomicFormFactor.build_factor(symbol='C', Z=6, mode='xray'),
+    1 : ai.iam.AtomicFormFactor.build_factor(symbol='H', Z=1, mode='xray'),
 }
 factors = [factor_map[N] for N in traj.frames[0].N]
 # The q values to compute scattering cross section at (in A^-1)

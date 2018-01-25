@@ -42,7 +42,7 @@ class AtomicFormFactor(object):
         for a, b in zip(self.avals, self.bvals):
             f += a * np.exp(-b * q2 / (4.0 * np.pi)**2)
         f += self.cval
-        if mode == 'ued':
+        if self.mode == 'ued':
             f = 1.0 / q2 * (self.Z - f)
         return f
 
@@ -313,6 +313,7 @@ Cf 36.9185 0.437533 25.1995 3.00775 18.3317 12.4044 4.24391 83.7881 13.2674
             AtomicFormFactor._factors = AtomicFormFactor._build_factor_table()
         return AtomicFormFactor._factors
 
+    @staticmethod
     def build_factor(
         symbol,
         Z,
