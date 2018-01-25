@@ -7,7 +7,7 @@ fms90.py - Parser for FMS90 outputs
 Properties:
 geom.py - Easy geometric properties like bond length, bond angle, torsion angle, and out-of-plane angles
 ued.py - Simple pairwise distance-based I(R) properties for ultrafast electron diffraction (UED)
-xray/ - X-ray scattering in the independent atom model (IAM)
+iam/ - X-ray scattering and ultrafast electron diffraction in the independent atom model (IAM)
 
 Utility:
 blur.py - Gaussian blurring of properties (makes a nice projection of the density matrix)

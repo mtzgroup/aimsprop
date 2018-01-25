@@ -3,20 +3,26 @@ import re
 
 class AtomicFormFactor(object):
 
-    """ Atomic form factors for X-Ray scattering. """
+    """ Atomic form factors for X-Ray scattering or UED. """
 
     def __init__(
         self,
         symbol,
+        Z,
         avals,
         bvals,
         cval,
+        mode='xray', # xray or ued
         ):
 
         self.symbol = symbol
+        self.Z = Z
         self.avals = avals
         self.bvals = bvals
         self.cval = cval
+        self.mode = mode
+        
+        if not self.mode in ['xray', 'ued']: raise ValueError('Invalid mode: %s' % mode)
     
     def evaluate(
         self,
@@ -25,13 +31,19 @@ class AtomicFormFactor(object):
         qz,
         ):
 
-        """ Evaluate the structure factor at (qx,qy,qz). """
+        """ Evaluate the structure factor at (qx,qy,qz). 
+    
+        self.mode determines whether xray factor f(q) or ued factor g(q) =
+            1/q^2 (Z - f(q)) is evaluated.
+        """
 
         q2 = qx**2 + qy**2 + qz**2
         f = np.zeros_like(q2)
         for a, b in zip(self.avals, self.bvals):
             f += a * np.exp(-b * q2 / (4.0 * np.pi)**2)
         f += self.cval
+        if mode == 'ued':
+            f = 1.0 / q2 * (self.Z - f)
         return f
 
     def evaluate_N(
@@ -279,15 +291,18 @@ Cf 36.9185 0.437533 25.1995 3.00775 18.3317 12.4044 4.24391 83.7881 13.2674
                 raise ValueError('Malformed form factor table line: ' + line)   
             factors[mobj.group(1).upper()] = AtomicFormFactor(
                 mobj.group(1).upper(),
+                -1, # Z placeholder
                 avals=tuple(float(mobj.group(x)) for x in [2, 4, 6, 8]),
                 bvals=tuple(float(mobj.group(x)) for x in [3, 5, 7, 9]),
                 cval=float(mobj.group(10)),
+                mode='xray', 
                 )
         return factors
 
     @staticmethod
     def factors():
-        """ dict of (symbol : AtomicFormFactor) of known atomic form factors. 
+        """ dict of (symbol : AtomicFormFactor) of known atomic form factors.
+            (these are placeholders - must add Z and mode = xray/ued).
 
         Table from: http://lampx.tugraz.at/~hadley/ss1/crystaldiffraction/atomicformfactors/formfactors.php
         Downloaded 10/10/2017
@@ -297,6 +312,22 @@ Cf 36.9185 0.437533 25.1995 3.00775 18.3317 12.4044 4.24391 83.7881 13.2674
         if not hasattr(AtomicFormFactor, '_factors'):
             AtomicFormFactor._factors = AtomicFormFactor._build_factor_table()
         return AtomicFormFactor._factors
+
+    def build_factor(
+        symbol,
+        Z,
+        mode='xray',
+        ):
+        
+        ref = AtomicFormFactor.factors()[symbol]
+        return AtomicFormFactor(
+            symbol=ref.symbol,
+            Z=Z,
+            avals=ref.avals,
+            bvals=ref.bvals,
+            cval=ref.cval,
+            mode=mode,
+            )
 
 def plot_form_factor():
 
