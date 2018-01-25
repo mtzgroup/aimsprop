@@ -99,16 +99,20 @@ def parse_fms90(
     for A, t in enumerate(ts):
         if cutoff_time and t > cutoff_time: continue
         lines2 = lines[tinds[A]+1:tinds[A+1]]
+        # This thing wraps at a certain point. 
+        # Just read in a 1D array, and then reshape to 2D
         Spart = []
         for line in lines2:
             toks = line.split()
-            Spart2 = []
             for B in range(len(toks)):
                 if B % 2 != 0: continue
                 Sval = complex(float(toks[B]), float(toks[B+1]))
-                Spart2.append(Sval)
-            Spart.append(Spart2)
+                Spart.append(Sval)
         Smat = np.array(Spart)
+        # Reshape to square array
+        n = int(np.sqrt(len(Smat)))
+        if n**2 != len(Smat): raise RuntimeError('S matrix is not square')
+        Smat = np.reshape(Smat, (n,n))
         Ss[t] = Smat
 
     # Read the Spawn.log to figure out electronic states
@@ -138,7 +142,7 @@ def parse_fms90(
     frames = []
     for t, S in Ss.iteritems():
         if t not in C3s:
-            # Sometimes timestamps do not mathc because Amp.* only holds 2 decimal digits
+            # Sometimes timestamps do not match because Amp.* only holds 2 decimal digits
             # E.g., 1000.875 (in S) vs. 100.88 (in Amp)
             print 'Warning: Time %r not in amplitudes (OK if very small adaptive timestep)' % t
             continue

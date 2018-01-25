@@ -2,7 +2,7 @@ import aimsprop as ai
 import numpy as np
 
 # Parse a series of FMS90 trajectories that Hayley has run for Stilbene
-trajs = [ai.parse_fms90('/home/hweir/stilbene/5-aims/aims_%04d/job2' % x) for x in [0,1,2,3]]
+trajs = [ai.parse_fms90('/home/hweir/stilbene/5-aims/s0_extension/aims_%04d/job1' % x) for x in [1,2,3]]
 # Merge the trajectories into one super-big Trajectory with uniform weights
 traj = ai.Trajectory.merge(trajs, [1.0 / len(trajs)] * len(trajs))
 # Compute properties at ~1 fs intervals, removing nonsense due to adaptive timesteps
@@ -29,6 +29,7 @@ ai.plot_scalar('R.pdf', traj, 'R01', ylabel=r'$R_{CC} [\AA{}]$', time_units='fs'
 # Compute the a torsion angle property for all Frames in traj
 # This particular torsion is the one the leads to cis-trans isomerization
 ai.compute_torsion(traj, 'T4019', 4, 0, 1, 9)
+ai.unwrap_property(traj, 'T4019', 360.0)
 
 # Blur the torsion
 T = np.linspace(-180.0, +180.0, 100)
