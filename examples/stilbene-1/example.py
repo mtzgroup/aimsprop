@@ -4,7 +4,8 @@ import numpy as np
 # Parse a series of FMS90 trajectories that Hayley has run for Stilbene
 trajs = [ai.parse_fms90('/home/hweir/stilbene/5-aims/s0_extension/aims_%04d/job1' % x) for x in [1,2,3]]
 # Merge the trajectories into one super-big Trajectory with uniform weights
-traj = ai.Trajectory.merge(trajs, [1.0 / len(trajs)] * len(trajs))
+traj = ai.Trajectory.merge(trajs, ws=[1.0 / len(trajs)] * len(trajs), labels=[1,2,3])
+print traj.labels
 # Compute properties at ~1 fs intervals, removing nonsense due to adaptive timesteps
 ts = np.arange(0.0, max(traj.ts), 40.0) # TODO: Cleaner edges
 traj = traj.interpolate_nearest(ts)

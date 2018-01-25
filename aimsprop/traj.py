@@ -161,16 +161,19 @@ class Trajectory(object):
     def merge(
         trajs,
         ws,
-        update_labels=True,
+        labels=None,
         ):
 
         """ Merge a list of trajectories together, with weighting factors (new copy).
     
         Params:
             trajs (list of Trajectory) - trajectories to merge
+            
             ws (list of float) - weight factors of trajectories (e.g., from
                 oscillator strength or conformational well).
-            update_labels (bool) - Update Frame labels to (traj_ind, frame_label) compound labels?  
+            labels (list of label) - if provided, labels are updated to (label,
+                frame.label). This is used, e.g., to label the frame by IC as
+                well as by any trajectory-specific labeling.
         Returns:
             (Trajectory) - a single merged Trajectory with updated weights (and labels)
         """
@@ -180,8 +183,8 @@ class Trajectory(object):
             for frame in traj.frames:
                 frame2 = frame.copy()
                 frame2.w *= ws[I]
-                if update_labels:
-                    frame2.label = (I, frame2.label)
+                if labels:
+                    frame2.label = (labels[I], frame2.label)
                 frames.append(frame2)
         return Trajectory(frames)
 
