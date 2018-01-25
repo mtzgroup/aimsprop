@@ -241,7 +241,7 @@ I^{\hat z} (\vec q_R, t)
 \sum_{I}
 \left |
 \sum_{A}
-f (q_R)
+f_{A} (q_R)
 e^{i \vec q_R \cdot r_A (t)}
 \right |^2
 \]
@@ -274,5 +274,58 @@ I^{\hat z}
 \]
 
 \end{enumerate}
+
+\textbf{X-Ray Scattering vs. Electron Diffraction:} For ultrafast x-ray
+scattering, the form factors $f_{A} (q)$ are the Fourier transform of the
+electronic density of a spherical atom (possibly selected to reflect the density
+of the local chemical environment in the true molecule),
+\[
+f_{A} (q)
+\equiv
+\int_{\mathbb{R}^3}
+\mathrm{d} r_1
+\
+\rho_{A}^{\mathrm{e}} (\vec r_{1})
+e^{i \vec q \cdot \vec r_1}
+\]
+
+These form factors are tabulated for many common atoms at
+\begin{verbatim}
+http://lampx.tugraz.at/~hadley/ss1/crystaldiffraction/atomicformfactors/formfactors.php
+\end{verbatim}
+(accessed 01/18/2018). The specific parametrization is,
+\[
+f_{A} (q)
+\equiv
+\sum_{i=1}^{4}
+a_{i}
+\exp
+\left (
+-b_{i}
+\left (
+\frac{q}{4\pi}
+\right )^2
+\right )
++
+c
+\]
+With 9 parameters $a_{1-4}$ $b_{1-4}$, and $c$ per atom type. Units are
+$\AA{}^{-1}$.
+
+To switch to ultrafast electron diffraction, one must also account for
+scattering off of the nucleus and for a modified Jacobian element,
+\[
+f_{A}^{\mathrm{UED}}
+(q)
+\equiv
+\frac{1}{q^2}
+\left [
+Z_{A}
+-
+f_{A}^{\mathrm{XRAY}}
+(q)
+\right ]
+\]
+See M. Ben-Nunn, J. Cao, and K. Wilson, JPCA, 101, 8744 (1997) for details.
 
 \end{document}
