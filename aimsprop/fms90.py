@@ -133,10 +133,15 @@ def parse_fms90(
     for I, N2 in N2s.iteritems():
         for t, N in N2.iteritems():
             N3s.setdefault(t, {})[I] = N
-     
+
     # Build Frames from parsed data
     frames = []
     for t, S in Ss.iteritems():
+        if t not in C3s:
+            # Sometimes timestamps do not mathc because Amp.* only holds 2 decimal digits
+            # E.g., 1000.875 (in S) vs. 100.88 (in Amp)
+            print 'Warning: Time %r not in amplitudes (OK if very small adaptive timestep)' % t
+            continue
         Cs = C3s[t]
         xyzs = xyz3s[t]
         Ns = N3s[t]
