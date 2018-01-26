@@ -3,6 +3,8 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
+import pop # for pop.compute_population
+
 def plot_scalar(
     filename,
     traj,
@@ -152,4 +154,76 @@ def plot_vector(
     plt.savefig(filename)
     return plt
 
+def plot_population(
+    filename,
+    traj,
+    trajs,
+    time_units='au',
+    legend_loc='right',
+    state_colors=None,
+    plot_total=True,
+    clf=True,
+    ):
 
+    """ Plot the AIMS state populations.
+
+    Params:
+        filename (str) - the output PDF file
+        traj (Trajectory) - the Trajectory to plot populations for
+        trajs (list of Trajectory) - a list of Trajectory objects, one for each
+            IC. This is used for the "spaghetti" plots.
+        time_units (str) - "au" or "fs"
+        legend_loc (legend location) - location indicator for legend
+        state_colors (list of colors) - list of colors to use for state
+            plotting. None defaults to interpolation on jet colormap. For two
+            or three states, many people prefer ['r', 'b', 'g'] or similar.
+        plot_total (bool) - Plot total population?
+        clf (bool) - clear plot or not?
+    Result/Returns:
+        returns plt handle for further modification
+        saves figure to filename
+    """
+
+    if time_units == 'au':
+        time_scale = 1.0
+    elif time_units == 'fs':
+        time_scale = 1.0 / 41.3413745758  # TODO: standardize this
+    else:
+        raise ValueError('Unknown time units: %s' % time_units)
+
+    if state_colors:
+        colors=state_colors
+    else:
+        cmap = matplotlib.cm.get_cmap('jet')
+        colors = [cmap(float(x) / (len(traj.Is) - 1)) for x in reversed(range(len(traj.Is)))]
+
+    if clf: plt.clf()
+
+    # Spaghetti plots from trajs
+    Imap = { I : Iind for Iind, I in enumerate(traj.Is) }
+    for traj2 in trajs:
+        ts = np.array(traj2.ts)
+        for I in traj2.Is:
+            traj3 = traj2.subset_by_I(I)
+            t3s = traj3.ts
+            w3s = [sum(frame.w for frame in traj3.subset_by_t(t).frames) for t in t3s]
+            plt.plot(time_scale * t3s, w3s, '-', color=colors[Imap[I]], linewidth=1.0)
+    
+    # State populations
+    ts = np.array(traj.ts)
+    populations = pop.compute_population(traj)
+    for Iind, I in enumerate(sorted(populations.keys())):
+        plt.plot(time_scale * ts, populations[I], '-', color=colors[Iind], linewidth=2.0, label='State=%d' % I)
+
+    # Total population (to check norm, state cutoffs, etc)
+    if plot_total:
+        total = np.zeros_like(ts)
+        for population in populations.values(): total += population
+        plt.plot(time_scale * ts, total, '-', color='k', linewidth=2.0, label='Total')
+    
+    plt.xlabel('t [%s]' % time_units)
+    plt.ylabel('Population [-]')
+    plt.axis([time_scale * min(ts), time_scale * max(ts), 0.0, 1.0])
+    plt.legend(loc=legend_loc)
+    plt.savefig(filename)
+    return plt

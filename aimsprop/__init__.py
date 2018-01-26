@@ -5,5 +5,6 @@ from .blur import *
 from .wrap import *
 from .rotate import *
 from .ued import *
+from .pop import *
 from .plot import *
 import iam

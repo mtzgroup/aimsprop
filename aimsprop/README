@@ -6,6 +6,7 @@ fms90.py - Parser for FMS90 outputs
 
 Properties:
 geom.py - Easy geometric properties like bond length, bond angle, torsion angle, and out-of-plane angles
+pop.py - State populations over time
 ued.py - Simple pairwise distance-based I(R) properties for ultrafast electron diffraction (UED)
 iam/ - X-ray scattering and ultrafast electron diffraction in the independent atom model (IAM)
 
