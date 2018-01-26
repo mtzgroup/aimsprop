@@ -73,7 +73,7 @@ def compute_diffraction_moments(
             x = frame.xyz[A,0]
             y = frame.xyz[A,1]
             z = frame.xyz[A,2]
-            N += factor.evaluate_N(qx=qx,qy=qy,qz=qy,x=x,y=y,z=z)
+            N += factor.evaluate_N(qx=qx,qy=qy,qz=qz,x=x,y=y,z=z)
         # Compute I(\vec q) = N(\vec q)**2 for this frame
         I = (np.abs(N)**2).real
 
@@ -154,7 +154,7 @@ def compute_diffraction_moment0(
             x = frame.xyz[A,0]
             y = frame.xyz[A,1]
             z = frame.xyz[A,2]
-            N += factor.evaluate_N(qx=qx,qy=qy,qz=qy,x=x,y=y,z=z)
+            N += factor.evaluate_N(qx=qx,qy=qy,qz=qz,x=x,y=y,z=z)
         # Compute I(\vec q) = N(\vec q)**2 for this frame
         I = (np.abs(N)**2).real
         # Compute Y00 (for common normalization)
