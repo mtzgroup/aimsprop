@@ -13,6 +13,7 @@ def parse_fms90(
     filepath,
     scheme='mulliken',
     cutoff_time=None,
+    cutoff_saddle=1.0E-4,
     ):
 
     """ Parse an FMS90 results directory into a Trajectory.
@@ -26,6 +27,8 @@ def parse_fms90(
             used for property evaluation.
         cutoff_time (float) - cutoff time to stop reading trajectory info after
             (None reads all times).
+        cutoff_saddle (float) - cutoff for centroid TBF pair in the saddle
+            point approach.
     Returns:
         trajectory (Trajectory) - the Trajectory object.
     """
@@ -99,16 +102,20 @@ def parse_fms90(
     for A, t in enumerate(ts):
         if cutoff_time and t > cutoff_time: continue
         lines2 = lines[tinds[A]+1:tinds[A+1]]
+        # This thing wraps at a certain point. 
+        # Just read in a 1D array, and then reshape to 2D
         Spart = []
         for line in lines2:
             toks = line.split()
-            Spart2 = []
             for B in range(len(toks)):
                 if B % 2 != 0: continue
                 Sval = complex(float(toks[B]), float(toks[B+1]))
-                Spart2.append(Sval)
-            Spart.append(Spart2)
+                Spart.append(Sval)
         Smat = np.array(Spart)
+        # Reshape to square array
+        n = int(np.sqrt(len(Smat)))
+        if n**2 != len(Smat): raise RuntimeError('S matrix is not square')
+        Smat = np.reshape(Smat, (n,n))
         Ss[t] = Smat
 
     # Read the Spawn.log to figure out electronic states
@@ -133,10 +140,15 @@ def parse_fms90(
     for I, N2 in N2s.iteritems():
         for t, N in N2.iteritems():
             N3s.setdefault(t, {})[I] = N
-     
+
     # Build Frames from parsed data
     frames = []
     for t, S in Ss.iteritems():
+        if t not in C3s:
+            # Sometimes timestamps do not match because Amp.* only holds 2 decimal digits
+            # E.g., 1000.875 (in S) vs. 1000.88 (in Amp)
+            print 'Warning: Time %r not in amplitudes (OK if very small adaptive timestep)' % t
+            continue
         Cs = C3s[t]
         xyzs = xyz3s[t]
         Ns = N3s[t]
@@ -158,8 +170,23 @@ def parse_fms90(
                     )
                 frames.append(frame)
         elif scheme == 'saddle':
-            # TODO: Code up saddle point (make sure to use cutoff)
-            raise NotImplementedError('This')
+            for I2, I in enumerate(Isort):
+                for J2, J in enumerate(Isort):
+                    if states[I] != states[J]: continue # Electronic orthogonality
+                    if J > I: continue
+                    q = np.real(0.5 * np.conj(Cs[I]) * S[I2, J2] * Cs[J] + \
+                                0.5 * np.conj(Cs[J]) * S[J2, I2] * Cs[I])
+                    if J < I: q *= 2.0 # Upper/lower triangle
+                    if abs(q) < cutoff_saddle: continue # Vanishing weight
+                    frame = traj.Frame(
+                        label=(I,J),
+                        t=t,
+                        w=q,
+                        I=states[I],
+                        N=Ns[I],
+                        xyz=0.5*(xyzs[I]+xyzs[J]), # centroid
+                        )
+                    frames.append(frame)
         else:
             raise RuntimeError('Invalid scheme: %s' % scheme)
     

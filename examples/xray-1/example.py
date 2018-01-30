@@ -9,7 +9,7 @@ import numpy as np
 trajs = [ai.parse_fms90('/home/hweir/stilbene/5-aims/s0_extension/aims_%04d/job1' % x) for x in [1,2]]
 # TODO: Align trajectories to IC transition dipole moment (on z) and weight by oscillator strength at IC
 # Merge the trajectories into one super-big Trajectory with uniform weights
-traj = ai.Trajectory.merge(trajs, [1.0 / len(trajs)] * len(trajs))
+traj = ai.Trajectory.merge(trajs, ws=[1.0 / len(trajs)] * len(trajs), labels=[1,2])
 # Compute properties at ~1 fs intervals, removing nonsense due to adaptive timesteps
 ts = np.arange(0.0, max(traj.ts), 400.0) # TODO: Cleaner edges
 traj = traj.interpolate_nearest(ts)
@@ -18,14 +18,14 @@ traj = traj.interpolate_nearest(ts)
 
 # Grab form factors for all atoms in this trajectory (extracted from table by atomic symbol)
 factor_map = {
-    6 : ai.xray.AtomicFormFactor.factors()['C'],
-    1 : ai.xray.AtomicFormFactor.factors()['H'],
+    6 : ai.iam.AtomicFormFactor.build_factor(symbol='C', Z=6, mode='xray'),
+    1 : ai.iam.AtomicFormFactor.build_factor(symbol='H', Z=1, mode='xray'),
 }
 factors = [factor_map[N] for N in traj.frames[0].N]
 # The q values to compute scattering cross section at (in A^-1)
 q = np.linspace(0.5, 3.0, 100)
-# Compute the diffraction pattern
-ai.xray.compute_diffraction(
+# Compute the diffraction pattern moments (l=0,2,4)
+ai.iam.compute_diffraction_moments(
     traj=traj,
     key='xray',
     q=q,
@@ -41,3 +41,15 @@ ai.plot_vector('I0.pdf', traj, 'xray-0', y=q, ylabel=r'$q [\AA{}^{-1}]$', time_u
 ai.plot_vector('I2.pdf', traj, 'xray-2', y=q, ylabel=r'$q [\AA{}^{-1}]$', time_units='fs', diff=True)
 ai.plot_vector('I4.pdf', traj, 'xray-4', y=q, ylabel=r'$q [\AA{}^{-1}]$', time_units='fs', diff=True) # should be zero
     
+
+# Compute the diffraction pattern moments (l=0 only)
+ai.iam.compute_diffraction_moment0(
+    traj=traj,
+    key='xray0',
+    q=q,
+    factors=factors,
+    nlebedev=74,
+    print_level=True,
+    )
+# Plots of the result
+ai.plot_vector('I00.pdf', traj, 'xray0-0', y=q, ylabel=r'$q [\AA{}^{-1}]$', time_units='fs', diff=True)
