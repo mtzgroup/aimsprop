@@ -1,0 +1,23 @@
+Workflow Skeleton:
+
+example.py - drives workflow, contains most options and all calls to aimsprop
+
+prep_molpro.py - prepares and submits molpro caspt2 calculations
+    requires the following reference files:
+        ref/IP/sbatch.sh - submit script
+        ref/IP/cation.dat - molpro template for cation(s)
+        ref/IP/neutral.dat - molpro template for neutral
+
+get_molpro.py - obtains ionization potentials from molpro calculations (including unit conversions)
+    requires knowledge of directory structure
+
+prep_dyson.py - prepares and submits lightspeed fomo-casci dyson orbital calculations
+    requires the following reference files:
+        ref/dyson/sbatch.sh - submit script
+        ref/dyson/dyson_fomo.py - lightspeed submission file
+
+get_dyson.py - options dyson orbital norms from lightspeed output
+    requires knowledge of directory structure
+
+
+
