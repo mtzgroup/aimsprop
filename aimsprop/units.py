@@ -1,0 +1,26 @@
+import re
+
+"""
+
+Contains dictionary of units conversions to and from atomic units
+
+"""
+
+
+units = {
+    'au_per_ang'    : 1.8897261328856432E+00, # au of length per Angstrom, PSI4
+    'au_per_amu'    : 1.8228884840986366E+03, # au of mass per atomic mass unit, PSI4
+    'au_per_debeye' : 3.9343030716327643E-01, # au of dipole per Debeye, PSI4
+    'au_per_ev'     : 3.6749330610942925E-02, # au of energy per eV, PSI4
+    'au_per_kcal'   : 1.5936013717720609E-03, # au of energy per kcal mol^-1, PSI4
+    'au_per_cminv'  : 4.5563359040180500E-06, # au of energy per cm^{-1} ("wavenumber"), PSI4
+    'au_per_K'      : 1.0 / 3.1577464E5,             # temperature
+    'au_per_fs'     : 1.0 / 2.418884326505E-2,       # time
+}
+for k in units.keys():
+    v = units[k]
+    mobj = re.match('(\S+)_per_(\S+)',k)
+    units['%s_per_%s' % (mobj.group(2),mobj.group(1))] = 1.0 / v
+    
+
+    
