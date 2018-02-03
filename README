@@ -10,6 +10,10 @@ Directories:
 aimsprop - the Python AIMS trajectory/property code
 notes - notes used in implementing
 examples - examples of use cases of property computations
+util - utility scripts for common ops like plotting absorption spectra,
+    generating difference densities from Molden files, etc (no warrenty on
+    these - the usual workflow is to copy these into your own project
+    directories and modify until they work)
 
 Authors/Users:
 
