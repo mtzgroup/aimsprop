@@ -221,7 +221,73 @@ class Trajectory(object):
                 frames += frames2
         return Trajectory(list(sorted(frames)))
 
-    # TODO: linear interpolation
+
+    def interpolate_linear(
+        self,
+        ts,
+        delta=1.0E-11,
+        ):
+
+        """ Return a new trajectory with frame objects interpolated by linear
+            interpolation if t is inside the range of times of self's
+            frames for each label (e.g., no extrapolation is performed). (new
+            copy).
+
+            Using:
+                f(t) = f(t0) + [ (f(t1) - f(t0)) / (t1 - t0) ] * (t - t0)
+            Note: 
+                Not suitable for properties with large second derivative
+
+        Params:
+            ts (list of float) - times to interpolated new Trajectory to
+        Returns:
+            traj (Trajectory) - new trajectory with interpolated frames.
+        """
+
+        frames = []
+        for label in self.labels:
+            traj2 = self.subset_by_label(label)
+            t2s = traj2.ts
+            for t in ts:
+                if t <= min(t2s) or t >= max(t2s): continue # Out of range (no extrapolation)
+                # Get points in time to linearly interpolate between
+                t3 = t2s[np.where(t2s<t)[0][-1]]
+                t4 = t2s[np.where(t2s>t)[0][0]]
+                # Retrieve frames at points of linear interpolation for all labels
+                frames3 = traj2.subset_by_t(t3).copy().frames
+                frames4 = traj2.subset_by_t(t4).copy().frames
+                traj3  = Trajectory(list(sorted(frames3)))
+                traj4  = Trajectory(list(sorted(frames4)))
+                # Iterate through all frame labels at interpolation edge point
+                for label in traj3.labels:
+                    framesk = traj3.subset_by_label(label).copy().frames
+                    framesl = traj4.subset_by_label(label).copy().frames
+                    traj5  = Trajectory(list(sorted(framesk)))
+                    traj6  = Trajectory(list(sorted(framesl)))
+                    # Iterate through all states for frame label
+                    for I in traj5.Is:
+                        framei = traj5.subset_by_I(I).copy().frames[0]
+                        framej = traj6.subset_by_I(I).copy().frames[0]
+                        # linearly interpolate weight
+                        w = framei.w + ((framej.w-framei.w) / (t4-t3)) * (t - t3)
+                        # linearly interpolate position
+                        xyz = framei.xyz + ((framej.xyz-framei.xyz) / (t4-t3)) * (t - t3)
+               
+                        # TODO: create separate option for interpolation of properties (in case different interpolation scheme preferred?
+                            # also if property is of incompatible type (such as string)
+
+                        # linearly interpolate all other properties
+                        properties = {}
+                        for key, vali in framei.properties.iteritems():
+                            valj = framej.properties[key]
+                            valn = vali + ((valj-vali) / (t4-t3)) * (t - t3)
+                            properties[key] = valn
+
+                        # create updated frame at new time instace
+                        nframe = Frame(label=label, t=t, w=w, I=framei.I, N=framei.N, xyz=xyz, properties=properties)
+                        frames.append(nframe)
+
+        return Trajectory(list(sorted(frames)))
                 
     def extract_property(
         self,
@@ -254,5 +320,3 @@ class Trajectory(object):
             if normalize: V /= W
             Vs.append(V)
         return np.array(Vs)
-    
-         
