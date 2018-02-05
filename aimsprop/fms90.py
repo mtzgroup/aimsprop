@@ -2,6 +2,7 @@ import numpy as np
 import traj
 import glob
 import re
+import os
 
 # TODO: Fill atom numbers
 _N_table = {
@@ -14,6 +15,7 @@ def parse_fms90(
     scheme='mulliken',
     cutoff_time=None,
     cutoff_saddle=1.0E-4,
+    initial_I=None,
     ):
 
     """ Parse an FMS90 results directory into a Trajectory.
@@ -29,6 +31,9 @@ def parse_fms90(
             (None reads all times).
         cutoff_saddle (float) - cutoff for centroid TBF pair in the saddle
             point approach.
+        initial_I (int) - initial electronic state, used only if there is
+            no Spawn.log (e.g., if no spawning has happened yet) to place
+            electronic label.
     Returns:
         trajectory (Trajectory) - the Trajectory object.
     """
@@ -118,14 +123,18 @@ def parse_fms90(
         Smat = np.reshape(Smat, (n,n))
         Ss[t] = Smat
 
-    # Read the Spawn.log to figure out electronic states
+    # Read the Spawn.log to figure out electronic states (not read
     states = {}
-    lines = open(Spawnfile).readlines()[1:]
-    for lind, line in enumerate(lines):
-        # match groups are TBF ID, parent TBF ID, TBF state, parent TBF state
-        mobj = re.match(r'^\s*\S+\s+\S+\s+\S+\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)', line)
-        states[int(mobj.group(1))] = int(mobj.group(3))
-        states[int(mobj.group(2))] = int(mobj.group(4)) # Redundant, but captures IC TBFs
+    if not os.path.isfile(Spawnfile):
+        if initial_I is None: raise RuntimeError("No Spawn.log and no initial_I")
+        states = { k : initial_I for k in Cfiles.keys() }
+    else:
+        lines = open(Spawnfile).readlines()[1:]
+        for lind, line in enumerate(lines):
+            # match groups are TBF ID, parent TBF ID, TBF state, parent TBF state
+            mobj = re.match(r'^\s*\S+\s+\S+\s+\S+\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)', line)
+            states[int(mobj.group(1))] = int(mobj.group(3))
+            states[int(mobj.group(2))] = int(mobj.group(4)) # Redundant, but captures IC TBFs
 
     # Swap to put time on slow axis (C3s[t][I] instead of C2s[I][t])
     C3s = {}
