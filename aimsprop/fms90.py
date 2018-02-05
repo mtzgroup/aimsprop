@@ -1,7 +1,7 @@
 import numpy as np
 import traj
 import glob
-import re, os, 
+import re, os
 import atom_data
 
 _N_table ={val: key for key, val in atom_data.atom_symbol_table.iteritems()}
@@ -210,7 +210,7 @@ def parse_fms90_dumpfile(
     This uses information in positions.*.xyz, S.dat, and TrajDump to
     populate a density matrix by mulliken or saddle point rules.
 
-    Note: TrajDump does contains a lower levels of precision than other output files
+    Note: TrajDump contains a lower level of precision than other output files
 
     Params:
         filepath (str) - the path to the FMS run directory

@@ -223,7 +223,8 @@ def plot_population(
     
     plt.xlabel('t [%s]' % time_units)
     plt.ylabel('Population [-]')
-    plt.axis([time_scale * min(ts), time_scale * max(ts), 0.0, 1.0])
+    plt.axis([time_scale * min(ts), time_scale * max(ts), -0.1, 1.1])
     plt.legend(loc=legend_loc)
     plt.savefig(filename)
+
     return plt
