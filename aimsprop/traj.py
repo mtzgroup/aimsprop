@@ -320,3 +320,24 @@ class Trajectory(object):
             if normalize: V /= W
             Vs.append(V)
         return np.array(Vs)
+
+    def remove_duplicates(
+        self,
+        ):
+
+        """ Return a new trajectory with duplicate frame objects removed
+            based on frame label and time index
+
+        Returns:
+            traj (Trajectory) - new trajectory with interpolated frames.
+        """
+         
+        frames = []
+        for ind1, frame1 in enumerate(self.frames):
+            unique = True
+            for ind2, frame2 in enumerate(self.frames[ind1+1:]):
+                if frame1.label == frame2.label and frame1.t == frame2.t:
+                    unique = False
+            if unique == True: frames.append(frame1)
+        
+        return Trajectory(frames)
