@@ -8,6 +8,7 @@ import os
 _N_table = {
     'H' : 1,
     'C' : 6,
+    'O' : 8,
 }
 
 def parse_fms90(
