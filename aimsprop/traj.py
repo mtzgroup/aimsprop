@@ -221,7 +221,70 @@ class Trajectory(object):
                 frames += frames2
         return Trajectory(list(sorted(frames)))
 
-    # TODO: linear interpolation
+
+    def interpolate_linear(
+        self,
+        ts,
+        delta=1.0E-11,
+        ):
+
+        """ Return a new trajectory with frame objects interpolated by linear
+            interpolation if t is inside the range of times of self's
+            frames for each label (e.g., no extrapolation is performed). (new
+            copy).
+
+            Using:
+                f(t) = f(t0) + [ (f(t1) - f(t0)) / (t1 - t0) ] * (t - t0)
+            Note: 
+                Not suitable for properties with large second derivative
+
+        Params:
+            ts (list of float) - times to interpolated new Trajectory to
+        Returns:
+            traj (Trajectory) - new trajectory with interpolated frames.
+        """
+
+        frames = []
+        for label in self.labels:
+            traj2 = self.subset_by_label(label)
+            t2s = traj2.ts
+            for t in ts:
+                if t <= min(t2s) or t >= max(t2s): continue # Out of range (no extrapolation)
+                # Get points in time to linearly interpolate between
+                t3 = t2s[np.where(t2s<t)[0][-1]]
+                t4 = t2s[np.where(t2s>t)[0][0]]
+                # Retrieve frames at points of linear interpolation for all labels
+                framei = traj2.subset_by_t(t3).copy().frames
+                framej = traj2.subset_by_t(t4).copy().frames
+
+                # TODO: Instead of this eliminate duplicate frames at beginning of method?
+                if len(framei) >= 1:
+                    # print "Warning: duplicate frames present!"
+                    framei = framei[0]
+                if len(framej) >= 1:
+                    # print "Warning: duplicate frames present!"
+                    framej = framej[0]
+
+                # linearly interpolate weight
+                w = framei.w + ((framej.w-framei.w) / (t4-t3)) * (t - t3)
+                # linearly interpolate position
+                xyz = framei.xyz + ((framej.xyz-framei.xyz) / (t4-t3)) * (t - t3)
+               
+                # TODO: create separate option for interpolation of properties (in case different interpolation scheme preferred?
+                    # also if property is of incompatible type (such as string)
+
+                # linearly interpolate all other properties
+                properties = {}
+                for key, vali in framei.properties.iteritems():
+                    valj = framej.properties[key]
+                    valn = vali + ((valj-vali) / (t4-t3)) * (t - t3)
+                    properties[key] = valn
+
+                # create updated frame at new time instace
+                nframe = Frame(label=label, t=t, w=w, I=framei.I, N=framei.N, xyz=xyz, properties=properties)
+                frames.append(nframe)
+
+        return Trajectory(list(sorted(frames)))
                 
     def extract_property(
         self,
@@ -254,5 +317,24 @@ class Trajectory(object):
             if normalize: V /= W
             Vs.append(V)
         return np.array(Vs)
-    
+
+    def remove_duplicates(
+        self,
+        ):
+
+        """ Return a new trajectory with duplicate frame objects removed
+            based on frame label and time index
+
+        Returns:
+            traj (Trajectory) - new trajectory with interpolated frames.
+        """
          
+        frames = []
+        for ind1, frame1 in enumerate(self.frames):
+            unique = True
+            for ind2, frame2 in enumerate(self.frames[ind1+1:]):
+                if frame1.label == frame2.label and frame1.t == frame2.t:
+                    unique = False
+            if unique == True: frames.append(frame1)
+        
+        return Trajectory(frames)
