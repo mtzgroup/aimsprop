@@ -1,10 +1,11 @@
 import numpy as np
 import traj
 import glob
-import re, os
+import re
+import os
 import atom_data
 
-_N_table ={val: key for key, val in atom_data.atom_symbol_table.iteritems()}
+_N_table = { val: key for key, val in atom_data.atom_symbol_table.iteritems() }
 
 def parse_fms90(
     filepath,
