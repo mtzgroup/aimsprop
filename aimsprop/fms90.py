@@ -127,10 +127,10 @@ def parse_fms90(
     else:
         lines = open(Spawnfile).readlines()[1:]
         for lind, line in enumerate(lines):
-            # match groups are TBF ID, parent TBF ID, TBF state, parent TBF state
+            # match groups are TBF ID, state, parent TBF ID, parent TBF state
             mobj = re.match(r'^\s*\S+\s+\S+\s+\S+\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)', line)
-            states[int(mobj.group(1))] = int(mobj.group(3))
-            states[int(mobj.group(2))] = int(mobj.group(4)) # Redundant, but captures IC TBFs
+            states[int(mobj.group(1))] = int(mobj.group(2))
+            states[int(mobj.group(3))] = int(mobj.group(4)) # Redundant, but captures IC TBFs
 
     # Swap to put time on slow axis (C3s[t][I] instead of C2s[I][t])
     C3s = {}
@@ -242,10 +242,10 @@ def parse_fms90_dumpfile(
     states = {}
     for I, dumpfile in dumpfiles.iteritems():
         posfile = posfiles[I]
-        data = np.loadtxt(dumpfile, skiprows=1)
+        data = np.loadtxt(dumpfile, skiprows=1, ndmin=2)
         ts = data[:,0]
         if cutoff_time is not None:
-            cut_tind = np.where(ts >= cutoff_time)
+            cut_tind = np.array(np.where(ts >= cutoff_time)).flatten()[0]
             ts = data[:cut_tind, 0]
         C2s[I] = {t: complex(data[tind,-4], data[tind,-3]) for tind, t in enumerate(ts)}
         states[I] = data[0,-1]
@@ -318,7 +318,6 @@ def parse_fms90_dumpfile(
     for I, N2 in N2s.iteritems():
         for t, N in N2.iteritems():
             N3s.setdefault(t, {})[I] = N
-    
     # Build Frames from parsed data
     frames = []
     # for t, S in Ss.iteritems():
@@ -343,6 +342,7 @@ def parse_fms90_dumpfile(
                     if states[I] != states[J]: continue # Electronic orthogonality
                     q += np.real(0.5 * np.conj(Cs[I]) * S[I2, J2] * Cs[J] + \
                                  0.5 * np.conj(Cs[J]) * S[J2, I2] * Cs[I])
+                # print 'I', I,'t', t, 'Ns', Ns.keys()
                 frame = traj.Frame(
                     label=I,
                     t=t,

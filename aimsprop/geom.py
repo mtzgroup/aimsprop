@@ -172,3 +172,37 @@ def compute_oop(
     # TODO: Google Sherrill Geometry Analysis Program for nice definitions
     raise RuntimeError('Not Implemented')
 
+def compute_transfer_coord(
+    traj,
+    key,
+    A,
+    B,
+    C,
+    ):
+
+    """ Compute the a proton transfer coordinate property for a Trajectory (au).
+
+    Params:
+        traj - the Trajectory object to compute the property for (modified in
+            place)
+        key - the name of the property
+        A - the index of the first atom
+        B - the index of the second atom
+        C - the index of the transfered atom
+    Result/Return:
+        traj - reference to the input Trajectory object. The property
+            key is set to the proton transfer coordinate for the
+            indices A, B, C
+    """
+
+    traj = compute_bond(traj,'dAC',  A, C)
+    traj = compute_bond(traj,'dBC',  B, C)
+    traj = compute_bond(traj,'dAB',  A, B)
+    for frame in traj.frames:
+        dAC = frame.properties['dAC']
+        dBC = frame.properties['dBC']
+        dAB = frame.properties['dAB']
+        tau = (dBC-dAC) / dAB
+        frame.properties[key] = np.array([tau])
+    return traj
+    
