@@ -163,6 +163,7 @@ def plot_population(
     state_colors=None,
     plot_total=True,
     clf=True,
+    tmax=None,
     ):
 
     """ Plot the AIMS state populations.
@@ -220,11 +221,14 @@ def plot_population(
         total = np.zeros_like(ts)
         for population in populations.values(): total += population
         plt.plot(time_scale * ts, total, '-', color='k', linewidth=2.0, label='Total')
-    
+   
+    if tmax is None: tmax = max(ts) * time_scale
+
     plt.xlabel('t [%s]' % time_units)
     plt.ylabel('Population [-]')
-    plt.axis([time_scale * min(ts), time_scale * max(ts), -0.1, 1.1])
+    plt.axis([time_scale * min(ts), tmax, -0.1, 1.1])
     plt.legend(loc=legend_loc)
+    plt.tight_layout()
     plt.savefig(filename)
 
     return plt
