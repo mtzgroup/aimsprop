@@ -61,7 +61,7 @@ lightspeed::shared_ptr<Tensor> compute_diffraction(
         }
         // Anisotropy weight
         if (cos2) {
-            w *= pow(R2p[2], 2) + pow(R2p[5], 2) + pow(R2p[8], 2);
+            w *= pow(R2p[8], 2);
         }
         // Diffraction Intensity computation
         for (size_t P = 0; P < ss->shape()[0]; P++) {

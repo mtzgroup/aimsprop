@@ -89,7 +89,7 @@ def compute_diffraction(
         I = np.zeros_like(sx)
         for R, w in zip(Rs, ws):
             # cos(z)^2 pump anisotropy
-            cos2 = np.sum(R[:,2])**2 if anisotropy == 'cos2' else 1.0
+            cos2 = R[2,2]**2 if anisotropy == 'cos2' else 1.0
             # Rotated molecule
             xyz = np.dot(frame.xyz, R)
             # Compute diffraction 
