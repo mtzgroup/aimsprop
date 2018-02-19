@@ -161,15 +161,6 @@ def compute_diffraction_fast(
     if form not in ['raw', 'mod']: raise ValueError('Unknown form: %s' % form)
     if anisotropy not in ['none', 'cos2']: raise ValueError('Unknown anisotropy: %s' % anisotropy)
 
-    # Compute scattering angles via Bragg equation
-    theta = 2.0 * np.arcsin(s * L / (4.0 * np.pi))
-    tt, ee = np.meshgrid(theta, eta, indexing='ij')
-    ss, ee = np.meshgrid(s, eta, indexing='ij')
-    # Compute scattering vectors
-    sx = ss * np.cos(tt / 2.0) * np.sin(ee)
-    sy = ss * np.sin(tt / 2.0) 
-    sz = ss * np.cos(tt / 2.0) * np.cos(ee)
-
     # Get a rotation quadrature for the orientations of the frames
     if nlebedev == 1 and nomega == 1:
         # Fixed orientation
@@ -182,50 +173,36 @@ def compute_diffraction_fast(
     # Get atomic form factors for appropriate x-ray/ued mode
     factors = formfactor.AtomicFormFactor.build_factors(traj.frames[0], mode=mode)
 
-    # Compute atomic scattering Iat
-    D = np.zeros_like(sx)
-    for A, factor in enumerate(factors):
-        F = factor.evaluate_N(qx=sx,qy=sy,qz=sz,x=0.0,y=0.0,z=0.0)
-        D += (np.abs(F)**2).real
-
     import lightspeed as ls    
     import ext
     
-    sxyz = ls.Tensor.zeros((sx.size, 3))
-    sxyz[:,0] = np.ravel(sx)
-    sxyz[:,1] = np.ravel(sy)
-    sxyz[:,2] = np.ravel(sz)
+    s2s = ls.Tensor.array(s)
+    eta2s = ls.Tensor.array(eta)
 
     R2s = ls.Tensor.zeros((len(Rs), 3, 3))
     for Rind, R, in enumerate(Rs):
         R2s[Rind,:,:] = R
     w2s = ls.Tensor.array(ws)
 
-    a = ls.Tensor.zeros((len(factors), len(factors[0].avals)+1))
-    b = ls.Tensor.zeros((len(factors), len(factors[0].bvals)+1))
-    for A, factor in enumerate(factors): 
-        a[A,:-1] = factor.avals
-        b[A,:-1] = factor.bvals
-        a[A,-1] = factor.cval
-        # b[A,-1] = 0.0
+    fA = ls.Tensor.zeros((len(factors), s.size))
+    for A, factor in enumerate(factors):
+        fA[A,:] = factor.evaluate(qx=0.0,qy=0.0,qz=s)
 
     # Compute IAM scattering, integrating over all orientation angles
     for find, frame in enumerate(traj.frames):
         xyz = ls.Tensor.array(frame.xyz)
-        Z = ls.Tensor.array(frame.N)
         I = ext.compute_diffraction(
-            sxyz,
+            L,
+            s2s,
+            eta2s,
             xyz,
-            Z,
-            a,
-            b,
+            fA,
             R2s,
             w2s,
-            True if mode == 'ued' else False,
-            True if form == 'mod' else False,
             True if anisotropy == 'cos2' else False,
+            True if form == 'mod' else False,
             )
-        frame.properties[key] = np.reshape(I, ss.shape)
+        frame.properties[key] = np.array(I)
         
     return traj
 
