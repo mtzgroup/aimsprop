@@ -129,51 +129,45 @@ lightspeed::shared_ptr<Tensor> compute_diffraction(
     lightspeed::shared_ptr<Tensor> Is(new Tensor({ns, neta}));
     double* Ip = Is->data().data();
 
-    // Rotated copy of molecular coordinates
-    lightspeed::shared_ptr<Tensor> xyzs2(new Tensor(xyzs->shape()));
-    double* xyz2p = xyzs2->data().data();
-    
-    for (size_t Rind = 0; Rind < Rs->shape()[0]; Rind++) {
-        // Rotation quadrature
-        const double* R2p = Rp + Rind * 9;
-        double w = wp[Rind];
-        // Rotate coordinates to frame
-        for (size_t A = 0; A < xyzs->shape()[0]; A++) {
-            xyz2p[3*A + 0] = R2p[0] * xyzp[3*A + 0] + R2p[1] * xyzp[3*A + 1] + R2p[2] * xyzp[3*A + 2];
-            xyz2p[3*A + 1] = R2p[3] * xyzp[3*A + 0] + R2p[4] * xyzp[3*A + 1] + R2p[5] * xyzp[3*A + 2];
-            xyz2p[3*A + 2] = R2p[6] * xyzp[3*A + 0] + R2p[7] * xyzp[3*A + 1] + R2p[8] * xyzp[3*A + 2];
-        }
-        // Anisotropy weight
-        if (anisotropy) {
-            w *= pow(R2p[8], 2);
-        }
-        // Diffraction Intensity computation
-        for (size_t sind = 0, P = 0; sind < ns; sind++) {
-            double D = Dp[sind];
-            for (size_t eind = 0; eind < neta; eind++, P++) {
-                double sx = sxyzp[3*P + 0];
-                double sy = sxyzp[3*P + 1];
-                double sz = sxyzp[3*P + 2];
-                double NR = 0.0;
-                double NI = 0.0;
-                for (size_t A = 0; A < xyzs->shape()[0]; A++) {
-                    double fA = fp[A * ns + sind];
-                    double x = xyz2p[3*A + 0];
-                    double y = xyz2p[3*A + 1];
-                    double z = xyz2p[3*A + 2];
-                    double theta = sx * x + sy * y + sz * z;
-                    NR += fA * cos(theta);
-                    NI += fA * sin(theta);
-                }
-                double F = NR * NR + NI * NI;
-                if (mod) {
-                    F = (F - D) / D;
-                }
-                Ip[P] += w * F;
+    #pragma omp parallel for schedule(static, 16)
+    for (size_t P = 0; P < ns * neta; P++) {
+        size_t sind = P / neta;
+        size_t eind = P % neta;
+        double sx = sxyzp[3*P + 0];
+        double sy = sxyzp[3*P + 1];
+        double sz = sxyzp[3*P + 2];
+        double D = Dp[sind];
+        double I = 0.0;
+        for (size_t Rind = 0; Rind < Rs->shape()[0]; Rind++) {
+            // Rotation quadrature
+            const double* R2p = Rp + Rind * 9;
+            double w = wp[Rind];
+            // Anisotropy weight
+            if (anisotropy) {
+                w *= pow(R2p[8], 2);
             }
+            // Diffraction cross section
+            double NR = 0.0;
+            double NI = 0.0;
+            for (size_t A = 0; A < xyzs->shape()[0]; A++) {
+                // Rotate coordinates to frame
+                double x = R2p[0] * xyzp[3*A + 0] + R2p[1] * xyzp[3*A + 1] + R2p[2] * xyzp[3*A + 2];
+                double y = R2p[3] * xyzp[3*A + 0] + R2p[4] * xyzp[3*A + 1] + R2p[5] * xyzp[3*A + 2];
+                double z = R2p[6] * xyzp[3*A + 0] + R2p[7] * xyzp[3*A + 1] + R2p[8] * xyzp[3*A + 2];
+                double theta = sx * x + sy * y + sz * z;
+                double fA = fp[A * ns + sind];
+                NR += fA * cos(theta);
+                NI += fA * sin(theta);
+            }
+            double F = NR * NR + NI * NI;
+            if (mod) {
+                F = (F - D) / D;
+            }
+            I += w * F;
         }
-    } 
-    
+        Ip[P] = I;
+    }
+
     return Is;
 }
 
