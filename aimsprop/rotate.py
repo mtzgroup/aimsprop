@@ -23,7 +23,7 @@ def rotate_frames(
         frame.xyz = np.dot(frame.xyz, R)
     return traj
 
-def rotate_to_z(
+def rotate_frames_to_z(
     traj,
     vec,
     ):
