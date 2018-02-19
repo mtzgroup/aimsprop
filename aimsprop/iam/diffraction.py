@@ -13,6 +13,7 @@ def compute_diffraction(
     mode='xray',
     form='raw',
     anisotropy='cos2',
+    print_level=False,
     ):
 
     """ Compute the I(s, eta) elastic scattering signal for a Trajectory. 
@@ -48,6 +49,8 @@ def compute_diffraction(
             I(s) or M(s).
         anisotropy (str) - 'none' or 'cos2' for isotropic of cos^2 (z)
             anisotropty.
+        print_level (bool) - print progress if true (useful to track long
+            property computations)
     Result/Return:
         traj - reference to the input Trajectory object. The properties
     """
@@ -86,6 +89,8 @@ def compute_diffraction(
 
     # Compute IAM scattering, integrating over all orientation angles
     for find, frame in enumerate(traj.frames):
+        if print_level:
+            print 'Frame %5d of %5d' % (find, len(traj.frames))
         I = np.zeros_like(sx)
         for R, w in zip(Rs, ws):
             # cos(z)^2 pump anisotropy
@@ -117,6 +122,7 @@ def compute_diffraction_fast(
     mode='xray',
     form='raw',
     anisotropy='cos2',
+    print_level=False,
     ):
 
     """ Compute the I(s, eta) elastic scattering signal for a Trajectory. 
@@ -152,6 +158,8 @@ def compute_diffraction_fast(
             I(s) or M(s).
         anisotropy (str) - 'none' or 'cos2' for isotropic of cos^2 (z)
             anisotropty.
+        print_level (bool) - print progress if true (useful to track long
+            property computations)
     Result/Return:
         traj - reference to the input Trajectory object. The properties
     """
@@ -190,6 +198,8 @@ def compute_diffraction_fast(
 
     # Compute IAM scattering, integrating over all orientation angles
     for find, frame in enumerate(traj.frames):
+        if print_level:
+            print 'Frame %5d of %5d' % (find, len(traj.frames))
         xyz = ls.Tensor.array(frame.xyz)
         I = ext.compute_diffraction(
             L,
