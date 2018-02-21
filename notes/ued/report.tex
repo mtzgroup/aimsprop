@@ -114,7 +114,7 @@ I_{I} (\vec s, t)
 \left |
 \sum_{A}
 f_{A} (s)
-e^{i \vec s \cdot r_{A}^{I} (t)}
+e^{i \vec s \cdot \vec r_{A}^{I} (t)}
 \right |^2
 \]
 The spherically-isotropic atomic form factors are available for X-ray scattering
@@ -126,18 +126,21 @@ The total scattering signal is computed as,
 I (\vec s, t)
 =
 \int_{\mathrm{SO(3)}}
-\mathrm{\hat R} \
-\hat R_{z}^2
+\mathrm{d} \hat R \
+\hat R_{zz}^2
 \sum_{I}
 w_{I} (t)
 \left |
 \sum_{A}
 f_{A} (s)
-e^{i \vec s \cdot \hat R r_{A}^{I} (t)}
+e^{i \vec s \cdot \hat R \vec r_{A}^{I} (t)}
 \right |^2
+/ 
+\int_{\mathrm{SO(3)}}
+\mathrm{d} \hat R \
 \]
-Note the ``smearing'' over all sample orientations $\hat R$, with $\hat R_z^2$
-weight for the anisotropic absorption.
+Note the ``smearing'' over all sample orientations $\hat R$, with $\hat
+R_{zz}^2$ weight for the anisotropic absorption.
 
 \textbf{Modified Diffraction Intensity:} Particularly for UED, the raw
 diffraction intensity above is too peaked near the origin. To facilitate
@@ -185,33 +188,119 @@ using Legendre polynomials in the literature. This doesn't make sense to me, and
 I have emperical evidence that the scattering signal exactly decomposes onto $1$
 and $\cos (2 \eta)$ azimuthal basis functions.}
 \[
-I (\theta, \eta, t)
+I (s, \eta, t)
 =
-I_{0} (\theta, t)
+I_{0} (s, t)
 +
-I_{2} (\theta, t) \cos (2 \eta)
+I_{2} (s, t) \cos (2 \eta)
 \]
 This decomposition can be computed from two collocation points as,
 \[
-I_{0} (\theta, t)
+I_{0} (s, t)
 =
 \frac{1}{2}
 \left [
-I (\theta, \eta=0, t)
+I (s, \eta=0, t)
 +
-I (\theta, \eta=\pi/2, t)
+I (s, \eta=\pi/2, t)
 \right ]
 \]
 \[
-I_{2} (\theta, t)
+I_{2} (s, t)
 =
 \frac{1}{2}
 \left [
-I (\theta, \eta=0, t)
+I (s, \eta=0, t)
 -
-I (\theta, \eta=\pi/2, t)
+I (s, \eta=\pi/2, t)
 \right ]
 \]
+
+\textbf{Debeye Scattering:} Ideally, we would like an analytical formula for
+$I_{0} (s)$ and $I_{2} (s)$ above. This will be somewhat challenging, so we
+start by reviewing isotropic (Debeye) scattering. The total scattering signal is
+computed as, 
+\[
+I_{I}^{\mathrm{iso}} (\vec s, t)
+=
+\int_{\mathrm{SO(3)}}
+\mathrm{d} \hat R \
+\left |
+\sum_{A}
+f_{A} (s)
+e^{i \vec s \cdot \hat R \vec r_{A}^{I} (t)}
+\right |^2
+/ 
+\int_{\mathrm{SO(3)}}
+\mathrm{d} \hat R \
+\]
+\[
+\sum_{A,B}
+f_{A} (s)
+f_{B} (s)
+\left [
+\int_{\mathrm{SO(3)}}
+\mathrm{d} \hat R \
+e^{i \vec s \cdot \hat R (\vec r_{AB}^{I} (t))}
+/
+\int_{\mathrm{SO(3)}}
+\mathrm{d} \hat R \
+\right ]
+\]
+Here $\vec r_{AB}^{I} (t) = \vec r_{A}^{I} (t) - \vec r_{B}^{I} (t)$. We can
+write the rotation group as,
+\[
+\int_{\mathrm{SO(3)}}
+\mathrm{d} \hat R \
+=
+\int_{0}^{2 \pi}
+\mathrm{d} \omega \
+\int_{0}^{2 \pi}
+\mathrm{d} \phi \
+\int_{0}^{\pi}
+\mathrm{d} \zeta \
+\sin \zeta
+\]
+Here $\omega$ is the surface orientation vector, $\phi$ is the azimuthal angle,
+and $\zeta$ is the zenith angle (in $\vec r$). Because this sample is isotropic,
+we arbitrarily choose the lab frame for the rotations to have $\hat z$ along
+$\vec s$. With this choice,
+\[
+I_{I}^{\mathrm{iso}} (\vec s, t)
+=
+\sum_{A,B}
+f_{A} (s)
+f_{B} (s)
+\int_{0}^{\pi}
+\mathrm{d} \zeta \
+\sin \zeta
+e^{i s r_{AB}^{I} (t) \cos \zeta}
+\]
+\[
+=
+\sum_{A,B}
+f_{A} (s)
+f_{B} (s)
+\int_{-1}^{+1}
+\mathrm{d} u \
+e^{i s r_{AB}^{I} (t) u}
+=
+\sum_{A,B}
+f_{A} (s)
+f_{B} (s)
+\left [
+e^{i s r_{AB}^{I} (t) u}
+\right ]_{u=-1}^{u=+1}
+\]
+\[
+=
+\sum_{A,B}
+f_{A} (s)
+f_{B} (s)
+\frac{\sin s r_{AB}^{I} (t)}{s r_{AB}^{I} (t)}
+\]
+This is the famous Debeye scattering formula, which is often seen in powder
+diffraction patterns.
 
 \textbf{Specific Example I: UED at SLAC:} One of the main experiments we are
 trying to support is the UED-III endeavor at SLAC. A representative paper of the
