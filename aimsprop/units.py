@@ -14,7 +14,7 @@ units = {
     'au_per_ev'     : 3.6749330610942925E-02, # au of energy per eV, PSI4
     'au_per_kcal'   : 1.5936013717720609E-03, # au of energy per kcal mol^-1, PSI4
     'au_per_cminv'  : 4.5563359040180500E-06, # au of energy per cm^{-1} ("wavenumber"), PSI4
-    'au_per_K'      : 1.0 / 3.1577464E5,             # temperature
+    'au_per_K'      : 1.0 / 3.1577464E5,             # temperature (TODO: This is probably OK, maybe a bit low precision)
     'au_per_fs'     : 1.0 / 2.418884326505E-2,       # time
 }
 for k in units.keys():
