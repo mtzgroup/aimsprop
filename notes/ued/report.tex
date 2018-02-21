@@ -1,0 +1,303 @@
+\documentclass[fleqn,oneside,12pt]{article}
+\date{}
+\newcommand{\up}[1]{a_{#1}^{\dagger}}
+\newcommand{\down}[1]{a_{#1}}
+\newcommand{\ud}{\mathrm{d}}
+\newcommand{\EE}{\mathrm{E}}
+\newcommand{\diff}[2]{\frac{\ud {#1}}{\ud {#2}}}
+\newcommand{\pdiff}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\fl}{\mathrm{fl}}
+\newcommand{\sqrtfrac}[2]{\sqrt{\frac{#1}{#2}}}
+\newcommand{\ui}{\mathbf{i}}
+\newcommand{\uj}{\mathbf{j}}
+\newcommand{\ua}{\mathbf{a}}
+\newcommand{\ub}{\mathbf{b}}
+\newcommand{\bi}{\bar{i}}
+\newcommand{\bj}{\bar{j}}
+\newcommand{\ba}{\bar{a}}
+\newcommand{\bb}{\bar{b}}
+\newcommand{\tb}{\phantom{}^{Q} \hat b}
+\newcommand{\erf}{\mathrm{erf}}
+\newcommand{\erfc}{\mathrm{erfc}}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\setlength{\parindent}{0pt}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{amsmath}
+\usepackage[super]{cite}
+\usepackage{amssymb}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\pagestyle{fancyplain}
+\begin{document}
+\lhead{Generalized Ultrafast Pump-Probe Scattering}
+\rhead{MtzGroup AIMSProp Team}
+
+\section{Development}
+
+\textbf{Literature:} 
+
+\textbf{Geometry:} Consider an ultrafast pump-probe scattering experiment (See
+Figure \ref{fig:schem} for an example and definitions of lab-frame coordinates).
+For today, we will take the pump to be an optical ultrafast pulse. This pump
+strikes an isotropic sample (e.g., provided by a gas jet) at $t=0$, and promotes
+a (hopefully) single-photon transition in some of the sample molecules from the
+stationary Frank-Condon state $S_{0}$ to an excited state $S_{N}$, setting up
+non-adiabatic dynamics. Single-photon absorption is not isotropic, but
+proportional to the square of the $\hat z$ component of the transition dipole
+moment at the Frank-Condon point. At time delay $t$, the scattering probe (x-ray
+or electrons, depending on the experiment) strikes the sample, and takes a
+snapshot of the current geometry of the sample in terms of the scattering
+pattern on the detector.  Typically, this signal is adjusted by subtracting the
+$t=-\infty$ signal, exposing changes in the geometry for the pumped molecule,
+and providing a ``molecular movie'' if a number of pump-probe time delays are
+sampled. Note that the subtraction of the $t=-\infty$ component of the signal
+serves to remove the scattering signal from the non-excited molecules (which
+remain in the time-independent steady-state FC wavepacket).
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=11cm]{figures/schem}
+\end{center}
+\caption{An illustration of ultrafast X-ray diffraction (along with UED, this is
+one of the main types of pump-probe scattering experiments that we consider).
+The X-ray probe arrives a delay of $t$ with respect to the optical pump. In the
+perpendicular experimental arrangement (shown here), the polarization vector
+$\vec E \propto \hat z$ of the optical pump pulse is perpendicular to the
+incident wave vector $\vec k_0 \equiv k \hat y$ of the X-ray probe pulse. The
+incident X-ray photons scatter at angle $\theta$ with respect to $\vec k_0$, and
+azimuthal angle $\eta$ with respect to $\vec E$. These two angles fully describe
+the scattering in the elastic regime, as $|\vec k_0|$ = $|\vec k_s|$. The
+scattering vector $\vec s$ is the difference between the incident and scattered
+wave vectors $\vec s \equiv \vec k_0 - \vec k_s$. The amplitude of the
+scattering vector is $s \equiv |\vec s| = 2 k \sin \theta / 2 = (4 \pi /
+\lambda) \sin \theta / 2$. Figure adapted to our notation from Kent Wilson's
+excellent 1998 ultrafast scattering paper in JPCA [Jianshu Cao and Kent R.
+Wilson, \emph{J. Phys. Chem. A} \textbf{102}, 9523 (1998)].}
+\label{fig:schem}
+\end{figure}
+
+\textbf{Objective:} As theorists, our objective is to perform a computational
+simulation of the non-adiabatic dynamics and time-resolved scattering signal
+observable of the ultrafast pump-probe experiment. To make things easy, let us
+assume that we have performed the non-adiabatic dynamics simulations, and have a
+representation for the density of the wavepacket in terms of a set of weighted
+trajectories $\{ r_{A}^{I} (t), w_{I} (t) \}$. Each density-matrix trajectory
+basis function (e.g., a pair of AIMS TBFs in the Mulliken or saddle-point
+approximation, or an adiabatic trajectory) has a set of time-dependent nuclear
+coordinates $r_{A}^{I} (t)$, a time-dependent weight factor $w_{A} (t)$, which
+accounts for the weight of the starting configuration in the Franck-Condon point
+(Wigner sampling provides even weights, but there may also be weights due to
+sampling from different conformers), the overall oscillator strength, and any
+changes in weights due to adiabatic state population changes over the dynamics,
+and an adiabatic electronic label often denoted as $|I\rangle$.
+
+We also apply one additional convention (not usually seen in AIMS) to our
+trajectories: we assert that the transition dipole moment of the $t=0$ frame is
+aligned to $\hat z$, and that all subsequent frames follow this lab frame
+alignment. This will allow for the efficient treatment of anisotropic absorption
+later, by ``reusing'' each trajectory many times with different orientations.
+Note that this convention can be applied \emph{after} running AIMS, by rotating
+all frames of a given trajectory tree by the rotation matrix to bring the $t=0$
+frame into the $\hat z$ axis.
+
+In particular, our job is to produce the time-dependent detector pattern $I
+(\theta, \eta, t)$, the detector moments $I_{l} (\theta, t)$, and the
+corresponding radial distribution functions $I_{l} (r, t)$.
+
+\textbf{IAM:} In the independent atom model (IAM), the scattering for a given
+molecular ``frame'' $I$ is,
+\[
+I_{I} (\vec s, t)
+=   
+\left |
+\sum_{A}
+f_{A} (s)
+e^{i \vec s \cdot r_{A}^{I} (t)}
+\right |^2
+\]
+The spherically-isotropic atomic form factors are available for X-ray scattering
+and UED from considerations of the atomic electronic density (see below), or may
+be computed from scattering codes like ELSEPA (specialized for UED).
+
+The total scattering signal is computed as,
+\[
+I (\vec s, t)
+=
+\int_{\mathrm{SO(3)}}
+\mathrm{\hat R} \
+\hat R_{z}^2
+\sum_{I}
+w_{I} (t)
+\left |
+\sum_{A}
+f_{A} (s)
+e^{i \vec s \cdot \hat R r_{A}^{I} (t)}
+\right |^2
+\]
+Note the ``smearing'' over all sample orientations $\hat R$, with $\hat R_z^2$
+weight for the anisotropic absorption.
+
+\textbf{Modified Diffraction Intensity:} Particularly for UED, the raw
+diffraction intensity above is too peaked near the origin. To facilitate
+analysis, a ``modified'' diffraction intensity is often defined as,
+\[
+s M(s)
+\equiv
+s
+\frac{I_{\mathrm{mol}} (s)}{I_{\mathrm{at}} (s)}
+\]
+Here, the atomic contribution of the scattering is,
+\[
+I_{\mathrm{at}} (s)
+\equiv
+\sum_{A} | f_{A} (s) |^2
+\]
+Note that this is time and structure invariant. The molecular scattering signal
+is,
+\[
+I_{\mathrm{mol}} (s)
+\equiv
+I (s)
+-
+I_{\mathrm{at}} (s)
+\]
+
+\textbf{Elastic Scattering:} We will assume we are working in the elastic
+scattering regime (no momentum transfer to the sample), which implies that
+$|\vec k_0| = |\vec k_s|$. This constraint reduces the dimensionality of the
+valid scattering space by 1.
+\[
+\vec s = 
+s 
+\{
+\cos \theta / 2 \sin \eta,
+\sin \theta / 2,
+\cos \theta / 2 \cos \eta
+\}
+\]
+Here $s = 2 k \sin \theta / 2 = (4 \pi / \lambda) \sin \theta / 2$.
+
+\textbf{Anisotropy:} For a perpendicular pump-probe arrangement, the scattering
+signal can be exactly decomposed into,\footnote{Note that everyone seems to be
+using Legendre polynomials in the literature. This doesn't make sense to me, and
+I have emperical evidence that the scattering signal exactly decomposes onto $1$
+and $\cos (2 \eta)$ azimuthal basis functions.}
+\[
+I (\theta, \eta, t)
+=
+I_{0} (\theta, t)
++
+I_{2} (\theta, t) \cos (2 \eta)
+\]
+This decomposition can be computed from two collocation points as,
+\[
+I_{0} (\theta, t)
+=
+\frac{1}{2}
+\left [
+I (\theta, \eta=0, t)
++
+I (\theta, \eta=\pi/2, t)
+\right ]
+\]
+\[
+I_{2} (\theta, t)
+=
+\frac{1}{2}
+\left [
+I (\theta, \eta=0, t)
+-
+I (\theta, \eta=\pi/2, t)
+\right ]
+\]
+
+\textbf{Specific Example I: UED at SLAC:} One of the main experiments we are
+trying to support is the UED-III endeavor at SLAC. A representative paper of the
+approach and setup is from the UED-I run: J. Yang et al, \emph{Nat. Comm.},
+\textbf{7}, 11232 (2016). Another good paper is on the instrument design: S.
+Weathersby et al, \emph{Rev. Sci. Instr.}, \textbf{86}, 073702. 
+
+In this experiment, 3.7 MeV electrons are used as the probe ($\lambda = 0.30$ pm
+$= 0.0030$ \AA{}). The detector is an Andor iXon ultra 888 electron multiplying
+charge-coupled device camera (EMCCD), which is positioned 3.1 m from the sample.
+The accessible range of $s$ is $3.5$ \AA{}$^{-1}$ to $12$ \AA{}$^{-1}$,
+corresponding to scattering angles $\theta$ of $0.0957^{\circ}$ to
+$0.328^{\circ}$, or a detector radius of $s_{z}$ of $0.52$ to $1.78$ cm. Large
+$s$ is limited by the size of the detector, small $s$ is limited by the $0.4$ cm
+diameter hole drilled in the EMCCD for the electron beam (thought this may be
+improved in later runs). Note that this is very small angle scattering, but
+permits rather high values of $s$ due to the small deBroglie wavelength of
+ultra-relativistic electrons. By contrast, x-rays typically scatter over much
+larger angles to reach similar values of $s$. For instance, $1.3$ \AA{}
+wavelength electrons reach only $s = 9.7$ \AA{}$^{-1}$ over the entire
+scattering sphere.
+
+The entire instrument has a time resolution of roughly $100$ fs, and notably
+lacks an in-flight diagnostic clock (e.g., ``timestamping''), though a THz
+streaking experiment has recently been developed to provide an offline clock
+calibration. 
+
+A Ti:Sapphire laser serves as both pump and probe initiator. Part of the laser
+pulse initiates electron release from a copper photocathode (photoelectron
+release), which are subsequently accelerated to 3.7 MeV by a massive klystron.
+Tilting/tuning the klystron accelerates the back of the electron bunch more than
+the front, combating Coulomb spread in the probe electron bunch, but this can
+induce problems in determining the time delay. 
+
+\textbf{X-Ray Scattering vs. Electron Diffraction:} For ultrafast x-ray
+scattering, the form factors $f_{A} (s)$ are the Fourier transform of the
+electronic density of a spherical atom (possibly selected to reflect the density
+of the local chemical environment in the true molecule),
+\[
+f_{A} (s)
+\equiv
+\int_{\mathbb{R}^3}
+\mathrm{d} r_1
+\
+\rho_{A}^{\mathrm{e}} (\vec r_{1})
+e^{i \vec s \cdot \vec r_1}
+\]
+
+These form factors are tabulated for many common atoms at
+\begin{verbatim}
+http://lampx.tugraz.at/~hadley/ss1/crystaldiffraction/
+atomicformfactors/formfactors.php
+\end{verbatim}
+(accessed 01/18/2018). The specific parametrization is,
+\[
+f_{A} (s)
+\equiv
+\sum_{i=1}^{4}
+a_{i}
+\exp
+\left (
+-b_{i}
+\left (
+\frac{s}{4\pi}
+\right )^2
+\right )
++
+c
+\]
+With 9 parameters $a_{1-4}$ $b_{1-4}$, and $c$ per atom type. Units are
+$\AA{}^{-1}$.
+
+To switch to ultrafast electron diffraction, one must also account for
+scattering off of the nucleus and for a modified Jacobian element,
+\[
+f_{A}^{\mathrm{UED}}
+(s)
+\equiv
+\frac{1}{s^2}
+\left [
+Z_{A}
+-
+f_{A}^{\mathrm{XRAY}}
+(q)
+\right ]
+\]
+See M. Ben-Nunn, J. Cao, and K. Wilson, JPCA, 101, 8744 (1997) for details.
+
+\end{document}
