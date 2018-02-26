@@ -290,6 +290,7 @@ class Trajectory(object):
         self,
         key,
         normalize=True,
+        diff=False,
         ):
 
         """ Return a numpy array containing the time-history of a property,
@@ -299,11 +300,12 @@ class Trajectory(object):
             key (str) - the property key
             normalize (bool) - normalize the property by the sum of weights in
                 each time?
+            diff (bool) - difference property (zeroth-time value subtracted)?
         Returns:
             V (np.ndarray of shape (ntime, sizeof(prop))) - the property
             expectation value. Time is always on the rows. If the property is
             scalar, this array will have ndim = 1. If the property is vector,
-            this array with have ndim = 2. And so forth.
+            this array with have ndim = 2. And so forth. 
         """
 
         Vs = []
@@ -316,6 +318,10 @@ class Trajectory(object):
                 W += frame.w
             if normalize: V /= W
             Vs.append(V)
+        if diff:
+            R = np.copy(Vs[0])
+            for V in Vs:
+                V -= R
         return np.array(Vs)
 
     def remove_duplicates(
