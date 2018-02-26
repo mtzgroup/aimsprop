@@ -129,7 +129,8 @@ lightspeed::shared_ptr<Tensor> compute_diffraction(
     lightspeed::shared_ptr<Tensor> Is(new Tensor({ns, neta}));
     double* Ip = Is->data().data();
 
-    #pragma omp parallel for schedule(static, 16)
+    // #pragma omp parallel for schedule(static, 16)
+    #pragma omp parallel for schedule(static)
     for (size_t P = 0; P < ns * neta; P++) {
         size_t sind = P / neta;
         size_t eind = P % neta;

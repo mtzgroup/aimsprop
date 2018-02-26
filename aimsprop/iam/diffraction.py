@@ -216,6 +216,131 @@ def compute_diffraction_fast(
         
     return traj
 
+def compute_diffraction_moments_fast(
+    traj,
+    key,
+    s,
+    L,
+    nlebedev=74,
+    nomega=12,
+    mode='xray',
+    form='raw',
+    anisotropy='cos2',
+    print_level=False,
+    ):
+
+    """ Compute the I(s, eta) elastic scattering moments for a Trajectory. 
+         See aimsprop/notes/ued for details on this property.
+ 
+    Notes:
+        * All frames for each initial condition (IC) in traj should be aligned so
+        that the transition dipole moment from S0 -> Sex at t=0 is on z. This
+        is required for proper computation of anisotropy.
+        * All frames should be weighted by geometric considerations at the IC
+        (e.g., conformational wells, Wigner weights, etc), by the cross
+        section for the optical transition at the IC (e.g., oscillator
+        strength and excitation energy window), and by the frame weight due
+        to non-adiabatic dynamics.
+
+    Params:
+        traj (Trajectory) - the Trajectory object to compute the property for (modified in
+            place)
+        key (str) - the name of the property. 
+        s (np.ndarray) - list of scattering vector norms in Angstrom^-1. The
+            relationship between s and theta (scattering angle) is given as,
+                s = 4 pi / L * sin(theta / 2).
+        L (float) - effective wavelength of scattering particle (x-ray
+            wavelength or UED deBroglie wavelength) in Angstrom. Used to 
+            convert through scattering angle theta.
+        nlebedev (int) - Lebedev number to use for solid angle orientation
+            quadrature.
+        nomega (int) - number of uniform quadrature points to use for plane
+            orientation quadrature.
+        mode (str) - 'xray' or 'ued' for selection of form factors
+        form (str) - 'raw' or 'mod' for modified/raw diffraction intensities
+            I(s) or M(s).
+        anisotropy (str) - 'none' or 'cos2' for isotropic of cos^2 (z)
+            anisotropty.
+        print_level (bool) - print progress if true (useful to track long
+            property computations)
+    Result/Return:
+        traj - reference to the input Trajectory object. The properties "key-0"
+            and "key-2" are added to each frame of the Trajectory.
+    """
+
+    # Validity checks
+    if mode not in ['xray', 'ued']: raise ValueError('Unknown mode: %s' % mode)
+    if form not in ['raw', 'mod']: raise ValueError('Unknown form: %s' % form)
+    if anisotropy not in ['none', 'cos2']: raise ValueError('Unknown anisotropy: %s' % anisotropy)
+
+    # Special angles to collocate
+    eta = np.array([0.0, np.pi/2.0]) 
+
+    # Get a rotation quadrature for the orientations of the frames
+    if nlebedev == 1 and nomega == 1:
+        # Fixed orientation
+        Rs = [np.eye(3)]
+        ws = [1.0]
+    else:
+        # Rotation quadrature
+        Rs, ws = rotation.rotation_quadrature(nlebedev=nlebedev, nomega=nomega)
+        
+    # Get atomic form factors for appropriate x-ray/ued mode
+    factors = formfactor.AtomicFormFactor.build_factors(traj.frames[0], mode=mode)
+
+    import lightspeed as ls    
+    import ext
+    
+    s2s = ls.Tensor.array(s)
+    eta2s = ls.Tensor.array(eta)
+
+    R2s = ls.Tensor.zeros((len(Rs), 3, 3))
+    for Rind, R, in enumerate(Rs):
+        R2s[Rind,:,:] = R
+    w2s = ls.Tensor.array(ws)
+
+    fA = ls.Tensor.zeros((len(factors), s.size))
+    for A, factor in enumerate(factors):
+        fA[A,:] = factor.evaluate(qx=0.0,qy=0.0,qz=s)
+
+    # Compute IAM scattering, integrating over all orientation angles
+    for find, frame in enumerate(traj.frames):
+        if print_level:
+            print 'Frame %5d of %5d' % (find, len(traj.frames))
+        xyz = ls.Tensor.array(frame.xyz)
+        I = ext.compute_diffraction(
+            L,
+            s2s,
+            eta2s,
+            xyz,
+            fA,
+            R2s,
+            w2s,
+            True if anisotropy == 'cos2' else False,
+            True if form == 'mod' else False,
+            )
+        # Moment computation
+        I0 = 0.5 * (I[:,0] + I[:,1])
+        I1 = 0.5 * (I[:,0] - I[:,1])
+        frame.properties['%s-0' % key] = I0
+        frame.properties['%s-2' % key] = I1
+        
+    return traj
+
+def compute_diffraction_from_moments(
+    traj,
+    key,
+    eta,
+    ):
+
+    for find, frame in enumerate(traj.frames):
+        I = np.outer(frame.properties['%s-0' % key], np.cos(0 * eta)) + \
+            np.outer(frame.properties['%s-2' % key], np.cos(2 * eta)) 
+        frame.properties[key] = I
+
+    return traj
+
+    
 
 # TODO: These are deprecated, as they are not fully correct for elastic scattering
 # def compute_diffraction_moments(

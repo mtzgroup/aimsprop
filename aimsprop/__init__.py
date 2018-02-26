@@ -8,4 +8,5 @@ from .rotate import *
 from .ued import *
 from .pop import *
 from .plot import *
+from .sine import *
 import iam
