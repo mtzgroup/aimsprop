@@ -3,3 +3,6 @@ H-Bond coordinates
 Better UED cross sections
 OOP angles
 Update examples
+
+Adiabatic dynamics are weirdly done in 0.5 fs, non-adiabatic dynamics are in 20
+au. These are not the same. We should fix/accomodate this.
