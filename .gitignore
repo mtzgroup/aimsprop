@@ -1,6 +1,8 @@
 *.swp
 *.pyc
 *.pdf
+*.png
+*.mp4
 *.o
 *.so
 *.d
