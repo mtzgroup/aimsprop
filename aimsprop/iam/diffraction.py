@@ -340,7 +340,130 @@ def compute_diffraction_from_moments(
 
     return traj
 
-    
+def compute_diffraction_moments_analytical(
+    traj,
+    key,
+    s,
+    L,
+    mode='xray',
+    form='raw',
+    anisotropy='perpendicular',
+    print_level=False,
+    ):
+
+    """ Compute the I(s, eta) elastic scattering moments for a Trajectory. 
+         See aimsprop/notes/ued for details on this property.
+ 
+    Notes:
+        * All frames for each initial condition (IC) in traj should be aligned so
+        that the transition dipole moment from S0 -> Sex at t=0 is on z. This
+        is required for proper computation of anisotropy.
+        * All frames should be weighted by geometric considerations at the IC
+        (e.g., conformational wells, Wigner weights, etc), by the cross
+        section for the optical transition at the IC (e.g., oscillator
+        strength and excitation energy window), and by the frame weight due
+        to non-adiabatic dynamics.
+
+    Params:
+        traj (Trajectory) - the Trajectory object to compute the property for (modified in
+            place)
+        key (str) - the name of the property. 
+        s (np.ndarray) - list of scattering vector norms in Angstrom^-1. The
+            relationship between s and theta (scattering angle) is given as,
+                s = 4 pi / L * sin(theta / 2).
+        L (float) - effective wavelength of scattering particle (x-ray
+            wavelength or UED deBroglie wavelength) in Angstrom. Used to 
+            convert through scattering angle theta.
+        nlebedev (int) - Lebedev number to use for solid angle orientation
+            quadrature.
+        nomega (int) - number of uniform quadrature points to use for plane
+            orientation quadrature.
+        mode (str) - 'xray' or 'ued' for selection of form factors
+        form (str) - 'raw' or 'mod' for modified/raw diffraction intensities
+            I(s) or M(s).
+        anisotropy (str) - 'none' or 'perpendicular' or 'parallel'
+        print_level (bool) - print progress if true (useful to track long
+            property computations)
+    Result/Return:
+        traj - reference to the input Trajectory object. The properties "key-0"
+            and "key-2" are added to each frame of the Trajectory.
+    """
+
+    # Validity checks
+    if mode not in ['xray', 'ued']: raise ValueError('Unknown mode: %s' % mode)
+    if form not in ['raw', 'mod']: raise ValueError('Unknown form: %s' % form)
+    if anisotropy not in ['none', 'perpendicular', 'parallel']: raise ValueError('Unknown anisotropy: %s' % anisotropy)
+
+    # Compute scattering angles via Bragg equation
+    theta = 2.0 * np.arcsin(s * L / (4.0 * np.pi))
+
+    # Get atomic form factors for appropriate x-ray/ued mode
+    factors = formfactor.AtomicFormFactor.build_factors(traj.frames[0], mode=mode)
+
+    # Collocate the atomic form factors
+    f = np.zeros((len(factors), s.size))
+    for A, factor in enumerate(factors):
+        f[A,:] = factor.evaluate(qx=0.0,qy=0.0,qz=s)
+
+    # Compute atomic scattering Iat
+    D = np.zeros_like(s)
+    for A, factor in enumerate(factors):
+        D += f[A,:]**2
+
+    # Selection fraction
+    F = 1.0 if anisotropy == 'isotropic' else 1.0 / 3.0
+
+    # Pairs to include
+    ABpairs = []
+    for A in range(traj.frames[0].xyz.shape[0]):
+        for B in range(traj.frames[0].xyz.shape[0]):
+            if A >= B: continue;    
+            ABpairs.append((A,B))
+
+    # Diffraction moment computation
+    for find, frame in enumerate(traj.frames):
+        if print_level:
+            print 'Frame %5d of %5d' % (find, len(traj.frames))
+        # Geometry
+        xyz = frame.xyz
+        # Target
+        I0 = np.zeros_like(s)
+        I2 = np.zeros_like(s)
+        for A, B in ABpairs:
+            # Geometry
+            d = xyz[A,:] - xyz[B,:]
+            r2 = np.sum(d**2)
+            r = np.sqrt(r2)
+            sg2 = np.sum(d[:2]**2) / r2
+            sr = s*r
+            # Bessel functions
+            J0 = np.sin(sr) / sr
+            J0[sr == 0.0] = 1.0
+            J1sr = np.sin(sr) / sr**3 - np.cos(sr) / sr**2
+            J1sr[sr == 0.0] = 1.0/3.0
+            J2 = (3.0 / sr**2 - 1.0) * np.sin(sr) / sr - 3.0 * np.cos(sr) / sr**2
+            J2[sr == 0.0] = 0.0
+            # Kernels
+            if anisotropy == 'isotropic':
+                I0 += 2.0 * f[A,:] * f[B,:] * J0
+            elif anisotropy == 'perpendicular':
+                Iz = 2.0 * f[A,:] * f[B,:] * (J1sr - (sg2 + (2.0 - 3.0 * sg2) * np.cos(0.5 * theta)**2) * J2 / 2.0)
+                Ix = 2.0 * f[A,:] * f[B,:] * (J1sr - (sg2) * J2 / 2.0)
+                I0 += 0.5 * (Iz + Ix)
+                I2 += 0.5 * (Iz - Ix)
+            elif anisotropy == 'parallel':
+                I0 += 2.0 * f[A,:] * f[B,:] * (J1sr - (sg2 + (2.0 - 3.0 * sg2) * np.sin(0.5 * theta)**2) * J2 / 2.0)
+        # Modified detector pattern
+        if form == 'raw':
+            I0 += F*D
+        if form == 'mod':
+            I0 /= D
+            I2 /= D
+        # Placement
+        frame.properties['I-0'] = I0
+        frame.properties['I-2'] = I2
+
+    return traj
 
 # TODO: These are deprecated, as they are not fully correct for elastic scattering
 # def compute_diffraction_moments(
