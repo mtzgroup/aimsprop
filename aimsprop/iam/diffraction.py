@@ -412,7 +412,6 @@ def compute_diffraction_moments_analytical(
 
     # Selection fraction
     F = 1.0 if anisotropy == 'isotropic' else 1.0 / 3.0
-    D *= F
 
     # Pairs to include
     ABpairs = []
@@ -456,7 +455,7 @@ def compute_diffraction_moments_analytical(
                 I0 += 2.0 * f[A,:] * f[B,:] * (J1sr - (sg2 + (2.0 - 3.0 * sg2) * np.sin(0.5 * theta)**2) * J2 / 2.0)
         # Modified detector pattern
         if form == 'raw':
-            I0 += D
+            I0 += F*D
         if form == 'mod':
             I0 /= D
             I2 /= D
