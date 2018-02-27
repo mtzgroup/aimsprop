@@ -106,8 +106,25 @@ In particular, our job is to produce the time-dependent detector pattern $I
 (\theta, \eta, t)$, the detector moments $I_{l} (\theta, t)$, and the
 corresponding radial distribution functions $I_{l} (r, t)$.
 
+\textbf{Elastic Scattering:} We will assume we are working in the elastic
+scattering regime (no momentum transfer to the sample), which implies that
+$|\vec k_0| = |\vec k_s|$. This constraint reduces the dimensionality of the
+valid scattering space by 1.
+\[
+\vec s = 
+s 
+\{
+\cos \theta / 2 \sin \eta,
+\sin \theta / 2,
+\cos \theta / 2 \cos \eta
+\}
+\]
+Here $s = 2 k \sin \theta / 2 = (4 \pi / \lambda) \sin \theta / 2$. Because of
+this relationship, $s$ and $\theta$ are used interchangably in discussing the
+scattering.
+
 \textbf{IAM:} In the independent atom model (IAM), the scattering for a given
-molecular ``frame'' $I$ is,
+molecular ``frame'' $I$, with known and fixed orientation, is,
 \[
 I_{I} (\vec s, t)
 =   
@@ -154,471 +171,34 @@ Note that,
 \frac{1}{3}
 \]
 
-\textbf{Modified Diffraction Intensity:} Particularly for UED, the raw
-diffraction intensity above is too peaked near the origin. To facilitate
-analysis, a ``modified'' diffraction intensity is often defined as,
+\textbf{Detector Signals:} The detector signal can be expanded as,
 \[
-s M(s)
-\equiv
-s
-\frac{I_{\mathrm{mol}} (s)}{I_{\mathrm{at}} (s)}
+I (\vec s, t)
+=
+\sum_{I}
+w_{I} (t)
+\sum_{A, B}
+f_{A} (s)
+f_{B} (s)
+K_{AB} (\vec s, t)
 \]
-Here, the atomic contribution of the scattering is,
+where,
 \[
-I_{\mathrm{at}} (s)
-\equiv
+K_{AB} (\vec s, t)
+=
 \int_{\mathrm{SO(3)}}
 \mathrm{d} \hat R \
 \hat R_{zz}^2
-\sum_{A}
-\left |
-f_{A} (s)
-\right |^2
-/ 
-\int_{\mathrm{SO(3)}}
-\mathrm{d} \hat R \
-=
-\frac{1}{3}
-\sum_{A} | f_{A} (s) |^2
-\]
-Note that this is time and structure invariant. The molecular scattering signal
-is,
-\[
-I_{\mathrm{mol}} (s)
-\equiv
-I (s)
--
-I_{\mathrm{at}} (s)
-\]
-
-\textbf{Elastic Scattering:} We will assume we are working in the elastic
-scattering regime (no momentum transfer to the sample), which implies that
-$|\vec k_0| = |\vec k_s|$. This constraint reduces the dimensionality of the
-valid scattering space by 1.
-\[
-\vec s = 
-s 
-\{
-\cos \theta / 2 \sin \eta,
-\sin \theta / 2,
-\cos \theta / 2 \cos \eta
-\}
-\]
-Here $s = 2 k \sin \theta / 2 = (4 \pi / \lambda) \sin \theta / 2$.
-
-\textbf{Anisotropy:} For a perpendicular pump-probe arrangement, the scattering
-signal can be exactly decomposed into,\footnote{Note that everyone seems to be
-using Legendre polynomials in the literature. This doesn't make sense to me, and
-I have empirical evidence that the scattering signal exactly decomposes onto $1$
-and $\cos (2 \eta)$ azimuthal basis functions for $\hat R_{zz}^2$ anisotropy.}
-\[
-I (s, \eta, t)
-=
-I_{0} (s, t)
-+
-I_{2} (s, t) \cos (2 \eta)
-\]
-This decomposition can be computed from two collocation points as,
-\[
-I_{0} (s, t)
-=
-\frac{1}{2}
-\left [
-I (s, \eta=0, t)
-+
-I (s, \eta=\pi/2, t)
-\right ]
-\]
-\[
-I_{2} (s, t)
-=
-\frac{1}{2}
-\left [
-I (s, \eta=0, t)
--
-I (s, \eta=\pi/2, t)
-\right ]
-\]
-
-\textbf{Debeye Scattering:} Ideally, we would like an analytical formula for
-$I_{0} (s)$ and $I_{2} (s)$ above. This will be somewhat challenging, so we
-start by reviewing isotropic (Debeye) scattering. The total scattering signal is
-computed as, 
-\[
-I_{I}^{\mathrm{iso}} (\vec s, t)
-=
-\int_{\mathrm{SO(3)}}
-\mathrm{d} \hat R \
-\left |
-\sum_{A}
-f_{A} (s)
-e^{i \vec s \cdot \hat R \vec r_{A}^{I} (t)}
-\right |^2
-/ 
-\int_{\mathrm{SO(3)}}
-\mathrm{d} \hat R \
-\]
-\[
-\sum_{A,B}
-f_{A} (s)
-f_{B} (s)
-\left [
-\int_{\mathrm{SO(3)}}
-\mathrm{d} \hat R \
-e^{i \vec s \cdot \hat R (\vec r_{AB}^{I} (t))}
+e^{i \vec s^{\dagger} \hat R \vec r_{AB}^{I} (t)}
 /
 \int_{\mathrm{SO(3)}}
 \mathrm{d} \hat R \
-\right ]
 \]
-Here $\vec r_{AB}^{I} (t) = \vec r_{A}^{I} (t) - \vec r_{B}^{I} (t)$. We can
-write the rotation group as,
+The rotation group integrals are worked out in A. H. Zewail and J.S. Baskin,
+\textit{Chem. Phys. Chem.}, \textbf{6}, 2261 (2015). For the perpendicular case
+(selection weight of $\hat R_{zz}^2$):
 \[
-\int_{\mathrm{SO(3)}}
-\mathrm{d} \hat R \
-=
-\int_{0}^{2 \pi}
-\mathrm{d} \phi \
-\int_{0}^{\pi}
-\mathrm{d} \zeta \
-\sin \zeta
-\int_{0}^{2 \pi}
-\mathrm{d} \omega \
-\]
-Here $\omega$ is the surface orientation vector, $\phi$ is the azimuthal angle,
-and $\zeta$ is the zenith angle (in $\vec r$).  The corresponding rotation
-matrices are,
-\[
-\hat R
-\equiv
-\left [
-\begin{array}{ccc}
-c \phi & -s \phi & 0 \\
-s \phi & c \phi & 0 \\
-0 & 0 & 1 \\
-\end{array}
-\right ]
-\left [
-\begin{array}{ccc}
-c \zeta & 0 & -s \zeta \\
-0 & 1 & 0 \\
-s \zeta & 0 & c \zeta \\
-\end{array}
-\right ]
-\left [
-\begin{array}{ccc}
-c \omega & -s \omega & 0 \\
-s \omega & c \omega & 0 \\
-0 & 0 & 1 \\
-\end{array}
-\right ]
-\]
-\[
-=
-\left [
-\begin{array}{ccc}
-c \phi c \zeta c \omega - s \phi s \omega & -c \phi c \zeta s \omega - s \phi c
-\omega & - c \phi s \zeta \\
-s \phi c \zeta c \omega + c \phi s \omega & -s \phi c \zeta s \omega + c \phi c
-\omega & - s \phi s \zeta \\
-s \zeta c \omega & - s \zeta s \omega & c \zeta \\
-\end{array}
-\right ]
-\]
-This is a variation on the ``rotate around $\hat z$, then rotate to solid angle
-$\Omega$'' method for covering SO(3).
-
-Because this sample is isotropic, we arbitrarily choose the lab frame for the
-rotations to have $\hat z$ along $\vec s$. With this choice,
-\[
-I_{I}^{\mathrm{iso}} (\vec s, t)
-=
-\sum_{A,B}
-f_{A} (s)
-f_{B} (s)
-\int_{0}^{\pi}
-\mathrm{d} \zeta \
-\sin \zeta
-e^{i s r_{AB}^{I} (t) \cos \zeta}
-/ 2
-\]
-\[
-=
-\sum_{A,B}
-f_{A} (s)
-f_{B} (s)
-\int_{-1}^{+1}
-\mathrm{d} u \
-e^{i s r_{AB}^{I} (t) u}
-/ 2
-=
-\sum_{A,B}
-f_{A} (s)
-f_{B} (s)
-\left [
-\frac{e^{i s r_{AB}^{I} (t) u}}
-{i s r_{AB}^{I} (t)}
-\right ]_{u=-1}^{u=+1}
-/ 2
-\]
-\[
-=
-\sum_{A,B}
-f_{A} (s)
-f_{B} (s)
-\frac{\sin s r_{AB}^{I} (t)}{s r_{AB}^{I} (t)}
-\]
-This is the famous Debeye scattering formula, which is often seen in powder
-diffraction patterns.
-
-\textbf{Small Angle Irrotational Sample:} Now consider the perpendicular
-arrangement. We will sneak up on this. First, consider the small-angle limit
-$s_{y} \approx 0$, and the case where the only interatomic distance is aligned
-with the transition dipole $\hat z$, i.e., $\vec r_{AB} = [0, 0, r]$ (e.g., in
-I$_2$ with $J=0$). For the case of $\eta = 0$, $\vec s = [0, 0, s]$, and the
-needed integral is,
-\[
-I (s, \eta=0)
-=
-\int_{0}^{\pi}
-\mathrm{d} \zeta \
-\sin \zeta
-\cos^2 \zeta
-\exp(i s r \cos \zeta)
-/ 2
-\]
-\[
-=
-\int_{-1}^{+1}
-\mathrm{d} u \
-u^2
-\exp(i s r u)
-/ 2
-=
-\frac{
-((sr)^2 - 2) \sin (sr)
-+
-2 (sr) \cos (sr)
-}{
-(sr)^3
-}
-\]
-For the case of $\eta = \pi / 2$, $\vec s = [s, 0, 0]$, and the needed integral
-is,
-\[
-I (s, \eta = \pi / 2)
-=
-\int_{0}^{2 \pi}
-\mathrm{d} \phi \
-\int_{0}^{\pi}
-\mathrm{d} \zeta \
-\sin \zeta
-\cos^2 \zeta
-\exp (
-i 
-s
-r
-\sin \zeta
-\cos \phi
-)
-/ 4 \pi
-\]
-\[
-=
-\int_{0}^{\pi}
-\mathrm{d} \zeta \
-\sin \zeta
-\cos^2 \zeta
-J_{0} (sr \sin \zeta) / 2
-=
-\int_{-1}^{+1}
-\mathrm{d} u \
-u^2
-J_{0} (sr \sqrt{1 - u^2}) / 2
-\]
-\[
-=
-\int_{0}^{+1}
-\mathrm{d} u \
-u^2
-J_{0} (sr \sqrt{1 - u^2}) 
-\]
-Here the 0-th order Bessel function of the first kind is $J_{0} (x) =
-\sum_{m=0}^{\infty} (-1)^{m} / (m!)^2 (x / 2)^{2m}$. On the real line, $J_{0}
-(x)$ is entire,
-\[
-=
-\sum_{m=0}^{\infty}
-\frac{(-1)^{m}}{(m!)^2}
-\left (
-\frac{sr}{2}
-\right )^{2m}
-\int_{0}^{+1}
-\mathrm{d} u \
-u^2 (1 - u)^m
-\]
-The needed integral is,
-\[
-\int_{0}^{+1}
-\mathrm{d} u \
-u^2 (1 - u)^m
-=
-\frac{\sqrt{\pi} \Gamma (m + 1)}{4 \Gamma (m + 5/2)}
-=
-\frac{\sqrt{\pi} m!}{4 \sqrt{\pi} 2^{-(m + 2)} (2m + 1)!!}
-=
-\frac{2^{m} m!}{(2m + 3)!!}
-\]
-And thus the scattering integral is,
-\[
-=
-\sum_{m=0}^{\infty}
-\frac{(-1)^{m}}{(m!) (2m + 3)!!}
-\left (
-sr
-\right )^{2m}
-=
-\frac{
-\sqrt{2}
-\sin(\sqrt{2} sr)
--
-2 (sr)
-\cos (\sqrt{2} sr)
-}{
-4 (sr)^3
-}
-\]
-
-Now let us consider the case where the only intermolecular distance is
-perpendicular to the transition dipole $\hat z$. For the case of $\eta = 0$,
-\[
-I (s, \eta = 0)
-=
-\int_{0}^{\pi}
-\mathrm{d} \zeta \
-\sin \zeta
-\cos^2 \zeta
-\exp (
-i 
-s
-r
-\sin \zeta
-\cos \phi
-)
-/ 4 \pi
-\]
-
-\textbf{Small-Angle Polyatomic Sample:} Now we will let the interatomic distance
-lie in $\vec r_{AB} = [r_x, 0, r_z]$ (note that we can always assume this
-form, as the integration in $\theta/\omega$ will settle matters). In the small
-angle limit $\vec s = [s_x, 0, s_z]$, the dot product is,
-\[
-\vec s \cdot \hat R \vec r
-=
-\left [
-\begin{array}{c}
-s_{x} c \phi \\
-- s_{x} s \phi \\
-s_{z}
-\end{array}
-\right ]^{\dagger}
-\left [
-\begin{array}{ccc}
-c \zeta & 0 & -s \zeta \\
-0 & 1 & 0 \\
-s \zeta & 0 & c \zeta \\
-\end{array}
-\right ]
-\left [
-\begin{array}{c}
-r_{x} c \omega \\
-r_{x} s \omega \\
-r_{z}
-\end{array}
-\right ]
-\]
-The case of $\eta = 0$ is,
-\[
-I (s, \eta = 0)
-=
-\int_{0}^{\pi}
-\mathrm{d} \zeta \
-\int_{0}^{2 \pi}
-\mathrm{d} \omega \
-\sin \zeta
-\cos^2 \zeta
-\exp(i (
-s r_x \sin \zeta \cos \omega 
-+ 
-s r_z \cos \zeta
-))
-/ 4 \pi
-\]
-Using $\int_{0}^{2 \pi} \mathrm{d} t \ \exp(i b \cos (t)) = 2 \pi J_{0} (b)$,
-\[
-=
-\int_{0}^{\pi}
-\mathrm{d} \zeta \
-\sin \zeta
-\cos^2 \zeta
-J_{0} (s r_{x} \sin \zeta)
-\exp(i (
-s r_z \cos \zeta
-))
-/ 2
-\]
-\[
-=
-\int_{-1}^{+1}
-\mathrm{d} u \
-u^2
-J_{0} (s r_{x} \sqrt{1 - u^2})
-\exp (i s r_{z} u) 
-/ 2
-\]
-\[
-=
-\int_{0}^{+1}
-\mathrm{d} u \
-u^2
-J_{0} (s r_{x} \sqrt{1 - u^2})
-\cos (s r_{z} u)
-\]
-
-The case of $\eta = \pi / 2$ is,
-\[
-I (s, \eta = \pi / 2)
-=
-\int_{0}^{2 \pi}
-\mathrm{d} \phi \
-\int_{0}^{\pi}
-\mathrm{d} \zeta \
-\int_{0}^{2 \pi}
-\mathrm{d} \omega \
-\sin \zeta
-\cos^2 \zeta
-\]
-\[
-\times
-\exp (i (
-s r_{x} \cos \phi \cos \theta \cos \omega
--
-s r_{x} \sin \phi \sin \omega
--
-s r_{z} \cos \phi \sin \theta
-))
-/ 8 \pi^2
-\]
-using the identity $\int_{0}^{2 \pi} \mathrm{d} t \ \exp(i a \cos t + i b \sin
-t) = 2 \pi I_{0} (\sqrt{- (a^2 + b^2)})$.
-
-If these integrals can be broken, the small-angle theory support for UED will be
-much faster.
-
-\textbf{Perpendicular Detector Signals:} A. H. Zewail and J.S. Baskin,
-\textit{Chem. Phys. Chem.}, \textbf{6}, 2261 (20015):
-\[
-I (\vec s)
+K^{\perp} (\vec s)
 =
 \frac{J_{1} (s r)}{sr}
 -
@@ -636,10 +216,10 @@ I (\vec s)
 \right ]
 \frac{J_{2} (s r)}{2}
 \]
-\textbf{Parallel Detector Signals:} A. H. Zewail and J.S. Baskin,
-\textit{Chem. Phys. Chem.}, \textbf{6}, 2261 (20015):
+For the parallel case:
+(selection weight of $\hat R_{yy}^2$):
 \[
-I (\vec s)
+K^{\parallel} (\vec s)
 =
 \frac{J_{1} (s r)}{sr}
 -
@@ -656,9 +236,10 @@ I (\vec s)
 \right ]
 \frac{J_{2} (s r)}{2}
 \]
-\textbf{Isotropic Detector Signals:} Debeye:
+For the isotropic case,
+(selection weight of $1$):
 \[
-I (\vec s)
+K^{\emptyset} (\vec s)
 =
 J_{0} (sr)
 \]
@@ -701,6 +282,68 @@ J_{2} (x)
 \]
 The limits at $x = 0$ are displayed. Also note that $\lim_{x \rightarrow 0} J_{1}
 (x) / x = 1 /3$.
+
+\textbf{Modified Diffraction Intensity:} Particularly for UED, the raw
+diffraction intensity above is too peaked near the origin. To facilitate
+analysis, a ``modified'' diffraction intensity is often defined as,
+\[
+s M(s)
+\equiv
+s
+\frac{I_{\mathrm{mol}} (s)}{I_{\mathrm{at}} (s)}
+\]
+Here, the atomic contribution of the scattering is,
+\[
+I_{\mathrm{at}} (s)
+\equiv
+\sum_{A} | f_{A} (s) |^2
+\]
+Note that this is time and structure invariant. The molecular scattering signal
+is,
+\[
+I_{\mathrm{mol}} (s)
+\equiv
+I (s)
+-
+F
+I_{\mathrm{at}} (s)
+\]
+Here $F = 1/3$ for perpendicular and parallel transitions, $F=1$ for isotropic
+transitions. 
+
+\textbf{Anisotropy:} For a perpendicular pump-probe arrangement, the scattering
+signal can be exactly decomposed into,\footnote{Note that everyone seems to be
+using Legendre polynomials in the literature. This doesn't make sense to me, and
+I have empirical evidence that the scattering signal exactly decomposes onto $1$
+and $\cos (2 \eta)$ azimuthal basis functions for $\hat R_{zz}^2$ anisotropy.}
+\[
+I (s, \eta, t)
+=
+I_{0} (s, t)
++
+I_{2} (s, t) \cos (2 \eta)
+\]
+This decomposition can be computed from two collocation points as,
+\[
+I_{0} (s, t)
+=
+\frac{1}{2}
+\left [
+I (s, \eta=0, t)
++
+I (s, \eta=\pi/2, t)
+\right ]
+\]
+\[
+I_{2} (s, t)
+=
+\frac{1}{2}
+\left [
+I (s, \eta=0, t)
+-
+I (s, \eta=\pi/2, t)
+\right ]
+\]
 
 \textbf{Pair Correlation Functions:} The distance pair correlation is computed
 from the UED detector signal as,
