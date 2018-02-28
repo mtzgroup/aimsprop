@@ -1,6 +1,7 @@
 import numpy as np
 import traj
 import re
+import os
 import atom_data
 
 # TODO: Maybe should be in atom data
@@ -73,3 +74,55 @@ def parse_xyz(
     trajectory = traj.Trajectory(frames2)
 
     return trajectory
+
+def write_xyzs(
+    traj,
+    dirname,
+    atom_format_str='%-3s %24.16E %24.16E %24.16E\n',
+    ):
+
+    """ Write a directory of xyz files to represent a Trajectory, with
+        one xyz file containing all frames for each label
+    
+    Params:
+        traj (Trajectory) - Trajectory to write xyz file representation of
+        dirname (str) - the directory to place the xyz files in (created if does not exist)
+        atom_format_str (str) - the format string for each atom line in the xyz
+            file (useful to change precision).
+    Result:
+        xyz files are written for each label in traj. Each xyz
+        file contains all frames for the label, in time-order
+    """
+
+    # Make sure directoy exists
+    if not os.path.exists(dirname):
+        os.makedirs(dirname)
+
+    # Write xyz files
+    for label in traj.labels:
+        traj2 = traj.subset_by_label(label)
+        xyzfilename = str(label)
+        # Munging with filename label
+        xyzfilename = xyzfilename.replace(' ', '')
+        xyzfilename = xyzfilename.replace('(', '')
+        xyzfilename = xyzfilename.replace(')', '')
+        xyzfilename = xyzfilename.replace(',', '-')
+        fh = open('%s/%s.xyz' % (dirname, xyzfilename), 'w')
+        for frame in traj2.frames:
+            fh.write('%d\n' % frame.xyz.shape[0])
+            fh.write('t = %24.16E, w = %24.16E, I = %d\n' % (
+                frame.t,
+                frame.w,
+                frame.I,
+                ))
+            for A in range(frame.xyz.shape[0]):
+                fh.write(atom_format_str % (
+                    atom_data.atom_symbol_table[frame.N[A]], 
+                    frame.xyz[A,0], 
+                    frame.xyz[A,1], 
+                    frame.xyz[A,2], 
+                    ))
+            
+            
+
+    
