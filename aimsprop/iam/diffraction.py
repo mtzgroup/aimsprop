@@ -460,8 +460,8 @@ def compute_diffraction_moments_analytical(
             I0 /= D
             I2 /= D
         # Placement
-        frame.properties['I-0'] = I0
-        frame.properties['I-2'] = I2
+        frame.properties['%s-0' % (key)] = I0
+        frame.properties['%s-2' % (key)] = I2
 
     return traj
 
