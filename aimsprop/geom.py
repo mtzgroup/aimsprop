@@ -123,22 +123,20 @@ def compute_torsion(
 
     for frame in traj.frames:
         xyz = frame.xyz
-        # TODO: I took this from : https://math.stackexchange.com/questions/47059/how-do-i-calculate-a-dihedral-angle-given-cartesian-coordinates
-        # I do not know if it works
-        # RMP
         rAB = xyz[B,:] - xyz[A,:]
         rBC = xyz[C,:] - xyz[B,:]
         rCD = xyz[D,:] - xyz[C,:]
         eAB = _normalize(rAB)
         eBC = _normalize(rBC)
         eCD = _normalize(rCD)
-        n1 = _normalize(_cross(eAB, eBC))
-        n2 = _normalize(_cross(eBC, eCD))
+        n1 = _normalize(_cross(rAB, rBC))
+        n2 = _normalize(_cross(rBC, rCD))
         m1 = _cross(n1, eBC)
         x = _dot(n1, n2)
         y = _dot(m1, n2)
         theta = 180.0 / math.pi * math.atan2(y, x)
         frame.properties[key] = theta
+
     return traj
 
 def compute_oop(
@@ -152,57 +150,37 @@ def compute_oop(
 
     """ Compute the a out-of-plane-angle property for a Trajectory (in degrees).
     
-    # TODO: Document which angle this corresponds to 
-
     Params:
         traj - the Trajectory object to compute the property for (modified in
             place)
         key - the name of the property
-        A - the index of the first atom
+        A - the index of the first atom (OOP atom)
         B - the index of the second atom
         C - the index of the third atom
-        D - the index of the fourth atom
+        D - the index of the fourth atom (Defines vector to A)
     Result/Return:
         traj - reference to the input Trajectory object. The property
             key is set to the float value of the out-of-plane angle for the
             indices A, B, C, and D
     """
 
-    # TODO
-    # TODO: Google Sherrill Geometry Analysis Program for nice definitions
-    raise RuntimeError('Not Implemented')
+    traj = compute_angle(traj, 'AngleBDC', B, D, C)
 
-def compute_transfer_coord(
-    traj,
-    key,
-    A,
-    B,
-    C,
-    ):
-
-    """ Compute the a proton transfer coordinate property for a Trajectory (au).
-
-    Params:
-        traj - the Trajectory object to compute the property for (modified in
-            place)
-        key - the name of the property
-        A - the index of the first atom
-        B - the index of the second atom
-        C - the index of the transfered atom
-    Result/Return:
-        traj - reference to the input Trajectory object. The property
-            key is set to the proton transfer coordinate for the
-            indices A, B, C
-    """
-
-    traj = compute_bond(traj,'dAC',  A, C)
-    traj = compute_bond(traj,'dBC',  B, C)
-    traj = compute_bond(traj,'dAB',  A, B)
     for frame in traj.frames:
-        dAC = frame.properties['dAC']
-        dBC = frame.properties['dBC']
-        dAB = frame.properties['dAB']
-        tau = (dBC-dAC) / dAB
-        frame.properties[key] = np.array([tau])
-    return traj
+        xyz = frame.xyz
+        rDA = xyz[A,:] - xyz[D,:]
+        rDB = xyz[B,:] - xyz[D,:]
+        rDC = xyz[C,:] - xyz[D,:]
+        eDA = _normalize(rDA)
+        eDB = _normalize(rDB)
+        eDC = _normalize(rDC)
+
+        thetaBDC = math.radians(frame.properties['AngleBDC'])
+
+        cross = _cross(eDB, eDC) 
+        OOP = math.degrees(math.asin( _dot(cross / math.sin(thetaBDC), eDA)))
+
+        frame.properties[key] = OOP
     
+    return traj
+
