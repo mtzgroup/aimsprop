@@ -9,4 +9,5 @@ from .ued import *
 from .pop import *
 from .plot import *
 from .sine import *
+from .bootstrap import *
 import iam
