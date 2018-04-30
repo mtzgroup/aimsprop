@@ -111,6 +111,14 @@ class Trajectory(object):
         """ Return a subset of this trajectory containing all frames with a given label (Frame-sorted) (view) """
         return Trajectory(list(sorted([x for x in self.frames if x.label == label])))
 
+    def subset_by_sublabel(
+        self,
+        label,
+        index,
+        ):
+        """ Return a subset of this trajectory containing all frames with a given partial label (Frame-sorted) (view) """
+        return Trajectory(list(sorted([x for x in self.frames if x.label[index] == label])))
+
     def subset_by_t(
         self,
         t,
