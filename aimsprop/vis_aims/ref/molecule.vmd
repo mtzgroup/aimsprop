@@ -1,0 +1,19 @@
+mol new xyzs/filename type xyz first 0 last -1 step 1 filebonds 1 autobonds 1 waitfor all
+mol delrep 0 top
+mol representation VDW 0.300000 100.000000 
+mol color ColorID 100
+mol selection {all}
+mol material Transp2
+mol addrep top
+mol representation DynamicBonds 1.700000 0.200000 100.000000
+mol color ColorID 100
+mol selection {all}
+mol material Transp2
+mol addrep top
+mol selupdate 0 top 0
+mol colupdate 0 top 0
+mol scaleminmax top 0 0.000000 0.000000
+mol smoothrep top 0 0
+mol drawframes top 0 {now}
+mol rename top filename
+color change rgb 32 0.9599999785423279 0.7200000286102295 0.0
