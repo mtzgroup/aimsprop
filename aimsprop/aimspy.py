@@ -7,7 +7,7 @@ import atom_data
 
 _N_table = { val: key for key, val in atom_data.atom_symbol_table.iteritems() }
 
-def parse_pyms(
+def parse_aimspy(
     filepath,
     scheme='mulliken',
     cutoff_time=None,
@@ -36,17 +36,17 @@ def parse_pyms(
         trajectory (Trajectory) - the Trajectory object.
     """
 
-    tbf_files = glob.glob('%s/tbf_*/' % filepath)
-    tbfs = [int(re.match('%s/tbf_(\S+)/' % filepath, tbf).group(1)) for tbf in tbf_files]
+    tbf_files = glob.glob('%s/data/tbf_*/' % filepath)
+    tbfs = [int(re.match('%s/data/tbf_(\S+)/' % filepath, tbf).group(1)) for tbf in tbf_files]
 
     # obtain tbf data from general output
     for tbf in tbfs:
         os.system("grep '@tbf%d' %s/%s > %s/tbf%d.out" % (tbf, filepath, outfile, filepath, tbf)) 
     
     # The files (these are standard textual output from PyMS)
-    posfiles = {tbf : '%s/tbf_%04d/x%04d.xyz' % (filepath, tbf, tbf) for tbf in tbfs}
-    Cfiles = {tbf : '%s/tbf_%04d/amp.out' % (filepath, tbf) for tbf in tbfs}
-    Sfile = '%s/wfn/S.out' % filepath
+    posfiles = {tbf : '%s/data/tbf_%04d/x%04d.xyz' % (filepath, tbf, tbf) for tbf in tbfs}
+    Cfiles = {tbf : '%s/data/tbf_%04d/amp.out' % (filepath, tbf) for tbf in tbfs}
+    Sfile = '%s/data/wfn/S.out' % filepath
     if len(posfiles) != len(Cfiles):
         raise RuntimeError('xyz and C files not same number of TBF')
 
@@ -126,7 +126,7 @@ def parse_pyms(
     # Read the Spawn.log to figure out electronic states (not read
     states = {}
     for tbf in tbfs:
-        states[tbf] = np.loadtxt('%s/tbf%d.out' % (filepath, tbf), usecols=[1])[0]
+        states[tbf] = int(np.loadtxt('%s/tbf%d.out' % (filepath, tbf), usecols=[1])[0])
 
     # Swap to put time on slow axis (C3s[t][I] instead of C2s[I][t])
     C3s = {}
