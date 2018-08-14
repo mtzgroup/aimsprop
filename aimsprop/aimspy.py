@@ -76,7 +76,7 @@ def parse_aimspy(
         nframe = len(lines) / (natom + 2)
         for A in range(nframe):
             lines2 = lines[A * (natom + 2) : (A+1) * (natom+2)]
-            mobj = re.match(r'^\s*t = \s+(\S+)\s*$', lines2[1])
+            mobj = re.match(r'^\s*t=(\S+)\s*\S*', lines2[1])
             t = float(mobj.group(1))
             if cutoff_time and t > cutoff_time: continue
             N = []
