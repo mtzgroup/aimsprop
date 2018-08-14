@@ -123,10 +123,11 @@ def parse_aimspy(
         Smat = np.reshape(Smat, (n,n))
         Ss[t] = Smat
 
-    # Read the Spawn.log to figure out electronic states (not read
     states = {}
     for tbf in tbfs:
-        states[tbf] = int(np.loadtxt('%s/tbf%d.out' % (filepath, tbf), usecols=[1])[0])
+        adiabatic_indices = np.loadtxt('%s/tbf%d.out' % (filepath, tbf), usecols=[1])
+        time_series = np.loadtxt('%s/tbf%d.out' % (filepath, tbf), usecols=[2])
+        states[tbf] = {time_series[ind] : a for ind, a in enumerate(adiabatic_indices)}
 
     # Swap to put time on slow axis (C3s[t][I] instead of C2s[I][t])
     C3s = {}
@@ -165,7 +166,7 @@ def parse_aimspy(
                     label=I,
                     t=t,
                     w=q,
-                    I=states[I],
+                    I=states[I][t],
                     N=Ns[I],
                     xyz=xyzs[I],
                     )
@@ -183,7 +184,7 @@ def parse_aimspy(
                         label=(I,J),
                         t=t,
                         w=q,
-                        I=states[I],
+                        I=states[I][t],
                         N=Ns[I],
                         xyz=0.5*(xyzs[I]+xyzs[J]), # centroid
                         )
