@@ -166,7 +166,7 @@ def parse_aimspy(
                     label=I,
                     t=t,
                     w=q,
-                    I=states[I][t],
+                    I=int(states[I][t]),
                     N=Ns[I],
                     xyz=xyzs[I],
                     )
@@ -184,7 +184,7 @@ def parse_aimspy(
                         label=(I,J),
                         t=t,
                         w=q,
-                        I=states[I][t],
+                        I=int(states[I][t]),
                         N=Ns[I],
                         xyz=0.5*(xyzs[I]+xyzs[J]), # centroid
                         )
