@@ -41,7 +41,7 @@ def parse_aimspy(
 
     # obtain tbf data from general output
     for tbf in tbfs:
-        os.system("grep '@tbf%d' %s/%s > %s/tbf%d.out" % (tbf, filepath, outfile, filepath, tbf)) 
+        os.system("grep '@tbf%d\ ' %s/%s > %s/tbf%d.out" % (tbf, filepath, outfile, filepath, tbf)) 
     
     # The files (these are standard textual output from PyMS)
     posfiles = {tbf : '%s/data/tbf_%04d/x%04d.xyz' % (filepath, tbf, tbf) for tbf in tbfs}
