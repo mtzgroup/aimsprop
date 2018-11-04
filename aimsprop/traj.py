@@ -233,7 +233,6 @@ class Trajectory(object):
     def interpolate_linear(
         self,
         ts,
-        delta=1.0E-11,
         ):
 
         """ Return a new trajectory with frame objects interpolated by linear
@@ -257,9 +256,9 @@ class Trajectory(object):
             traj2 = self.subset_by_label(label)
             t2s = traj2.ts
             for t in ts:
-                if t <= min(t2s) or t >= max(t2s): continue # Out of range (no extrapolation)
+                if t < min(t2s) or t >= max(t2s): continue # Out of range (no extrapolation)
                 # Get points in time to linearly interpolate between
-                t3 = t2s[np.where(t2s<t)[0][-1]]
+                t3 = t2s[np.where(t2s<=t)[0][-1]]
                 t4 = t2s[np.where(t2s>t)[0][0]]
                 # Retrieve frames at points of linear interpolation for all labels
                 framei = traj2.subset_by_t(t3).copy().frames
