@@ -1,0 +1,17 @@
+Sizes of AIMS IC dirs in "../":
+  - ../0000   67M   
+  - ../0001   13M   
+  - ../0002   5.4M  
+  - ../0003   9.9M  
+  - ../0004   65M   
+
+Smallest Traj files: 0002, 0003 so copied those over.
+
+Files used by aimsprop:
+  - Amp
+  - positions.*
+  - S.dat
+  - Spawn.log
+  - TrajDump
+
+Removed all other files from AIMS directory.
