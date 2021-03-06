@@ -3,7 +3,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-import pop # for pop.compute_population
+from . import pop # for pop.compute_population
 
 def plot_scalar(
     filename,
@@ -47,7 +47,7 @@ def plot_scalar(
         colors=state_colors
     else:
         cmap = matplotlib.cm.get_cmap('jet')
-        colors = [cmap(float(x) / (len(traj.Is) - 1)) for x in reversed(range(len(traj.Is)))]
+        colors = [cmap(float(x) / (len(traj.Is) - 1)) for x in reversed(list(range(len(traj.Is))))]
 
     if clf: plt.clf()
     if plot_average:
@@ -196,7 +196,7 @@ def plot_population(
         colors=state_colors
     else:
         cmap = matplotlib.cm.get_cmap('jet')
-        colors = [cmap(float(x) / (len(traj.Is) - 1)) for x in reversed(range(len(traj.Is)))]
+        colors = [cmap(float(x) / (len(traj.Is) - 1)) for x in reversed(list(range(len(traj.Is))))]
 
     if clf: plt.clf()
 
@@ -219,7 +219,7 @@ def plot_population(
     # Total population (to check norm, state cutoffs, etc)
     if plot_total:
         total = np.zeros_like(ts)
-        for population in populations.values(): total += population
+        for population in list(populations.values()): total += population
         plt.plot(time_scale * ts, total, '-', color='k', linewidth=2.0, label='Total')
    
     if tmax is None: tmax = max(ts) * time_scale

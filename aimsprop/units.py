@@ -17,7 +17,7 @@ units = {
     'au_per_K'      : 1.0 / 3.1577464E5,             # temperature (TODO: This is probably OK, maybe a bit low precision)
     'au_per_fs'     : 1.0 / 2.418884326505E-2,       # time
 }
-for k in units.keys():
+for k in list(units.keys()):
     v = units[k]
     mobj = re.match('(\S+)_per_(\S+)',k)
     units['%s_per_%s' % (mobj.group(2),mobj.group(1))] = 1.0 / v

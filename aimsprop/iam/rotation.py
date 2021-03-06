@@ -1,5 +1,5 @@
 import numpy as np
-import lebedev
+from . import lebedev
 
 def rotation_quadrature(
     nlebedev,

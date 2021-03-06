@@ -12,5 +12,5 @@ from .plot import *
 from .sine import *
 from .bootstrap import *
 from .pes import *
-import iam
-import vis_aims
+from . import iam
+from . import vis_aims

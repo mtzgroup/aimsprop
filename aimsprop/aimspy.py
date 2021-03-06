@@ -1,11 +1,11 @@
 import numpy as np
-import traj
+from . import traj
 import glob
 import re
 import os
-import atom_data
+from . import atom_data
 
-_N_table = { val: key for key, val in atom_data.atom_symbol_table.iteritems() }
+_N_table = { val: key for key, val in atom_data.atom_symbol_table.items() }
 
 def parse_aimspy(
     filepath,
@@ -54,7 +54,7 @@ def parse_aimspy(
     C2s = {}
     N2s = {}
     xyz2s = {}
-    for I, Cfile in Cfiles.iteritems():
+    for I, Cfile in Cfiles.items():
         posfile = posfiles[I]
         lines = open(Cfile).readlines()[1:]
         Cs = {}
@@ -131,25 +131,25 @@ def parse_aimspy(
 
     # Swap to put time on slow axis (C3s[t][I] instead of C2s[I][t])
     C3s = {}
-    for I, C2 in C2s.iteritems():
-        for t, C in C2.iteritems():
+    for I, C2 in C2s.items():
+        for t, C in C2.items():
             C3s.setdefault(t, {})[I] = C
     xyz3s = {}
-    for I, xyz2 in xyz2s.iteritems():
-        for t, xyz in xyz2.iteritems():
+    for I, xyz2 in xyz2s.items():
+        for t, xyz in xyz2.items():
             xyz3s.setdefault(t, {})[I] = xyz
     N3s = {}
-    for I, N2 in N2s.iteritems():
-        for t, N in N2.iteritems():
+    for I, N2 in N2s.items():
+        for t, N in N2.items():
             N3s.setdefault(t, {})[I] = N
 
     # Build Frames from parsed data
     frames = []
-    for t, S in Ss.iteritems():
+    for t, S in Ss.items():
         if t not in C3s:
             # Sometimes timestamps do not match because Amp.* only holds 2 decimal digits
             # E.g., 1000.875 (in S) vs. 1000.88 (in Amp)
-            print 'Warning: Time %r not in amplitudes (OK if very small adaptive timestep)' % t
+            print('Warning: Time %r not in amplitudes (OK if very small adaptive timestep)' % t)
             continue
         Cs = C3s[t]
         xyzs = xyz3s[t]
