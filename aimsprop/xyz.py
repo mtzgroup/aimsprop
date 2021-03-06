@@ -1,11 +1,11 @@
 import numpy as np
-import traj
+from . import traj
 import re
 import os
-import atom_data
+from . import atom_data
 
 # TODO: Maybe should be in atom data
-_N_table = { val: key for key, val in atom_data.atom_symbol_table.iteritems() }
+_N_table = { val: key for key, val in atom_data.atom_symbol_table.items() }
 
 def parse_xyz(
     filename,

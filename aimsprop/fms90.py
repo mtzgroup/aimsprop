@@ -1,11 +1,11 @@
 import numpy as np
-import traj
+from . import traj
 import glob
 import re
 import os
-import atom_data
+from . import atom_data
 
-_N_table = { val: key for key, val in atom_data.atom_symbol_table.iteritems() }
+_N_table = { val: key for key, val in atom_data.atom_symbol_table.items() }
 
 def parse_fms90(
     filepath,
@@ -51,7 +51,7 @@ def parse_fms90(
     C2s = {}
     N2s = {}
     xyz2s = {}
-    for I, Cfile in Cfiles.iteritems():
+    for I, Cfile in Cfiles.items():
         posfile = posfiles[I]
         lines = open(Cfile).readlines()[1:]
         Cs = {}
@@ -70,7 +70,7 @@ def parse_fms90(
         natom = int(lines[0])
         if len(lines) % (natom + 2) != 0:
             raise RuntimeError('Position file does not have correct number of lines.')
-        nframe = len(lines) / (natom + 2)
+        nframe = len(lines) // (natom + 2)
         for A in range(nframe):
             lines2 = lines[A * (natom + 2) : (A+1) * (natom+2)]
             mobj = re.match(r'^\s*Time:\s+(\S+),\s+Trajectory:\d+\s*$', lines2[1])
@@ -124,7 +124,7 @@ def parse_fms90(
     states = {}
     if not os.path.isfile(Spawnfile):
         if initial_I is None: raise RuntimeError("No Spawn.log and no initial_I")
-        states = { k : initial_I for k in Cfiles.keys() }
+        states = { k : initial_I for k in list(Cfiles.keys()) }
     else:
         lines = open(Spawnfile).readlines()[1:]
         for lind, line in enumerate(lines):
@@ -135,25 +135,25 @@ def parse_fms90(
 
     # Swap to put time on slow axis (C3s[t][I] instead of C2s[I][t])
     C3s = {}
-    for I, C2 in C2s.iteritems():
-        for t, C in C2.iteritems():
+    for I, C2 in C2s.items():
+        for t, C in C2.items():
             C3s.setdefault(t, {})[I] = C
     xyz3s = {}
-    for I, xyz2 in xyz2s.iteritems():
-        for t, xyz in xyz2.iteritems():
+    for I, xyz2 in xyz2s.items():
+        for t, xyz in xyz2.items():
             xyz3s.setdefault(t, {})[I] = xyz
     N3s = {}
-    for I, N2 in N2s.iteritems():
-        for t, N in N2.iteritems():
+    for I, N2 in N2s.items():
+        for t, N in N2.items():
             N3s.setdefault(t, {})[I] = N
 
     # Build Frames from parsed data
     frames = []
-    for t, S in Ss.iteritems():
+    for t, S in Ss.items():
         if t not in C3s:
             # Sometimes timestamps do not match because Amp.* only holds 2 decimal digits
             # E.g., 1000.875 (in S) vs. 1000.88 (in Amp)
-            print 'Warning: Time %r not in amplitudes (OK if very small adaptive timestep)' % t
+            print('Warning: Time %r not in amplitudes (OK if very small adaptive timestep)' % t)
             continue
         Cs = C3s[t]
         xyzs = xyz3s[t]
@@ -241,7 +241,7 @@ def parse_fms90_dumpfile(
     N2s = {}
     xyz2s = {}
     states = {}
-    for I, dumpfile in dumpfiles.iteritems():
+    for I, dumpfile in dumpfiles.items():
         posfile = posfiles[I]
         data = np.loadtxt(dumpfile, skiprows=1, ndmin=2)
         ts = data[:,0]
@@ -308,21 +308,21 @@ def parse_fms90_dumpfile(
 
     # Swap to put time on slow axis (C3s[t][I] instead of C2s[I][t])
     C3s = {}
-    for I, C2 in C2s.iteritems():
-        for t, C in C2.iteritems():
+    for I, C2 in C2s.items():
+        for t, C in C2.items():
             C3s.setdefault(t, {})[I] = C
     xyz3s = {}
-    for I, xyz2 in xyz2s.iteritems():
-        for t, xyz in xyz2.iteritems():
+    for I, xyz2 in xyz2s.items():
+        for t, xyz in xyz2.items():
             xyz3s.setdefault(t, {})[I] = xyz
     N3s = {}
-    for I, N2 in N2s.iteritems():
-        for t, N in N2.iteritems():
+    for I, N2 in N2s.items():
+        for t, N in N2.items():
             N3s.setdefault(t, {})[I] = N
     # Build Frames from parsed data
     frames = []
     # for t, S in Ss.iteritems():
-    ts = np.sort(Ss.keys())
+    ts = np.sort(list(Ss.keys()))
     for t in ts:
         S = Ss[t]
         # TODO: find a better way around this?
@@ -330,7 +330,7 @@ def parse_fms90_dumpfile(
         if t not in C3s:
             # Sometimes timestamps do not match because Amp.* only holds 2 decimal digits
             # E.g., 1000.875 (in S) vs. 1000.88 (in Amp)
-            print 'Warning: Time %r not in amplitudes (OK if very small adaptive timestep)' % t
+            print('Warning: Time %r not in amplitudes (OK if very small adaptive timestep)' % t)
             continue
         Cs = C3s[t]
         xyzs = xyz3s[t]

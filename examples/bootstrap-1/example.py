@@ -28,19 +28,19 @@ def build_traj(
         for ind in restart_inds:
             run = input_dirs[ind]
             ind1 = restart_index[ind]
-            print 'Reading:', run
-            if (IC, ind1) in broken_frame.keys():
+            print('Reading:', run)
+            if (IC, ind1) in list(broken_frame.keys()):
                 traj = ai.parse_fms90_dumpfile('%s' % run, scheme='mulliken', cutoff_time=broken_frame[(IC, ind1)])
             else:
                 traj = ai.parse_fms90_dumpfile('%s' % run, scheme='mulliken')
             trajs_IC.append(copy.copy(traj))
-        print 'merging restarts'
+        print('merging restarts')
         traj_IC = ai.Trajectory.merge(trajs_IC, [1.0] * len(trajs_IC), [IC]*len(trajs_IC))
 
-        print 'removing duplicate frames'
+        print('removing duplicate frames')
         traj_IC = traj_IC.remove_duplicates()
 
-        print 'interpolating across IC'
+        print('interpolating across IC')
         ts = np.arange(0.0, max(traj_IC.ts), 400.0)
         traj_IC = traj_IC.interpolate_linear(ts)
 
@@ -62,9 +62,9 @@ def build_traj(
     ws = np.array([dat[0,1] for dat in dats])
     ws /= np.sum(ws)
     # Merge the trajectories into one super-big Trajectory with uniform weights
-    print 'merging ICs'
+    print('merging ICs')
     traj = ai.Trajectory.merge(trajs, ws)
-    print 'nframes', len(traj.frames)
+    print('nframes', len(traj.frames))
 
     return traj, trajs
 
@@ -78,13 +78,13 @@ if __name__ == '__main__':
     
     # => UED Signal <= #
 
-    print 'calculating raw UED signal'
+    print('calculating raw UED signal')
     R = np.linspace(0.0, 6.0, 200)
     traj = ai.compute_ued_simple(traj, 'UED', R=R, alpha=8.0)
 
     # => Bootstrap Results <= #
 
-    print 'resampling trajectories'
+    print('resampling trajectories')
     resampled_trajs = ai.bootstrap(traj, 1000, ICs)
 
     # => Plotting Population with Standard Deviation Error Bars <= #
@@ -117,7 +117,7 @@ if __name__ == '__main__':
 
     # => Plotting UED stats Heatmap <= #
 
-    print 'extracting UED statistics'
+    print('extracting UED statistics')
     avg, std = ai.extract_stats(resampled_trajs, 'UED', diff=True)
   
     nlevel=65

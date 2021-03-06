@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class Frame(object):
 
     """ Class Frame represents one "frame," a molecular geometry with associated time and label. 
@@ -14,8 +15,7 @@ class Frame(object):
         N,
         xyz,
         properties={},
-        ):
-
+    ):
         """ Verbatim constructor.
 
         Params/Attributes:
@@ -32,9 +32,9 @@ class Frame(object):
                 numerical properties (float, complex, or np.ndarray)
         """
 
-        self.label = label 
+        self.label = label
         self.t = t
-        self.w = w 
+        self.w = w
         self.I = I
         self.N = N
         self.xyz = xyz
@@ -45,21 +45,27 @@ class Frame(object):
         modification of self by modification of the copy's attributes or
         properties keys / references (property values are not deep copied). """
         return Frame(
-            label=self.label, 
-            t=self.t, 
-            w=self.w, 
-            I=self.I, 
-            N=self.N, 
-            xyz=self.xyz, 
-            properties=self.properties, # __init__ makes a copy of this
-            )
+            label=self.label,
+            t=self.t,
+            w=self.w,
+            I=self.I,
+            N=self.N,
+            xyz=self.xyz,
+            properties=self.properties,  # __init__ makes a copy of this
+        )
 
-    def __cmp__(
+    def __lt__(
         self,
         other,
-        ):
-        """ Comparator, to help with sorting : Comparator basis is (t, label, I). """
-        return cmp((self.t, self.label, self.I), (other.t, other.label, other.I))
+    ):
+        """ Replacement for python2 __cmp__, to help with sorting : Comparator basis is (t, label, I). 
+
+        Old __cmp__: return cmp((self.t, self.label, self.I), (other.t, other.label, other.I))
+
+        Details: https://stackoverflow.com/questions/8276983/why-cant-i-use-the-method-cmp-in-python-3-as-for-python-2
+        """
+        return (self.t, self.label, self.I) < (other.t, other.label, other.I)
+
 
 class Trajectory(object):
 
@@ -75,8 +81,7 @@ class Trajectory(object):
     def __init__(
         self,
         frames,
-        ): 
-
+    ):
         """ Verbatim constructor.
 
         Params/Attributes:
@@ -84,7 +89,7 @@ class Trajectory(object):
         """
 
         self.frames = frames
-    
+
     @property
     def labels(self):
         """ Return all unique labels in this trajectory, in sorted order. """
@@ -103,11 +108,11 @@ class Trajectory(object):
     def copy(self):
         """ Return a new Trajectory with frames copied according to Frame.copy()."""
         return Trajectory([frame.copy() for frame in self.frames])
-    
+
     def subset_by_label(
         self,
         label,
-        ):
+    ):
         """ Return a subset of this trajectory containing all frames with a given label (Frame-sorted) (view) """
         return Trajectory(list(sorted([x for x in self.frames if x.label == label])))
 
@@ -115,7 +120,7 @@ class Trajectory(object):
         self,
         label,
         index,
-        ):
+    ):
         """ Return a subset of this trajectory containing all frames with a given partial label (Frame-sorted) (view) """
         return Trajectory(list(sorted([x for x in self.frames if x.label[index] == label])))
 
@@ -123,8 +128,7 @@ class Trajectory(object):
         self,
         t,
         delta=1.0E-11,
-        ):
-
+    ):
         """ Return a subset of this trajectory containing all frames with a given time (Frame-sorted) (view). 
 
             Note that due to possible weirdness with ULP errors in float t
@@ -135,23 +139,21 @@ class Trajectory(object):
     def subset_by_I(
         self,
         I,
-        ):
-
+    ):
         """ Return a subset of this trajectory containing all frames with a given I (Frame-sorted) (view) """
         return Trajectory(list(sorted([x for x in self.frames if x.I == I])))
-    
+
     def __add__(
         self,
         other,
-        ):
+    ):
         """ Concatenation operator to merge two trajectories (view-based) """
         return Trajectory(self.frames + other.frames)
 
     def __mul__(
         self,
         w,
-        ):
-
+    ):
         """ Return a new Trajectory with all Frame objects multiplied by
         weight (new copy). This is useful to provide a weight on the initial
         condition due to e.g., oscillator strength and/or conformational population.
@@ -162,7 +164,7 @@ class Trajectory(object):
             frame2.w *= w
             frames.append(frame2)
         return Trajectory(frames)
-    
+
     __rmul__ = __mul__
 
     @staticmethod
@@ -170,13 +172,12 @@ class Trajectory(object):
         trajs,
         ws,
         labels=None,
-        ):
-
+    ):
         """ Merge a list of trajectories together, with weighting factors (new copy).
-    
+
         Params:
             trajs (list of Trajectory) - trajectories to merge
-            
+
             ws (list of float) - weight factors of trajectories (e.g., from
                 oscillator strength or conformational well).
             labels (list of label) - if provided, labels are updated to (label,
@@ -200,8 +201,7 @@ class Trajectory(object):
         self,
         ts,
         delta=1.0E-11,
-        ):
-
+    ):
         """ Return a new trajectory with frame objects interpolated by nearest
             neighbor interpolation if t is inside the range of times of self's
             frames for each label (e.g., no extrapolation is performed). (new
@@ -221,20 +221,19 @@ class Trajectory(object):
             traj2 = self.subset_by_label(label)
             t2s = traj2.ts
             for t in ts:
-                if t < min(t2s - delta) or t > max(t2s + delta): continue # Out of range (no extrapolation)
-                t2 = min(t2s, key=lambda x:abs(x - t)) # Closest value in t2s
+                if t < min(t2s - delta) or t > max(t2s + delta):
+                    continue  # Out of range (no extrapolation)
+                t2 = min(t2s, key=lambda x: abs(x - t))  # Closest value in t2s
                 frames2 = traj2.subset_by_t(t2).copy().frames
                 for frame2 in frames2:
                     frame2.t = t
                 frames += frames2
         return Trajectory(list(sorted(frames)))
 
-
     def interpolate_linear(
         self,
         ts,
-        ):
-
+    ):
         """ Return a new trajectory with frame objects interpolated by linear
             interpolation if t is inside the range of times of self's
             frames for each label (e.g., no extrapolation is performed). (new
@@ -256,10 +255,11 @@ class Trajectory(object):
             traj2 = self.subset_by_label(label)
             t2s = traj2.ts
             for t in ts:
-                if t < min(t2s) or t >= max(t2s): continue # Out of range (no extrapolation)
+                if t < min(t2s) or t >= max(t2s):
+                    continue  # Out of range (no extrapolation)
                 # Get points in time to linearly interpolate between
-                t3 = t2s[np.where(t2s<=t)[0][-1]]
-                t4 = t2s[np.where(t2s>t)[0][0]]
+                t3 = t2s[np.where(t2s <= t)[0][-1]]
+                t4 = t2s[np.where(t2s > t)[0][0]]
                 # Retrieve frames at points of linear interpolation for all labels
                 framei = traj2.subset_by_t(t3).copy().frames
                 framej = traj2.subset_by_t(t4).copy().frames
@@ -275,31 +275,32 @@ class Trajectory(object):
                 # linearly interpolate weight
                 w = framei.w + ((framej.w-framei.w) / (t4-t3)) * (t - t3)
                 # linearly interpolate position
-                xyz = framei.xyz + ((framej.xyz-framei.xyz) / (t4-t3)) * (t - t3)
-               
+                xyz = framei.xyz + \
+                    ((framej.xyz-framei.xyz) / (t4-t3)) * (t - t3)
+
                 # TODO: create separate option for interpolation of properties (in case different interpolation scheme preferred?
-                    # also if property is of incompatible type (such as string)
+                # also if property is of incompatible type (such as string)
 
                 # linearly interpolate all other properties
                 properties = {}
-                for key, vali in framei.properties.iteritems():
+                for key, vali in framei.properties.items():
                     valj = framej.properties[key]
                     valn = vali + ((valj-vali) / (t4-t3)) * (t - t3)
                     properties[key] = valn
 
                 # create updated frame at new time instace
-                nframe = Frame(label=label, t=t, w=w, I=framei.I, N=framei.N, xyz=xyz, properties=properties)
+                nframe = Frame(label=label, t=t, w=w, I=framei.I,
+                               N=framei.N, xyz=xyz, properties=properties)
                 frames.append(nframe)
 
         return Trajectory(list(sorted(frames)))
-                
+
     def extract_property(
         self,
         key,
         normalize=True,
         diff=False,
-        ):
-
+    ):
         """ Return a numpy array containing the time-history of a property,
             averaged over all Frames at each time (with frame weight applied).
 
@@ -323,7 +324,8 @@ class Trajectory(object):
             for frame in traj.frames:
                 V += frame.w * frame.properties[key]
                 W += frame.w
-            if normalize: V /= W
+            if normalize:
+                V /= W
             Vs.append(V)
         if diff:
             R = np.copy(Vs[0])
@@ -333,21 +335,21 @@ class Trajectory(object):
 
     def remove_duplicates(
         self,
-        ):
-
+    ):
         """ Return a new trajectory with duplicate frame objects removed
             based on frame label and time index
 
         Returns:
             traj (Trajectory) - new trajectory with interpolated frames.
         """
-         
+
         frames = []
         for ind1, frame1 in enumerate(self.frames):
             unique = True
             for ind2, frame2 in enumerate(self.frames[ind1+1:]):
                 if frame1.label == frame2.label and frame1.t == frame2.t:
                     unique = False
-            if unique == True: frames.append(frame1)
-        
+            if unique == True:
+                frames.append(frame1)
+
         return Trajectory(frames)

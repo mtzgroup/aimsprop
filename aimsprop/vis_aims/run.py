@@ -35,7 +35,7 @@ def write_vmd(
         'exit_vmd'   : True,
         'opacities' : True,
     }
-    for key, val in opt_in.iteritems():
+    for key, val in opt_in.items():
         options[key] = val
 
     fn_header = options['fn_header']
@@ -125,7 +125,7 @@ def write_render(
         'axis_on' : False,
         'scale' : 0.25,
     }
-    for key, val in opt_in.iteritems(): options[key] = val
+    for key, val in opt_in.items(): options[key] = val
     opacities = options['opacities']
     end_frame = options['end_frame']
     increment_frame = options['increment_frame']
@@ -194,18 +194,18 @@ def run_vmd_render(
 
     os.system('mkdir snapshots')
     os.system('module load VMD/1.9.2')
-    print 'Running VMD'
+    print('Running VMD')
     os.system('vmd -dispdev text -e vis_fms.vmd')
 
 def get_mp4(
     ):
-    print 'Writing mp4'
-    print 'ffmpeg must be installed - not necessarily capable of running on fire!'
+    print('Writing mp4')
+    print('ffmpeg must be installed - not necessarily capable of running on fire!')
     os.system("ffmpeg -r 4 -i snapshots/snap.%04d.tga -c:v libx264 -pix_fmt yuv420p -r 10 snap.mp4")
 
 def get_gif(
     ):
 
-    print 'Writing gif'
+    print('Writing gif')
     os.system('convert -delay 20 -loop 1 snapshots/snap*tga snap.gif')
 

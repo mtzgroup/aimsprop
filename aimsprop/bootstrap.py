@@ -1,6 +1,6 @@
 import numpy as np
 import copy
-import traj
+from . import traj
 
 def bootstrap(
     input_traj, 
@@ -55,7 +55,7 @@ def bootstrap(
         # merge input_trajectories    
         traj1 = traj.Trajectory.merge(input_trajs, [ws]*len(traj1.frames), labels=new_labels)
         resampled_input_trajs.append(traj1)
-        print ind+1, '/', nsamples, 'complete'
+        print(ind+1, '/', nsamples, 'complete')
 
     return resampled_input_trajs
 

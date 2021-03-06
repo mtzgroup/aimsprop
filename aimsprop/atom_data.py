@@ -1,4 +1,4 @@
-import units
+from . import units
 
 """
     Contains three dictionaries:
@@ -380,9 +380,9 @@ extended_mass_table = {
 
 
 # Convert masses in mass tables to a.u.
-mass_table = { k : v * units.units['au_per_amu'] for k, v in mass_table.iteritems() }
+mass_table = { k : v * units.units['au_per_amu'] for k, v in mass_table.items() }
 
-for k,v in extended_mass_table.iteritems():
+for k,v in extended_mass_table.items():
     new_v = []
     for val in v: 
         val2 = val[0] *  units.units['au_per_amu']
