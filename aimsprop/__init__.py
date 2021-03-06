@@ -1,3 +1,5 @@
+"""A repository for the representation and manipulation of AIMS-type trajectories."""
+
 from .traj import *
 from .fms90 import *
 from .aimspy import *
@@ -14,3 +16,6 @@ from .bootstrap import *
 from .pes import *
 from . import iam
 from . import vis_aims
+
+
+__version__ = "0.1.0"
