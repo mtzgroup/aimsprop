@@ -1,13 +1,14 @@
 import numpy as np
 
+
 def compute_population(
     traj,
-    ):
+):
 
-    """ Compute the state populations for a trajectory
+    """Compute the state populations for a trajectory
 
     Pararms:
-        traj (Trajectory) - the Trajectory object to compute the property for 
+        traj (Trajectory) - the Trajectory object to compute the property for
     Returns:
         populations (dict of np.ndarray) - dictionary from I to time
         population of I. The indices of each vector in populations
@@ -23,4 +24,3 @@ def compute_population(
             traj3 = traj2.subset_by_t(t)
             populations[I][tind] += sum([frame.w for frame in traj3.frames])
     return populations
-

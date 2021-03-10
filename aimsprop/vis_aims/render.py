@@ -1,10 +1,13 @@
-import os,re,sys
+import os
+import re
+import sys
+
 import numpy as np
 
-def render(
-    ):
 
-    """ Runs vmd and renders images 
+def render():
+
+    """Runs vmd and renders images
 
     Params:
 
@@ -13,7 +16,7 @@ def render(
     """
 
     # Requires:
-        # Names of vmd and tcl scripts
-        # Options:
-            # render without opening vmd
-            # open vmd before sourcing file
+    # Names of vmd and tcl scripts
+    # Options:
+    # render without opening vmd
+    # open vmd before sourcing file

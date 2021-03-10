@@ -3,8 +3,7 @@ import numpy as np
 
 class Frame(object):
 
-    """ Class Frame represents one "frame," a molecular geometry with associated time and label. 
-    """
+    """Class Frame represents one "frame," a molecular geometry with associated time and label."""
 
     def __init__(
         self,
@@ -16,7 +15,7 @@ class Frame(object):
         xyz,
         properties={},
     ):
-        """ Verbatim constructor.
+        """Verbatim constructor.
 
         Params/Attributes:
             label (hashable) - label identifying basis function [e.g., TBF
@@ -41,9 +40,9 @@ class Frame(object):
         self.properties = properties.copy()
 
     def copy(self):
-        """ Make a copy of self that is sufficiently deep to prevent
+        """Make a copy of self that is sufficiently deep to prevent
         modification of self by modification of the copy's attributes or
-        properties keys / references (property values are not deep copied). """
+        properties keys / references (property values are not deep copied)."""
         return Frame(
             label=self.label,
             t=self.t,
@@ -58,7 +57,7 @@ class Frame(object):
         self,
         other,
     ):
-        """ Replacement for python2 __cmp__, to help with sorting : Comparator basis is (t, label, I). 
+        """Replacement for python2 __cmp__, to help with sorting : Comparator basis is (t, label, I).
 
         Old __cmp__: return cmp((self.t, self.label, self.I), (other.t, other.label, other.I))
 
@@ -69,20 +68,20 @@ class Frame(object):
 
 class Trajectory(object):
 
-    """ Class Trajectory represents a list of Frames, with utility methods to
-        extract and merge Trajectories. 
+    """Class Trajectory represents a list of Frames, with utility methods to
+    extract and merge Trajectories.
 
-        Note that many methods below (e.g., subset_by_*) return shallow copies
-        or "views" of the current Trajectory object's frames. If a deeper copy
-        is needed, one can easily call Trajectory.copy(), which relies on
-        Frame.copy().
+    Note that many methods below (e.g., subset_by_*) return shallow copies
+    or "views" of the current Trajectory object's frames. If a deeper copy
+    is needed, one can easily call Trajectory.copy(), which relies on
+    Frame.copy().
     """
 
     def __init__(
         self,
         frames,
     ):
-        """ Verbatim constructor.
+        """Verbatim constructor.
 
         Params/Attributes:
             frames (list of Frame) - list of Frames in this Trajectory.
@@ -122,19 +121,23 @@ class Trajectory(object):
         index,
     ):
         """ Return a subset of this trajectory containing all frames with a given partial label (Frame-sorted) (view) """
-        return Trajectory(list(sorted([x for x in self.frames if x.label[index] == label])))
+        return Trajectory(
+            list(sorted([x for x in self.frames if x.label[index] == label]))
+        )
 
     def subset_by_t(
         self,
         t,
-        delta=1.0E-11,
+        delta=1.0e-11,
     ):
-        """ Return a subset of this trajectory containing all frames with a given time (Frame-sorted) (view). 
+        """Return a subset of this trajectory containing all frames with a given time (Frame-sorted) (view).
 
-            Note that due to possible weirdness with ULP errors in float t
-            values, we grab all times within delta absolute error of t
+        Note that due to possible weirdness with ULP errors in float t
+        values, we grab all times within delta absolute error of t
         """
-        return Trajectory(list(sorted([x for x in self.frames if abs(x.t - t) < delta])))
+        return Trajectory(
+            list(sorted([x for x in self.frames if abs(x.t - t) < delta]))
+        )
 
     def subset_by_I(
         self,
@@ -154,7 +157,7 @@ class Trajectory(object):
         self,
         w,
     ):
-        """ Return a new Trajectory with all Frame objects multiplied by
+        """Return a new Trajectory with all Frame objects multiplied by
         weight (new copy). This is useful to provide a weight on the initial
         condition due to e.g., oscillator strength and/or conformational population.
         """
@@ -173,7 +176,7 @@ class Trajectory(object):
         ws,
         labels=None,
     ):
-        """ Merge a list of trajectories together, with weighting factors (new copy).
+        """Merge a list of trajectories together, with weighting factors (new copy).
 
         Params:
             trajs (list of Trajectory) - trajectories to merge
@@ -200,9 +203,9 @@ class Trajectory(object):
     def interpolate_nearest(
         self,
         ts,
-        delta=1.0E-11,
+        delta=1.0e-11,
     ):
-        """ Return a new trajectory with frame objects interpolated by nearest
+        """Return a new trajectory with frame objects interpolated by nearest
             neighbor interpolation if t is inside the range of times of self's
             frames for each label (e.g., no extrapolation is performed). (new
             copy).
@@ -234,14 +237,14 @@ class Trajectory(object):
         self,
         ts,
     ):
-        """ Return a new trajectory with frame objects interpolated by linear
+        """Return a new trajectory with frame objects interpolated by linear
             interpolation if t is inside the range of times of self's
             frames for each label (e.g., no extrapolation is performed). (new
             copy).
 
             Using:
                 f(t) = f(t0) + [ (f(t1) - f(t0)) / (t1 - t0) ] * (t - t0)
-            Note: 
+            Note:
                 Not suitable for properties with large second derivative
 
         Params:
@@ -273,10 +276,9 @@ class Trajectory(object):
                     framej = framej[0]
 
                 # linearly interpolate weight
-                w = framei.w + ((framej.w-framei.w) / (t4-t3)) * (t - t3)
+                w = framei.w + ((framej.w - framei.w) / (t4 - t3)) * (t - t3)
                 # linearly interpolate position
-                xyz = framei.xyz + \
-                    ((framej.xyz-framei.xyz) / (t4-t3)) * (t - t3)
+                xyz = framei.xyz + ((framej.xyz - framei.xyz) / (t4 - t3)) * (t - t3)
 
                 # TODO: create separate option for interpolation of properties (in case different interpolation scheme preferred?
                 # also if property is of incompatible type (such as string)
@@ -285,12 +287,19 @@ class Trajectory(object):
                 properties = {}
                 for key, vali in framei.properties.items():
                     valj = framej.properties[key]
-                    valn = vali + ((valj-vali) / (t4-t3)) * (t - t3)
+                    valn = vali + ((valj - vali) / (t4 - t3)) * (t - t3)
                     properties[key] = valn
 
                 # create updated frame at new time instace
-                nframe = Frame(label=label, t=t, w=w, I=framei.I,
-                               N=framei.N, xyz=xyz, properties=properties)
+                nframe = Frame(
+                    label=label,
+                    t=t,
+                    w=w,
+                    I=framei.I,
+                    N=framei.N,
+                    xyz=xyz,
+                    properties=properties,
+                )
                 frames.append(nframe)
 
         return Trajectory(list(sorted(frames)))
@@ -301,7 +310,7 @@ class Trajectory(object):
         normalize=True,
         diff=False,
     ):
-        """ Return a numpy array containing the time-history of a property,
+        """Return a numpy array containing the time-history of a property,
             averaged over all Frames at each time (with frame weight applied).
 
         Params:
@@ -313,7 +322,7 @@ class Trajectory(object):
             V (np.ndarray of shape (ntime, sizeof(prop))) - the property
             expectation value. Time is always on the rows. If the property is
             scalar, this array will have ndim = 1. If the property is vector,
-            this array with have ndim = 2. And so forth. 
+            this array with have ndim = 2. And so forth.
         """
 
         Vs = []
@@ -336,7 +345,7 @@ class Trajectory(object):
     def remove_duplicates(
         self,
     ):
-        """ Return a new trajectory with duplicate frame objects removed
+        """Return a new trajectory with duplicate frame objects removed
             based on frame label and time index
 
         Returns:
@@ -346,7 +355,7 @@ class Trajectory(object):
         frames = []
         for ind1, frame1 in enumerate(self.frames):
             unique = True
-            for ind2, frame2 in enumerate(self.frames[ind1+1:]):
+            for ind2, frame2 in enumerate(self.frames[ind1 + 1 :]):
                 if frame1.label == frame2.label and frame1.t == frame2.t:
                     unique = False
             if unique == True:
