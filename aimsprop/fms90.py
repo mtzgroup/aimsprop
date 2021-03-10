@@ -275,14 +275,50 @@ def parse_fms90_dumpfile(
         for path in dumpfiles
     }
 
+    # Get the number of atoms for skipping lines 
+    
+
     # Read the Amp and positions files
     C2s = {}
     N2s = {}
     xyz2s = {}
-    states = {}
+    states = {} 
     for I, dumpfile in dumpfiles.items():
         posfile = posfiles[I]
-        data = np.loadtxt(dumpfile, skiprows=1, ndmin=2)
+        Ns = {}
+        xyzs = {}
+        open_posfile = open(posfile)
+        line = open_posfile.readline()
+        open_posfile.close()
+        natom = int(line)
+        #TODO: Modify FMS90 to deprecate this solution
+        if natom > 1000:
+          if I == 1:
+            print("Reading in the TrajDump file is not ideal for large molecules.")
+            print("If you notice this is taking a long time, please use parse_fms90 instead of parse_fms90_dumpfile.\n")
+          
+          dumpcols = int((natom*2*3)+6)
+
+          with open(dumpfile, "r") as f:
+            lines = f.readlines()
+          
+          for i in range(len(lines)):
+            if "StateID" in lines[i]:
+              break
+
+          startlines = i+1
+
+          data = []
+
+          for line in lines[startlines:]:
+            l = line.split()
+            l = [float(x) for x in l]
+            data+=l
+          data = np.array(data).reshape(-1, dumpcols)
+          #data.reshape((int(len(data)/dumpcols+1), dumpcols))
+        else:
+          data = np.loadtxt(dumpfile, skiprows=1, ndmin=2)
+
         ts = data[:, 0]
         if cutoff_time is not None:
             cut_tind = np.array(np.where(ts >= cutoff_time)).flatten()[0]
@@ -290,15 +326,20 @@ def parse_fms90_dumpfile(
         C2s[I] = {
             t: complex(data[tind, -4], data[tind, -3]) for tind, t in enumerate(ts)
         }
-        states[I] = data[0, -1]
 
+        states[I] = data[0, -1]
+        
+        posfile = posfiles[I]
         Ns = {}
         xyzs = {}
-        lines = open(posfile).readlines()
+        open_posfile=open(posfile)
+        lines = open_posfile.readlines()
+        open_posfile.close()
         natom = int(lines[0])
+
         if len(lines) % (natom + 2) != 0:
             raise RuntimeError("Position file does not have correct number of lines.")
-        nframe = len(lines) / (natom + 2)
+        nframe = int(len(lines) / (natom + 2))
         for A in range(nframe):
             lines2 = lines[A * (natom + 2) : (A + 1) * (natom + 2)]
             mobj = re.match(r"^\s*Time:\s+(\S+),\s+Trajectory:\d+\s*$", lines2[1])
