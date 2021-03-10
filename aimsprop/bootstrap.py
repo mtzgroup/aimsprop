@@ -1,15 +1,18 @@
-import numpy as np
 import copy
+
+import numpy as np
+
 from . import traj
 
+
 def bootstrap(
-    input_traj, 
-    nsamples, 
+    input_traj,
+    nsamples,
     ICs,
     label_ind=0,
-    ):
+):
 
-    """ Resample Trajectory Subset According to Bootstrap Algorithm
+    """Resample Trajectory Subset According to Bootstrap Algorithm
 
     Params:
         traj (Trajectory) - the Trajectory object to resample with replacement
@@ -50,30 +53,33 @@ def bootstrap(
             input_trajs_t0 = input_traj_t.subset_by_t(t0)
             for frame in input_trajs_t0.frames:
                 ws += frame.w
-        ws = 1.0/ws
-        
-        # merge input_trajectories    
-        traj1 = traj.Trajectory.merge(input_trajs, [ws]*len(traj1.frames), labels=new_labels)
+        ws = 1.0 / ws
+
+        # merge input_trajectories
+        traj1 = traj.Trajectory.merge(
+            input_trajs, [ws] * len(traj1.frames), labels=new_labels
+        )
         resampled_input_trajs.append(traj1)
-        print(ind+1, '/', nsamples, 'complete')
+        print(ind + 1, "/", nsamples, "complete")
 
     return resampled_input_trajs
+
 
 def extract_stats(
     trajs,
     key,
     diff=False,
-    ):
+):
 
-    """ Extract Standard Deviation and Average of Property from Set of Resampled Trajectories
+    """Extract Standard Deviation and Average of Property from Set of Resampled Trajectories
 
     Params:
         trajs (list of Trajectories [nsamples]) - re-weighted list of trajectories
         key (str) - the property key
         diff (bool) - difference property (zeroth-time value subtracted)?
     Returns:
-        avg (np.ndarray of shape (ntime, sizeof(prop))) - the average property expectation value. 
-        std (np.ndarray of shape (ntime, sizeof(prop))) - the standard deviation of the property expectation value. 
+        avg (np.ndarray of shape (ntime, sizeof(prop))) - the average property expectation value.
+        std (np.ndarray of shape (ntime, sizeof(prop))) - the standard deviation of the property expectation value.
 
     """
 
@@ -81,11 +87,10 @@ def extract_stats(
     for ind, traj in enumerate(trajs):
         PROP = traj.extract_property(key)
         if diff == True:
-            PROP -= np.outer(np.ones((PROP.shape[0],)), PROP[0,:])
+            PROP -= np.outer(np.ones((PROP.shape[0],)), PROP[0, :])
         props.append(PROP)
 
-    std = np.std(props, axis=0)  
-    avg = np.average(props,axis=0)
+    std = np.std(props, axis=0)
+    avg = np.average(props, axis=0)
 
     return avg, std
-

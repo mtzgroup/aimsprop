@@ -1,11 +1,12 @@
 import numpy as np
 
+
 def rotate_frames(
     traj,
     R,
-    ):
-    
-    """ Rotate xyz coordinates for all frames in trajectory by rotation matrix R. 
+):
+
+    """Rotate xyz coordinates for all frames in trajectory by rotation matrix R.
 
     Performs xyz = xyz * R
 
@@ -23,12 +24,13 @@ def rotate_frames(
         frame.xyz = np.dot(frame.xyz, R)
     return traj
 
+
 def rotate_frames_to_z(
     traj,
     vec,
-    ):
+):
 
-    """ Rotate xyz coordinates for all frames in trajectory so that vec is
+    """Rotate xyz coordinates for all frames in trajectory so that vec is
         rotated onto z. Useful to align molecules to z according to transition
         dipole moment vector.
 
@@ -42,12 +44,12 @@ def rotate_frames_to_z(
             xyz coordinates are overwritten with the transformed xyz
             coordinates.
     """
-    
+
     n = np.array(vec)
-    n /= np.sqrt(np.sum(n**2))
+    n /= np.sqrt(np.sum(n ** 2))
     v = 0.5 * (n + np.array((0.0, 0.0, 1.0)))
-    v /= np.sqrt(np.sum(v**2))
+    v /= np.sqrt(np.sum(v ** 2))
     R = np.eye(3)
     R -= 2.0 * np.outer(v, v)
-    R = np.dot(R, -np.eye(3)) # preserve chirality
+    R = np.dot(R, -np.eye(3))  # preserve chirality
     return rotate_frames(traj, R)
