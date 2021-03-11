@@ -288,36 +288,36 @@ def parse_fms90_dumpfile(
         Ns = {}
         xyzs = {}
         open_posfile = open(posfile)
-        line = open_posfile.readline()
+        line = open_posfile.readline() #Finds the number of atoms from the first line in the xyz file
         open_posfile.close()
-        natom = int(line)
+        natom = int(line) #Number of atoms in the system
         #TODO: Modify FMS90 to deprecate this solution
-        if natom > 1000:
-          if I == 1:
+        if natom > 1000: #Checks for molecule size
+          if I == 1: #For the first iteration, prints a warning, after that it assumes you've been told
             print("Reading in the TrajDump file is not ideal for large molecules.")
             print("If you notice this is taking a long time, please use parse_fms90 instead of parse_fms90_dumpfile.\n")
           
-          dumpcols = int((natom*2*3)+6)
+          dumpcols = int((natom*2*3)+6) #This computes the number of columns in the file as a function of the number of atoms (x y z for position (3) and momentum (3), plus 6 columns for Time etc
 
           with open(dumpfile, "r") as f:
             lines = f.readlines()
           
-          for i in range(len(lines)):
+          for i in range(len(lines)): #Looks for StateID as the final column to skip non-number lines
             if "StateID" in lines[i]:
               break
 
-          startlines = i+1
+          startlines = i+1 #Sets first line with input numbers
 
           data = []
 
-          for line in lines[startlines:]:
+          for line in lines[startlines:]: #Reads in data as a single vector
             l = line.split()
             l = [float(x) for x in l]
             data+=l
-          data = np.array(data).reshape(-1, dumpcols)
-          #data.reshape((int(len(data)/dumpcols+1), dumpcols))
+          data = np.array(data).reshape(-1, dumpcols) #Reshapes this data to have the correct number of columns
+         
         else:
-          data = np.loadtxt(dumpfile, skiprows=1, ndmin=2)
+          data = np.loadtxt(dumpfile, skiprows=1, ndmin=2) #If this data is not large (over 9999) you can use the original behavior and skip the first line
 
         ts = data[:, 0]
         if cutoff_time is not None:
