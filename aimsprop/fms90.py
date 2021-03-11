@@ -300,22 +300,24 @@ def parse_fms90_dumpfile(
           dumpcols = int((natom*2*3)+6)
 
           with open(dumpfile, "r") as f:
-            lines = f.readlines()
-          
-          for i in range(len(lines)):
-            if "StateID" in lines[i]:
-              break
-
-          startlines = i+1
+            startlines = 0
+            for line in f:
+              startlines += 1
+              if "StateID" in line:
+                break
 
           data = []
 
-          for line in lines[startlines:]:
-            l = line.split()
-            l = [float(x) for x in l]
-            data+=l
+          with open(dumpfile,"r") as f:
+            for i in range(startlines):
+              next(f,None)
+            for line in f:
+              l = line.split()
+              l = [float(x) for x in l]
+              data+=l
+
           data = np.array(data).reshape(-1, dumpcols)
-          #data.reshape((int(len(data)/dumpcols+1), dumpcols))
+
         else:
           data = np.loadtxt(dumpfile, skiprows=1, ndmin=2)
 
