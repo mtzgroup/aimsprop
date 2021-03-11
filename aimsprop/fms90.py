@@ -293,7 +293,8 @@ def parse_fms90_dumpfile(
         natom = int(line) #Number of atoms in the system
         #TODO: Modify FMS90 to deprecate this solution
         if natom > 1000: #Checks for molecule size
-          if I == 1: #For the first iteration, prints a warning, after that it assumes you've been told
+          #I is the total number of TrajDump files in the trajectory to be analyzed. 
+          if I == 1: #For the first iteration, prints a warning, after that it assumes you've been told. 
             print("Reading in the TrajDump file is not ideal for large molecules.")
             print("If you notice this is taking a long time, please use parse_fms90 instead of parse_fms90_dumpfile.\n")
           
