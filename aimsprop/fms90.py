@@ -283,7 +283,7 @@ def parse_fms90_dumpfile(
     N2s = {}
     xyz2s = {}
     states = {} 
-    for I, dumpfile in dumpfiles.items():
+    for I, dumpfile in dumpfiles.items(): #I denotes the TrajDump file number
         posfile = posfiles[I]
         Ns = {}
         xyzs = {}
@@ -293,13 +293,13 @@ def parse_fms90_dumpfile(
         natom = int(line)
         #TODO: Modify FMS90 to deprecate this solution
         if natom > 1000:
-          if I == 1:
+          if I == 1: #Raise error for first iteration through files
             print("Reading in the TrajDump file is not ideal for large molecules.")
             print("If you notice this is taking a long time, please use parse_fms90 instead of parse_fms90_dumpfile.\n")
           
-          dumpcols = int((natom*2*3)+6)
+          dumpcols = int((natom*2*3)+6) #Determine number of columns from number of atoms, xyz + xmomymomzmom + time + other columns
 
-          with open(dumpfile, "r") as f:
+          with open(dumpfile, "r") as f: #Determines number of header lines
             startlines = 0
             for line in f:
               startlines += 1
@@ -308,7 +308,7 @@ def parse_fms90_dumpfile(
 
           data = []
 
-          with open(dumpfile,"r") as f:
+          with open(dumpfile,"r") as f: #Reads in only important lines
             for i in range(startlines):
               next(f,None)
             for line in f:
@@ -316,10 +316,10 @@ def parse_fms90_dumpfile(
               l = [float(x) for x in l]
               data+=l
 
-          data = np.array(data).reshape(-1, dumpcols)
+          data = np.array(data).reshape(-1, dumpcols) #Reshapes the data properly
 
         else:
-          data = np.loadtxt(dumpfile, skiprows=1, ndmin=2)
+          data = np.loadtxt(dumpfile, skiprows=1, ndmin=2) #For normal files, do the normal thing
 
         ts = data[:, 0]
         if cutoff_time is not None:
