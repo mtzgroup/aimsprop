@@ -36,7 +36,7 @@ def prep_molpro(
         "njobs": 25,  # modified input script
     }
 
-    for key, val in opt_in.iteritems():
+    for key, val in list(opt_in.items()):
         options[key] = val
 
     # TODO: throw error messages for invalid combination of options

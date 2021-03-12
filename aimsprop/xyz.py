@@ -6,7 +6,7 @@ import numpy as np
 from . import atom_data, traj
 
 # TODO: Maybe should be in atom data
-_N_table = {val: key for key, val in atom_data.atom_symbol_table.items()}
+_N_table = {val: key for key, val in list(atom_data.atom_symbol_table.items())}
 
 
 def parse_xyz(

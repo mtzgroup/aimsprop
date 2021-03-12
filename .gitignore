@@ -139,6 +139,9 @@ cython_debug/
 
 # VSCode
 .vscode
+
+# Include Spawn.log files required for tests
+!Spawn.log
  
 .python-version
 

@@ -17,17 +17,17 @@ class Frame(object):
     ):
         """Verbatim constructor.
 
-        Params/Attributes:
-            label (hashable) - label identifying basis function [e.g., TBF
+        Arguments:
+            label (hashable): label identifying basis function [e.g., TBF
                 index (int), TBF pair index (int, int), etc]
-            t (float) - simulation time in au.
-            w (float) - weight of frame (e.g., Mulliken population, trajectory
+            t (float): simulation time in au.
+            w (float): weight of frame (e.g., Mulliken population, trajectory
                 weight, etc)
-            I (int) - electronic state label
-            N (list of int of len natom) - list of atomic numbers of molecule
-            xyz [np.ndarray of shape (natom, 3)] - coordinates of nuclei in
+            I (int): electronic state label
+            N (list of int of len natom): list of atomic numbers of molecule
+            xyz (np.ndarray of shape (natom, 3)): coordinates of nuclei in
                 Angstrom.
-            properties - dictionary mapping key (str) to user-defined
+            properties (dict): dictionary mapping key (str) to user-defined
                 numerical properties (float, complex, or np.ndarray)
         """
 
@@ -83,8 +83,8 @@ class Trajectory(object):
     ):
         """Verbatim constructor.
 
-        Params/Attributes:
-            frames (list of Frame) - list of Frames in this Trajectory.
+        Params:
+            frames (list of Frame): list of Frames in this Trajectory.
         """
 
         self.frames = frames
@@ -179,15 +179,15 @@ class Trajectory(object):
         """Merge a list of trajectories together, with weighting factors (new copy).
 
         Params:
-            trajs (list of Trajectory) - trajectories to merge
+            trajs (list of Trajectory): trajectories to merge
 
-            ws (list of float) - weight factors of trajectories (e.g., from
+            ws (list of float): weight factors of trajectories (e.g., from
                 oscillator strength or conformational well).
-            labels (list of label) - if provided, labels are updated to (label,
+            labels (list of label): if provided, labels are updated to (label,
                 frame.label). This is used, e.g., to label the frame by IC as
                 well as by any trajectory-specific labeling.
         Returns:
-            (Trajectory) - a single merged Trajectory with updated weights (and labels)
+            Trajectory: a single merged Trajectory with updated weights (and labels)
         """
 
         frames = []
@@ -214,9 +214,9 @@ class Trajectory(object):
             values, we grab all times within delta absolute error of t
 
         Params:
-            ts (list of float) - times to interpolated new Trajectory to
+            ts (list of float): times to interpolated new Trajectory to
         Returns:
-            traj (Trajectory) - new trajectory with interpolated frames.
+            Trajectory: new trajectory with interpolated frames.
         """
 
         frames = []
@@ -247,10 +247,10 @@ class Trajectory(object):
             Note:
                 Not suitable for properties with large second derivative
 
-        Params:
-            ts (list of float) - times to interpolated new Trajectory to
+        Arguments:
+            ts (list of float): times to interpolated new Trajectory to
         Returns:
-            traj (Trajectory) - new trajectory with interpolated frames.
+            Trajectory: new trajectory with interpolated frames.
         """
 
         frames = []
@@ -285,7 +285,7 @@ class Trajectory(object):
 
                 # linearly interpolate all other properties
                 properties = {}
-                for key, vali in framei.properties.items():
+                for key, vali in list(framei.properties.items()):
                     valj = framej.properties[key]
                     valn = vali + ((valj - vali) / (t4 - t3)) * (t - t3)
                     properties[key] = valn
@@ -314,12 +314,12 @@ class Trajectory(object):
             averaged over all Frames at each time (with frame weight applied).
 
         Params:
-            key (str) - the property key
-            normalize (bool) - normalize the property by the sum of weights in
+            key (str): the property key
+            normalize (bool): normalize the property by the sum of weights in
                 each time?
-            diff (bool) - difference property (zeroth-time value subtracted)?
+            diff (bool): difference property (zeroth-time value subtracted)?
         Returns:
-            V (np.ndarray of shape (ntime, sizeof(prop))) - the property
+            np.ndarray of shape (ntime, sizeof(prop)): the property
             expectation value. Time is always on the rows. If the property is
             scalar, this array will have ndim = 1. If the property is vector,
             this array with have ndim = 2. And so forth.
@@ -349,7 +349,7 @@ class Trajectory(object):
             based on frame label and time index
 
         Returns:
-            traj (Trajectory) - new trajectory with interpolated frames.
+            Trajectory: new trajectory with interpolated frames.
         """
 
         frames = []

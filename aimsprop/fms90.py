@@ -6,7 +6,7 @@ import numpy as np
 
 from . import atom_data, traj
 
-_N_table = {val: key for key, val in atom_data.atom_symbol_table.items()}
+_N_table = {val: key for key, val in list(atom_data.atom_symbol_table.items())}
 
 
 def parse_fms90(
@@ -22,19 +22,19 @@ def parse_fms90(
     This uses information in positions.*.xyz, Amps.*, S.dat, and Spawn.log to
     populate a density matrix by mulliken or saddle point rules.
 
-    Params:
-        filepath (str) - the path to the FMS run directory
-        scheme (str) - 'mulliken' or 'saddle' to indicate the approximation
+    Arguments:
+        filepath (str): the path to the FMS run directory
+        scheme (str): 'mulliken' or 'saddle' to indicate the approximation
             used for property evaluation.
-        cutoff_time (float) - cutoff time to stop reading trajectory info after
+        cutoff_time (float): cutoff time to stop reading trajectory info after
             (None reads all times).
-        cutoff_saddle (float) - cutoff for centroid TBF pair in the saddle
+        cutoff_saddle (float): cutoff for centroid TBF pair in the saddle
             point approach.
-        initial_I (int) - initial electronic state, used only if there is
+        initial_I (int): initial electronic state, used only if there is
             no Spawn.log (e.g., if no spawning has happened yet) to place
             electronic label.
     Returns:
-        trajectory (Trajectory) - the Trajectory object.
+        Trajectory: The Trajectory object.
     """
 
     # The files (these are standard textual output from FMS90)
@@ -59,7 +59,7 @@ def parse_fms90(
     C2s = {}
     N2s = {}
     xyz2s = {}
-    for I, Cfile in Cfiles.items():
+    for I, Cfile in list(Cfiles.items()):
         posfile = posfiles[I]
         lines = open(Cfile).readlines()[1:]
         Cs = {}
@@ -155,27 +155,29 @@ def parse_fms90(
 
     # Swap to put time on slow axis (C3s[t][I] instead of C2s[I][t])
     C3s = {}
-    for I, C2 in C2s.items():
-        for t, C in C2.items():
+    for I, C2 in list(C2s.items()):
+        for t, C in list(C2.items()):
             C3s.setdefault(t, {})[I] = C
     xyz3s = {}
-    for I, xyz2 in xyz2s.items():
-        for t, xyz in xyz2.items():
+    for I, xyz2 in list(xyz2s.items()):
+        for t, xyz in list(xyz2.items()):
             xyz3s.setdefault(t, {})[I] = xyz
     N3s = {}
-    for I, N2 in N2s.items():
-        for t, N in N2.items():
+    for I, N2 in list(N2s.items()):
+        for t, N in list(N2.items()):
             N3s.setdefault(t, {})[I] = N
 
     # Build Frames from parsed data
     frames = []
-    for t, S in Ss.items():
+    for t, S in list(Ss.items()):
         if t not in C3s:
             # Sometimes timestamps do not match because Amp.* only holds 2 decimal digits
             # E.g., 1000.875 (in S) vs. 1000.88 (in Amp)
             print(
-                "Warning: Time %r not in amplitudes (OK if very small adaptive timestep)"
-                % t
+                (
+                    "Warning: Time %r not in amplitudes (OK if very small adaptive timestep)"
+                    % t
+                )
             )
             continue
         Cs = C3s[t]
@@ -247,15 +249,15 @@ def parse_fms90_dumpfile(
     Note: TrajDump contains a lower level of precision than other output files
 
     Params:
-        filepath (str) - the path to the FMS run directory
-        scheme (str) - 'mulliken' or 'saddle' to indicate the approximation
+        filepath (str): the path to the FMS run directory
+        scheme (str): 'mulliken' or 'saddle' to indicate the approximation
             used for property evaluation.
-        cutoff_time (float) - cutoff time to stop reading trajectory info after
+        cutoff_time (float): cutoff time to stop reading trajectory info after
             (None reads all times).
-        cutoff_saddle (float) - cutoff for centroid TBF pair in the saddle
+        cutoff_saddle (float): cutoff for centroid TBF pair in the saddle
             point approach.
     Returns:
-        trajectory (Trajectory) - the Trajectory object.
+        Trajectory: The Trajectory object.
     """
 
     # The files (these are standard textual output from FMS90)
@@ -280,7 +282,7 @@ def parse_fms90_dumpfile(
     N2s = {}
     xyz2s = {}
     states = {}
-    for I, dumpfile in dumpfiles.items():
+    for I, dumpfile in list(dumpfiles.items()):
         posfile = posfiles[I]
         data = np.loadtxt(dumpfile, skiprows=1, ndmin=2)
         ts = data[:, 0]
@@ -353,16 +355,16 @@ def parse_fms90_dumpfile(
 
     # Swap to put time on slow axis (C3s[t][I] instead of C2s[I][t])
     C3s = {}
-    for I, C2 in C2s.items():
-        for t, C in C2.items():
+    for I, C2 in list(C2s.items()):
+        for t, C in list(C2.items()):
             C3s.setdefault(t, {})[I] = C
     xyz3s = {}
-    for I, xyz2 in xyz2s.items():
-        for t, xyz in xyz2.items():
+    for I, xyz2 in list(xyz2s.items()):
+        for t, xyz in list(xyz2.items()):
             xyz3s.setdefault(t, {})[I] = xyz
     N3s = {}
-    for I, N2 in N2s.items():
-        for t, N in N2.items():
+    for I, N2 in list(N2s.items()):
+        for t, N in list(N2.items()):
             N3s.setdefault(t, {})[I] = N
     # Build Frames from parsed data
     frames = []
@@ -376,8 +378,10 @@ def parse_fms90_dumpfile(
             # Sometimes timestamps do not match because Amp.* only holds 2 decimal digits
             # E.g., 1000.875 (in S) vs. 1000.88 (in Amp)
             print(
-                "Warning: Time %r not in amplitudes (OK if very small adaptive timestep)"
-                % t
+                (
+                    "Warning: Time %r not in amplitudes (OK if very small adaptive timestep)"
+                    % t
+                )
             )
             continue
         Cs = C3s[t]

@@ -40,7 +40,7 @@ def build_traj(
         for ind in restart_inds:
             run = input_dirs[ind]
             ind1 = restart_index[ind]
-            print("Reading:", run)
+            print(("Reading:", run))
             if (IC, ind1) in list(broken_frame.keys()):
                 traj = ai.parse_fms90_dumpfile(
                     "%s" % run, scheme="mulliken", cutoff_time=broken_frame[(IC, ind1)]
@@ -85,7 +85,7 @@ def build_traj(
     # Merge the trajectories into one super-big Trajectory with uniform weights
     print("merging ICs")
     traj = ai.Trajectory.merge(trajs, ws)
-    print("nframes", len(traj.frames))
+    print(("nframes", len(traj.frames)))
 
     return traj, trajs
 

@@ -94,7 +94,7 @@ def plot_spectra(
         Ototal += Ostate
 
     cmap = matplotlib.cm.get_cmap("jet")
-    colors = [cmap(float(x) / (Nstate - 1)) for x in reversed(range(Nstate))]
+    colors = [cmap(float(x) / (Nstate - 1)) for x in reversed(list(range(Nstate)))]
 
     plt.clf()
     for Oind, Ostate in enumerate(Ostates):

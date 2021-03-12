@@ -1,3 +1,12 @@
+# Some Feature
+
+Here's a documentation page for some feature that we'd like to explain to new users.
+
+You can add additional documentation by creating new markdown files in the `/docs` directory :)
+
+Notice that code highlighting looks great! This is from the `stilebene-1` example:
+
+```python
 import numpy as np
 
 import aimsprop as ai
@@ -9,7 +18,7 @@ trajs = [
 ]
 # Merge the trajectories into one super-big Trajectory with uniform weights
 traj = ai.Trajectory.merge(trajs, ws=[1.0 / len(trajs)] * len(trajs), labels=[1, 2, 3])
-print((traj.labels))
+print(traj.labels)
 # Compute properties at ~1 fs intervals, removing nonsense due to adaptive timesteps
 ts = np.arange(0.0, max(traj.ts), 40.0)  # TODO: Cleaner edges
 traj = traj.interpolate_nearest(ts)
@@ -82,3 +91,6 @@ ai.compute_ued_simple(traj, "UED", R=R, alpha=8.0)
 ai.plot_vector(
     "U.pdf", traj, "UED", y=R, ylabel=r"$R [\AA{}]$", time_units="fs", diff=True
 )
+
+
+```

@@ -497,4 +497,4 @@ def plot_form_factor():
 
 if __name__ == "__main__":
 
-    print(AtomicFormFactor.factors())
+    print((AtomicFormFactor.factors()))
