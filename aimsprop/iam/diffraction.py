@@ -94,7 +94,7 @@ def compute_diffraction(
     # Compute IAM scattering, integrating over all orientation angles
     for find, frame in enumerate(traj.frames):
         if print_level:
-            print("Frame %5d of %5d" % (find, len(traj.frames)))
+            print(("Frame %5d of %5d" % (find, len(traj.frames))))
         I = np.zeros_like(sx)
         for R, w in zip(Rs, ws):
             # cos(z)^2 pump anisotropy
@@ -212,7 +212,7 @@ def compute_diffraction_fast(
     # Compute IAM scattering, integrating over all orientation angles
     for find, frame in enumerate(traj.frames):
         if print_level:
-            print("Frame %5d of %5d" % (find, len(traj.frames)))
+            print(("Frame %5d of %5d" % (find, len(traj.frames))))
         xyz = ls.Tensor.array(frame.xyz)
         I = ext.compute_diffraction(
             L,
@@ -327,7 +327,7 @@ def compute_diffraction_moments_fast(
     # Compute IAM scattering, integrating over all orientation angles
     for find, frame in enumerate(traj.frames):
         if print_level:
-            print("Frame %5d of %5d" % (find, len(traj.frames)))
+            print(("Frame %5d of %5d" % (find, len(traj.frames))))
         xyz = ls.Tensor.array(frame.xyz)
         I = ext.compute_diffraction(
             L,
@@ -451,7 +451,7 @@ def compute_diffraction_moments_analytical(
     # Diffraction moment computation
     for find, frame in enumerate(traj.frames):
         if print_level:
-            print("Frame %5d of %5d" % (find, len(traj.frames)))
+            print(("Frame %5d of %5d" % (find, len(traj.frames))))
         # Geometry
         xyz = frame.xyz
         # Target

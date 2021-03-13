@@ -1,0 +1,35 @@
+site_name: aimsprop
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: pink
+      accent: cyan
+  features:
+    - search.suggest
+    - search.highlight
+  icon:
+    repo: fontawesome/brands/github-alt
+
+repo_url: https://github.com/mtzgroup/aimsprop
+site_author: Colton Hicks
+plugins:
+  - mkdocstrings:
+      watch:
+        - aimsprop
+      handlers:
+        python:
+          rendering:
+            show_root_heading: yes
+          selection:
+            filters:
+              - "!^_"
+              - "^__init__"
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - toc:
+      permalink: 🔗
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg

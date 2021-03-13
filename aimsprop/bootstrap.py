@@ -60,7 +60,7 @@ def bootstrap(
             input_trajs, [ws] * len(traj1.frames), labels=new_labels
         )
         resampled_input_trajs.append(traj1)
-        print(ind + 1, "/", nsamples, "complete")
+        print((ind + 1, "/", nsamples, "complete"))
 
     return resampled_input_trajs
 

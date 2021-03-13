@@ -53,7 +53,7 @@ def get_IP_molpro(
                 "%sIP/%02djob/%04d/%s" % (out_dir, job, ind + ind1, neutral_out)
             )
             nE = nEs[frame.I]
-            IP = np.array([(key, nE - cE) for key, cE in cEs.iteritems()])
+            IP = np.array([(key, nE - cE) for key, cE in list(cEs.items())])
             frame.properties["IP"] = IP
         os.chdir("../")
     os.chdir("../")

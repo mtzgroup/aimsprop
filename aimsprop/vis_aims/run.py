@@ -40,7 +40,7 @@ def write_vmd(
         "exit_vmd": True,
         "opacities": True,
     }
-    for key, val in opt_in.items():
+    for key, val in list(opt_in.items()):
         options[key] = val
 
     fn_header = options["fn_header"]
@@ -150,7 +150,7 @@ def write_render(
         "axis_on": False,
         "scale": 0.25,
     }
-    for key, val in opt_in.items():
+    for key, val in list(opt_in.items()):
         options[key] = val
     opacities = options["opacities"]
     end_frame = options["end_frame"]

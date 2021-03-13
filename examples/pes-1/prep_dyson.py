@@ -31,7 +31,7 @@ def prep_dyson(
         "njobs": 25,  # number of jobs
     }
 
-    for key, val in opt_in.iteritems():
+    for key, val in list(opt_in.items()):
         options[key] = val
 
     # TODO: throw error messages for invalid combination of options

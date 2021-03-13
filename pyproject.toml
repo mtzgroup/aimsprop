@@ -45,10 +45,38 @@ dev = [
   "isort >= 5.7.0",
 ]
 
+doc = [
+  "mkdocs >= 1.1.2",
+  "mkdocs-material >= 7.0.3",
+  "mkdocstrings >= 0.15.0",
+]
+
 [tool.pytest.ini_options]
+addopts = "-p no:warnings --cov-report html:htmlcov --cov"
 testpaths = "tests/"
 
 [tool.black]
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | \.env
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+  | lebedev.py       # also separately exclude the lebedev.py file
+                     # the root of the project
+)
+'''
+include = '\.pyi?$'
 line-length = 88
 
 [tool.isort]

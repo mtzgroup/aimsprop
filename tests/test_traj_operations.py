@@ -1,12 +1,11 @@
 import os
-import tempfile
 
 import numpy as np
 
 import aimsprop as ai
 
 
-def test_major_trajectory_operations():
+def test_major_trajectory_operations(tmp_path):
     # 1.  Parse a series of FMS90 trajectories that Hayley has run for ethylene
     trajs = [
         ai.parse_fms90("%s/test_data/%04d" % (os.path.dirname(__file__), x))
@@ -24,11 +23,9 @@ def test_major_trajectory_operations():
 
     # 4. Plot Bond Distances (Spaghetti + Blur)
     # Compute the a bond distance property for all Frames in traj
-
-    tmp_dir = tempfile.gettempdir()
     ai.compute_bond(traj, "R01", 0, 1)
     ai.plot_scalar(
-        tmp_dir + "R.pdf",
+        tmp_path / "R.pdf",
         traj,
         "R01",
         ylabel=r"$R_{CC} [\AA{}]$",
@@ -42,7 +39,7 @@ def test_major_trajectory_operations():
     ai.blur_property(traj, "R01", "Rblur", R, alpha=8.0)
     #    Plot the heat map of blurred bond distance
     ai.plot_vector(
-        tmp_dir + "Rblur.pdf",
+        tmp_path / "Rblur.pdf",
         traj,
         "Rblur",
         y=R,
@@ -57,7 +54,7 @@ def test_major_trajectory_operations():
     ai.compute_torsion(traj, "T0123", 0, 1, 2, 3)
     ai.unwrap_property(traj, "T0123", 360.0)
     ai.plot_scalar(
-        tmp_dir + "T.pdf",
+        tmp_path / "T.pdf",
         traj,
         "T0123",
         ylabel=r"$\Theta [^{\circ{}}]$",
@@ -71,7 +68,7 @@ def test_major_trajectory_operations():
     ai.blur_property(traj, "T0123", "Tblur", T, alpha=0.02)
     #    Plot the heat map of blurred torison
     ai.plot_vector(
-        tmp_dir + "Tblur.pdf",
+        tmp_path / "Tblur.pdf",
         traj,
         "Tblur",
         y=T,
@@ -88,7 +85,7 @@ def test_major_trajectory_operations():
 
     # Plot the heat map of the UED cross section detailed above
     ai.plot_vector(
-        tmp_dir + "UED.pdf",
+        tmp_path / "UED.pdf",
         traj,
         "UED",
         y=R,
