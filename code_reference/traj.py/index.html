@@ -1,0 +1,1753 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Colton Hicks">
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.5">
+    
+    
+      
+        <title>traj.py - aimsprop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.77f3fd56.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="cyan">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#trajpy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="aimsprop" class="md-header__button md-logo" aria-label="aimsprop">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            aimsprop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              traj.py
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/mtzgroup/aimsprop/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="aimsprop" class="md-nav__button md-logo" aria-label="aimsprop">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    aimsprop
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/mtzgroup/aimsprop/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        aimsprop
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../some_feature/" class="md-nav__link">
+        Some Feature
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Code reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Code reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Code reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fms90.py/" class="md-nav__link">
+        fms90.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          traj.py
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        traj.py
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory" class="md-nav__link">
+    Trajectory
+  </a>
+  
+    <nav class="md-nav" aria-label="Trajectory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.Is" class="md-nav__link">
+    Is
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.labels" class="md-nav__link">
+    labels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.ts" class="md-nav__link">
+    ts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.copy" class="md-nav__link">
+    copy()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.extract_property" class="md-nav__link">
+    extract_property()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.interpolate_linear" class="md-nav__link">
+    interpolate_linear()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.interpolate_nearest" class="md-nav__link">
+    interpolate_nearest()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.merge" class="md-nav__link">
+    merge()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.remove_duplicates" class="md-nav__link">
+    remove_duplicates()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.subset_by_I" class="md-nav__link">
+    subset_by_I()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.subset_by_label" class="md-nav__link">
+    subset_by_label()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.subset_by_sublabel" class="md-nav__link">
+    subset_by_sublabel()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.subset_by_t" class="md-nav__link">
+    subset_by_t()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aimsprop.traj.Frame" class="md-nav__link">
+    Frame
+  </a>
+  
+    <nav class="md-nav" aria-label="Frame">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Frame.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Frame.copy" class="md-nav__link">
+    copy()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        User scripts
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="User scripts" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          User scripts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_scripts/colton_script/" class="md-nav__link">
+        Colton's Super Script
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory" class="md-nav__link">
+    Trajectory
+  </a>
+  
+    <nav class="md-nav" aria-label="Trajectory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.Is" class="md-nav__link">
+    Is
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.labels" class="md-nav__link">
+    labels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.ts" class="md-nav__link">
+    ts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.copy" class="md-nav__link">
+    copy()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.extract_property" class="md-nav__link">
+    extract_property()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.interpolate_linear" class="md-nav__link">
+    interpolate_linear()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.interpolate_nearest" class="md-nav__link">
+    interpolate_nearest()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.merge" class="md-nav__link">
+    merge()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.remove_duplicates" class="md-nav__link">
+    remove_duplicates()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.subset_by_I" class="md-nav__link">
+    subset_by_I()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.subset_by_label" class="md-nav__link">
+    subset_by_label()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.subset_by_sublabel" class="md-nav__link">
+    subset_by_sublabel()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Trajectory.subset_by_t" class="md-nav__link">
+    subset_by_t()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aimsprop.traj.Frame" class="md-nav__link">
+    Frame
+  </a>
+  
+    <nav class="md-nav" aria-label="Frame">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Frame.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.traj.Frame.copy" class="md-nav__link">
+    copy()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/mtzgroup/aimsprop/edit/master/docs/code_reference/traj.py.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="trajpy">traj.py<a class="headerlink" href="#trajpy" title="Permanent link">🔗</a></h1>
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="aimsprop.traj.Trajectory">
+        <code>aimsprop.traj.Trajectory</code>
+
+
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory" title="Permanent link">🔗</a></h2>
+
+    <div class="doc doc-contents first">
+
+      <p>Class Trajectory represents a list of Frames, with utility methods to
+extract and merge Trajectories.</p>
+<p>Note that many methods below (e.g., subset_by_*) return shallow copies
+or "views" of the current Trajectory object's frames. If a deeper copy
+is needed, one can easily call Trajectory.copy(), which relies on
+Frame.copy().</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Trajectory.Is">
+<code class="highlight language-python"><span class="n">Is</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-property"><code>property</code></small>
+      <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
+  </span>
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory.Is" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>return all unique Is in this trajectory, in sorted order. </p>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Trajectory.labels">
+<code class="highlight language-python"><span class="n">labels</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-property"><code>property</code></small>
+      <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
+  </span>
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory.labels" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return all unique labels in this trajectory, in sorted order. </p>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Trajectory.ts">
+<code class="highlight language-python"><span class="n">ts</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-property"><code>property</code></small>
+      <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
+  </span>
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory.ts" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return all unique times in this trajectory, in sorted order. </p>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Trajectory.__init__">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frames</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory.__init__" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Verbatim constructor.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>frames</code></td>
+        <td><code>list of Frame</code></td>
+        <td><p>list of Frames in this Trajectory.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/traj.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">frames</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Verbatim constructor.</span>
+
+<span class="sd">    Params:</span>
+<span class="sd">        frames (list of Frame): list of Frames in this Trajectory.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">frames</span> <span class="o">=</span> <span class="n">frames</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Trajectory.copy">
+<code class="highlight language-python"><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory.copy" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return a new Trajectory with frames copied according to Frame.copy().</p>
+
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/traj.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Return a new Trajectory with frames copied according to Frame.copy().&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Trajectory</span><span class="p">([</span><span class="n">frame</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">])</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Trajectory.extract_property">
+<code class="highlight language-python"><span class="n">extract_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">diff</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory.extract_property" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return a numpy array containing the time-history of a property,
+    averaged over all Frames at each time (with frame weight applied).</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>key</code></td>
+        <td><code>str</code></td>
+        <td><p>the property key</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>normalize</code></td>
+        <td><code>bool</code></td>
+        <td><p>normalize the property by the sum of weights in
+each time?</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>diff</code></td>
+        <td><code>bool</code></td>
+        <td><p>difference property (zeroth-time value subtracted)?</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>np.ndarray of shape (ntime, sizeof(prop))</code></td>
+      <td><p>the property
+expectation value. Time is always on the rows. If the property is
+scalar, this array will have ndim = 1. If the property is vector,
+this array with have ndim = 2. And so forth.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/traj.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">extract_property</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">key</span><span class="p">,</span>
+    <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">diff</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a numpy array containing the time-history of a property,</span>
+<span class="sd">        averaged over all Frames at each time (with frame weight applied).</span>
+
+<span class="sd">    Params:</span>
+<span class="sd">        key (str): the property key</span>
+<span class="sd">        normalize (bool): normalize the property by the sum of weights in</span>
+<span class="sd">            each time?</span>
+<span class="sd">        diff (bool): difference property (zeroth-time value subtracted)?</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray of shape (ntime, sizeof(prop)): the property</span>
+<span class="sd">        expectation value. Time is always on the rows. If the property is</span>
+<span class="sd">        scalar, this array will have ndim = 1. If the property is vector,</span>
+<span class="sd">        this array with have ndim = 2. And so forth.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">Vs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ts</span><span class="p">:</span>
+        <span class="n">traj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">subset_by_t</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+        <span class="n">W</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+            <span class="n">V</span> <span class="o">+=</span> <span class="n">frame</span><span class="o">.</span><span class="n">w</span> <span class="o">*</span> <span class="n">frame</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">W</span> <span class="o">+=</span> <span class="n">frame</span><span class="o">.</span><span class="n">w</span>
+        <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span>
+            <span class="n">V</span> <span class="o">/=</span> <span class="n">W</span>
+        <span class="n">Vs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">diff</span><span class="p">:</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">Vs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">V</span> <span class="ow">in</span> <span class="n">Vs</span><span class="p">:</span>
+            <span class="n">V</span> <span class="o">-=</span> <span class="n">R</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Vs</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Trajectory.interpolate_linear">
+<code class="highlight language-python"><span class="n">interpolate_linear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts</span><span class="p">)</span></code>
+
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory.interpolate_linear" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return a new trajectory with frame objects interpolated by linear
+    interpolation if t is inside the range of times of self's
+    frames for each label (e.g., no extrapolation is performed). (new
+    copy).</p>
+<div class="highlight"><pre><span></span><code>!!! using
+    f(t) = f(t0) + [ (f(t1) - f(t0)) / (t1 - t0) ] * (t - t0)
+!!! note
+    Not suitable for properties with large second derivative
+</code></pre></div>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ts</code></td>
+        <td><code>list of float</code></td>
+        <td><p>times to interpolated new Trajectory to</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Trajectory</code></td>
+      <td><p>new trajectory with interpolated frames.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/traj.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">interpolate_linear</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">ts</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a new trajectory with frame objects interpolated by linear</span>
+<span class="sd">        interpolation if t is inside the range of times of self&#39;s</span>
+<span class="sd">        frames for each label (e.g., no extrapolation is performed). (new</span>
+<span class="sd">        copy).</span>
+
+<span class="sd">        Using:</span>
+<span class="sd">            f(t) = f(t0) + [ (f(t1) - f(t0)) / (t1 - t0) ] * (t - t0)</span>
+<span class="sd">        Note:</span>
+<span class="sd">            Not suitable for properties with large second derivative</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        ts (list of float): times to interpolated new Trajectory to</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Trajectory: new trajectory with interpolated frames.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">frames</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">:</span>
+        <span class="n">traj2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">subset_by_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">t2s</span> <span class="o">=</span> <span class="n">traj2</span><span class="o">.</span><span class="n">ts</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ts</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">t2s</span><span class="p">)</span> <span class="ow">or</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="nb">max</span><span class="p">(</span><span class="n">t2s</span><span class="p">):</span>
+                <span class="k">continue</span>  <span class="c1"># Out of range (no extrapolation)</span>
+            <span class="c1"># Get points in time to linearly interpolate between</span>
+            <span class="n">t3</span> <span class="o">=</span> <span class="n">t2s</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">t2s</span> <span class="o">&lt;=</span> <span class="n">t</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+            <span class="n">t4</span> <span class="o">=</span> <span class="n">t2s</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">t2s</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="c1"># Retrieve frames at points of linear interpolation for all labels</span>
+            <span class="n">framei</span> <span class="o">=</span> <span class="n">traj2</span><span class="o">.</span><span class="n">subset_by_t</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">frames</span>
+            <span class="n">framej</span> <span class="o">=</span> <span class="n">traj2</span><span class="o">.</span><span class="n">subset_by_t</span><span class="p">(</span><span class="n">t4</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">frames</span>
+
+            <span class="c1"># TODO: Instead of this eliminate duplicate frames at beginning of method?</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">framei</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># print &quot;Warning: duplicate frames present!&quot;</span>
+                <span class="n">framei</span> <span class="o">=</span> <span class="n">framei</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">framej</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># print &quot;Warning: duplicate frames present!&quot;</span>
+                <span class="n">framej</span> <span class="o">=</span> <span class="n">framej</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="c1"># linearly interpolate weight</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">framei</span><span class="o">.</span><span class="n">w</span> <span class="o">+</span> <span class="p">((</span><span class="n">framej</span><span class="o">.</span><span class="n">w</span> <span class="o">-</span> <span class="n">framei</span><span class="o">.</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">t4</span> <span class="o">-</span> <span class="n">t3</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">t3</span><span class="p">)</span>
+            <span class="c1"># linearly interpolate position</span>
+            <span class="n">xyz</span> <span class="o">=</span> <span class="n">framei</span><span class="o">.</span><span class="n">xyz</span> <span class="o">+</span> <span class="p">((</span><span class="n">framej</span><span class="o">.</span><span class="n">xyz</span> <span class="o">-</span> <span class="n">framei</span><span class="o">.</span><span class="n">xyz</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">t4</span> <span class="o">-</span> <span class="n">t3</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">t3</span><span class="p">)</span>
+
+            <span class="c1"># TODO: create separate option for interpolation of properties (in case different interpolation scheme preferred?</span>
+            <span class="c1"># also if property is of incompatible type (such as string)</span>
+
+            <span class="c1"># linearly interpolate all other properties</span>
+            <span class="n">properties</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">vali</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">framei</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+                <span class="n">valj</span> <span class="o">=</span> <span class="n">framej</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="n">valn</span> <span class="o">=</span> <span class="n">vali</span> <span class="o">+</span> <span class="p">((</span><span class="n">valj</span> <span class="o">-</span> <span class="n">vali</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">t4</span> <span class="o">-</span> <span class="n">t3</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">t3</span><span class="p">)</span>
+                <span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">valn</span>
+
+            <span class="c1"># create updated frame at new time instace</span>
+            <span class="n">nframe</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">(</span>
+                <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+                <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span>
+                <span class="n">w</span><span class="o">=</span><span class="n">w</span><span class="p">,</span>
+                <span class="n">I</span><span class="o">=</span><span class="n">framei</span><span class="o">.</span><span class="n">I</span><span class="p">,</span>
+                <span class="n">N</span><span class="o">=</span><span class="n">framei</span><span class="o">.</span><span class="n">N</span><span class="p">,</span>
+                <span class="n">xyz</span><span class="o">=</span><span class="n">xyz</span><span class="p">,</span>
+                <span class="n">properties</span><span class="o">=</span><span class="n">properties</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nframe</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Trajectory</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">frames</span><span class="p">)))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Trajectory.interpolate_nearest">
+<code class="highlight language-python"><span class="n">interpolate_nearest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">1e-11</span><span class="p">)</span></code>
+
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory.interpolate_nearest" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return a new trajectory with frame objects interpolated by nearest
+    neighbor interpolation if t is inside the range of times of self's
+    frames for each label (e.g., no extrapolation is performed). (new
+    copy).</p>
+<div class="highlight"><pre><span></span><code>Note that due to possible weirdness with ULP errors in float t
+values, we grab all times within delta absolute error of t
+</code></pre></div>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ts</code></td>
+        <td><code>list of float</code></td>
+        <td><p>times to interpolated new Trajectory to</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Trajectory</code></td>
+      <td><p>new trajectory with interpolated frames.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/traj.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">interpolate_nearest</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">ts</span><span class="p">,</span>
+    <span class="n">delta</span><span class="o">=</span><span class="mf">1.0e-11</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a new trajectory with frame objects interpolated by nearest</span>
+<span class="sd">        neighbor interpolation if t is inside the range of times of self&#39;s</span>
+<span class="sd">        frames for each label (e.g., no extrapolation is performed). (new</span>
+<span class="sd">        copy).</span>
+
+<span class="sd">        Note that due to possible weirdness with ULP errors in float t</span>
+<span class="sd">        values, we grab all times within delta absolute error of t</span>
+
+<span class="sd">    Params:</span>
+<span class="sd">        ts (list of float): times to interpolated new Trajectory to</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Trajectory: new trajectory with interpolated frames.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">frames</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">:</span>
+        <span class="n">traj2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">subset_by_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">t2s</span> <span class="o">=</span> <span class="n">traj2</span><span class="o">.</span><span class="n">ts</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ts</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">t2s</span> <span class="o">-</span> <span class="n">delta</span><span class="p">)</span> <span class="ow">or</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">t2s</span> <span class="o">+</span> <span class="n">delta</span><span class="p">):</span>
+                <span class="k">continue</span>  <span class="c1"># Out of range (no extrapolation)</span>
+            <span class="n">t2</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">t2s</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">t</span><span class="p">))</span>  <span class="c1"># Closest value in t2s</span>
+            <span class="n">frames2</span> <span class="o">=</span> <span class="n">traj2</span><span class="o">.</span><span class="n">subset_by_t</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">frames</span>
+            <span class="k">for</span> <span class="n">frame2</span> <span class="ow">in</span> <span class="n">frames2</span><span class="p">:</span>
+                <span class="n">frame2</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">t</span>
+            <span class="n">frames</span> <span class="o">+=</span> <span class="n">frames2</span>
+    <span class="k">return</span> <span class="n">Trajectory</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">frames</span><span class="p">)))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Trajectory.merge">
+<code class="highlight language-python"><span class="n">merge</span><span class="p">(</span><span class="n">trajs</span><span class="p">,</span> <span class="n">ws</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-staticmethod"><code>staticmethod</code></small>
+  </span>
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory.merge" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Merge a list of trajectories together, with weighting factors (new copy).</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>trajs</code></td>
+        <td><code>list of Trajectory</code></td>
+        <td><p>trajectories to merge</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>ws</code></td>
+        <td><code>list of float</code></td>
+        <td><p>weight factors of trajectories (e.g., from
+oscillator strength or conformational well).</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>labels</code></td>
+        <td><code>list of label</code></td>
+        <td><p>if provided, labels are updated to (label,
+frame.label). This is used, e.g., to label the frame by IC as
+well as by any trajectory-specific labeling.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Trajectory</code></td>
+      <td><p>a single merged Trajectory with updated weights (and labels)</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/traj.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span>
+    <span class="n">trajs</span><span class="p">,</span>
+    <span class="n">ws</span><span class="p">,</span>
+    <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Merge a list of trajectories together, with weighting factors (new copy).</span>
+
+<span class="sd">    Params:</span>
+<span class="sd">        trajs (list of Trajectory): trajectories to merge</span>
+
+<span class="sd">        ws (list of float): weight factors of trajectories (e.g., from</span>
+<span class="sd">            oscillator strength or conformational well).</span>
+<span class="sd">        labels (list of label): if provided, labels are updated to (label,</span>
+<span class="sd">            frame.label). This is used, e.g., to label the frame by IC as</span>
+<span class="sd">            well as by any trajectory-specific labeling.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Trajectory: a single merged Trajectory with updated weights (and labels)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">frames</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">I</span><span class="p">,</span> <span class="n">traj</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trajs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+            <span class="n">frame2</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">frame2</span><span class="o">.</span><span class="n">w</span> <span class="o">*=</span> <span class="n">ws</span><span class="p">[</span><span class="n">I</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">labels</span><span class="p">:</span>
+                <span class="n">frame2</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">I</span><span class="p">],</span> <span class="n">frame2</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Trajectory</span><span class="p">(</span><span class="n">frames</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Trajectory.remove_duplicates">
+<code class="highlight language-python"><span class="n">remove_duplicates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory.remove_duplicates" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return a new trajectory with duplicate frame objects removed
+    based on frame label and time index</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Trajectory</code></td>
+      <td><p>new trajectory with interpolated frames.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/traj.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">remove_duplicates</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a new trajectory with duplicate frame objects removed</span>
+<span class="sd">        based on frame label and time index</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Trajectory: new trajectory with interpolated frames.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">frames</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">ind1</span><span class="p">,</span> <span class="n">frame1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">):</span>
+        <span class="n">unique</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">ind2</span><span class="p">,</span> <span class="n">frame2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="n">ind1</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]):</span>
+            <span class="k">if</span> <span class="n">frame1</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">frame2</span><span class="o">.</span><span class="n">label</span> <span class="ow">and</span> <span class="n">frame1</span><span class="o">.</span><span class="n">t</span> <span class="o">==</span> <span class="n">frame2</span><span class="o">.</span><span class="n">t</span><span class="p">:</span>
+                <span class="n">unique</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">unique</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Trajectory</span><span class="p">(</span><span class="n">frames</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Trajectory.subset_by_I">
+<code class="highlight language-python"><span class="n">subset_by_I</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span></code>
+
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory.subset_by_I" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return a subset of this trajectory containing all frames with a given I (Frame-sorted) (view) </p>
+
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/traj.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">subset_by_I</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">I</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Return a subset of this trajectory containing all frames with a given I (Frame-sorted) (view) &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Trajectory</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">frames</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">I</span> <span class="o">==</span> <span class="n">I</span><span class="p">])))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Trajectory.subset_by_label">
+<code class="highlight language-python"><span class="n">subset_by_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span></code>
+
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory.subset_by_label" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return a subset of this trajectory containing all frames with a given label (Frame-sorted) (view) </p>
+
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/traj.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">subset_by_label</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">label</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Return a subset of this trajectory containing all frames with a given label (Frame-sorted) (view) &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Trajectory</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">frames</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">label</span><span class="p">])))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Trajectory.subset_by_sublabel">
+<code class="highlight language-python"><span class="n">subset_by_sublabel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span></code>
+
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory.subset_by_sublabel" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return a subset of this trajectory containing all frames with a given partial label (Frame-sorted) (view) </p>
+
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/traj.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">subset_by_sublabel</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">label</span><span class="p">,</span>
+    <span class="n">index</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Return a subset of this trajectory containing all frames with a given partial label (Frame-sorted) (view) &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Trajectory</span><span class="p">(</span>
+        <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">frames</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">label</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">label</span><span class="p">]))</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Trajectory.subset_by_t">
+<code class="highlight language-python"><span class="n">subset_by_t</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">1e-11</span><span class="p">)</span></code>
+
+
+<a class="headerlink" href="#aimsprop.traj.Trajectory.subset_by_t" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return a subset of this trajectory containing all frames with a given time (Frame-sorted) (view).</p>
+<p>Note that due to possible weirdness with ULP errors in float t
+values, we grab all times within delta absolute error of t</p>
+
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/traj.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">subset_by_t</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">delta</span><span class="o">=</span><span class="mf">1.0e-11</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a subset of this trajectory containing all frames with a given time (Frame-sorted) (view).</span>
+
+<span class="sd">    Note that due to possible weirdness with ULP errors in float t</span>
+<span class="sd">    values, we grab all times within delta absolute error of t</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Trajectory</span><span class="p">(</span>
+        <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">frames</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">t</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">delta</span><span class="p">]))</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="aimsprop.traj.Frame">
+        <code>aimsprop.traj.Frame</code>
+
+
+
+<a class="headerlink" href="#aimsprop.traj.Frame" title="Permanent link">🔗</a></h2>
+
+    <div class="doc doc-contents first">
+
+      <p>Class Frame represents one "frame," a molecular geometry with associated time and label.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Frame.__init__">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">{})</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+<a class="headerlink" href="#aimsprop.traj.Frame.__init__" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Verbatim constructor.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>label</code></td>
+        <td><code>hashable</code></td>
+        <td><p>label identifying basis function [e.g., TBF
+index (int), TBF pair index (int, int), etc]</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>t</code></td>
+        <td><code>float</code></td>
+        <td><p>simulation time in au.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>w</code></td>
+        <td><code>float</code></td>
+        <td><p>weight of frame (e.g., Mulliken population, trajectory
+weight, etc)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>I</code></td>
+        <td><code>int</code></td>
+        <td><p>electronic state label</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>N</code></td>
+        <td><code>list of int of len natom</code></td>
+        <td><p>list of atomic numbers of molecule</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>xyz</code></td>
+        <td><code>np.ndarray of shape (natom, 3</code></td>
+        <td><p>coordinates of nuclei in
+Angstrom.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>properties</code></td>
+        <td><code>dict</code></td>
+        <td><p>dictionary mapping key (str) to user-defined
+numerical properties (float, complex, or np.ndarray)</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/traj.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">label</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">w</span><span class="p">,</span>
+    <span class="n">I</span><span class="p">,</span>
+    <span class="n">N</span><span class="p">,</span>
+    <span class="n">xyz</span><span class="p">,</span>
+    <span class="n">properties</span><span class="o">=</span><span class="p">{},</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Verbatim constructor.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        label (hashable): label identifying basis function [e.g., TBF</span>
+<span class="sd">            index (int), TBF pair index (int, int), etc]</span>
+<span class="sd">        t (float): simulation time in au.</span>
+<span class="sd">        w (float): weight of frame (e.g., Mulliken population, trajectory</span>
+<span class="sd">            weight, etc)</span>
+<span class="sd">        I (int): electronic state label</span>
+<span class="sd">        N (list of int of len natom): list of atomic numbers of molecule</span>
+<span class="sd">        xyz (np.ndarray of shape (natom, 3)): coordinates of nuclei in</span>
+<span class="sd">            Angstrom.</span>
+<span class="sd">        properties (dict): dictionary mapping key (str) to user-defined</span>
+<span class="sd">            numerical properties (float, complex, or np.ndarray)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">t</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">=</span> <span class="n">I</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="n">N</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">xyz</span> <span class="o">=</span> <span class="n">xyz</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="aimsprop.traj.Frame.copy">
+<code class="highlight language-python"><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a class="headerlink" href="#aimsprop.traj.Frame.copy" title="Permanent link">🔗</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Make a copy of self that is sufficiently deep to prevent
+modification of self by modification of the copy's attributes or
+properties keys / references (property values are not deep copied).</p>
+
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/traj.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a copy of self that is sufficiently deep to prevent</span>
+<span class="sd">    modification of self by modification of the copy&#39;s attributes or</span>
+<span class="sd">    properties keys / references (property values are not deep copied).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Frame</span><span class="p">(</span>
+        <span class="n">label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+        <span class="n">t</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">,</span>
+        <span class="n">w</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">,</span>
+        <span class="n">I</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span><span class="p">,</span>
+        <span class="n">N</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">,</span>
+        <span class="n">xyz</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">xyz</span><span class="p">,</span>
+        <span class="n">properties</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">,</span>  <span class="c1"># __init__ makes a copy of this</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../fms90.py/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              fms90.py
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../../user_scripts/colton_script/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Colton's Super Script
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.5cf3e710.min.js"></script>
+      
+    
+  </body>
+</html>
