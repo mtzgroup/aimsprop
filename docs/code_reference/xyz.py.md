@@ -1,0 +1,3 @@
+# xyz.py
+
+:::aimsprop.xyz

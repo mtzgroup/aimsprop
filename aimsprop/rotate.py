@@ -1,21 +1,22 @@
 import numpy as np
 
+from .traj import Trajectory
+
 
 def rotate_frames(
-    traj,
-    R,
-):
-
+    traj: Trajectory,
+    R: np.ndarray,
+) -> Trajectory:
     """Rotate xyz coordinates for all frames in trajectory by rotation matrix R.
 
     Performs xyz = xyz * R
 
     Params:
-        traj (Trajectory) - the Trajectory object to rotate coordinates in
+        traj: the Trajectory object to rotate coordinates in
             place (modified in place).
-        R (np.ndarray, shape (3,3)) - rotation or transformation matrix.
-    Result/Return:
-        traj (Trajectory) - reference to the input Trajectory object. The
+        R: rotation or transformation matrix, shape (3,3).
+    Return:
+        traj: reference to the input Trajectory object. The
             xyz coordinates are overwritten with the transformed xyz
             coordinates.
     """
@@ -26,21 +27,20 @@ def rotate_frames(
 
 
 def rotate_frames_to_z(
-    traj,
-    vec,
-):
-
+    traj: Trajectory,
+    vec: np.ndarray,
+) -> Trajectory:
     """Rotate xyz coordinates for all frames in trajectory so that vec is
         rotated onto z. Useful to align molecules to z according to transition
         dipole moment vector.
 
     Params:
-        traj (Trajectory) - the Trajectory object to rotate coordinates in
+        traj: the Trajectory object to rotate coordinates in
             place (modified in place).
-        vec (np.ndarray, shape (3,)) - vector in current coordinates to rotate
-            onto +z
-    Result/Return:
-        traj (Trajectory) - reference to the input Trajectory object. The
+        vec: vector in current coordinates to rotate
+            onto +z, shape (3,)
+    Return:
+        traj: reference to the input Trajectory object. The
             xyz coordinates are overwritten with the transformed xyz
             coordinates.
     """

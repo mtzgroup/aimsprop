@@ -3,38 +3,39 @@ import numpy as np
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
 
 from . import pop  # for pop.compute_population
+from .traj import Trajectory
 
 
 def plot_scalar(
-    filename,
-    traj,
-    key,
-    ylabel=None,
-    time_units="au",
+    filename: str,
+    traj: Trajectory,
+    key: str,
+    ylabel: str = None,
+    time_units: str = "au",
     legend_loc=1,
-    state_colors=None,
-    plot_average=True,
-    clf=True,
-):
-
+    state_colors: list = None,
+    plot_average: bool = True,
+    clf: bool = True,
+) -> Figure:
     """Plot an AIMS scalar property (e.g., a "spaghetti plot" for a bond distance).
 
     Params:
-        filename (str) - the output PDF file
-        traj (Trajectory) - the Trajectory to plot properties for
-        key (str) - the key of the property
-        ylabel (str) - the label of the y-axis (defaults to key)
-        time_units (str) - "au" or "fs"
-        legend_loc (legend location) - location indicator for legend
-        state_colors (list of colors) - list of colors to use for state
+        filename: the output PDF file
+        traj: the Trajectory to plot properties for
+        key: the key of the property
+        ylabel: the label of the y-axis (defaults to key)
+        time_units: "au" or "fs"
+        legend_loc (legend location): location indicator for legend
+        state_colors: list of colors to use for state
             plotting. None defaults to interpolation on jet colormap. For two
             or three states, many people prefer ['r', 'b', 'g'] or similar.
-        plot_average (bool) - Plot averages for each state and total?
-        clf (bool) - clear plot or not?
-    Result/Returns:
-        returns plt handle for further modification
+        plot_average: Plot averages for each state and total?
+        clf : clear plot or not?
+    Returns:
+        plt handle for further modification
         saves figure to filename
     """
 
@@ -99,40 +100,39 @@ def plot_scalar(
 
 
 def plot_vector(
-    filename,
-    traj,
-    key,
-    y,
-    ylabel=None,
-    time_units="au",
-    diff=False,
+    filename: str,
+    traj: Trajectory,
+    key: str,
+    y: np.ndarray,
+    ylabel: str = None,
+    time_units: str = "au",
+    diff: bool = False,
     cmap=plt.cm.bwr,
-    levels=None,
-    nlevel=65,
-    twosided=True,
-    clf=True,
-):
-
+    levels: np.ndarray = None,
+    nlevel: int = 65,
+    twosided: bool = True,
+    clf: bool = True,
+) -> Figure:
     """Plot an AIMS vector property (e.g., a heatmap of a UED or PES signal).
 
     Params:
-        filename (str) - the output PDF file
-        traj (Trajectory) - the Trajectory to plot properties for
-        key (str) - the key of the property
-        y (np.ndarray) - the indices of the y axis (e.g., R or Q or something
+        filename: the output PDF file
+        traj: the Trajectory to plot properties for
+        key: the key of the property
+        y: the indices of the y axis (e.g., R or Q or something
             like it)
-        ylabel (str) - the label of the y-axis (defaults to key)
-        time_units (str) - "au" or "fs"
-        diff (bool) - is this a difference property from t=0?
-        cmap (colormap) - the desired colormap
-        levels (np.ndarray) - the explicitly desired contour levels (1st
+        ylabel: the label of the y-axis (defaults to key)
+        time_units: "au" or "fs"
+        diff: is this a difference property from t=0?
+        cmap: the desired colormap
+        levels: the explicitly desired contour levels (1st
             priority).
-        nlevel (np.ndarray) - number of evenly spaced contour levels to
+        nlevel: number of evenly spaced contour levels to
             saturate data (2nd priority).
-        twosided (bool) - is the colormap two-sided (used only with nlevel)
-        clf (bool) - clear plot or not?
-    Result/Returns:
-        returns plt handle for further modification
+        twosided: is the colormap two-sided (used only with nlevel)
+        clf: clear plot or not?
+    Returns:
+        plt handle for further modification
         saves figure to filename
     """
 
@@ -184,34 +184,33 @@ def plot_vector(
 
 
 def plot_population(
-    filename,
-    traj,
-    trajs,
-    time_units="au",
+    filename: str,
+    traj: Trajectory,
+    trajs: list,
+    time_units: str = "au",
     legend_loc="right",
-    state_colors=None,
-    plot_total=True,
-    clf=True,
-    tmax=None,
-):
-
+    state_colors: list = None,
+    plot_total: bool = True,
+    clf: bool = True,
+    tmax: float = None,
+) -> Figure:
     """Plot the AIMS state populations.
 
     Params:
-        filename (str) - the output PDF file
-        traj (Trajectory) - the Trajectory to plot populations for
-        trajs (list of Trajectory) - a list of Trajectory objects, one for each
+        filename: the output PDF file
+        traj: the Trajectory to plot populations for
+        trajs: a list of Trajectory objects, one for each
             IC. This is used for the "spaghetti" plots.
-        time_units (str) - "au" or "fs"
-        legend_loc (legend location) - location indicator for legend
-        state_colors (list of colors) - list of colors to use for state
+        time_units: "au" or "fs"
+        legend_loc (legend location): location indicator for legend
+        state_colors (list of colors): list of colors to use for state
             plotting. None defaults to interpolation on jet colormap. For two
             or three states, many people prefer ['r', 'b', 'g'] or similar.
-        plot_total (bool) - Plot total population?
-        clf (bool) - clear plot or not?
-    Result/Returns:
-        returns plt handle for further modification
-        saves figure to filename
+        plot_total: Plot total population?
+        clf: clear plot or not?
+    Returns:
+         plt handle for further modification
+         saves figure to filename
     """
 
     if time_units == "au":

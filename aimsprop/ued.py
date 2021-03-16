@@ -2,6 +2,8 @@ import math
 
 import numpy as np
 
+from .traj import Trajectory
+
 # UED cross sections (computed by ELSEPA for a 3.7 MeV e- beam with default settings)
 _ued_cross_sections = {
     1: 3.92943e-04,
@@ -102,27 +104,26 @@ _ued_cross_sections = {
 
 
 def compute_ued_simple(
-    traj,
-    key,
-    R,
-    alpha,
+    traj: Trajectory,
+    key: str,
+    R: np.ndarray,
+    alpha: float,
     ABpairs=None,
-):
-
+) -> Trajectory:
     """Compute the simple pairwise-distance form of the UED cross section,
         with Gaussian blurring in R.
 
     Params:
-        traj (Trajectory) - the Trajectory object to compute the property for (modified in
+        traj: the Trajectory object to compute the property for (modified in
             place)
-        key (str) - the name of the property
-        R (np.ndarray of distances) - the distances to collocate the
+        key: the name of the property
+        R: the distances to collocate the
             UED cross section to.
-        alpha (float) - the Guassian blurring exponent
-        ABpairs (list of (int, int)) - a restricted list of atom pair indices
+        alpha: the Guassian blurring exponent
+        ABpairs: a restricted list of atom pair indices
             to include in the computation, or None for all atom pairs.
-    Result/Return:
-        traj - reference to the input Trajectory object. The property
+    Return:
+        traj: reference to the input Trajectory object. The property
             key is set to computed UED property.
     """
 

@@ -1,0 +1,3 @@
+# geom.py
+
+::: aimsprop.geom
