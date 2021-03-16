@@ -10,6 +10,15 @@ _N_table = {val: key for key, val in list(atom_data.atom_symbol_table.items())}
 
 
 def parse_positions(filepath, cutoff_time=None):
+    """Parse information in positions.*.xyz.
+
+    Arguments:
+        filepath (str): the path to the FMS run directory
+        cutoff_time (float): cutoff time to stop reading trajectory info after
+            (None reads all times).
+    Returns:
+        (N2s, xyz2s): Tuple of atomic indices and list of xyzs for each timme and state (dict of dict)
+    """
 
     posfiles = glob.glob(f"{filepath}/positions.*.xyz")
 
@@ -55,6 +64,16 @@ def parse_positions(filepath, cutoff_time=None):
 
 
 def parse_Cs(filepath, cutoff_time=None):
+    """Parse information in Amps.*.
+
+    Arguments:
+        filepath (str): the path to the FMS run directory
+        cutoff_time (float): cutoff time to stop reading trajectory info after
+            (None reads all times).
+    Returns:
+        C2s: Amps (dict of dicts)
+
+    """
 
     Cfiles = glob.glob(f"{filepath}/Amp.*")
 
@@ -88,6 +107,15 @@ def parse_Cs(filepath, cutoff_time=None):
 
 
 def parse_Ss(filepath, cutoff_time=None):
+    """Parse information in S.dat.
+
+    Arguments:
+        filepath (str): the path to the FMS run directory
+        cutoff_time (float): cutoff time to stop reading trajectory info after
+            (None reads all times).
+    Returns:
+        S2s: Overlap matrix (dict of dicts)
+    """
 
     Sfile = os.path.join(filepath, "S.dat")
 
@@ -128,6 +156,15 @@ def parse_Ss(filepath, cutoff_time=None):
 
 
 def parse_spawnlog(filepath, cutoff_time=None):
+    """Parse information in Spawn.log.
+
+    Arguments:
+        filepath (str): the path to the FMS run directory
+        cutoff_time (float): cutoff time to stop reading trajectory info after
+            (None reads all times).
+    Returns:
+        states: electronic states
+    """
 
     Spawnfile = os.path.join(filepath, "Spawn.log")
 
@@ -153,7 +190,7 @@ def parse_spawnlog(filepath, cutoff_time=None):
 
 
 def swap_dic_axis(x2s):
-    """TODO"""
+    """Swap axis of dict to make it faster"""
     x3s = {}
     for I, x2 in list(x2s.items()):
         for t, x in list(x2.items()):
@@ -163,7 +200,17 @@ def swap_dic_axis(x2s):
 
 
 def create_frames_mulliken(Ss, C3s, xyz3s, N3s, states):
-    """Build list of Frames from parsed data using mulliken scheme"""
+    """Build list of Frames from parsed data using mulliken scheme
+
+    Arguments:
+        Ss (dic): Overlap
+        C3s (dic): Amps
+        xyz3s (dic): positions
+        N3s (dic): atomic numbers
+        states: electronic states
+    Returns:
+        Frames: list of frame objects
+    """
     frames = []
     for t, S in list(Ss.items()):
         if t not in C3s:
@@ -206,7 +253,19 @@ def create_frames_mulliken(Ss, C3s, xyz3s, N3s, states):
 
 
 def create_frames_saddle(Ss, C3s, xyz3s, N3s, states, cutoff_saddle):
-    """Build list of Frames from parsed data using saddle scheme"""
+    """Build list of Frames from parsed data using saddle scheme
+
+    Arguments:
+        Ss (dic): Overlap
+        C3s (dic): Amps
+        xyz3s (dic): positions
+        N3s (dic): atomic numbers
+        states: electronic states
+        cutoff_saddle (float): cutoff for centroid TBF pair in the saddle point approach.
+    Returns:
+        Frames: list of frame objects
+    """
+
     frames = []
     for t, S in list(Ss.items()):
         if t not in C3s:
