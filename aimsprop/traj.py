@@ -5,14 +5,14 @@ class Frame(object):
     """Class Frame represents one "frame," a molecular geometry with associated time and label."""
 
     def __init__(
-            self,
-            label,
-            t,
-            w,
-            I,
-            N,
-            xyz,
-            properties={},
+        self,
+        label,
+        t,
+        w,
+        I,
+        N,
+        xyz,
+        properties={},
     ):
         """Verbatim constructor.
 
@@ -53,8 +53,8 @@ class Frame(object):
         )
 
     def __lt__(
-            self,
-            other,
+        self,
+        other,
     ):
         """Replacement for python2 __cmp__, to help with sorting : Comparator basis is (t, label, I).
 
@@ -65,14 +65,14 @@ class Frame(object):
         return (self.t, self.label, self.I) < (other.t, other.label, other.I)
 
     def __str__(self):
-        return (f'''label: {self.label}
+        return f"""label: {self.label}
         time: {self.t}
         weight: {self.w}
         state: {self.I}
         atomic number: {self.N}
         xyz: {self.xyz}
         properties: {self.properties}
-        ''')
+        """
 
     def _repr_html_(self):
         return "<p>" + str(self).replace("\n", "<br>") + "</p>"
@@ -89,8 +89,8 @@ class Trajectory(object):
     """
 
     def __init__(
-            self,
-            frames,
+        self,
+        frames,
     ):
         """Verbatim constructor.
 
@@ -120,16 +120,16 @@ class Trajectory(object):
         return Trajectory([frame.copy() for frame in self.frames])
 
     def subset_by_label(
-            self,
-            label,
+        self,
+        label,
     ):
         """ Return a subset of this trajectory containing all frames with a given label (Frame-sorted) (view) """
         return Trajectory(list(sorted([x for x in self.frames if x.label == label])))
 
     def subset_by_sublabel(
-            self,
-            label,
-            index,
+        self,
+        label,
+        index,
     ):
         """ Return a subset of this trajectory containing all frames with a given partial label (Frame-sorted) (view) """
         return Trajectory(
@@ -137,9 +137,9 @@ class Trajectory(object):
         )
 
     def subset_by_t(
-            self,
-            t,
-            delta=1.0e-11,
+        self,
+        t,
+        delta=1.0e-11,
     ):
         """Return a subset of this trajectory containing all frames with a given time (Frame-sorted) (view).
 
@@ -151,22 +151,22 @@ class Trajectory(object):
         )
 
     def subset_by_I(
-            self,
-            I,
+        self,
+        I,
     ):
         """ Return a subset of this trajectory containing all frames with a given I (Frame-sorted) (view) """
         return Trajectory(list(sorted([x for x in self.frames if x.I == I])))
 
     def __add__(
-            self,
-            other,
+        self,
+        other,
     ):
         """ Concatenation operator to merge two trajectories (view-based) """
         return Trajectory(self.frames + other.frames)
 
     def __mul__(
-            self,
-            w,
+        self,
+        w,
     ):
         """Return a new Trajectory with all Frame objects multiplied by
         weight (new copy). This is useful to provide a weight on the initial
@@ -183,9 +183,9 @@ class Trajectory(object):
 
     @staticmethod
     def merge(
-            trajs,
-            ws,
-            labels=None,
+        trajs,
+        ws,
+        labels=None,
     ):
         """Merge a list of trajectories together, with weighting factors (new copy).
 
@@ -212,9 +212,9 @@ class Trajectory(object):
         return Trajectory(frames)
 
     def interpolate_nearest(
-            self,
-            ts,
-            delta=1.0e-11,
+        self,
+        ts,
+        delta=1.0e-11,
     ):
         """Return a new trajectory with frame objects interpolated by nearest
             neighbor interpolation if t is inside the range of times of self's
@@ -245,8 +245,8 @@ class Trajectory(object):
         return Trajectory(list(sorted(frames)))
 
     def interpolate_linear(
-            self,
-            ts,
+        self,
+        ts,
     ):
         """Return a new trajectory with frame objects interpolated by linear
             interpolation if t is inside the range of times of self's
@@ -316,10 +316,10 @@ class Trajectory(object):
         return Trajectory(list(sorted(frames)))
 
     def extract_property(
-            self,
-            key,
-            normalize=True,
-            diff=False,
+        self,
+        key,
+        normalize=True,
+        diff=False,
     ):
         """Return a numpy array containing the time-history of a property,
             averaged over all Frames at each time (with frame weight applied).
@@ -354,7 +354,7 @@ class Trajectory(object):
         return np.array(Vs)
 
     def remove_duplicates(
-            self,
+        self,
     ):
         """Return a new trajectory with duplicate frame objects removed
             based on frame label and time index
@@ -366,7 +366,7 @@ class Trajectory(object):
         frames = []
         for ind1, frame1 in enumerate(self.frames):
             unique = True
-            for ind2, frame2 in enumerate(self.frames[ind1 + 1:]):
+            for ind2, frame2 in enumerate(self.frames[ind1 + 1 :]):
                 if frame1.label == frame2.label and frame1.t == frame2.t:
                     unique = False
             if unique == True:

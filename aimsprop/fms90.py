@@ -8,21 +8,19 @@ from . import atom_data, traj
 
 _N_table = {val: key for key, val in list(atom_data.atom_symbol_table.items())}
 
-def parse_positions(
-    filepath,
-    cutoff_time=None
-    ):
-    
-    posfiles = glob.glob(f'{filepath}/positions.*.xyz')
-    
+
+def parse_positions(filepath, cutoff_time=None):
+
+    posfiles = glob.glob(f"{filepath}/positions.*.xyz")
+
     posfiles = {
         int(re.match(r"%s/positions\.(\d+)\.xyz" % filepath, path).group(1)): path
         for path in posfiles
     }
-    
-        # Read the Amp and positions files
-    N2s = {} # list of Ns
-    xyz2s = {} # list of xyzs
+
+    # Read the Amp and positions files
+    N2s = {}  # list of Ns
+    xyz2s = {}  # list of xyzs
     for I, posfile in list(posfiles.items()):
 
         Ns = {}
@@ -35,7 +33,7 @@ def parse_positions(
         for A in range(nframe):
             lines2 = lines[A * (natom + 2) : (A + 1) * (natom + 2)]
             mobj = re.match(r"^\s*Time:\s+(\S+),\s+Trajectory:\d+\s*$", lines2[1])
-            t = float(mobj.group(1) )
+            t = float(mobj.group(1))
             if cutoff_time and t > cutoff_time:
                 continue
             N = []
@@ -50,24 +48,21 @@ def parse_positions(
             xyzs[t] = xyz
         N2s[I] = Ns
         xyz2s[I] = xyzs
-        
-        # N2s have the list of atoms repeated - why??? 
-    
+
+        # N2s have the list of atoms repeated - why???
+
     return N2s, xyz2s
 
 
-def parse_Cs(
-    filepath,
-    cutoff_time=None
-    ):
-    
-    Cfiles = glob.glob(f'{filepath}/Amp.*')
-    
+def parse_Cs(filepath, cutoff_time=None):
+
+    Cfiles = glob.glob(f"{filepath}/Amp.*")
+
     Cfiles = {
         int(re.match(r"%s/Amp\.(\d+)" % filepath, path).group(1)): path
         for path in Cfiles
     }
-    
+
     # Read the Amp files
     C2s = {}
 
@@ -85,20 +80,17 @@ def parse_Cs(
                     float(mobj.group(2)), float(mobj.group(3))
                 )
             else:
-                raise RuntimeError(f'Invalid Amp line: {line}')
-  
+                raise RuntimeError(f"Invalid Amp line: {line}")
+
         C2s[I] = Cs
-    
+
     return C2s
 
 
-def parse_Ss(
-    filepath,
-    cutoff_time=None
-    ):
-    
+def parse_Ss(filepath, cutoff_time=None):
+
     Sfile = os.path.join(filepath, "S.dat")
-    
+
     # Read the overlap matrix
     Ss = {}
     lines = open(Sfile).readlines()
@@ -131,17 +123,14 @@ def parse_Ss(
             raise RuntimeError("S matrix is not square")
         Smat = np.reshape(Smat, (n, n))
         Ss[t] = Smat
-    
+
     return Ss
 
 
-def parse_spawnlog(
-    filepath,
-    cutoff_time=None
-    ):
-    
-    Spawnfile = os.path.join(filepath,"Spawn.log")
-    
+def parse_spawnlog(filepath, cutoff_time=None):
+
+    Spawnfile = os.path.join(filepath, "Spawn.log")
+
     # Read the Spawn.log to figure out electronic states (not read
     states = {}
     if not os.path.isfile(Spawnfile):
@@ -159,12 +148,12 @@ def parse_spawnlog(
             states[int(mobj.group(3))] = int(
                 mobj.group(4)
             )  # Redundant, but captures IC TBFs
-        
+
     return states
 
+
 def swap_dic_axis(x2s):
-    """TODO
-    """
+    """TODO"""
     x3s = {}
     for I, x2 in list(x2s.items()):
         for t, x in list(x2.items()):
@@ -172,32 +161,28 @@ def swap_dic_axis(x2s):
 
     return x3s
 
-def create_frames_mulliken(
-    Ss, 
-    C3s, 
-    xyz3s, 
-    N3s,
-    states
-    ):
-    """Build list of Frames from parsed data using mulliken scheme
-    """
+
+def create_frames_mulliken(Ss, C3s, xyz3s, N3s, states):
+    """Build list of Frames from parsed data using mulliken scheme"""
     frames = []
     for t, S in list(Ss.items()):
         if t not in C3s:
             # Sometimes timestamps do not match because Amp.* only holds 2 decimal digits
             # E.g., 1000.875 (in S) vs. 1000.88 (in Amp)
-            print(f'Warning: Time {t} not in amplitudes (OK if very small adaptive timestep)')
+            print(
+                f"Warning: Time {t} not in amplitudes (OK if very small adaptive timestep)"
+            )
             continue
-        
+
         Cs = C3s[t]
         xyzs = xyz3s[t]
         Ns = N3s[t]
-        
+
         if len(Cs) != len(S):
             raise RuntimeError("C and S are different sizes")
-            
+
         Isort = list(sorted(Cs.keys()))
-        
+
         for I2, I in enumerate(Isort):
             q = 0.0
             for J2, J in enumerate(Isort):
@@ -219,33 +204,27 @@ def create_frames_mulliken(
 
     return frames
 
-def create_frames_saddle(
-    Ss, 
-    C3s, 
-    xyz3s, 
-    N3s,
-    states,
-    cutoff_saddle
-    ):
-    """Build list of Frames from parsed data using saddle scheme
-    """
+
+def create_frames_saddle(Ss, C3s, xyz3s, N3s, states, cutoff_saddle):
+    """Build list of Frames from parsed data using saddle scheme"""
     frames = []
     for t, S in list(Ss.items()):
         if t not in C3s:
             # Sometimes timestamps do not match because Amp.* only holds 2 decimal digits
             # E.g., 1000.875 (in S) vs. 1000.88 (in Amp)
-            print(f'Warning: Time {t} not in amplitudes (OK if very small adaptive timestep)')
+            print(
+                f"Warning: Time {t} not in amplitudes (OK if very small adaptive timestep)"
+            )
             continue
-        
+
         Cs = C3s[t]
         xyzs = xyz3s[t]
         Ns = N3s[t]
-        
+
         if len(Cs) != len(S):
             raise RuntimeError("C and S are different sizes")
-            
+
         Isort = list(sorted(Cs.keys()))
-        
 
         for I2, I in enumerate(Isort):
             for J2, J in enumerate(Isort):
@@ -270,7 +249,7 @@ def create_frames_saddle(
                     xyz=0.5 * (xyzs[I] + xyzs[J]),  # centroid
                 )
                 frames.append(frame)
-                
+
     return frames
 
 
@@ -280,7 +259,7 @@ def parse_fms90(
     cutoff_time=None,
     cutoff_saddle=1.0e-4,
     initial_I=None,
-    ):
+):
 
     """Parse an FMS90 results directory into a Trajectory.
 
@@ -304,17 +283,17 @@ def parse_fms90(
 
     # Read in FMS output files: positions*, Amp.*, S.dat and Spawn.log
     N2s, xyz2s = parse_positions(filepath, cutoff_time)
-    
+
     C2s = parse_Cs(filepath, cutoff_time)
-    
+
     Ss = parse_Ss(filepath, cutoff_time)
-    
+
     states = parse_spawnlog(filepath, cutoff_time)
-    
+
     if len(C2s) != len(N2s):
         raise RuntimeError("xyz and C files not same number of TBF")
 
-    # Swap to put time on slow axis (C3s[t][I] instead of C2s[I][t])        
+    # Swap to put time on slow axis (C3s[t][I] instead of C2s[I][t])
     C3s, xyz3s, N3s = [swap_dic_axis(x) for x in [C2s, xyz2s, N2s]]
 
     if scheme == "mulliken":
@@ -322,8 +301,8 @@ def parse_fms90(
     elif scheme == "saddle":
         frames = create_frames_saddle(Ss, C3s, xyz3s, N3s, states, cutoff_saddle)
     else:
-        raise RuntimeError(f'Invalid scheme: {scheme}')
-    
+        raise RuntimeError(f"Invalid scheme: {scheme}")
+
     trajectory = traj.Trajectory(frames)
-    
+
     return trajectory
