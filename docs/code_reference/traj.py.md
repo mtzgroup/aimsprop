@@ -1,5 +1,5 @@
 # traj.py
 
-::: aimsprop.traj.Trajectory
+::: aimsprop.traj:Trajectory
 
-::: aimsprop.traj.Frame
+::: aimsprop.traj:Frame
