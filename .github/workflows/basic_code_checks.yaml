@@ -46,6 +46,23 @@ jobs:
       - name: Check import formatting with isort
         run: isort --check-only --diff aimsprop examples tests
 
+  documentation_checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run mdl (markdown linter)
+        uses: actionshub/markdownlint@main
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.6"
+      - name: Install flit
+        run: pip install flit
+      - name: Install aimsprop
+        run: flit install --deps develop --symlink
+      - name: Build Documentation
+        run: mkdocs build
+
   test:
     runs-on: ubuntu-latest
     steps:
