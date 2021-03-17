@@ -1,7 +1,6 @@
 """A repository for the representation and manipulation of AIMS-type trajectories."""
 
 from . import iam, vis_aims  # noqa
-from .aimspy import *  # noqa
 from .blur import *  # noqa
 from .bootstrap import *  # noqa
 from .fms90 import *  # noqa

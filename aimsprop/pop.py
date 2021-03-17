@@ -1,17 +1,17 @@
 import numpy as np
 
+from .traj import Trajectory
+
 
 def compute_population(
-    traj,
+    traj: Trajectory,
 ):
-
     """Compute the state populations for a trajectory
 
-    Pararms:
-        traj (Trajectory) - the Trajectory object to compute the property for
+    Params:
+        traj: the Trajectory object to compute the property for
     Returns:
-        populations (dict of np.ndarray) - dictionary from I to time
-        population of I. The indices of each vector in populations
+        populations: dictionary from I to time population of I. The indices of each vector in populations
         corresponds to the set of traj.ts
     """
 

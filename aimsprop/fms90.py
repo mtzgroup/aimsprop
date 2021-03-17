@@ -9,12 +9,15 @@ from . import atom_data, traj
 _N_table = {val: key for key, val in list(atom_data.atom_symbol_table.items())}
 
 
-def parse_positions(filepath, cutoff_time=None):
+def _parse_positions(
+    filepath: str,
+    cutoff_time: float = None,
+):
     """Parse information in positions.*.xyz.
 
     Arguments:
-        filepath (str): the path to the FMS run directory
-        cutoff_time (float): cutoff time to stop reading trajectory info after
+        filepath: the path to the FMS run directory
+        cutoff_time: cutoff time to stop reading trajectory info after
             (None reads all times).
     Returns:
         (N2s, xyz2s): Tuple of atomic indices and list of xyzs for each timme and state (dict of dict)
@@ -63,12 +66,12 @@ def parse_positions(filepath, cutoff_time=None):
     return N2s, xyz2s
 
 
-def parse_Cs(filepath, cutoff_time=None):
+def _parse_Cs(filepath: str, cutoff_time: float = None):
     """Parse information in Amps.*.
 
     Arguments:
-        filepath (str): the path to the FMS run directory
-        cutoff_time (float): cutoff time to stop reading trajectory info after
+        filepath: the path to the FMS run directory
+        cutoff_time: cutoff time to stop reading trajectory info after
             (None reads all times).
     Returns:
         C2s: Amps (dict of dicts)
@@ -106,12 +109,12 @@ def parse_Cs(filepath, cutoff_time=None):
     return C2s
 
 
-def parse_Ss(filepath, cutoff_time=None):
+def _parse_Ss(filepath: str, cutoff_time: float = None):
     """Parse information in S.dat.
 
     Arguments:
-        filepath (str): the path to the FMS run directory
-        cutoff_time (float): cutoff time to stop reading trajectory info after
+        filepath: the path to the FMS run directory
+        cutoff_time: cutoff time to stop reading trajectory info after
             (None reads all times).
     Returns:
         S2s: Overlap matrix (dict of dicts)
@@ -155,13 +158,11 @@ def parse_Ss(filepath, cutoff_time=None):
     return Ss
 
 
-def parse_spawnlog(filepath, cutoff_time=None):
+def _parse_spawnlog(filepath: str, initial_I: int = None):
     """Parse information in Spawn.log.
 
     Arguments:
-        filepath (str): the path to the FMS run directory
-        cutoff_time (float): cutoff time to stop reading trajectory info after
-            (None reads all times).
+        filepath: the path to the FMS run directory
     Returns:
         states: electronic states
     """
@@ -189,7 +190,7 @@ def parse_spawnlog(filepath, cutoff_time=None):
     return states
 
 
-def swap_dic_axis(x2s):
+def _swap_dic_axis(x2s):
     """Swap axis of dict to make it faster"""
     x3s = {}
     for I, x2 in list(x2s.items()):
@@ -199,7 +200,7 @@ def swap_dic_axis(x2s):
     return x3s
 
 
-def create_frames_mulliken(Ss, C3s, xyz3s, N3s, states):
+def _create_frames_mulliken(Ss, C3s, xyz3s, N3s, states):
     """Build list of Frames from parsed data using mulliken scheme
 
     Arguments:
@@ -252,7 +253,7 @@ def create_frames_mulliken(Ss, C3s, xyz3s, N3s, states):
     return frames
 
 
-def create_frames_saddle(Ss, C3s, xyz3s, N3s, states, cutoff_saddle):
+def _create_frames_saddle(Ss, C3s, xyz3s, N3s, states, cutoff_saddle):
     """Build list of Frames from parsed data using saddle scheme
 
     Arguments:
@@ -313,27 +314,26 @@ def create_frames_saddle(Ss, C3s, xyz3s, N3s, states, cutoff_saddle):
 
 
 def parse_fms90(
-    filepath,
-    scheme="mulliken",
-    cutoff_time=None,
-    cutoff_saddle=1.0e-4,
-    initial_I=None,
+    filepath: str,
+    scheme: str = "mulliken",
+    cutoff_time: float = None,
+    cutoff_saddle: float = 1.0e-4,
+    initial_I: int = None,
 ):
-
     """Parse an FMS90 results directory into a Trajectory.
 
     This uses information in positions.*.xyz, Amps.*, S.dat, and Spawn.log to
     populate a density matrix by mulliken or saddle point rules.
 
     Arguments:
-        filepath (str): the path to the FMS run directory
-        scheme (str): 'mulliken' or 'saddle' to indicate the approximation
+        filepath: the path to the FMS run directory
+        scheme: 'mulliken' or 'saddle' to indicate the approximation
             used for property evaluation.
-        cutoff_time (float): cutoff time to stop reading trajectory info after
+        cutoff_time: cutoff time to stop reading trajectory info after
             (None reads all times).
-        cutoff_saddle (float): cutoff for centroid TBF pair in the saddle
+        cutoff_saddle: cutoff for centroid TBF pair in the saddle
             point approach.
-        initial_I (int): initial electronic state, used only if there is
+        initial_I: initial electronic state, used only if there is
             no Spawn.log (e.g., if no spawning has happened yet) to place
             electronic label.
     Returns:
@@ -341,24 +341,24 @@ def parse_fms90(
     """
 
     # Read in FMS output files: positions*, Amp.*, S.dat and Spawn.log
-    N2s, xyz2s = parse_positions(filepath, cutoff_time)
+    N2s, xyz2s = _parse_positions(filepath, cutoff_time)
 
-    C2s = parse_Cs(filepath, cutoff_time)
+    C2s = _parse_Cs(filepath, cutoff_time)
 
-    Ss = parse_Ss(filepath, cutoff_time)
+    Ss = _parse_Ss(filepath, cutoff_time)
 
-    states = parse_spawnlog(filepath, cutoff_time)
+    states = _parse_spawnlog(filepath, initial_I)
 
     if len(C2s) != len(N2s):
         raise RuntimeError("xyz and C files not same number of TBF")
 
     # Swap to put time on slow axis (C3s[t][I] instead of C2s[I][t])
-    C3s, xyz3s, N3s = [swap_dic_axis(x) for x in [C2s, xyz2s, N2s]]
+    C3s, xyz3s, N3s = [_swap_dic_axis(x) for x in [C2s, xyz2s, N2s]]
 
     if scheme == "mulliken":
-        frames = create_frames_mulliken(Ss, C3s, xyz3s, N3s, states)
+        frames = _create_frames_mulliken(Ss, C3s, xyz3s, N3s, states)
     elif scheme == "saddle":
-        frames = create_frames_saddle(Ss, C3s, xyz3s, N3s, states, cutoff_saddle)
+        frames = _create_frames_saddle(Ss, C3s, xyz3s, N3s, states, cutoff_saddle)
     else:
         raise RuntimeError(f"Invalid scheme: {scheme}")
 

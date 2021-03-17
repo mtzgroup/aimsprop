@@ -6,27 +6,27 @@ class Frame(object):
 
     def __init__(
         self,
-        label,
-        t,
-        w,
-        I,
-        N,
-        xyz,
+        label,  # TODO type?
+        t: float,
+        w: float,
+        I: int,
+        N: list,
+        xyz: np.ndarray,
         properties={},
     ):
         """Verbatim constructor.
 
         Arguments:
-            label (hashable): label identifying basis function [e.g., TBF
+            label: label identifying basis function [e.g., TBF
                 index (int), TBF pair index (int, int), etc]
-            t (float): simulation time in au.
-            w (float): weight of frame (e.g., Mulliken population, trajectory
+            t: simulation time in au.
+            w: weight of frame (e.g., Mulliken population, trajectory
                 weight, etc)
-            I (int): electronic state label
-            N (list of int of len natom): list of atomic numbers of molecule
-            xyz (np.ndarray of shape (natom, 3)): coordinates of nuclei in
-                Angstrom.
-            properties (dict): dictionary mapping key (str) to user-defined
+            I: electronic state label
+            N: list of atomic numbers of molecule
+            xyz: coordinates of nuclei in
+                Angstrom, shape (natom,3)
+            properties: dictionary mapping key (str) to user-defined
                 numerical properties (float, complex, or np.ndarray)
         """
 
@@ -65,6 +65,7 @@ class Frame(object):
         return (self.t, self.label, self.I) < (other.t, other.label, other.I)
 
     def __str__(self):
+        """Return frame properties"""
         return f"""label: {self.label}
         time: {self.t}
         weight: {self.w}
@@ -75,6 +76,7 @@ class Frame(object):
         """
 
     def _repr_html_(self):
+        """Print nicely"""
         return "<p>" + str(self).replace("\n", "<br>") + "</p>"
 
 
@@ -90,12 +92,12 @@ class Trajectory(object):
 
     def __init__(
         self,
-        frames,
+        frames: list,  # TODO list of frames
     ):
         """Verbatim constructor.
 
         Params:
-            frames (list of Frame): list of Frames in this Trajectory.
+            frames: list of Frames in this Trajectory.
         """
 
         self.frames = frames
@@ -317,18 +319,18 @@ class Trajectory(object):
 
     def extract_property(
         self,
-        key,
-        normalize=True,
-        diff=False,
+        key: str,
+        normalize: bool = True,
+        diff: bool = False,
     ):
         """Return a numpy array containing the time-history of a property,
             averaged over all Frames at each time (with frame weight applied).
 
         Params:
-            key (str): the property key
-            normalize (bool): normalize the property by the sum of weights in
+            key: the property key
+            normalize: normalize the property by the sum of weights in
                 each time?
-            diff (bool): difference property (zeroth-time value subtracted)?
+            diff: difference property (zeroth-time value subtracted)?
         Returns:
             np.ndarray of shape (ntime, sizeof(prop)): the property
             expectation value. Time is always on the rows. If the property is

@@ -6,22 +6,20 @@ from . import traj
 
 
 def bootstrap(
-    input_traj,
-    nsamples,
-    ICs,
-    label_ind=0,
+    input_traj: traj.Trajectory,
+    nsamples: int,
+    ICs: list,
+    label_ind: int = 0,
 ):
-
     """Resample Trajectory Subset According to Bootstrap Algorithm
 
     Params:
-        traj (Trajectory) - the Trajectory object to resample with replacement
-        nsamples (int) - number of resampling sets to conduct
-        sample_labels (list) - list of trajectory labels from which to resample
-        label_ind (int) - sub label index from which to sample (IC = 0)
+        traj: the Trajectory object to resample with replacement
+        nsamples: number of resampling sets to conduct
+        sample_labels: list of trajectory labels from which to resample
+        label_ind: sub label index from which to sample (IC = 0)
     Returns:
-        resampled_trajs (list of Trajectories [nsamples]) - re-weighted list of trajectories
-
+        resampled_trajs (list of Trajectories [nsamples]):  re-weighted list of trajectories
     """
 
     # accumulate samples
@@ -66,20 +64,19 @@ def bootstrap(
 
 
 def extract_stats(
-    trajs,
-    key,
+    trajs: list,
+    key: str,
     diff=False,
 ):
-
     """Extract Standard Deviation and Average of Property from Set of Resampled Trajectories
 
     Params:
-        trajs (list of Trajectories [nsamples]) - re-weighted list of trajectories
-        key (str) - the property key
-        diff (bool) - difference property (zeroth-time value subtracted)?
+        trajs: re-weighted list of trajectories
+        key: the property key
+        diff: difference property (zeroth-time value subtracted)?
     Returns:
-        avg (np.ndarray of shape (ntime, sizeof(prop))) - the average property expectation value.
-        std (np.ndarray of shape (ntime, sizeof(prop))) - the standard deviation of the property expectation value.
+        avg (np.ndarray of shape (ntime, sizeof(prop))): the average property expectation value.
+        std (np.ndarray of shape (ntime, sizeof(prop))): the standard deviation of the property expectation value.
 
     """
 

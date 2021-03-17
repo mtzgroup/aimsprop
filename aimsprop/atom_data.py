@@ -2,9 +2,9 @@ from . import units
 
 """
     Contains three dictionaries:
-        atom_symbol_table - {atomic number (int) : atom symbol (str) - all caps}
-        mass_table - {atom symbol (str) - all caps : mass (float) - amu }
-        extended_mass_table - {atom symbol (str) - all caps : [(isotope mass (float) - amu, isotope composition (float))}
+        atom_symbol_table: {atomic number (int) : atom symbol (str) - all caps}
+        mass_table: {atom symbol (str) - all caps : mass (float) - amu }
+        extended_mass_table: {atom symbol (str) - all caps : [(isotope mass (float) - amu, isotope composition (float))}
 
     Masses in dictionaries are automatically converted to a.u.
 

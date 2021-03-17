@@ -1,26 +1,28 @@
 import numpy as np
 
+from .traj import Trajectory
+
 
 def blur_property(
-    traj,
-    key,
-    key2,
-    R,
-    alpha,
-):
+    traj: Trajectory,
+    key: str,
+    key2: str,
+    R: np.ndarray,
+    alpha: float,
+) -> Trajectory:
 
     """Blur a property via Gaussian convolution (blurring applied in the "spatial" coordinate).
 
     Pararms:
-        traj (Trajectory) - the Trajectory object to compute the property for (modified in
+        traj: the Trajectory object to compute the property for (modified in
             place)
-        key (str) - the name of the original property
-        key2 (str) - the name of the blurred property
-        R2 (np.ndarray) - the grid of property values to blur to (usually R or
+        key: the name of the original property
+        key2: the name of the blurred property
+        R2: the grid of property values to blur to (usually R or
             theta or Q).
-        alpha (float) - the Gaussian blurring exponent
+        alpha: the Gaussian blurring exponent
     Result/Return:
-        traj (Trajectory) - reference to the input Trajectory object. The
+        traj (Trajectory): reference to the input Trajectory object. The
             property key2 is set to the np.ndarray value of the blurred
             property.
 
@@ -40,25 +42,24 @@ def blur_property(
 
 
 def compute_time_blur(
-    I,
-    t1,
-    t2,
-    fwhm,
-):
+    I: np.ndarray,
+    t1: np.ndarray,
+    t2: np.ndarray,
+    fwhm: float,
+) -> np.ndarray:
 
     """Compute Gaussian blurring in time for an arbitrary property.
 
     Uses the trapezoid rule over provided t1 (t1/t2 need not be uniformly spaced).
 
     Params:
-        I (np.ndarray of shape (nt1, ...)) - signal to Gaussian blur in the
-            0-th dim.
-        t1 (np.ndarray of shape (nt1,)) - t1 values (can be irregular)
-        t2 (np.ndarray of shape (nt2,)) - t2 values (can be irregular)
-        fwhm (float) - the full width at half maximum (FWHM) of the blurring
-            kernel
+        I: signal to Gaussian blur in the 0-th dim, shape (nt1, ...).
+        t1: t1 values (can be irregular), shape (nt1,).
+        t2: t2 values (can be irregular), shape (nt2,).
+        fwhm: the full width at half maximum (FWHM) of the blurring
+            kernel.
     Returns:
-        I2 (np.ndarray of shape (nt2, ...)) - Gaussian blurred signal
+        I2 - Gaussian blurred signal, shape (nt2, ...).
     """
 
     # Irregular trapezoid weights in t1

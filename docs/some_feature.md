@@ -1,5 +1,6 @@
 # Some Feature
 
+hello world
 Here's a documentation page for some feature that we'd like to explain to new users.
 
 You can add additional documentation by creating new markdown files in the `/docs` directory :)
