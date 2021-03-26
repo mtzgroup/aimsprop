@@ -1,32 +1,17 @@
-import os
+# import os
 
 import numpy as np
 
 import aimsprop as ai
 
 
-def test_major_trajectory_operations(tmp_path):
-    # 1.  Parse a series of FMS90 trajectories that Hayley has run for ethylene
-    trajs = [
-        ai.parse_fms90("%s/test_data/%04d" % (os.path.dirname(__file__), x))
-        for x in [2, 3]
-    ]
-    assert len(trajs) == 2
-
-    # 2. Merge the trajectories into one super-big Trajectory with uniform weights
-    traj = ai.Trajectory.merge(trajs, ws=[1.0 / len(trajs)] * len(trajs), labels=[2, 3])
-    assert traj.labels == [(2, 1), (2, 2), (2, 3), (3, 1), (3, 2)]
-
-    # 3. Interpolate trajectory with ~1 fs intervals, removing adaptive timesteps from AIMS
-    ts = np.arange(0.0, max(traj.ts), 40.0)
-    traj = traj.interpolate_nearest(ts)
-
-    # 4. Plot Bond Distances (Spaghetti + Blur)
+def test_major_trajectory_operations(tmp_path, trajectory):
+    # 1. Plot Bond Distances (Spaghetti + Blur)
     # Compute the a bond distance property for all Frames in traj
-    ai.compute_bond(traj, "R01", 0, 1)
+    ai.compute_bond(trajectory, "R01", 0, 1)
     ai.plot_scalar(
         tmp_path / "R.pdf",
-        traj,
+        trajectory,
         "R01",
         ylabel=r"$R_{CC} [\AA{}]$",
         time_units="fs",
@@ -36,11 +21,11 @@ def test_major_trajectory_operations(tmp_path):
 
     # Blur the bond distance (convolve)
     R = np.linspace(0.5, 3.0, 50)
-    ai.blur_property(traj, "R01", "Rblur", R, alpha=8.0)
+    ai.blur_property(trajectory, "R01", "Rblur", R, alpha=8.0)
     #    Plot the heat map of blurred bond distance
     ai.plot_vector(
         tmp_path / "Rblur.pdf",
-        traj,
+        trajectory,
         "Rblur",
         y=R,
         ylabel=r"$R [\AA{}]$",
@@ -48,14 +33,14 @@ def test_major_trajectory_operations(tmp_path):
         nlevel=64,
     )
 
-    # 5. Plot of Torsion Angle (Spaghetti + Blur)
+    # 2. Plot of Torsion Angle (Spaghetti + Blur)
 
     # Compute the a torsion angle property for all Frames in traj
-    ai.compute_torsion(traj, "T0123", 0, 1, 2, 3)
-    ai.unwrap_property(traj, "T0123", 360.0)
+    ai.compute_torsion(trajectory, "T0123", 0, 1, 2, 3)
+    ai.unwrap_property(trajectory, "T0123", 360.0)
     ai.plot_scalar(
         tmp_path / "T.pdf",
-        traj,
+        trajectory,
         "T0123",
         ylabel=r"$\Theta [^{\circ{}}]$",
         time_units="fs",
@@ -65,11 +50,11 @@ def test_major_trajectory_operations(tmp_path):
 
     # Blur the torsion
     T = np.linspace(-180.0, +180.0, 100)
-    ai.blur_property(traj, "T0123", "Tblur", T, alpha=0.02)
+    ai.blur_property(trajectory, "T0123", "Tblur", T, alpha=0.02)
     #    Plot the heat map of blurred torison
     ai.plot_vector(
         tmp_path / "Tblur.pdf",
-        traj,
+        trajectory,
         "Tblur",
         y=T,
         ylabel=r"$Theta [^{\circ{}}]$",
@@ -77,16 +62,16 @@ def test_major_trajectory_operations(tmp_path):
         nlevel=64,
     )
 
-    # 6. UED Cross Section
+    # 3. UED Cross Section
 
     # Compute the "simple" form of the UED cross section in R
     R = np.linspace(1.0, 6.0, 50)
-    ai.compute_ued_simple(traj, "UED", R=R, alpha=8.0)
+    ai.compute_ued_simple(trajectory, "UED", R=R, alpha=8.0)
 
     # Plot the heat map of the UED cross section detailed above
     ai.plot_vector(
         tmp_path / "UED.pdf",
-        traj,
+        trajectory,
         "UED",
         y=R,
         ylabel=r"$R [\AA{}]$",
