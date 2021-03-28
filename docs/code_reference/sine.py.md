@@ -1,0 +1,3 @@
+# sine.py
+
+::: aimsprop.sine

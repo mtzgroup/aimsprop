@@ -2,13 +2,14 @@ import math
 
 import numpy as np
 
+from .traj import Trajectory
+
 # => Utility Math functions <= #
 
 
 def _normalize(
     vec,
 ):
-
     """ Return a normalized version of vec """
 
     return vec / math.sqrt(sum(vec ** 2))
@@ -18,7 +19,6 @@ def _dot(
     vec1,
     vec2,
 ):
-
     """ Dot product between vec1 and vec2 """
 
     return sum(vec1 * vec2)
@@ -28,7 +28,6 @@ def _cross(
     vec1,
     vec2,
 ):
-
     """ Cross product between vec1 and vec2 in R^3 """
 
     vec3 = np.zeros((3,))
@@ -46,21 +45,20 @@ def _cross(
 
 
 def compute_bond(
-    traj,
-    key,
-    A,
-    B,
-):
-
+    traj: Trajectory,
+    key: str,
+    A: int,
+    B: int,
+) -> Trajectory:
     """Compute the a bond-length property for a Trajectory.
 
     Params:
-        traj - the Trajectory object to compute the property for (modified in
+        traj: the Trajectory object to compute the property for (modified in
             place)
-        key - the name of the property
-        A - the index of the first atom
-        B - the index of the second atom
-    Result/Return:
+        key: the name of the property
+        A: the index of the first atom
+        B: the index of the second atom
+    Return:
         traj - reference to the input Trajectory object. The property
             key is set to the float value of the bond length for the
             indices A and B.
@@ -74,24 +72,23 @@ def compute_bond(
 
 
 def compute_angle(
-    traj,
-    key,
-    A,
-    B,
-    C,
-):
-
+    traj: Trajectory,
+    key: str,
+    A: int,
+    B: int,
+    C: int,
+) -> Trajectory:
     """Compute the a bond-angle property for a Trajectory (in degrees).
 
     Params:
-        traj - the Trajectory object to compute the property for (modified in
+        traj: the Trajectory object to compute the property for (modified in
             place)
-        key - the name of the property
-        A - the index of the first atom
-        B - the index of the second atom
-        C - the index of the third atom
-    Result/Return:
-        traj - reference to the input Trajectory object. The property
+        key: the name of the property
+        A: the index of the first atom
+        B: the index of the second atom
+        C: the index of the third atom
+    Return:
+        traj: reference to the input Trajectory object. The property
             key is set to the float value of the bond angle for the
             indices A, B and C
     """
@@ -109,26 +106,25 @@ def compute_angle(
 
 
 def compute_torsion(
-    traj,
-    key,
-    A,
-    B,
-    C,
-    D,
-):
-
+    traj: Trajectory,
+    key: str,
+    A: int,
+    B: int,
+    C: int,
+    D: int,
+) -> Trajectory:
     """Compute the a torsion-angle property for a Trajectory (in degrees).
 
     Params:
-        traj - the Trajectory object to compute the property for (modified in
+        traj: the Trajectory object to compute the property for (modified in
             place)
-        key - the name of the property
-        A - the index of the first atom
-        B - the index of the second atom
-        C - the index of the third atom
-        D - the index of the fourth atom
-    Result/Return:
-        traj - reference to the input Trajectory object. The property
+        key: the name of the property
+        A: the index of the first atom
+        B: the index of the second atom
+        C: the index of the third atom
+        D: the index of the fourth atom
+    Return:
+        traj: reference to the input Trajectory object. The property
             key is set to the float value of the torsion angle for the
             indices A, B, C, and D
     """
@@ -153,26 +149,25 @@ def compute_torsion(
 
 
 def compute_oop(
-    traj,
-    key,
-    A,
-    B,
-    C,
-    D,
-):
-
+    traj: Trajectory,
+    key: str,
+    A: int,
+    B: int,
+    C: int,
+    D: int,
+) -> Trajectory:
     """Compute the a out-of-plane-angle property for a Trajectory (in degrees).
 
     Params:
-        traj - the Trajectory object to compute the property for (modified in
+        traj: the Trajectory object to compute the property for (modified in
             place)
-        key - the name of the property
-        A - the index of the first atom (OOP atom)
-        B - the index of the second atom
-        C - the index of the third atom
-        D - the index of the fourth atom (Defines vector to A)
-    Result/Return:
-        traj - reference to the input Trajectory object. The property
+        key: the name of the property
+        A: the index of the first atom (OOP atom)
+        B: the index of the second atom
+        C: the index of the third atom
+        D: the index of the fourth atom (Defines vector to A)
+    Return:
+        traj: reference to the input Trajectory object. The property
             key is set to the float value of the out-of-plane angle for the
             indices A, B, C, and D
     """
@@ -199,24 +194,23 @@ def compute_oop(
 
 
 def compute_transfer_coord(
-    traj,
-    key,
-    A,
-    B,
-    C,
-):
-
+    traj: Trajectory,
+    key: str,
+    A: int,
+    B: int,
+    C: int,
+) -> Trajectory:
     """Compute the a proton transfer coordinate property for a Trajectory (au).
 
     Params:
-        traj - the Trajectory object to compute the property for (modified in
+        traj: the Trajectory object to compute the property for (modified in
             place)
-        key - the name of the property
-        A - the index of the first atom
-        B - the index of the second atom
-        C - the index of the transfered atom
-    Result/Return:
-        traj - reference to the input Trajectory object. The property
+        key: the name of the property
+        A: the index of the first atom
+        B: the index of the second atom
+        C: the index of the transfered atom
+    Return:
+        traj: reference to the input Trajectory object. The property
             key is set to the proton transfer coordinate for the
             indices A, B, C
     """

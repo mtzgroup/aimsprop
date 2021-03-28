@@ -1,12 +1,14 @@
 import numpy as np
 
+from .traj import Trajectory
+
 
 def compute_pes(
-    traj,
-    carrier_frequency,
-    alpha,
-    eKT,
-):
+    traj: Trajectory,
+    carrier_frequency: float,
+    alpha: float,
+    eKT: np.ndarray,
+) -> Trajectory:
 
     """Compute the simple photoelectron spectroscopy, with Guassian blurring
 
@@ -15,16 +17,15 @@ def compute_pes(
             Ionization Potential (IP)
 
     Params:
-        traj (Trajectory) - the Trajectory object to compute the property for (modified in
+        traj: the Trajectory object to compute the property for (modified in
             place)
-        key (str) - the name of the property
-        carrier_frequency - (float64), experimental probe pulse carrier frequency (hbar*omega)
-        alpha (float) - the Guassian blurring exponent
-        eKT (np.ndarray) - electron energies
+        carrier_frequency: experimental probe pulse carrier frequency (hbar*omega)
+        alpha: the Guassian blurring exponent
+        eKT: electron energies
 
-    Result/Return:
-        traj - reference to the input Trajectory object. The property
-            key is set to computed PES property.
+    Return:
+        traj: reference to the input Trajectory object. The property
+            key "pes" is set to computed PES property.
     """
 
     for frame in traj.frames:
