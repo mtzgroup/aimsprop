@@ -1,0 +1,1320 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Colton Hicks">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.6">
+    
+    
+      
+        <title>plot.py - aimsprop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2c0c5eaf.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="cyan">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plotpy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="aimsprop" class="md-header__button md-logo" aria-label="aimsprop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            aimsprop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              plot.py
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/mtzgroup/aimsprop/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="aimsprop" class="md-nav__button md-logo" aria-label="aimsprop" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    aimsprop
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/mtzgroup/aimsprop/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        aimsprop
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../some_feature/" class="md-nav__link">
+        Some Feature
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Code reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Code reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Code reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blur.py/" class="md-nav__link">
+        blur.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bootstrap.py/" class="md-nav__link">
+        bootstrap.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fms90.py/" class="md-nav__link">
+        fms90.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../geom.py/" class="md-nav__link">
+        geom.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pes.py/" class="md-nav__link">
+        pes.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          plot.py
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        plot.py
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aimsprop.plot" class="md-nav__link">
+    plot
+  </a>
+  
+    <nav class="md-nav" aria-label="plot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.plot-functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.plot.plot_population" class="md-nav__link">
+    plot_population()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.plot.plot_scalar" class="md-nav__link">
+    plot_scalar()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.plot.plot_vector" class="md-nav__link">
+    plot_vector()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pop.py/" class="md-nav__link">
+        pop.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rotate.py/" class="md-nav__link">
+        rotate.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sine.py/" class="md-nav__link">
+        sine.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../traj.py/" class="md-nav__link">
+        traj.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ued.py/" class="md-nav__link">
+        ued.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wrap.py/" class="md-nav__link">
+        wrap.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xyz.py/" class="md-nav__link">
+        xyz.py
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        User scripts
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="User scripts" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          User scripts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_scripts/colton_script/" class="md-nav__link">
+        Colton's Super Script
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aimsprop.plot" class="md-nav__link">
+    plot
+  </a>
+  
+    <nav class="md-nav" aria-label="plot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.plot-functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.plot.plot_population" class="md-nav__link">
+    plot_population()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.plot.plot_scalar" class="md-nav__link">
+    plot_scalar()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aimsprop.plot.plot_vector" class="md-nav__link">
+    plot_vector()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/mtzgroup/aimsprop/edit/develop/docs/code_reference/plot.py.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="plotpy">plot.py<a class="headerlink" href="#plotpy" title="Permanent link">🔗</a></h1>
+
+
+  <div class="doc doc-object doc-module">
+
+
+
+<h2 id="aimsprop.plot" class="doc doc-heading">
+        <code>aimsprop.plot</code>
+
+
+
+<a href="#aimsprop.plot" class="headerlink" title="Permanent link">🔗</a></h2>
+
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+<h3 id="aimsprop.plot-functions">Functions<a href="#aimsprop.plot-functions" class="headerlink" title="Permanent link">🔗</a></h3>
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h4 id="aimsprop.plot.plot_population" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">plot_population</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">trajs</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">time_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;au&#39;</span><span class="p">,</span> <span class="n">legend_loc</span> <span class="o">=</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">state_colors</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">plot_total</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">clf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">tmax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span></code>
+
+
+<a href="#aimsprop.plot.plot_population" class="headerlink" title="Permanent link">🔗</a></h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Plot the AIMS state populations.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>filename</code></td>
+        <td><code>str</code></td>
+        <td><p>the output PDF file</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>traj</code></td>
+        <td><code>Trajectory</code></td>
+        <td><p>the Trajectory to plot populations for</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>trajs</code></td>
+        <td><code>list</code></td>
+        <td><p>a list of Trajectory objects, one for each
+IC. This is used for the "spaghetti" plots.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>time_units</code></td>
+        <td><code>str</code></td>
+        <td><p>"au" or "fs"</p></td>
+        <td><code>&#39;au&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>legend_loc</code></td>
+        <td><code>legend location</code></td>
+        <td><p>location indicator for legend</p></td>
+        <td><code>&#39;right&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>state_colors</code></td>
+        <td><code>list</code></td>
+        <td><p>list of colors to use for state
+plotting. None defaults to interpolation on jet colormap. For two
+or three states, many people prefer ['r', 'b', 'g'] or similar.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>plot_total</code></td>
+        <td><code>bool</code></td>
+        <td><p>Plot total population?</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>clf</code></td>
+        <td><code>bool</code></td>
+        <td><p>clear plot or not?</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Figure</code></td>
+      <td><p>plt handle for further modification
+saves figure to filename</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/plot.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">plot_population</span><span class="p">(</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">trajs</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+    <span class="n">time_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;au&quot;</span><span class="p">,</span>
+    <span class="n">legend_loc</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
+    <span class="n">state_colors</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">plot_total</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">clf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">tmax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Plot the AIMS state populations.</span>
+
+<span class="sd">    Params:</span>
+<span class="sd">        filename: the output PDF file</span>
+<span class="sd">        traj: the Trajectory to plot populations for</span>
+<span class="sd">        trajs: a list of Trajectory objects, one for each</span>
+<span class="sd">            IC. This is used for the &quot;spaghetti&quot; plots.</span>
+<span class="sd">        time_units: &quot;au&quot; or &quot;fs&quot;</span>
+<span class="sd">        legend_loc (legend location): location indicator for legend</span>
+<span class="sd">        state_colors (list of colors): list of colors to use for state</span>
+<span class="sd">            plotting. None defaults to interpolation on jet colormap. For two</span>
+<span class="sd">            or three states, many people prefer [&#39;r&#39;, &#39;b&#39;, &#39;g&#39;] or similar.</span>
+<span class="sd">        plot_total: Plot total population?</span>
+<span class="sd">        clf: clear plot or not?</span>
+<span class="sd">    Returns:</span>
+<span class="sd">         plt handle for further modification</span>
+<span class="sd">         saves figure to filename</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">time_units</span> <span class="o">==</span> <span class="s2">&quot;au&quot;</span><span class="p">:</span>
+        <span class="n">time_scale</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="k">elif</span> <span class="n">time_units</span> <span class="o">==</span> <span class="s2">&quot;fs&quot;</span><span class="p">:</span>
+        <span class="n">time_scale</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mf">41.3413745758</span>  <span class="c1"># TODO: standardize this</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown time units: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">time_units</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">state_colors</span><span class="p">:</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="n">state_colors</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;jet&quot;</span><span class="p">)</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">cmap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">))))</span>
+        <span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">clf</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+
+    <span class="c1"># Spaghetti plots from trajs</span>
+    <span class="n">Imap</span> <span class="o">=</span> <span class="p">{</span><span class="n">I</span><span class="p">:</span> <span class="n">Iind</span> <span class="k">for</span> <span class="n">Iind</span><span class="p">,</span> <span class="n">I</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">)}</span>
+    <span class="k">for</span> <span class="n">traj2</span> <span class="ow">in</span> <span class="n">trajs</span><span class="p">:</span>
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traj2</span><span class="o">.</span><span class="n">ts</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">traj2</span><span class="o">.</span><span class="n">Is</span><span class="p">:</span>
+            <span class="n">traj3</span> <span class="o">=</span> <span class="n">traj2</span><span class="o">.</span><span class="n">subset_by_I</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+            <span class="n">t3s</span> <span class="o">=</span> <span class="n">traj3</span><span class="o">.</span><span class="n">ts</span>
+            <span class="n">w3s</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">w</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj3</span><span class="o">.</span><span class="n">subset_by_t</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">frames</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t3s</span><span class="p">]</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_scale</span> <span class="o">*</span> <span class="n">t3s</span><span class="p">,</span> <span class="n">w3s</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">Imap</span><span class="p">[</span><span class="n">I</span><span class="p">]],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="c1"># State populations</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">populations</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">compute_population</span><span class="p">(</span><span class="n">traj</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">Iind</span><span class="p">,</span> <span class="n">I</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">populations</span><span class="o">.</span><span class="n">keys</span><span class="p">())):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">time_scale</span> <span class="o">*</span> <span class="n">ts</span><span class="p">,</span>
+            <span class="n">populations</span><span class="p">[</span><span class="n">I</span><span class="p">],</span>
+            <span class="s2">&quot;-&quot;</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">Iind</span><span class="p">],</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;State=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">I</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Total population (to check norm, state cutoffs, etc)</span>
+    <span class="k">if</span> <span class="n">plot_total</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">population</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">populations</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">population</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_scale</span> <span class="o">*</span> <span class="n">ts</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Total&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">tmax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">tmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span> <span class="o">*</span> <span class="n">time_scale</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t [</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">time_units</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Population [-]&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="n">time_scale</span> <span class="o">*</span> <span class="nb">min</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span> <span class="n">tmax</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">legend_loc</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">plt</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h4 id="aimsprop.plot.plot_scalar" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">plot_scalar</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">time_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;au&#39;</span><span class="p">,</span> <span class="n">legend_loc</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">state_colors</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">plot_average</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">clf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span></code>
+
+
+<a href="#aimsprop.plot.plot_scalar" class="headerlink" title="Permanent link">🔗</a></h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Plot an AIMS scalar property (e.g., a "spaghetti plot" for a bond distance).</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>filename</code></td>
+        <td><code>str</code></td>
+        <td><p>the output PDF file</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>traj</code></td>
+        <td><code>Trajectory</code></td>
+        <td><p>the Trajectory to plot properties for</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>key</code></td>
+        <td><code>str</code></td>
+        <td><p>the key of the property</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>ylabel</code></td>
+        <td><code>str</code></td>
+        <td><p>the label of the y-axis (defaults to key)</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>time_units</code></td>
+        <td><code>str</code></td>
+        <td><p>"au" or "fs"</p></td>
+        <td><code>&#39;au&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>legend_loc</code></td>
+        <td><code>legend location</code></td>
+        <td><p>location indicator for legend</p></td>
+        <td><code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>state_colors</code></td>
+        <td><code>list</code></td>
+        <td><p>list of colors to use for state
+plotting. None defaults to interpolation on jet colormap. For two
+or three states, many people prefer ['r', 'b', 'g'] or similar.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>plot_average</code></td>
+        <td><code>bool</code></td>
+        <td><p>Plot averages for each state and total?</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>clf</code></td>
+        <td><code>bool</code></td>
+        <td><p>clear plot or not?</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Figure</code></td>
+      <td><p>plt handle for further modification
+saves figure to filename</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/plot.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">plot_scalar</span><span class="p">(</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">time_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;au&quot;</span><span class="p">,</span>
+    <span class="n">legend_loc</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">state_colors</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">plot_average</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">clf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Plot an AIMS scalar property (e.g., a &quot;spaghetti plot&quot; for a bond distance).</span>
+
+<span class="sd">    Params:</span>
+<span class="sd">        filename: the output PDF file</span>
+<span class="sd">        traj: the Trajectory to plot properties for</span>
+<span class="sd">        key: the key of the property</span>
+<span class="sd">        ylabel: the label of the y-axis (defaults to key)</span>
+<span class="sd">        time_units: &quot;au&quot; or &quot;fs&quot;</span>
+<span class="sd">        legend_loc (legend location): location indicator for legend</span>
+<span class="sd">        state_colors: list of colors to use for state</span>
+<span class="sd">            plotting. None defaults to interpolation on jet colormap. For two</span>
+<span class="sd">            or three states, many people prefer [&#39;r&#39;, &#39;b&#39;, &#39;g&#39;] or similar.</span>
+<span class="sd">        plot_average: Plot averages for each state and total?</span>
+<span class="sd">        clf : clear plot or not?</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        plt handle for further modification</span>
+<span class="sd">        saves figure to filename</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">time_units</span> <span class="o">==</span> <span class="s2">&quot;au&quot;</span><span class="p">:</span>
+        <span class="n">time_scale</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="k">elif</span> <span class="n">time_units</span> <span class="o">==</span> <span class="s2">&quot;fs&quot;</span><span class="p">:</span>
+        <span class="n">time_scale</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mf">41.3413745758</span>  <span class="c1"># TODO: standardize this</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown time units: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">time_units</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">state_colors</span><span class="p">:</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="n">state_colors</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;jet&quot;</span><span class="p">)</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">cmap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">))))</span>
+        <span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">clf</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">plot_average</span><span class="p">:</span>
+        <span class="c1"># Plot average</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">time_scale</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">ts</span><span class="p">),</span>
+            <span class="n">traj</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+            <span class="s2">&quot;-k&quot;</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># Plot state averages</span>
+        <span class="k">for</span> <span class="n">Iind</span><span class="p">,</span> <span class="n">I</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">):</span>
+            <span class="n">traj2</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">subset_by_I</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">Iind</span><span class="p">]</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                <span class="n">time_scale</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traj2</span><span class="o">.</span><span class="n">ts</span><span class="p">),</span>
+                <span class="n">traj2</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+                <span class="s2">&quot;-&quot;</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+            <span class="p">)</span>
+    <span class="c1"># Plot individual frames</span>
+    <span class="k">for</span> <span class="n">Iind</span><span class="p">,</span> <span class="n">I</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">):</span>
+        <span class="n">traj2</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">subset_by_I</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">Iind</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">lind</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">traj2</span><span class="o">.</span><span class="n">labels</span><span class="p">):</span>
+            <span class="n">traj3</span> <span class="o">=</span> <span class="n">traj2</span><span class="o">.</span><span class="n">subset_by_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                <span class="n">time_scale</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traj3</span><span class="o">.</span><span class="n">ts</span><span class="p">),</span>
+                <span class="n">traj3</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+                <span class="s2">&quot;-&quot;</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                <span class="n">label</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;State=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">I</span> <span class="k">if</span> <span class="n">lind</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t [</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">time_units</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ylabel</span> <span class="k">if</span> <span class="n">ylabel</span> <span class="k">else</span> <span class="n">key</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>  <span class="c1"># TODO: Does not seem to respect this</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">legend_loc</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">plt</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h4 id="aimsprop.plot.plot_vector" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">plot_vector</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">time_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;au&#39;</span><span class="p">,</span> <span class="n">diff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x111a2b340</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">levels</span><span class="p">:</span> <span class="n">ndarray</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">nlevel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">65</span><span class="p">,</span> <span class="n">twosided</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">clf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span></code>
+
+
+<a href="#aimsprop.plot.plot_vector" class="headerlink" title="Permanent link">🔗</a></h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Plot an AIMS vector property (e.g., a heatmap of a UED or PES signal).</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>filename</code></td>
+        <td><code>str</code></td>
+        <td><p>the output PDF file</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>traj</code></td>
+        <td><code>Trajectory</code></td>
+        <td><p>the Trajectory to plot properties for</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>key</code></td>
+        <td><code>str</code></td>
+        <td><p>the key of the property</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>y</code></td>
+        <td><code>ndarray</code></td>
+        <td><p>the indices of the y axis (e.g., R or Q or something
+like it)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>ylabel</code></td>
+        <td><code>str</code></td>
+        <td><p>the label of the y-axis (defaults to key)</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>time_units</code></td>
+        <td><code>str</code></td>
+        <td><p>"au" or "fs"</p></td>
+        <td><code>&#39;au&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>diff</code></td>
+        <td><code>bool</code></td>
+        <td><p>is this a difference property from t=0?</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>cmap</code></td>
+        <td><code></code></td>
+        <td><p>the desired colormap</p></td>
+        <td><code>&lt;matplotlib.colors.LinearSegmentedColormap object at 0x111a2b340&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>levels</code></td>
+        <td><code>ndarray</code></td>
+        <td><p>the explicitly desired contour levels (1st
+priority).</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>nlevel</code></td>
+        <td><code>int</code></td>
+        <td><p>number of evenly spaced contour levels to
+saturate data (2nd priority).</p></td>
+        <td><code>65</code></td>
+      </tr>
+      <tr>
+        <td><code>twosided</code></td>
+        <td><code>bool</code></td>
+        <td><p>is the colormap two-sided (used only with nlevel)</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>clf</code></td>
+        <td><code>bool</code></td>
+        <td><p>clear plot or not?</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Figure</code></td>
+      <td><p>plt handle for further modification
+saves figure to filename</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>aimsprop/plot.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">plot_vector</span><span class="p">(</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">time_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;au&quot;</span><span class="p">,</span>
+    <span class="n">diff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">bwr</span><span class="p">,</span>
+    <span class="n">levels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">nlevel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">65</span><span class="p">,</span>
+    <span class="n">twosided</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">clf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Plot an AIMS vector property (e.g., a heatmap of a UED or PES signal).</span>
+
+<span class="sd">    Params:</span>
+<span class="sd">        filename: the output PDF file</span>
+<span class="sd">        traj: the Trajectory to plot properties for</span>
+<span class="sd">        key: the key of the property</span>
+<span class="sd">        y: the indices of the y axis (e.g., R or Q or something</span>
+<span class="sd">            like it)</span>
+<span class="sd">        ylabel: the label of the y-axis (defaults to key)</span>
+<span class="sd">        time_units: &quot;au&quot; or &quot;fs&quot;</span>
+<span class="sd">        diff: is this a difference property from t=0?</span>
+<span class="sd">        cmap: the desired colormap</span>
+<span class="sd">        levels: the explicitly desired contour levels (1st</span>
+<span class="sd">            priority).</span>
+<span class="sd">        nlevel: number of evenly spaced contour levels to</span>
+<span class="sd">            saturate data (2nd priority).</span>
+<span class="sd">        twosided: is the colormap two-sided (used only with nlevel)</span>
+<span class="sd">        clf: clear plot or not?</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        plt handle for further modification</span>
+<span class="sd">        saves figure to filename</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">time_units</span> <span class="o">==</span> <span class="s2">&quot;au&quot;</span><span class="p">:</span>
+        <span class="n">time_scale</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="k">elif</span> <span class="n">time_units</span> <span class="o">==</span> <span class="s2">&quot;fs&quot;</span><span class="p">:</span>
+        <span class="n">time_scale</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mf">41.3413745758</span>  <span class="c1"># TODO: standardize this</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown time units: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">time_units</span><span class="p">)</span>
+
+    <span class="c1"># Extract data to plot</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">Vs</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="c1"># Difference properties</span>
+    <span class="k">if</span> <span class="n">diff</span><span class="p">:</span>
+        <span class="n">Vs</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span> <span class="n">Vs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])</span>
+
+    <span class="c1"># Levels and color ticks</span>
+    <span class="k">if</span> <span class="n">levels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Vs</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">twosided</span><span class="p">:</span>
+            <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">vmax</span><span class="p">,</span> <span class="o">+</span><span class="n">vmax</span><span class="p">,</span> <span class="n">nlevel</span><span class="p">)</span>
+            <span class="n">cticks</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">vmax</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="nb">int</span><span class="p">(</span><span class="n">vmax</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="n">vmax</span><span class="p">,</span> <span class="n">nlevel</span><span class="p">)</span>
+            <span class="n">cticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="nb">int</span><span class="p">(</span><span class="n">vmax</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">twosided</span><span class="p">:</span>
+            <span class="n">cticks</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">vmax</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="nb">int</span><span class="p">(</span><span class="n">vmax</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="nb">int</span><span class="p">(</span><span class="n">vmax</span><span class="p">)]</span>
+
+    <span class="k">if</span> <span class="n">clf</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    <span class="n">hs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span>
+        <span class="n">time_scale</span> <span class="o">*</span> <span class="n">ts</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">Vs</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s2">&quot;both&quot;</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hs</span><span class="o">.</span><span class="n">collections</span><span class="p">:</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s2">&quot;face&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="n">cticks</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t [</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">time_units</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ylabel</span> <span class="k">if</span> <span class="n">ylabel</span> <span class="k">else</span> <span class="n">key</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>  <span class="c1"># TODO: Does not seem to respect this</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">plt</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../pes.py/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              pes.py
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../pop.py/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              pop.py
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.instant", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a1c7c35e.min.js"></script>
+      
+    
+  </body>
+</html>
