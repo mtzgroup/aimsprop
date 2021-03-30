@@ -61,7 +61,7 @@ If you would like to add code to `aimsprop` please follow the steps below.
 
 1. Follow the same steps as above
 2. Add documentation to the `/docs` folder using [markdown](https://www.markdownguide.org/cheat-sheet) syntax.
-3. Use `mkdocs` to view your documentation locally. You should be able to view in docs in a browswer at [http://127.0.0.1:8000](http://127.0.0.1:8000)
+3. Use `mkdocs` to view your documentation locally. You should be able to view in docs in a browser at [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ```sh
 mkdocs serve
