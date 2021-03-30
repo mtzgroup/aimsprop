@@ -142,6 +142,9 @@ cython_debug/
 
 # Include Spawn.log files required for tests
 !Spawn.log
+
+#Include figures for docs
+!docs/images/*
  
 .python-version
 

@@ -371,7 +371,7 @@ class Trajectory(object):
             for ind2, frame2 in enumerate(self.frames[ind1 + 1 :]):
                 if frame1.label == frame2.label and frame1.t == frame2.t:
                     unique = False
-            if unique == True:
+            if unique:
                 frames.append(frame1)
 
         return Trajectory(frames)
