@@ -18,7 +18,13 @@ If you would like to add code to `aimsprop` please follow the steps below.
     source ./env/bin/activate
     ```
 
-1. Install `flit`. Flit is used to manage package dependencies
+4. Install the latest version of `pip`. Since we will be installing `matplotlib`, having the latest version of `pip` can help avoid issues.
+
+    ```sh
+    pip install -U pip
+    ```
+
+3. Install `flit`. Flit is used to manage package dependencies
 
     ```sh
     python3 -m pip install flit
@@ -93,6 +99,16 @@ Documentation should include:
 3. You must describe the parameters and return value of your function using the conventions noted in the example below. This allows for documentation to be generated for your new function and describes to other users what basic values your function requires to operate.
 
 ::: aimsprop.geom:compute_angle
+
+#### Formatting Your Code
+
+To assist in creating a clean code format we have created a script for you that will sort your imports, format your code, and notify you of any style violations that you need to fix. To run it, execute the following from the root directory:
+
+```sh
+bash ./scripts/format.sh
+```
+
+You should run this script frequently as you write your code to help keep your formatting clean.
 
 ## Documentation
 
