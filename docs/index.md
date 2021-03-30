@@ -47,3 +47,5 @@ plot.py - Generic interfaces for plotting scalar and vector data associated with
 - Monika Williams
 - Hayley Weir
 - Colton Hicks
+- Alessio Valentini
+- Alice R. Walker
