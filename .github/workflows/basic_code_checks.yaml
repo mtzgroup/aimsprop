@@ -50,6 +50,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Run mdl (markdown linter)
+        uses: actionshub/markdownlint@main
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -58,8 +60,6 @@ jobs:
         run: pip install flit
       - name: Install aimsprop
         run: flit install --deps develop --symlink
-      - name: Check markdown formatting
-        run: mdformat --check .
       - name: Build Documentation
         run: mkdocs build
 
