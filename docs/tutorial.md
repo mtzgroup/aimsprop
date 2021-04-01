@@ -20,7 +20,7 @@ import aimsprop as ai
 The documentation for creating and manipulating trajectory objects can be
 found [here](https://mtzgroup.github.io/aimsprop/code_reference/traj.py/).
 
-You can read in an AIMS trajectory from and FMS90 run. As an example, we will read in the data used for testing, so we set `aims_dir = "../tests/test_data/"` and we set `IC = "0002"`. These should be changed to the path to your AIMS output.
+You can read in an AIMS trajectory from and FMS90 run. As an example, we will read in the data used for testing, so we set `aims_dir = "tests/test_data/"` and we set `IC = "0002"`. These should be changed to the path to your AIMS output.
 
 First, to create a Path object to the AIMS data (this is better than using simple the str since it manages file/dir paths well).
 
