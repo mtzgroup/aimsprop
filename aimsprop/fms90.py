@@ -334,7 +334,7 @@ def _create_frames_saddle(
 
 
 def parse_fms90(
-    filepath: str,
+    filepath: Path,
     scheme: str = "mulliken",
     cutoff_time: float = None,
     cutoff_saddle: float = 1.0e-4,
@@ -360,16 +360,14 @@ def parse_fms90(
         Trajectory: The Trajectory object.
     """
 
-    filepath_path_obj = Path(filepath)
-
     # Read in FMS output files: positions*, Amp.*, S.dat and Spawn.log
-    N2s, xyz2s = _parse_positions(filepath_path_obj, cutoff_time)
+    N2s, xyz2s = _parse_positions(filepath, cutoff_time)
 
-    C2s = _parse_Cs(filepath_path_obj, cutoff_time)
+    C2s = _parse_Cs(filepath, cutoff_time)
 
-    Ss = _parse_Ss(filepath_path_obj, cutoff_time)
+    Ss = _parse_Ss(filepath, cutoff_time)
 
-    states = _parse_spawnlog(filepath_path_obj, initial_I)
+    states = _parse_spawnlog(filepath, initial_I)
 
     if len(C2s) != len(N2s):
         raise RuntimeError("xyz and C files not same number of TBF")

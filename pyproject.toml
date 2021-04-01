@@ -46,9 +46,10 @@ dev = [
 ]
 
 doc = [
-  "mkdocs >= 1.1.2",
-  "mkdocs-material >= 7.0.3",
-  "mkdocstrings >= 0.15.0",
+  "mkdocs == 1.1.2",
+  "mkdocs-material == 7.0.3",
+  "mkdocstrings == 0.15.0",
+  "mdformat == 0.6.3",
 ]
 
 [tool.pytest.ini_options]
