@@ -1,0 +1,1119 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Colton Hicks">
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>Getting Started with aimsprop - aimsprop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="cyan">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-started-with-aimsprop" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="aimsprop" class="md-header__button md-logo" aria-label="aimsprop">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            aimsprop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Getting Started with aimsprop
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/mtzgroup/aimsprop/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="aimsprop" class="md-nav__button md-logo" aria-label="aimsprop">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    aimsprop
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/mtzgroup/aimsprop/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        aimsprop
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../some_feature/" class="md-nav__link">
+        Some Feature
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Getting Started with aimsprop
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Getting Started with aimsprop
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-aimsprop" class="md-nav__link">
+    What is aimsprop?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-trajectory-object-from-an-aims-run" class="md-nav__link">
+    Creating a trajectory object from an AIMS run
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a trajectory object from an AIMS run">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cleaning-the-trajectory-object" class="md-nav__link">
+    Cleaning the trajectory object
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-trajectory-object" class="md-nav__link">
+    Using the trajectory object
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-geometric-properties" class="md-nav__link">
+    Computing geometric properties
+  </a>
+  
+    <nav class="md-nav" aria-label="Computing geometric properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bond-length" class="md-nav__link">
+    Bond length
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bond-angle" class="md-nav__link">
+    Bond angle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#torsion-angle" class="md-nav__link">
+    Torsion angle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-coordinate" class="md-nav__link">
+    Transfer coordinate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extracting-properties" class="md-nav__link">
+    Extracting properties
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calculate-population" class="md-nav__link">
+    Calculate Population
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting-properties" class="md-nav__link">
+    Plotting properties
+  </a>
+  
+    <nav class="md-nav" aria-label="Plotting properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plot-scalar-properties" class="md-nav__link">
+    Plot scalar properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot-vector-properties" class="md-nav__link">
+    Plot vector properties
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-dependent-spectra" class="md-nav__link">
+    Time dependent spectra
+  </a>
+  
+    <nav class="md-nav" aria-label="Time dependent spectra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ultrafast-electron-diffraction" class="md-nav__link">
+    Ultrafast electron diffraction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-and-writing-trajectory-objects" class="md-nav__link">
+    Reading and Writing trajectory objects
+  </a>
+  
+    <nav class="md-nav" aria-label="Reading and Writing trajectory objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-xyz-files" class="md-nav__link">
+    Writing xyz files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Code reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Code reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Code reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_reference/blur.py/" class="md-nav__link">
+        blur.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_reference/bootstrap.py/" class="md-nav__link">
+        bootstrap.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_reference/fms90.py/" class="md-nav__link">
+        fms90.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_reference/geom.py/" class="md-nav__link">
+        geom.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_reference/pes.py/" class="md-nav__link">
+        pes.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_reference/plot.py/" class="md-nav__link">
+        plot.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_reference/pop.py/" class="md-nav__link">
+        pop.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_reference/rotate.py/" class="md-nav__link">
+        rotate.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_reference/sine.py/" class="md-nav__link">
+        sine.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_reference/traj.py/" class="md-nav__link">
+        traj.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_reference/ued.py/" class="md-nav__link">
+        ued.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_reference/wrap.py/" class="md-nav__link">
+        wrap.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_reference/xyz.py/" class="md-nav__link">
+        xyz.py
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      <label class="md-nav__link" for="__nav_6">
+        User scripts
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="User scripts" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          User scripts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user_scripts/colton_script/" class="md-nav__link">
+        Colton's Super Script
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-aimsprop" class="md-nav__link">
+    What is aimsprop?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-trajectory-object-from-an-aims-run" class="md-nav__link">
+    Creating a trajectory object from an AIMS run
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a trajectory object from an AIMS run">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cleaning-the-trajectory-object" class="md-nav__link">
+    Cleaning the trajectory object
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-trajectory-object" class="md-nav__link">
+    Using the trajectory object
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-geometric-properties" class="md-nav__link">
+    Computing geometric properties
+  </a>
+  
+    <nav class="md-nav" aria-label="Computing geometric properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bond-length" class="md-nav__link">
+    Bond length
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bond-angle" class="md-nav__link">
+    Bond angle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#torsion-angle" class="md-nav__link">
+    Torsion angle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-coordinate" class="md-nav__link">
+    Transfer coordinate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extracting-properties" class="md-nav__link">
+    Extracting properties
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calculate-population" class="md-nav__link">
+    Calculate Population
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting-properties" class="md-nav__link">
+    Plotting properties
+  </a>
+  
+    <nav class="md-nav" aria-label="Plotting properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plot-scalar-properties" class="md-nav__link">
+    Plot scalar properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot-vector-properties" class="md-nav__link">
+    Plot vector properties
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-dependent-spectra" class="md-nav__link">
+    Time dependent spectra
+  </a>
+  
+    <nav class="md-nav" aria-label="Time dependent spectra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ultrafast-electron-diffraction" class="md-nav__link">
+    Ultrafast electron diffraction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-and-writing-trajectory-objects" class="md-nav__link">
+    Reading and Writing trajectory objects
+  </a>
+  
+    <nav class="md-nav" aria-label="Reading and Writing trajectory objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-xyz-files" class="md-nav__link">
+    Writing xyz files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/mtzgroup/aimsprop/edit/develop/docs/tutorial.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="getting-started-with-aimsprop">Getting Started with aimsprop<a class="headerlink" href="#getting-started-with-aimsprop" title="Permanent link">🔗</a></h1>
+<h2 id="what-is-aimsprop">What is aimsprop?<a class="headerlink" href="#what-is-aimsprop" title="Permanent link">🔗</a></h2>
+<p>This package was developed to analyse data from AIMS trajectories. The functionality revolves around a trajectory object which properties can be calculated on, for example geometric properties, time dependent spectra, population decay etc. The trajectory object consists of a list of Frame objects, which contain the properties.</p>
+<p>The documentation for the package can be found <a href="https://mtzgroup.github.io/aimsprop/">here</a>.</p>
+<h2 id="creating-a-trajectory-object-from-an-aims-run">Creating a trajectory object from an AIMS run<a class="headerlink" href="#creating-a-trajectory-object-from-an-aims-run" title="Permanent link">🔗</a></h2>
+<p>First, make sure that you have the package installed:
+<code>pip install aimsprop</code></p>
+<p>Then you can import the package into your file:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">aimsprop</span> <span class="k">as</span> <span class="nn">ai</span>
+</code></pre></div>
+<p>The documentation for creating and manipulating trajectory objects can be
+found <a href="https://mtzgroup.github.io/aimsprop/code_reference/traj.py/">here</a>.</p>
+<p>You can read in an AIMS trajectory from and FMS90 run. As an example, we will read in the data used for testing, so we set <code>aims_dir = "../tests/test_data/"</code> and we set <code>IC = "0002"</code>. These should be changed to the path to your AIMS output.</p>
+<p>First, to create a Path object to the AIMS data (this is better than using simple the str since it manages file/dir paths well).</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">aims_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">aims_dir</span><span class="p">)</span>
+</code></pre></div>
+<p>We can then pass the Path object into aimsprop:</p>
+<div class="highlight"><pre><span></span><code><span class="n">traj</span> <span class="o">=</span> <span class="n">ai</span><span class="o">.</span><span class="n">parse_fms90</span><span class="p">(</span><span class="n">aims_path</span> <span class="o">/</span> <span class="n">IC</span><span class="p">)</span>
+</code></pre></div>
+<p>We can also read in a collection AIMS runs from different initial conditions. We can set <code>ICs = ["0002","0003"]</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">trajs</span> <span class="o">=</span> <span class="p">[</span><span class="n">ai</span><span class="o">.</span><span class="n">parse_fms90</span><span class="p">(</span><span class="n">aims_path</span> <span class="o">/</span> <span class="n">IC</span><span class="p">)</span> <span class="k">for</span> <span class="n">IC</span> <span class="ow">in</span> <span class="n">ICs</span><span class="p">]</span>
+</code></pre></div>
+<p>Here, trajs is a list of trajectory objects which can be merged together to form the AIMS trajectory, containing the\
+AIMS runs for all the specified initial conditions. The weights of each trajectory are specified, which can be set\
+according to the IC oscillator strength or the ICs can be weighted evenly as below:</p>
+<div class="highlight"><pre><span></span><code><span class="n">traj</span> <span class="o">=</span> <span class="n">ai</span><span class="o">.</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">trajs</span><span class="p">,</span> <span class="n">ws</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">trajs</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">trajs</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="n">ICs</span><span class="p">)</span>
+</code></pre></div>
+<p>If you have terminated your trajectories on the ground state and run adiabatic extensions, you can pass the xyz files
+from\
+these using <code>ai.parse_xyz</code>. The time should be set to when the ground state trajectory begins and then this can be\
+merged into <code>traj</code> for the IC it is associated with using the <code>ai.Trajectory.merge</code> function as above.</p>
+<h3 id="cleaning-the-trajectory-object">Cleaning the trajectory object<a class="headerlink" href="#cleaning-the-trajectory-object" title="Permanent link">🔗</a></h3>
+<p>FMS90 AIMS trajectories include adaptive time steps in regions of high non-adiabatic coupling. It is often useful to\
+remove these adaptive timesteps and have evenly spaced time steps for your trajectory object. First we can define the\
+times that we want our trajectory frames to be, e.g. <code>ts = np.arange(0.0, max(traj.ts), 40.0)</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">traj</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">interpolate_linear</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+</code></pre></div>
+<p>We can also remove duplicates incase any exist, e.g. from AIMS restarts:</p>
+<div class="highlight"><pre><span></span><code><span class="n">traj</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">remove_duplicates</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="using-the-trajectory-object">Using the trajectory object<a class="headerlink" href="#using-the-trajectory-object" title="Permanent link">🔗</a></h3>
+<p>As noted previously, the trajectory object consists of a list of Frame objects. Therefore you can iterate through the\
+frames and print or extract frame properties:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">label</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">t</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">w</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">I</span>
+</code></pre></div>
+<p>You can also extract the list of properties for the entire trajectory using, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">labels</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">labels</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">ts</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">ws</span>
+<span class="n">states</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">Is</span>
+</code></pre></div>
+<p>You can select only a portion of the total <code>traj</code> using the <code>subset_by_&lt;&gt;</code> functions:</p>
+<div class="highlight"><pre><span></span><code><span class="n">traj_s0</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">subset_by_I</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">traj_500au</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">subset_by_t</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="computing-geometric-properties">Computing geometric properties<a class="headerlink" href="#computing-geometric-properties" title="Permanent link">🔗</a></h2>
+<p>The geometric properties that are supported are:</p>
+<ul>
+<li>Bond length</li>
+<li>Bond angle</li>
+<li>Torsion angle</li>
+<li>Out of plane angle</li>
+<li>Proton transfer coordinate.</li>
+</ul>
+<p>The documentation for the geometric functions can be
+found <a href="https://mtzgroup.github.io/aimsprop/code_reference/geom.py/">here</a>.</p>
+<h3 id="bond-length">Bond length<a class="headerlink" href="#bond-length" title="Permanent link">🔗</a></h3>
+<p>You can calculate the bond length between two atoms, e.g atom indices <code>0</code> and <code>1</code> and name the property, e.g. "R01":</p>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">compute_bond</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;R01&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="bond-angle">Bond angle<a class="headerlink" href="#bond-angle" title="Permanent link">🔗</a></h3>
+<p>You can calculate the bond angle between three atoms, e.g atom indices <code>0</code>, <code>1</code> and <code>2</code> name the property, e.g. "A012":</p>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">compute_angle</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;A012&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="torsion-angle">Torsion angle<a class="headerlink" href="#torsion-angle" title="Permanent link">🔗</a></h3>
+<p>You can calculate the torsion angle between four atoms, e.g atom indices <code>0</code>, <code>1</code>, <code>2</code> and <code>3</code> and name the property,
+e.g. "
+T0123":</p>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">compute_torsion</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;T0123&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<p>You can also unwrap properties so that it continues beyond 180 degrees rather than jumping back down to -180:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">unwrap_property</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;T0123&quot;</span><span class="p">,</span> <span class="mf">360.0</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="transfer-coordinate">Transfer coordinate<a class="headerlink" href="#transfer-coordinate" title="Permanent link">🔗</a></h3>
+<p>You can calculate the transfer coordinate between atoms, e.g atom indices <code>0</code>, <code>1</code>, and <code>2</code> and name the property,
+e.g. "PT012":</p>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">compute_transfer_coord</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;PT012&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="extracting-properties">Extracting properties<a class="headerlink" href="#extracting-properties" title="Permanent link">🔗</a></h3>
+<p>Once a property has been added to the trajectory object, it can be extracted with its key id:</p>
+<div class="highlight"><pre><span></span><code><span class="n">r01</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="s2">&quot;R01&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="calculate-population">Calculate Population<a class="headerlink" href="#calculate-population" title="Permanent link">🔗</a></h2>
+<p>Documentation for the population can be found <a href="https://mtzgroup.github.io/aimsprop/code_reference/pop.py/">here</a>.</p>
+<p>If you want to calculate the population use</p>
+<div class="highlight"><pre><span></span><code><span class="n">pop</span> <span class="o">=</span> <span class="n">ai</span><span class="o">.</span><span class="n">compute_population</span><span class="p">(</span><span class="n">traj</span><span class="p">)</span>
+</code></pre></div>
+<p>If you just want to plot the population to a file, e.g. <code>P.png</code>, you can instead run:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">plot_population</span><span class="p">(</span>
+    <span class="s2">&quot;P.png&quot;</span><span class="p">,</span>
+    <span class="n">traj</span><span class="p">,</span>
+    <span class="n">trajs</span><span class="p">,</span>
+    <span class="n">time_units</span><span class="o">=</span><span class="s2">&quot;fs&quot;</span><span class="p">,</span>
+    <span class="n">state_colors</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>where <code>traj</code> is the merged trajectory object, and <code>trajs</code> is the list of parsed AIMS trajectories. The file can also\
+be saved as a PDF.</p>
+<p><img alt="P.png" src="../images/P.png" /></p>
+<h2 id="plotting-properties">Plotting properties<a class="headerlink" href="#plotting-properties" title="Permanent link">🔗</a></h2>
+<p>Documentation for the plotting functions can be
+found <a href="https://mtzgroup.github.io/aimsprop/code_reference/plot.py/">here</a>.\
+You can plot scalar properties and blurred properties. The files can be written as PNG or PDF files.</p>
+<h3 id="plot-scalar-properties">Plot scalar properties<a class="headerlink" href="#plot-scalar-properties" title="Permanent link">🔗</a></h3>
+<p>You can plot the properties that you calculated above, for example plotting the bond angle:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">plot_scalar</span><span class="p">(</span><span class="s2">&quot;R.png&quot;</span><span class="p">,</span>
+               <span class="n">traj</span><span class="p">,</span>
+               <span class="s2">&quot;R01&quot;</span><span class="p">,</span>
+               <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$R_</span><span class="si">{CC}</span><span class="s2"> [\AA</span><span class="si">{}</span><span class="s2">]$&quot;</span><span class="p">,</span>
+               <span class="n">time_units</span><span class="o">=</span><span class="s2">&quot;fs&quot;</span><span class="p">,</span>
+               <span class="n">state_colors</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span>
+               <span class="n">clf</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+               <span class="n">plot_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+               <span class="p">)</span>
+</code></pre></div>
+<p>The figure is saved to the file <code>R.png</code>. The function returns the plt object so it can be modified as needed.
+<img alt="R.png" src="../images/R.png" /></p>
+<h3 id="plot-vector-properties">Plot vector properties<a class="headerlink" href="#plot-vector-properties" title="Permanent link">🔗</a></h3>
+<p>The documentation for applying a Gaussian to a property
+is <a href="https://mtzgroup.github.io/aimsprop/code_reference/blur.py/">here</a>.</p>
+<p>In order to blur a property using a Gaussian convolution, first create a space over which the property can be blurred,
+and then computer the blurred property:</p>
+<div class="highlight"><pre><span></span><code><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ai</span><span class="o">.</span><span class="n">blur_property</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;R01&quot;</span><span class="p">,</span> <span class="s2">&quot;R01blur&quot;</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">8.0</span><span class="p">)</span>
+</code></pre></div>
+<p>The blurred property is written with key, <code>"R01blur"</code>.</p>
+<p>To plot a blurred property use:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">plot_vector</span><span class="p">(</span>
+    <span class="s2">&quot;Rblur.png&quot;</span><span class="p">,</span>
+    <span class="n">traj</span><span class="p">,</span>
+    <span class="s2">&quot;R01blur&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">R</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$R [\AA</span><span class="si">{}</span><span class="s2">]$&quot;</span><span class="p">,</span>
+    <span class="n">time_units</span><span class="o">=</span><span class="s2">&quot;fs&quot;</span><span class="p">,</span>
+    <span class="n">nlevel</span><span class="o">=</span><span class="mi">64</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><img alt="Rblur.png" src="../images/Rblur.png" /></p>
+<p>The figure is saved to the file <code>Rblur.png</code>. The function returns the plt object, so it can be modified as needed.</p>
+<p>The same can be done for the other properties.</p>
+<h2 id="time-dependent-spectra">Time dependent spectra<a class="headerlink" href="#time-dependent-spectra" title="Permanent link">🔗</a></h2>
+<p>Currently, ultrafast electron diffraction and ultrafast x-ray scattering signals can be computed with aimsprop.\
+There is more information on these techniques <a href="https://pubs.acs.org/doi/png/10.1021/acs.jctc.8b01051">here</a>.</p>
+<h3 id="ultrafast-electron-diffraction">Ultrafast electron diffraction<a class="headerlink" href="#ultrafast-electron-diffraction" title="Permanent link">🔗</a></h3>
+<p>The Ultrafast electron diffraction (UED) signal can be generated by defining a bond length range and then computing the
+signal:</p>
+<div class="highlight"><pre><span></span><code><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">ai</span><span class="o">.</span><span class="n">compute_ued_simple</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;UED&quot;</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">8.0</span><span class="p">)</span>
+</code></pre></div>
+<p>Notes on how the UED signal is computed can be
+found <a href="https://github.com/mtzgroup/aimsprop/blob/feature-tutorial-doc/notes/ued/report.png">here</a>.</p>
+<p>You can then plot the signal:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">plot_vector</span><span class="p">(</span>
+    <span class="s2">&quot;UED.png&quot;</span><span class="p">,</span>
+    <span class="n">traj</span><span class="p">,</span>
+    <span class="s2">&quot;UED&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">R</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$R [\AA</span><span class="si">{}</span><span class="s2">]$&quot;</span><span class="p">,</span>
+    <span class="n">time_units</span><span class="o">=</span><span class="s2">&quot;fs&quot;</span><span class="p">,</span>
+    <span class="n">diff</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><img alt="UED.png" src="../images/UED.png" /></p>
+<p>The figure will be saved in <code>UED.png</code>.</p>
+<h2 id="reading-and-writing-trajectory-objects">Reading and Writing trajectory objects<a class="headerlink" href="#reading-and-writing-trajectory-objects" title="Permanent link">🔗</a></h2>
+<p>You can use pickle to write/read in the trajectory object so you dont have to re-generate it again each\
+time.</p>
+<p>First, load pickle:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pickle</span>
+</code></pre></div>
+<p>Writing traj to a file:</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;traj.out&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</code></pre></div>
+<p>Reading traj from a file:</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;traj.out&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">traj</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</code></pre></div>
+<p>When the <code>traj</code> object is written to a file, all of its properties are also written. Therefore when a trajectory
+object\
+read from a pickle file, it contains all information that was stored in the trajectory.</p>
+<h3 id="writing-xyz-files">Writing xyz files<a class="headerlink" href="#writing-xyz-files" title="Permanent link">🔗</a></h3>
+<p>The documentation for xyz files can be found <a href="https://mtzgroup.github.io/aimsprop/code_reference/xyz.py/">here</a>. You can
+parse xyz files into aimsprop to build a trajectory object. You can also write them:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">write_xyzs</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../some_feature/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Some Feature
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../code_reference/blur.py/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              blur.py
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["search.suggest", "search.highlight", "navigation.instant", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+    
+  </body>
+</html>

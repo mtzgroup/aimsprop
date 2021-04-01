@@ -11,8 +11,8 @@
         <meta name="author" content="Colton Hicks">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.6">
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.2c0c5eaf.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1655a90d.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
@@ -75,9 +75,11 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="aimsprop" class="md-header__button md-logo" aria-label="aimsprop" data-md-component="logo">
+    <a href="../.." title="aimsprop" class="md-header__button md-logo" aria-label="aimsprop">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -139,9 +141,11 @@
                     
 
 
+
+
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="aimsprop" class="md-nav__button md-logo" aria-label="aimsprop" data-md-component="logo">
+    <a href="../.." title="aimsprop" class="md-nav__button md-logo" aria-label="aimsprop">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -216,6 +220,21 @@
 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/" class="md-nav__link">
+        Getting Started with aimsprop
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -223,14 +242,14 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
-      <label class="md-nav__link" for="__nav_4">
+      <label class="md-nav__link" for="__nav_5">
         Code reference
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Code reference" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
+        <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Code reference
         </label>
@@ -473,14 +492,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
       
-      <label class="md-nav__link" for="__nav_5">
+      <label class="md-nav__link" for="__nav_6">
         User scripts
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="User scripts" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
+        <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           User scripts
         </label>
@@ -611,7 +630,7 @@
 
 
 <h4 id="aimsprop.fms90.parse_fms90" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">parse_fms90</span><span class="p">(</span><span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">scheme</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;mulliken&#39;</span><span class="p">,</span> <span class="n">cutoff_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cutoff_saddle</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">initial_I</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span></code>
+<code class="highlight language-python"><span class="n">parse_fms90</span><span class="p">(</span><span class="n">filepath</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">scheme</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;mulliken&#39;</span><span class="p">,</span> <span class="n">cutoff_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cutoff_saddle</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">initial_I</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span></code>
 
 
 <a href="#aimsprop.fms90.parse_fms90" class="headerlink" title="Permanent link">🔗</a></h4>
@@ -635,7 +654,7 @@ populate a density matrix by mulliken or saddle point rules.</p>
   <tbody>
       <tr>
         <td><code>filepath</code></td>
-        <td><code>str</code></td>
+        <td><code>Path</code></td>
         <td><p>the path to the FMS run directory</p></td>
         <td><em>required</em></td>
       </tr>
@@ -688,7 +707,7 @@ electronic label.</p></td>
         <details class="quote">
           <summary>Source code in <code>aimsprop/fms90.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_fms90</span><span class="p">(</span>
-    <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">filepath</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
     <span class="n">scheme</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mulliken&quot;</span><span class="p">,</span>
     <span class="n">cutoff_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">cutoff_saddle</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0e-4</span><span class="p">,</span>
@@ -714,16 +733,14 @@ electronic label.</p></td>
 <span class="sd">        Trajectory: The Trajectory object.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">filepath_path_obj</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
-
     <span class="c1"># Read in FMS output files: positions*, Amp.*, S.dat and Spawn.log</span>
-    <span class="n">N2s</span><span class="p">,</span> <span class="n">xyz2s</span> <span class="o">=</span> <span class="n">_parse_positions</span><span class="p">(</span><span class="n">filepath_path_obj</span><span class="p">,</span> <span class="n">cutoff_time</span><span class="p">)</span>
+    <span class="n">N2s</span><span class="p">,</span> <span class="n">xyz2s</span> <span class="o">=</span> <span class="n">_parse_positions</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">cutoff_time</span><span class="p">)</span>
 
-    <span class="n">C2s</span> <span class="o">=</span> <span class="n">_parse_Cs</span><span class="p">(</span><span class="n">filepath_path_obj</span><span class="p">,</span> <span class="n">cutoff_time</span><span class="p">)</span>
+    <span class="n">C2s</span> <span class="o">=</span> <span class="n">_parse_Cs</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">cutoff_time</span><span class="p">)</span>
 
-    <span class="n">Ss</span> <span class="o">=</span> <span class="n">_parse_Ss</span><span class="p">(</span><span class="n">filepath_path_obj</span><span class="p">,</span> <span class="n">cutoff_time</span><span class="p">)</span>
+    <span class="n">Ss</span> <span class="o">=</span> <span class="n">_parse_Ss</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">cutoff_time</span><span class="p">)</span>
 
-    <span class="n">states</span> <span class="o">=</span> <span class="n">_parse_spawnlog</span><span class="p">(</span><span class="n">filepath_path_obj</span><span class="p">,</span> <span class="n">initial_I</span><span class="p">)</span>
+    <span class="n">states</span> <span class="o">=</span> <span class="n">_parse_spawnlog</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">initial_I</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">C2s</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">N2s</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;xyz and C files not same number of TBF&quot;</span><span class="p">)</span>
@@ -813,7 +830,6 @@ electronic label.</p></td>
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs
         </a>
-        
       </div>
       
     </div>
@@ -827,7 +843,7 @@ electronic label.</p></td>
     <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.instant", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a1c7c35e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ca5457b8.min.js"></script>
       
     
   </body>

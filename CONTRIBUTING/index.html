@@ -11,8 +11,8 @@
         <meta name="author" content="Colton Hicks">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.6">
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.2c0c5eaf.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.1655a90d.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
@@ -75,9 +75,11 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="aimsprop" class="md-header__button md-logo" aria-label="aimsprop" data-md-component="logo">
+    <a href=".." title="aimsprop" class="md-header__button md-logo" aria-label="aimsprop">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -139,9 +141,11 @@
                     
 
 
+
+
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="aimsprop" class="md-nav__button md-logo" aria-label="aimsprop" data-md-component="logo">
+    <a href=".." title="aimsprop" class="md-nav__button md-logo" aria-label="aimsprop">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -262,18 +266,33 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        Getting Started with aimsprop
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
       
-      <label class="md-nav__link" for="__nav_4">
+      <label class="md-nav__link" for="__nav_5">
         Code reference
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Code reference" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
+        <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Code reference
         </label>
@@ -452,14 +471,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
       
-      <label class="md-nav__link" for="__nav_5">
+      <label class="md-nav__link" for="__nav_6">
         User scripts
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="User scripts" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
+        <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           User scripts
         </label>
@@ -541,60 +560,62 @@
                 <h1 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">🔗</a></h1>
 <p>If you would like to add code to <code>aimsprop</code> please follow the steps below.</p>
 <h2 id="steps-to-setup-package-for-development">Steps to setup package for development<a class="headerlink" href="#steps-to-setup-package-for-development" title="Permanent link">🔗</a></h2>
-<ol>
-<li>
-<p>Pull package from github.</p>
+<ul>
+<li>Pull package from github.</li>
+</ul>
 <div class="highlight"><pre><span></span><code>git clone git@github.com:mtzgroup/aimsprop.git
 <span class="nb">cd</span> aimsprop
 </code></pre></div>
-</li>
-<li>
-<p>Create a virtual environment and activate it.</p>
+<ul>
+<li>Create a virtual environment and activate it.</li>
+</ul>
 <div class="highlight"><pre><span></span><code>python3 -m venv env
 <span class="nb">source</span> ./env/bin/activate
 </code></pre></div>
-</li>
-<li>
-<p>Install <code>flit</code>. Flit is used to manage package dependencies</p>
+<ul>
+<li>Install <code>flit</code>. Flit is used to manage package dependencies</li>
+</ul>
 <div class="highlight"><pre><span></span><code>python3 -m pip install flit
 </code></pre></div>
-</li>
-<li>
-<p>Source the virtual environment again to ensure you are using your local <code>flit</code> install</p>
+<ul>
+<li>Source the virtual environment again to ensure you are using your local <code>flit</code> install</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="nb">source</span> ./env/bin/activate
 </code></pre></div>
-</li>
-<li>
-<p>Install the package</p>
+<ul>
+<li>Install the package</li>
+</ul>
 <div class="highlight"><pre><span></span><code>flit install --deps develop --symlink
 </code></pre></div>
-</li>
-<li>
-<p>Source one more time to get the newly installed <code>pytest</code> cli</p>
+<ul>
+<li>Source one more time to get the newly installed <code>pytest</code> cli</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="nb">source</span> ./env/bin/activate
 </code></pre></div>
-</li>
-<li>
-<p>Make sure tests are passing to test your installation</p>
+<ul>
+<li>Make sure tests are passing to test your installation</li>
+</ul>
 <div class="highlight"><pre><span></span><code>pytest
 </code></pre></div>
-</li>
-<li>
-<p>Create a new branch for your feature</p>
+<ul>
+<li>Create a new branch for your feature</li>
+</ul>
 <div class="highlight"><pre><span></span><code>git checkout -b feature-<span class="o">{</span>insert-your-great-feature-name-here<span class="o">}</span>
 </code></pre></div>
-</li>
+<ul>
 <li>
 <p>Make code contributions and push to GitHub</p>
 </li>
-<li>Open a Pull Request on GitHub and request a review from one of the package maintainers</li>
-</ol>
+<li>
+<p>Open a Pull Request on GitHub and request a review from one of the package maintainers</p>
+</li>
+</ul>
 <h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">🔗</a></h2>
-<ol>
+<ul>
 <li>Follow the same steps as above</li>
 <li>Add documentation to the <code>/docs</code> folder using <a href="https://www.markdownguide.org/cheat-sheet">markdown</a> syntax.</li>
-<li>Use <code>mkdocs</code> to view your documentation locally. You should be able to view in docs in a browswer at <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a></li>
-</ol>
+<li>Use <code>mkdocs</code> to view your documentation locally. You should be able to view in docs in a browser at <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a></li>
+</ul>
 <div class="highlight"><pre><span></span><code>mkdocs serve
 </code></pre></div>
                 
@@ -653,7 +674,6 @@
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs
         </a>
-        
       </div>
       
     </div>
@@ -667,7 +687,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["search.suggest", "search.highlight", "navigation.instant", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.a1c7c35e.min.js"></script>
+      <script src="../assets/javascripts/bundle.ca5457b8.min.js"></script>
       
     
   </body>
