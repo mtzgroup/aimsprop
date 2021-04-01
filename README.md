@@ -3,9 +3,9 @@
 To use aimsprop, check out the documentation [here](https://mtzgroup.github.io/aimsprop/)!
 
 To develop / contribute to the aimsprop code,
-see [CONTRIBUTING.md](https://github.com/mtzgroup/aimsprop/blob/feature-tutorial-doc/docs/CONTRIBUTING.md) to get your environment and branch set up.
+see [CONTRIBUTING.md](https://github.com/mtzgroup/aimsprop/blob/develop/docs/CONTRIBUTING.md) to get your environment and branch set up.
 
-For a tutorial on the basic functionality of aimsprop, go [here](https://github.com/mtzgroup/aimsprop/blob/feature-tutorial-doc/docs/tutorial.md).
+For a tutorial on the basic functionality of aimsprop, go [here](https://github.com/mtzgroup/aimsprop/blob/develop/docs/tutorial.md).
 
 ## Description
 
@@ -24,7 +24,7 @@ semi-uniform manner.
   files, etc (no warrenty on these - the usual workflow is to copy these into your own project directories and modify
   until they work)
 - examples - examples of use cases of property computations (these are not the most helpful, better to look at
-  the [tutorial](https://github.com/mtzgroup/aimsprop/blob/feature-tutorial-doc/docs/tutorial.md)).
+  the [tutorial](https://github.com/mtzgroup/aimsprop/blob/develop/docs/tutorial.md)).
 
 ## Todos
 
