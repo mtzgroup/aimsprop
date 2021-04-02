@@ -72,7 +72,7 @@ If you would like to add code to `aimsprop` please follow the steps below.
 
 #### Property Computations
 
-New property computation functions take as parameters a `Trajectory` object, a `key` that acts as the name for the property, and the relevant parameters to make a calculation. See [compute_bond][aimsprop.geom:compute_bond] code below as an example. The function then performs the desired calculation on each [Frame][aimsprop.traj:frame] object and sets the value in the `Frame's` properties dictionary using the `key` passed. See the example in the source code below under [Documenting your Function](#documenting-your-function).
+New property computation functions take as parameters a `Trajectory` object, a `key` that acts as the name for the property, and the relevant parameters to make a calculation. See [compute_bond][aimsprop.geom:compute_bond] code below as an example. The function then performs the desired calculation on each [Frame][aimsprop.traj:Frame] object and sets the value in the `Frame's` properties dictionary using the `key` passed. See the example in the source code below under [Documenting your Function](#documenting-your-function).
 
 #### New Plotting Function
 
@@ -80,7 +80,7 @@ If you feel the existing plot functions [plot_scalar][aimsprop.plot:plot_scalar]
 
 #### Creating a Subset of the Trajectory
 
-To add this feature you would add a new method to the [Trajectory][aimsprop.traj:trajectory] object that takes `self`, and whatever other parameters are required to create your subset, and returns a new `Trajectory` object containing the `Frames` of interest. See the `subset_by_x` methods on `Trajectory` for examples.
+To add this feature you would add a new method to the [Trajectory][aimsprop.traj:Trajectory] object that takes `self`, and whatever other parameters are required to create your subset, and returns a new `Trajectory` object containing the `Frames` of interest. See the `subset_by_x` methods on `Trajectory` for examples.
 
 #### Documenting Your Function
 
