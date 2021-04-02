@@ -67,7 +67,7 @@ If you would like to add code to `aimsprop` please follow the steps below.
 1. Determine what kind of feature you are hoping to add. Features are usually one of the following:
     1. A property computed on each `Frame` of your `Trajectory`. Examples include [compute_bond][aimsprop.geom:compute_bond] or [blur_property][aimsprop.blur:blur_property].
     2. A plotting feature. Note that the current plotting functions [plot_scalar][aimsprop.plot:plot_scalar], [plot_vector][aimsprop.plot:plot_vector], and [plot_population][aimsprop.plot:plot_population] should already be able to plot any new properties you compute.
-    3. Creating a subset of the `Trajectory` by some value of interest, like a subset by time. [subset_by_t][aimsprop.traj:trajectory.subset_by_t] is an example.
+    3. Creating a subset of the `Trajectory` by some value of interest, like a subset by time. [subset_by_t][aimsprop.traj:Trajectory.subset_by_t] is an example.
 1. Follow the basic outline below for creating your new feature. Note that all new functions require documentation.
 
 #### Property Computations
