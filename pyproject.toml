@@ -56,7 +56,7 @@ doc = [
 ]
 
 [tool.pytest.ini_options]
-addopts = "-p no:warnings --cov-report html:htmlcov --cov"
+# addopts = "-p no:warnings --cov-report html:htmlcov --cov"
 testpaths = "tests/"
 
 [tool.black]

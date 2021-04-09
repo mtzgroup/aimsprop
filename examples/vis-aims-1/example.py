@@ -3,8 +3,8 @@ import os
 import numpy as np
 
 import aimsprop as ai
+import aimsprop.mananage_xyz as manage_xyz
 from aimsprop import atom_data
-from util import manage_xyz
 
 
 def vis_aims(

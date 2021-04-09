@@ -22,6 +22,7 @@ plugins:
   - mkdocstrings:
       watch:
         - aimsprop
+        - scripts
       handlers:
         python:
           rendering:
