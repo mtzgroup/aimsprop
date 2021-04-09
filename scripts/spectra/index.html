@@ -1,0 +1,1042 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Colton Hicks">
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>UV Vis Absorption Spectrum - aimsprop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="cyan">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#uv-vis-absorption-spectrum" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="aimsprop" class="md-header__button md-logo" aria-label="aimsprop">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            aimsprop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UV Vis Absorption Spectrum
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/mtzgroup/aimsprop/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="aimsprop" class="md-nav__button md-logo" aria-label="aimsprop">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    aimsprop
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/mtzgroup/aimsprop/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        aimsprop
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/" class="md-nav__link">
+        Getting Started with aimsprop
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Code reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Code reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Code reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_reference/blur.py/" class="md-nav__link">
+        blur.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_reference/bootstrap.py/" class="md-nav__link">
+        bootstrap.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_reference/fms90.py/" class="md-nav__link">
+        fms90.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_reference/geom.py/" class="md-nav__link">
+        geom.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_reference/pes.py/" class="md-nav__link">
+        pes.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_reference/plot.py/" class="md-nav__link">
+        plot.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_reference/pop.py/" class="md-nav__link">
+        pop.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_reference/rotate.py/" class="md-nav__link">
+        rotate.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_reference/sine.py/" class="md-nav__link">
+        sine.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_reference/traj.py/" class="md-nav__link">
+        traj.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_reference/ued.py/" class="md-nav__link">
+        ued.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_reference/wrap.py/" class="md-nav__link">
+        wrap.py
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_reference/xyz.py/" class="md-nav__link">
+        xyz.py
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      <label class="md-nav__link" for="__nav_6">
+        Scripts
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Scripts" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Scripts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../colton_script/" class="md-nav__link">
+        Colton's Super Script
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convert_geomdat/" class="md-nav__link">
+        Convert from Amber restart to Geometry.dat file for AIMS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          UV Vis Absorption Spectrum
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        UV Vis Absorption Spectrum
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.spectra" class="md-nav__link">
+    spectra
+  </a>
+  
+    <nav class="md-nav" aria-label="spectra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scripts.spectra.gaussian" class="md-nav__link">
+    gaussian()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts.spectra.lorentzian" class="md-nav__link">
+    lorentzian()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts.spectra.plot_spectra" class="md-nav__link">
+    plot_spectra()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts.spectra.plot_spectra_nm" class="md-nav__link">
+    plot_spectra_nm()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts.spectra.read_fomo_outfile" class="md-nav__link">
+    read_fomo_outfile()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts.spectra.read_tddft_outfile" class="md-nav__link">
+    read_tddft_outfile()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scripts.spectra" class="md-nav__link">
+    spectra
+  </a>
+  
+    <nav class="md-nav" aria-label="spectra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scripts.spectra.gaussian" class="md-nav__link">
+    gaussian()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts.spectra.lorentzian" class="md-nav__link">
+    lorentzian()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts.spectra.plot_spectra" class="md-nav__link">
+    plot_spectra()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts.spectra.plot_spectra_nm" class="md-nav__link">
+    plot_spectra_nm()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts.spectra.read_fomo_outfile" class="md-nav__link">
+    read_fomo_outfile()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts.spectra.read_tddft_outfile" class="md-nav__link">
+    read_tddft_outfile()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/mtzgroup/aimsprop/edit/develop/docs/scripts/spectra.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="uv-vis-absorption-spectrum">UV Vis Absorption Spectrum<a class="headerlink" href="#uv-vis-absorption-spectrum" title="Permanent link">🔗</a></h1>
+
+
+  <div class="doc doc-object doc-module">
+
+
+
+<h2 id="scripts.spectra" class="doc doc-heading">
+        <code>scripts.spectra</code>
+
+
+
+<a href="#scripts.spectra" class="headerlink" title="Permanent link">🔗</a></h2>
+
+    <div class="doc doc-contents first">
+
+      <p>Written by Rob Parrish</p>
+<p>This script reads TeraChem TDDFT and/or FOMO output files and automatically plots absorption spectra.</p>
+<p>Each individual excited state is given a color, with the overall spectrum plotted in black on top.</p>
+<p>The script includes options to plot with Lorentzian or Gaussian broadening. To change it, modify the <code>plot_spectra</code> function to change:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Ostate</span> <span class="o">+=</span> <span class="n">spectrum</span><span class="p">[</span><span class="n">state</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">lorentzian</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">[</span><span class="n">state</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">delta</span><span class="p">)</span>
+</code></pre></div>
+<p>to</p>
+<div class="highlight"><pre><span></span><code><span class="n">Ostate</span> <span class="o">+=</span> <span class="n">spectrum</span><span class="p">[</span><span class="n">state</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">[</span><span class="n">state</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">delta</span><span class="p">)</span>
+</code></pre></div>
+<p>It also includes options to plot in eV or nm, with <code>plot_spectra</code> or <code>plot_spectra_nm</code> respectively.</p>
+<p>Modify the following code block with appropriate paths for your system, choice of fomo or tddft for <code>read_*_output</code>, and choice of eV of nm for <code>plot_*</code>.</p>
+<div class="highlight"><pre><span></span><code>filenames = glob.glob(&quot;/path/to/*/filename*.out&quot;)
+spectra = [read_fomo_outfile(x) for x in filenames]
+spectra = [x for x in spectra if x is not None]
+plot_spectra(&quot;spectra.pdf&quot;, spectra, E=np.linspace(5.0, 9.0, 1000), delta=0.10)
+</code></pre></div>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h4 id="scripts.spectra.gaussian" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span></code>
+
+
+<a href="#scripts.spectra.gaussian" class="headerlink" title="Permanent link">🔗</a></h4>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>scripts/spectra.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h4 id="scripts.spectra.lorentzian" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">lorentzian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span></code>
+
+
+<a href="#scripts.spectra.lorentzian" class="headerlink" title="Permanent link">🔗</a></h4>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>scripts/spectra.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">lorentzian</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">,</span>
+    <span class="n">x0</span><span class="p">,</span>
+    <span class="n">delta</span><span class="p">,</span>
+<span class="p">):</span>
+
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">delta</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">delta</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h4 id="scripts.spectra.plot_spectra" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">plot_spectra</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">spectra</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mf">3.5</span>       <span class="p">,</span> <span class="mf">3.5035035</span> <span class="p">,</span> <span class="mf">3.50700701</span><span class="p">,</span> <span class="mf">3.51051051</span><span class="p">,</span> <span class="mf">3.51401401</span><span class="p">,</span><span class="mf">3.51751752</span><span class="p">,</span> <span class="mf">3.52102102</span><span class="p">,</span> <span class="mf">3.52452452</span><span class="p">,</span> <span class="mf">3.52802803</span><span class="p">,</span> <span class="mf">3.53153153</span><span class="p">,</span><span class="mf">3.53503504</span><span class="p">,</span> <span class="mf">3.53853854</span><span class="p">,</span> <span class="mf">3.54204204</span><span class="p">,</span> <span class="mf">3.54554555</span><span class="p">,</span> <span class="mf">3.54904905</span><span class="p">,</span><span class="mf">3.55255255</span><span class="p">,</span> <span class="mf">3.55605606</span><span class="p">,</span> <span class="mf">3.55955956</span><span class="p">,</span> <span class="mf">3.56306306</span><span class="p">,</span> <span class="mf">3.56656657</span><span class="p">,</span><span class="mf">3.57007007</span><span class="p">,</span> <span class="mf">3.57357357</span><span class="p">,</span> <span class="mf">3.57707708</span><span class="p">,</span> <span class="mf">3.58058058</span><span class="p">,</span> <span class="mf">3.58408408</span><span class="p">,</span><span class="mf">3.58758759</span><span class="p">,</span> <span class="mf">3.59109109</span><span class="p">,</span> <span class="mf">3.59459459</span><span class="p">,</span> <span class="mf">3.5980981</span> <span class="p">,</span> <span class="mf">3.6016016</span> <span class="p">,</span><span class="mf">3.60510511</span><span class="p">,</span> <span class="mf">3.60860861</span><span class="p">,</span> <span class="mf">3.61211211</span><span class="p">,</span> <span class="mf">3.61561562</span><span class="p">,</span> <span class="mf">3.61911912</span><span class="p">,</span><span class="mf">3.62262262</span><span class="p">,</span> <span class="mf">3.62612613</span><span class="p">,</span> <span class="mf">3.62962963</span><span class="p">,</span> <span class="mf">3.63313313</span><span class="p">,</span> <span class="mf">3.63663664</span><span class="p">,</span><span class="mf">3.64014014</span><span class="p">,</span> <span class="mf">3.64364364</span><span class="p">,</span> <span class="mf">3.64714715</span><span class="p">,</span> <span class="mf">3.65065065</span><span class="p">,</span> <span class="mf">3.65415415</span><span class="p">,</span><span class="mf">3.65765766</span><span class="p">,</span> <span class="mf">3.66116116</span><span class="p">,</span> <span class="mf">3.66466466</span><span class="p">,</span> <span class="mf">3.66816817</span><span class="p">,</span> <span class="mf">3.67167167</span><span class="p">,</span><span class="mf">3.67517518</span><span class="p">,</span> <span class="mf">3.67867868</span><span class="p">,</span> <span class="mf">3.68218218</span><span class="p">,</span> <span class="mf">3.68568569</span><span class="p">,</span> <span class="mf">3.68918919</span><span class="p">,</span><span class="mf">3.69269269</span><span class="p">,</span> <span class="mf">3.6961962</span> <span class="p">,</span> <span class="mf">3.6996997</span> <span class="p">,</span> <span class="mf">3.7032032</span> <span class="p">,</span> <span class="mf">3.70670671</span><span class="p">,</span><span class="mf">3.71021021</span><span class="p">,</span> <span class="mf">3.71371371</span><span class="p">,</span> <span class="mf">3.71721722</span><span class="p">,</span> <span class="mf">3.72072072</span><span class="p">,</span> <span class="mf">3.72422422</span><span class="p">,</span><span class="mf">3.72772773</span><span class="p">,</span> <span class="mf">3.73123123</span><span class="p">,</span> <span class="mf">3.73473473</span><span class="p">,</span> <span class="mf">3.73823824</span><span class="p">,</span> <span class="mf">3.74174174</span><span class="p">,</span><span class="mf">3.74524525</span><span class="p">,</span> <span class="mf">3.74874875</span><span class="p">,</span> <span class="mf">3.75225225</span><span class="p">,</span> <span class="mf">3.75575576</span><span class="p">,</span> <span class="mf">3.75925926</span><span class="p">,</span><span class="mf">3.76276276</span><span class="p">,</span> <span class="mf">3.76626627</span><span class="p">,</span> <span class="mf">3.76976977</span><span class="p">,</span> <span class="mf">3.77327327</span><span class="p">,</span> <span class="mf">3.77677678</span><span class="p">,</span><span class="mf">3.78028028</span><span class="p">,</span> <span class="mf">3.78378378</span><span class="p">,</span> <span class="mf">3.78728729</span><span class="p">,</span> <span class="mf">3.79079079</span><span class="p">,</span> <span class="mf">3.79429429</span><span class="p">,</span><span class="mf">3.7977978</span> <span class="p">,</span> <span class="mf">3.8013013</span> <span class="p">,</span> <span class="mf">3.8048048</span> <span class="p">,</span> <span class="mf">3.80830831</span><span class="p">,</span> <span class="mf">3.81181181</span><span class="p">,</span><span class="mf">3.81531532</span><span class="p">,</span> <span class="mf">3.81881882</span><span class="p">,</span> <span class="mf">3.82232232</span><span class="p">,</span> <span class="mf">3.82582583</span><span class="p">,</span> <span class="mf">3.82932933</span><span class="p">,</span><span class="mf">3.83283283</span><span class="p">,</span> <span class="mf">3.83633634</span><span class="p">,</span> <span class="mf">3.83983984</span><span class="p">,</span> <span class="mf">3.84334334</span><span class="p">,</span> <span class="mf">3.84684685</span><span class="p">,</span><span class="mf">3.85035035</span><span class="p">,</span> <span class="mf">3.85385385</span><span class="p">,</span> <span class="mf">3.85735736</span><span class="p">,</span> <span class="mf">3.86086086</span><span class="p">,</span> <span class="mf">3.86436436</span><span class="p">,</span><span class="mf">3.86786787</span><span class="p">,</span> <span class="mf">3.87137137</span><span class="p">,</span> <span class="mf">3.87487487</span><span class="p">,</span> <span class="mf">3.87837838</span><span class="p">,</span> <span class="mf">3.88188188</span><span class="p">,</span><span class="mf">3.88538539</span><span class="p">,</span> <span class="mf">3.88888889</span><span class="p">,</span> <span class="mf">3.89239239</span><span class="p">,</span> <span class="mf">3.8958959</span> <span class="p">,</span> <span class="mf">3.8993994</span> <span class="p">,</span><span class="mf">3.9029029</span> <span class="p">,</span> <span class="mf">3.90640641</span><span class="p">,</span> <span class="mf">3.90990991</span><span class="p">,</span> <span class="mf">3.91341341</span><span class="p">,</span> <span class="mf">3.91691692</span><span class="p">,</span><span class="mf">3.92042042</span><span class="p">,</span> <span class="mf">3.92392392</span><span class="p">,</span> <span class="mf">3.92742743</span><span class="p">,</span> <span class="mf">3.93093093</span><span class="p">,</span> <span class="mf">3.93443443</span><span class="p">,</span><span class="mf">3.93793794</span><span class="p">,</span> <span class="mf">3.94144144</span><span class="p">,</span> <span class="mf">3.94494494</span><span class="p">,</span> <span class="mf">3.94844845</span><span class="p">,</span> <span class="mf">3.95195195</span><span class="p">,</span><span class="mf">3.95545546</span><span class="p">,</span> <span class="mf">3.95895896</span><span class="p">,</span> <span class="mf">3.96246246</span><span class="p">,</span> <span class="mf">3.96596597</span><span class="p">,</span> <span class="mf">3.96946947</span><span class="p">,</span><span class="mf">3.97297297</span><span class="p">,</span> <span class="mf">3.97647648</span><span class="p">,</span> <span class="mf">3.97997998</span><span class="p">,</span> <span class="mf">3.98348348</span><span class="p">,</span> <span class="mf">3.98698699</span><span class="p">,</span><span class="mf">3.99049049</span><span class="p">,</span> <span class="mf">3.99399399</span><span class="p">,</span> <span class="mf">3.9974975</span> <span class="p">,</span> <span class="mf">4.001001</span>  <span class="p">,</span> <span class="mf">4.0045045</span> <span class="p">,</span><span class="mf">4.00800801</span><span class="p">,</span> <span class="mf">4.01151151</span><span class="p">,</span> <span class="mf">4.01501502</span><span class="p">,</span> <span class="mf">4.01851852</span><span class="p">,</span> <span class="mf">4.02202202</span><span class="p">,</span><span class="mf">4.02552553</span><span class="p">,</span> <span class="mf">4.02902903</span><span class="p">,</span> <span class="mf">4.03253253</span><span class="p">,</span> <span class="mf">4.03603604</span><span class="p">,</span> <span class="mf">4.03953954</span><span class="p">,</span><span class="mf">4.04304304</span><span class="p">,</span> <span class="mf">4.04654655</span><span class="p">,</span> <span class="mf">4.05005005</span><span class="p">,</span> <span class="mf">4.05355355</span><span class="p">,</span> <span class="mf">4.05705706</span><span class="p">,</span><span class="mf">4.06056056</span><span class="p">,</span> <span class="mf">4.06406406</span><span class="p">,</span> <span class="mf">4.06756757</span><span class="p">,</span> <span class="mf">4.07107107</span><span class="p">,</span> <span class="mf">4.07457457</span><span class="p">,</span><span class="mf">4.07807808</span><span class="p">,</span> <span class="mf">4.08158158</span><span class="p">,</span> <span class="mf">4.08508509</span><span class="p">,</span> <span class="mf">4.08858859</span><span class="p">,</span> <span class="mf">4.09209209</span><span class="p">,</span><span class="mf">4.0955956</span> <span class="p">,</span> <span class="mf">4.0990991</span> <span class="p">,</span> <span class="mf">4.1026026</span> <span class="p">,</span> <span class="mf">4.10610611</span><span class="p">,</span> <span class="mf">4.10960961</span><span class="p">,</span><span class="mf">4.11311311</span><span class="p">,</span> <span class="mf">4.11661662</span><span class="p">,</span> <span class="mf">4.12012012</span><span class="p">,</span> <span class="mf">4.12362362</span><span class="p">,</span> <span class="mf">4.12712713</span><span class="p">,</span><span class="mf">4.13063063</span><span class="p">,</span> <span class="mf">4.13413413</span><span class="p">,</span> <span class="mf">4.13763764</span><span class="p">,</span> <span class="mf">4.14114114</span><span class="p">,</span> <span class="mf">4.14464464</span><span class="p">,</span><span class="mf">4.14814815</span><span class="p">,</span> <span class="mf">4.15165165</span><span class="p">,</span> <span class="mf">4.15515516</span><span class="p">,</span> <span class="mf">4.15865866</span><span class="p">,</span> <span class="mf">4.16216216</span><span class="p">,</span><span class="mf">4.16566567</span><span class="p">,</span> <span class="mf">4.16916917</span><span class="p">,</span> <span class="mf">4.17267267</span><span class="p">,</span> <span class="mf">4.17617618</span><span class="p">,</span> <span class="mf">4.17967968</span><span class="p">,</span><span class="mf">4.18318318</span><span class="p">,</span> <span class="mf">4.18668669</span><span class="p">,</span> <span class="mf">4.19019019</span><span class="p">,</span> <span class="mf">4.19369369</span><span class="p">,</span> <span class="mf">4.1971972</span> <span class="p">,</span><span class="mf">4.2007007</span> <span class="p">,</span> <span class="mf">4.2042042</span> <span class="p">,</span> <span class="mf">4.20770771</span><span class="p">,</span> <span class="mf">4.21121121</span><span class="p">,</span> <span class="mf">4.21471471</span><span class="p">,</span><span class="mf">4.21821822</span><span class="p">,</span> <span class="mf">4.22172172</span><span class="p">,</span> <span class="mf">4.22522523</span><span class="p">,</span> <span class="mf">4.22872873</span><span class="p">,</span> <span class="mf">4.23223223</span><span class="p">,</span><span class="mf">4.23573574</span><span class="p">,</span> <span class="mf">4.23923924</span><span class="p">,</span> <span class="mf">4.24274274</span><span class="p">,</span> <span class="mf">4.24624625</span><span class="p">,</span> <span class="mf">4.24974975</span><span class="p">,</span><span class="mf">4.25325325</span><span class="p">,</span> <span class="mf">4.25675676</span><span class="p">,</span> <span class="mf">4.26026026</span><span class="p">,</span> <span class="mf">4.26376376</span><span class="p">,</span> <span class="mf">4.26726727</span><span class="p">,</span><span class="mf">4.27077077</span><span class="p">,</span> <span class="mf">4.27427427</span><span class="p">,</span> <span class="mf">4.27777778</span><span class="p">,</span> <span class="mf">4.28128128</span><span class="p">,</span> <span class="mf">4.28478478</span><span class="p">,</span><span class="mf">4.28828829</span><span class="p">,</span> <span class="mf">4.29179179</span><span class="p">,</span> <span class="mf">4.2952953</span> <span class="p">,</span> <span class="mf">4.2987988</span> <span class="p">,</span> <span class="mf">4.3023023</span> <span class="p">,</span><span class="mf">4.30580581</span><span class="p">,</span> <span class="mf">4.30930931</span><span class="p">,</span> <span class="mf">4.31281281</span><span class="p">,</span> <span class="mf">4.31631632</span><span class="p">,</span> <span class="mf">4.31981982</span><span class="p">,</span><span class="mf">4.32332332</span><span class="p">,</span> <span class="mf">4.32682683</span><span class="p">,</span> <span class="mf">4.33033033</span><span class="p">,</span> <span class="mf">4.33383383</span><span class="p">,</span> <span class="mf">4.33733734</span><span class="p">,</span><span class="mf">4.34084084</span><span class="p">,</span> <span class="mf">4.34434434</span><span class="p">,</span> <span class="mf">4.34784785</span><span class="p">,</span> <span class="mf">4.35135135</span><span class="p">,</span> <span class="mf">4.35485485</span><span class="p">,</span><span class="mf">4.35835836</span><span class="p">,</span> <span class="mf">4.36186186</span><span class="p">,</span> <span class="mf">4.36536537</span><span class="p">,</span> <span class="mf">4.36886887</span><span class="p">,</span> <span class="mf">4.37237237</span><span class="p">,</span><span class="mf">4.37587588</span><span class="p">,</span> <span class="mf">4.37937938</span><span class="p">,</span> <span class="mf">4.38288288</span><span class="p">,</span> <span class="mf">4.38638639</span><span class="p">,</span> <span class="mf">4.38988989</span><span class="p">,</span><span class="mf">4.39339339</span><span class="p">,</span> <span class="mf">4.3968969</span> <span class="p">,</span> <span class="mf">4.4004004</span> <span class="p">,</span> <span class="mf">4.4039039</span> <span class="p">,</span> <span class="mf">4.40740741</span><span class="p">,</span><span class="mf">4.41091091</span><span class="p">,</span> <span class="mf">4.41441441</span><span class="p">,</span> <span class="mf">4.41791792</span><span class="p">,</span> <span class="mf">4.42142142</span><span class="p">,</span> <span class="mf">4.42492492</span><span class="p">,</span><span class="mf">4.42842843</span><span class="p">,</span> <span class="mf">4.43193193</span><span class="p">,</span> <span class="mf">4.43543544</span><span class="p">,</span> <span class="mf">4.43893894</span><span class="p">,</span> <span class="mf">4.44244244</span><span class="p">,</span><span class="mf">4.44594595</span><span class="p">,</span> <span class="mf">4.44944945</span><span class="p">,</span> <span class="mf">4.45295295</span><span class="p">,</span> <span class="mf">4.45645646</span><span class="p">,</span> <span class="mf">4.45995996</span><span class="p">,</span><span class="mf">4.46346346</span><span class="p">,</span> <span class="mf">4.46696697</span><span class="p">,</span> <span class="mf">4.47047047</span><span class="p">,</span> <span class="mf">4.47397397</span><span class="p">,</span> <span class="mf">4.47747748</span><span class="p">,</span><span class="mf">4.48098098</span><span class="p">,</span> <span class="mf">4.48448448</span><span class="p">,</span> <span class="mf">4.48798799</span><span class="p">,</span> <span class="mf">4.49149149</span><span class="p">,</span> <span class="mf">4.49499499</span><span class="p">,</span><span class="mf">4.4984985</span> <span class="p">,</span> <span class="mf">4.502002</span>  <span class="p">,</span> <span class="mf">4.50550551</span><span class="p">,</span> <span class="mf">4.50900901</span><span class="p">,</span> <span class="mf">4.51251251</span><span class="p">,</span><span class="mf">4.51601602</span><span class="p">,</span> <span class="mf">4.51951952</span><span class="p">,</span> <span class="mf">4.52302302</span><span class="p">,</span> <span class="mf">4.52652653</span><span class="p">,</span> <span class="mf">4.53003003</span><span class="p">,</span><span class="mf">4.53353353</span><span class="p">,</span> <span class="mf">4.53703704</span><span class="p">,</span> <span class="mf">4.54054054</span><span class="p">,</span> <span class="mf">4.54404404</span><span class="p">,</span> <span class="mf">4.54754755</span><span class="p">,</span><span class="mf">4.55105105</span><span class="p">,</span> <span class="mf">4.55455455</span><span class="p">,</span> <span class="mf">4.55805806</span><span class="p">,</span> <span class="mf">4.56156156</span><span class="p">,</span> <span class="mf">4.56506507</span><span class="p">,</span><span class="mf">4.56856857</span><span class="p">,</span> <span class="mf">4.57207207</span><span class="p">,</span> <span class="mf">4.57557558</span><span class="p">,</span> <span class="mf">4.57907908</span><span class="p">,</span> <span class="mf">4.58258258</span><span class="p">,</span><span class="mf">4.58608609</span><span class="p">,</span> <span class="mf">4.58958959</span><span class="p">,</span> <span class="mf">4.59309309</span><span class="p">,</span> <span class="mf">4.5965966</span> <span class="p">,</span> <span class="mf">4.6001001</span> <span class="p">,</span><span class="mf">4.6036036</span> <span class="p">,</span> <span class="mf">4.60710711</span><span class="p">,</span> <span class="mf">4.61061061</span><span class="p">,</span> <span class="mf">4.61411411</span><span class="p">,</span> <span class="mf">4.61761762</span><span class="p">,</span><span class="mf">4.62112112</span><span class="p">,</span> <span class="mf">4.62462462</span><span class="p">,</span> <span class="mf">4.62812813</span><span class="p">,</span> <span class="mf">4.63163163</span><span class="p">,</span> <span class="mf">4.63513514</span><span class="p">,</span><span class="mf">4.63863864</span><span class="p">,</span> <span class="mf">4.64214214</span><span class="p">,</span> <span class="mf">4.64564565</span><span class="p">,</span> <span class="mf">4.64914915</span><span class="p">,</span> <span class="mf">4.65265265</span><span class="p">,</span><span class="mf">4.65615616</span><span class="p">,</span> <span class="mf">4.65965966</span><span class="p">,</span> <span class="mf">4.66316316</span><span class="p">,</span> <span class="mf">4.66666667</span><span class="p">,</span> <span class="mf">4.67017017</span><span class="p">,</span><span class="mf">4.67367367</span><span class="p">,</span> <span class="mf">4.67717718</span><span class="p">,</span> <span class="mf">4.68068068</span><span class="p">,</span> <span class="mf">4.68418418</span><span class="p">,</span> <span class="mf">4.68768769</span><span class="p">,</span><span class="mf">4.69119119</span><span class="p">,</span> <span class="mf">4.69469469</span><span class="p">,</span> <span class="mf">4.6981982</span> <span class="p">,</span> <span class="mf">4.7017017</span> <span class="p">,</span> <span class="mf">4.70520521</span><span class="p">,</span><span class="mf">4.70870871</span><span class="p">,</span> <span class="mf">4.71221221</span><span class="p">,</span> <span class="mf">4.71571572</span><span class="p">,</span> <span class="mf">4.71921922</span><span class="p">,</span> <span class="mf">4.72272272</span><span class="p">,</span><span class="mf">4.72622623</span><span class="p">,</span> <span class="mf">4.72972973</span><span class="p">,</span> <span class="mf">4.73323323</span><span class="p">,</span> <span class="mf">4.73673674</span><span class="p">,</span> <span class="mf">4.74024024</span><span class="p">,</span><span class="mf">4.74374374</span><span class="p">,</span> <span class="mf">4.74724725</span><span class="p">,</span> <span class="mf">4.75075075</span><span class="p">,</span> <span class="mf">4.75425425</span><span class="p">,</span> <span class="mf">4.75775776</span><span class="p">,</span><span class="mf">4.76126126</span><span class="p">,</span> <span class="mf">4.76476476</span><span class="p">,</span> <span class="mf">4.76826827</span><span class="p">,</span> <span class="mf">4.77177177</span><span class="p">,</span> <span class="mf">4.77527528</span><span class="p">,</span><span class="mf">4.77877878</span><span class="p">,</span> <span class="mf">4.78228228</span><span class="p">,</span> <span class="mf">4.78578579</span><span class="p">,</span> <span class="mf">4.78928929</span><span class="p">,</span> <span class="mf">4.79279279</span><span class="p">,</span><span class="mf">4.7962963</span> <span class="p">,</span> <span class="mf">4.7997998</span> <span class="p">,</span> <span class="mf">4.8033033</span> <span class="p">,</span> <span class="mf">4.80680681</span><span class="p">,</span> <span class="mf">4.81031031</span><span class="p">,</span><span class="mf">4.81381381</span><span class="p">,</span> <span class="mf">4.81731732</span><span class="p">,</span> <span class="mf">4.82082082</span><span class="p">,</span> <span class="mf">4.82432432</span><span class="p">,</span> <span class="mf">4.82782783</span><span class="p">,</span><span class="mf">4.83133133</span><span class="p">,</span> <span class="mf">4.83483483</span><span class="p">,</span> <span class="mf">4.83833834</span><span class="p">,</span> <span class="mf">4.84184184</span><span class="p">,</span> <span class="mf">4.84534535</span><span class="p">,</span><span class="mf">4.84884885</span><span class="p">,</span> <span class="mf">4.85235235</span><span class="p">,</span> <span class="mf">4.85585586</span><span class="p">,</span> <span class="mf">4.85935936</span><span class="p">,</span> <span class="mf">4.86286286</span><span class="p">,</span><span class="mf">4.86636637</span><span class="p">,</span> <span class="mf">4.86986987</span><span class="p">,</span> <span class="mf">4.87337337</span><span class="p">,</span> <span class="mf">4.87687688</span><span class="p">,</span> <span class="mf">4.88038038</span><span class="p">,</span><span class="mf">4.88388388</span><span class="p">,</span> <span class="mf">4.88738739</span><span class="p">,</span> <span class="mf">4.89089089</span><span class="p">,</span> <span class="mf">4.89439439</span><span class="p">,</span> <span class="mf">4.8978979</span> <span class="p">,</span><span class="mf">4.9014014</span> <span class="p">,</span> <span class="mf">4.9049049</span> <span class="p">,</span> <span class="mf">4.90840841</span><span class="p">,</span> <span class="mf">4.91191191</span><span class="p">,</span> <span class="mf">4.91541542</span><span class="p">,</span><span class="mf">4.91891892</span><span class="p">,</span> <span class="mf">4.92242242</span><span class="p">,</span> <span class="mf">4.92592593</span><span class="p">,</span> <span class="mf">4.92942943</span><span class="p">,</span> <span class="mf">4.93293293</span><span class="p">,</span><span class="mf">4.93643644</span><span class="p">,</span> <span class="mf">4.93993994</span><span class="p">,</span> <span class="mf">4.94344344</span><span class="p">,</span> <span class="mf">4.94694695</span><span class="p">,</span> <span class="mf">4.95045045</span><span class="p">,</span><span class="mf">4.95395395</span><span class="p">,</span> <span class="mf">4.95745746</span><span class="p">,</span> <span class="mf">4.96096096</span><span class="p">,</span> <span class="mf">4.96446446</span><span class="p">,</span> <span class="mf">4.96796797</span><span class="p">,</span><span class="mf">4.97147147</span><span class="p">,</span> <span class="mf">4.97497497</span><span class="p">,</span> <span class="mf">4.97847848</span><span class="p">,</span> <span class="mf">4.98198198</span><span class="p">,</span> <span class="mf">4.98548549</span><span class="p">,</span><span class="mf">4.98898899</span><span class="p">,</span> <span class="mf">4.99249249</span><span class="p">,</span> <span class="mf">4.995996</span>  <span class="p">,</span> <span class="mf">4.9994995</span> <span class="p">,</span> <span class="mf">5.003003</span>  <span class="p">,</span><span class="mf">5.00650651</span><span class="p">,</span> <span class="mf">5.01001001</span><span class="p">,</span> <span class="mf">5.01351351</span><span class="p">,</span> <span class="mf">5.01701702</span><span class="p">,</span> <span class="mf">5.02052052</span><span class="p">,</span><span class="mf">5.02402402</span><span class="p">,</span> <span class="mf">5.02752753</span><span class="p">,</span> <span class="mf">5.03103103</span><span class="p">,</span> <span class="mf">5.03453453</span><span class="p">,</span> <span class="mf">5.03803804</span><span class="p">,</span><span class="mf">5.04154154</span><span class="p">,</span> <span class="mf">5.04504505</span><span class="p">,</span> <span class="mf">5.04854855</span><span class="p">,</span> <span class="mf">5.05205205</span><span class="p">,</span> <span class="mf">5.05555556</span><span class="p">,</span><span class="mf">5.05905906</span><span class="p">,</span> <span class="mf">5.06256256</span><span class="p">,</span> <span class="mf">5.06606607</span><span class="p">,</span> <span class="mf">5.06956957</span><span class="p">,</span> <span class="mf">5.07307307</span><span class="p">,</span><span class="mf">5.07657658</span><span class="p">,</span> <span class="mf">5.08008008</span><span class="p">,</span> <span class="mf">5.08358358</span><span class="p">,</span> <span class="mf">5.08708709</span><span class="p">,</span> <span class="mf">5.09059059</span><span class="p">,</span><span class="mf">5.09409409</span><span class="p">,</span> <span class="mf">5.0975976</span> <span class="p">,</span> <span class="mf">5.1011011</span> <span class="p">,</span> <span class="mf">5.1046046</span> <span class="p">,</span> <span class="mf">5.10810811</span><span class="p">,</span><span class="mf">5.11161161</span><span class="p">,</span> <span class="mf">5.11511512</span><span class="p">,</span> <span class="mf">5.11861862</span><span class="p">,</span> <span class="mf">5.12212212</span><span class="p">,</span> <span class="mf">5.12562563</span><span class="p">,</span><span class="mf">5.12912913</span><span class="p">,</span> <span class="mf">5.13263263</span><span class="p">,</span> <span class="mf">5.13613614</span><span class="p">,</span> <span class="mf">5.13963964</span><span class="p">,</span> <span class="mf">5.14314314</span><span class="p">,</span><span class="mf">5.14664665</span><span class="p">,</span> <span class="mf">5.15015015</span><span class="p">,</span> <span class="mf">5.15365365</span><span class="p">,</span> <span class="mf">5.15715716</span><span class="p">,</span> <span class="mf">5.16066066</span><span class="p">,</span><span class="mf">5.16416416</span><span class="p">,</span> <span class="mf">5.16766767</span><span class="p">,</span> <span class="mf">5.17117117</span><span class="p">,</span> <span class="mf">5.17467467</span><span class="p">,</span> <span class="mf">5.17817818</span><span class="p">,</span><span class="mf">5.18168168</span><span class="p">,</span> <span class="mf">5.18518519</span><span class="p">,</span> <span class="mf">5.18868869</span><span class="p">,</span> <span class="mf">5.19219219</span><span class="p">,</span> <span class="mf">5.1956957</span> <span class="p">,</span><span class="mf">5.1991992</span> <span class="p">,</span> <span class="mf">5.2027027</span> <span class="p">,</span> <span class="mf">5.20620621</span><span class="p">,</span> <span class="mf">5.20970971</span><span class="p">,</span> <span class="mf">5.21321321</span><span class="p">,</span><span class="mf">5.21671672</span><span class="p">,</span> <span class="mf">5.22022022</span><span class="p">,</span> <span class="mf">5.22372372</span><span class="p">,</span> <span class="mf">5.22722723</span><span class="p">,</span> <span class="mf">5.23073073</span><span class="p">,</span><span class="mf">5.23423423</span><span class="p">,</span> <span class="mf">5.23773774</span><span class="p">,</span> <span class="mf">5.24124124</span><span class="p">,</span> <span class="mf">5.24474474</span><span class="p">,</span> <span class="mf">5.24824825</span><span class="p">,</span><span class="mf">5.25175175</span><span class="p">,</span> <span class="mf">5.25525526</span><span class="p">,</span> <span class="mf">5.25875876</span><span class="p">,</span> <span class="mf">5.26226226</span><span class="p">,</span> <span class="mf">5.26576577</span><span class="p">,</span><span class="mf">5.26926927</span><span class="p">,</span> <span class="mf">5.27277277</span><span class="p">,</span> <span class="mf">5.27627628</span><span class="p">,</span> <span class="mf">5.27977978</span><span class="p">,</span> <span class="mf">5.28328328</span><span class="p">,</span><span class="mf">5.28678679</span><span class="p">,</span> <span class="mf">5.29029029</span><span class="p">,</span> <span class="mf">5.29379379</span><span class="p">,</span> <span class="mf">5.2972973</span> <span class="p">,</span> <span class="mf">5.3008008</span> <span class="p">,</span><span class="mf">5.3043043</span> <span class="p">,</span> <span class="mf">5.30780781</span><span class="p">,</span> <span class="mf">5.31131131</span><span class="p">,</span> <span class="mf">5.31481481</span><span class="p">,</span> <span class="mf">5.31831832</span><span class="p">,</span><span class="mf">5.32182182</span><span class="p">,</span> <span class="mf">5.32532533</span><span class="p">,</span> <span class="mf">5.32882883</span><span class="p">,</span> <span class="mf">5.33233233</span><span class="p">,</span> <span class="mf">5.33583584</span><span class="p">,</span><span class="mf">5.33933934</span><span class="p">,</span> <span class="mf">5.34284284</span><span class="p">,</span> <span class="mf">5.34634635</span><span class="p">,</span> <span class="mf">5.34984985</span><span class="p">,</span> <span class="mf">5.35335335</span><span class="p">,</span><span class="mf">5.35685686</span><span class="p">,</span> <span class="mf">5.36036036</span><span class="p">,</span> <span class="mf">5.36386386</span><span class="p">,</span> <span class="mf">5.36736737</span><span class="p">,</span> <span class="mf">5.37087087</span><span class="p">,</span><span class="mf">5.37437437</span><span class="p">,</span> <span class="mf">5.37787788</span><span class="p">,</span> <span class="mf">5.38138138</span><span class="p">,</span> <span class="mf">5.38488488</span><span class="p">,</span> <span class="mf">5.38838839</span><span class="p">,</span><span class="mf">5.39189189</span><span class="p">,</span> <span class="mf">5.3953954</span> <span class="p">,</span> <span class="mf">5.3988989</span> <span class="p">,</span> <span class="mf">5.4024024</span> <span class="p">,</span> <span class="mf">5.40590591</span><span class="p">,</span><span class="mf">5.40940941</span><span class="p">,</span> <span class="mf">5.41291291</span><span class="p">,</span> <span class="mf">5.41641642</span><span class="p">,</span> <span class="mf">5.41991992</span><span class="p">,</span> <span class="mf">5.42342342</span><span class="p">,</span><span class="mf">5.42692693</span><span class="p">,</span> <span class="mf">5.43043043</span><span class="p">,</span> <span class="mf">5.43393393</span><span class="p">,</span> <span class="mf">5.43743744</span><span class="p">,</span> <span class="mf">5.44094094</span><span class="p">,</span><span class="mf">5.44444444</span><span class="p">,</span> <span class="mf">5.44794795</span><span class="p">,</span> <span class="mf">5.45145145</span><span class="p">,</span> <span class="mf">5.45495495</span><span class="p">,</span> <span class="mf">5.45845846</span><span class="p">,</span><span class="mf">5.46196196</span><span class="p">,</span> <span class="mf">5.46546547</span><span class="p">,</span> <span class="mf">5.46896897</span><span class="p">,</span> <span class="mf">5.47247247</span><span class="p">,</span> <span class="mf">5.47597598</span><span class="p">,</span><span class="mf">5.47947948</span><span class="p">,</span> <span class="mf">5.48298298</span><span class="p">,</span> <span class="mf">5.48648649</span><span class="p">,</span> <span class="mf">5.48998999</span><span class="p">,</span> <span class="mf">5.49349349</span><span class="p">,</span><span class="mf">5.496997</span>  <span class="p">,</span> <span class="mf">5.5005005</span> <span class="p">,</span> <span class="mf">5.504004</span>  <span class="p">,</span> <span class="mf">5.50750751</span><span class="p">,</span> <span class="mf">5.51101101</span><span class="p">,</span><span class="mf">5.51451451</span><span class="p">,</span> <span class="mf">5.51801802</span><span class="p">,</span> <span class="mf">5.52152152</span><span class="p">,</span> <span class="mf">5.52502503</span><span class="p">,</span> <span class="mf">5.52852853</span><span class="p">,</span><span class="mf">5.53203203</span><span class="p">,</span> <span class="mf">5.53553554</span><span class="p">,</span> <span class="mf">5.53903904</span><span class="p">,</span> <span class="mf">5.54254254</span><span class="p">,</span> <span class="mf">5.54604605</span><span class="p">,</span><span class="mf">5.54954955</span><span class="p">,</span> <span class="mf">5.55305305</span><span class="p">,</span> <span class="mf">5.55655656</span><span class="p">,</span> <span class="mf">5.56006006</span><span class="p">,</span> <span class="mf">5.56356356</span><span class="p">,</span><span class="mf">5.56706707</span><span class="p">,</span> <span class="mf">5.57057057</span><span class="p">,</span> <span class="mf">5.57407407</span><span class="p">,</span> <span class="mf">5.57757758</span><span class="p">,</span> <span class="mf">5.58108108</span><span class="p">,</span><span class="mf">5.58458458</span><span class="p">,</span> <span class="mf">5.58808809</span><span class="p">,</span> <span class="mf">5.59159159</span><span class="p">,</span> <span class="mf">5.5950951</span> <span class="p">,</span> <span class="mf">5.5985986</span> <span class="p">,</span><span class="mf">5.6021021</span> <span class="p">,</span> <span class="mf">5.60560561</span><span class="p">,</span> <span class="mf">5.60910911</span><span class="p">,</span> <span class="mf">5.61261261</span><span class="p">,</span> <span class="mf">5.61611612</span><span class="p">,</span><span class="mf">5.61961962</span><span class="p">,</span> <span class="mf">5.62312312</span><span class="p">,</span> <span class="mf">5.62662663</span><span class="p">,</span> <span class="mf">5.63013013</span><span class="p">,</span> <span class="mf">5.63363363</span><span class="p">,</span><span class="mf">5.63713714</span><span class="p">,</span> <span class="mf">5.64064064</span><span class="p">,</span> <span class="mf">5.64414414</span><span class="p">,</span> <span class="mf">5.64764765</span><span class="p">,</span> <span class="mf">5.65115115</span><span class="p">,</span><span class="mf">5.65465465</span><span class="p">,</span> <span class="mf">5.65815816</span><span class="p">,</span> <span class="mf">5.66166166</span><span class="p">,</span> <span class="mf">5.66516517</span><span class="p">,</span> <span class="mf">5.66866867</span><span class="p">,</span><span class="mf">5.67217217</span><span class="p">,</span> <span class="mf">5.67567568</span><span class="p">,</span> <span class="mf">5.67917918</span><span class="p">,</span> <span class="mf">5.68268268</span><span class="p">,</span> <span class="mf">5.68618619</span><span class="p">,</span><span class="mf">5.68968969</span><span class="p">,</span> <span class="mf">5.69319319</span><span class="p">,</span> <span class="mf">5.6966967</span> <span class="p">,</span> <span class="mf">5.7002002</span> <span class="p">,</span> <span class="mf">5.7037037</span> <span class="p">,</span><span class="mf">5.70720721</span><span class="p">,</span> <span class="mf">5.71071071</span><span class="p">,</span> <span class="mf">5.71421421</span><span class="p">,</span> <span class="mf">5.71771772</span><span class="p">,</span> <span class="mf">5.72122122</span><span class="p">,</span><span class="mf">5.72472472</span><span class="p">,</span> <span class="mf">5.72822823</span><span class="p">,</span> <span class="mf">5.73173173</span><span class="p">,</span> <span class="mf">5.73523524</span><span class="p">,</span> <span class="mf">5.73873874</span><span class="p">,</span><span class="mf">5.74224224</span><span class="p">,</span> <span class="mf">5.74574575</span><span class="p">,</span> <span class="mf">5.74924925</span><span class="p">,</span> <span class="mf">5.75275275</span><span class="p">,</span> <span class="mf">5.75625626</span><span class="p">,</span><span class="mf">5.75975976</span><span class="p">,</span> <span class="mf">5.76326326</span><span class="p">,</span> <span class="mf">5.76676677</span><span class="p">,</span> <span class="mf">5.77027027</span><span class="p">,</span> <span class="mf">5.77377377</span><span class="p">,</span><span class="mf">5.77727728</span><span class="p">,</span> <span class="mf">5.78078078</span><span class="p">,</span> <span class="mf">5.78428428</span><span class="p">,</span> <span class="mf">5.78778779</span><span class="p">,</span> <span class="mf">5.79129129</span><span class="p">,</span><span class="mf">5.79479479</span><span class="p">,</span> <span class="mf">5.7982983</span> <span class="p">,</span> <span class="mf">5.8018018</span> <span class="p">,</span> <span class="mf">5.80530531</span><span class="p">,</span> <span class="mf">5.80880881</span><span class="p">,</span><span class="mf">5.81231231</span><span class="p">,</span> <span class="mf">5.81581582</span><span class="p">,</span> <span class="mf">5.81931932</span><span class="p">,</span> <span class="mf">5.82282282</span><span class="p">,</span> <span class="mf">5.82632633</span><span class="p">,</span><span class="mf">5.82982983</span><span class="p">,</span> <span class="mf">5.83333333</span><span class="p">,</span> <span class="mf">5.83683684</span><span class="p">,</span> <span class="mf">5.84034034</span><span class="p">,</span> <span class="mf">5.84384384</span><span class="p">,</span><span class="mf">5.84734735</span><span class="p">,</span> <span class="mf">5.85085085</span><span class="p">,</span> <span class="mf">5.85435435</span><span class="p">,</span> <span class="mf">5.85785786</span><span class="p">,</span> <span class="mf">5.86136136</span><span class="p">,</span><span class="mf">5.86486486</span><span class="p">,</span> <span class="mf">5.86836837</span><span class="p">,</span> <span class="mf">5.87187187</span><span class="p">,</span> <span class="mf">5.87537538</span><span class="p">,</span> <span class="mf">5.87887888</span><span class="p">,</span><span class="mf">5.88238238</span><span class="p">,</span> <span class="mf">5.88588589</span><span class="p">,</span> <span class="mf">5.88938939</span><span class="p">,</span> <span class="mf">5.89289289</span><span class="p">,</span> <span class="mf">5.8963964</span> <span class="p">,</span><span class="mf">5.8998999</span> <span class="p">,</span> <span class="mf">5.9034034</span> <span class="p">,</span> <span class="mf">5.90690691</span><span class="p">,</span> <span class="mf">5.91041041</span><span class="p">,</span> <span class="mf">5.91391391</span><span class="p">,</span><span class="mf">5.91741742</span><span class="p">,</span> <span class="mf">5.92092092</span><span class="p">,</span> <span class="mf">5.92442442</span><span class="p">,</span> <span class="mf">5.92792793</span><span class="p">,</span> <span class="mf">5.93143143</span><span class="p">,</span><span class="mf">5.93493493</span><span class="p">,</span> <span class="mf">5.93843844</span><span class="p">,</span> <span class="mf">5.94194194</span><span class="p">,</span> <span class="mf">5.94544545</span><span class="p">,</span> <span class="mf">5.94894895</span><span class="p">,</span><span class="mf">5.95245245</span><span class="p">,</span> <span class="mf">5.95595596</span><span class="p">,</span> <span class="mf">5.95945946</span><span class="p">,</span> <span class="mf">5.96296296</span><span class="p">,</span> <span class="mf">5.96646647</span><span class="p">,</span><span class="mf">5.96996997</span><span class="p">,</span> <span class="mf">5.97347347</span><span class="p">,</span> <span class="mf">5.97697698</span><span class="p">,</span> <span class="mf">5.98048048</span><span class="p">,</span> <span class="mf">5.98398398</span><span class="p">,</span><span class="mf">5.98748749</span><span class="p">,</span> <span class="mf">5.99099099</span><span class="p">,</span> <span class="mf">5.99449449</span><span class="p">,</span> <span class="mf">5.997998</span>  <span class="p">,</span> <span class="mf">6.0015015</span> <span class="p">,</span><span class="mf">6.00500501</span><span class="p">,</span> <span class="mf">6.00850851</span><span class="p">,</span> <span class="mf">6.01201201</span><span class="p">,</span> <span class="mf">6.01551552</span><span class="p">,</span> <span class="mf">6.01901902</span><span class="p">,</span><span class="mf">6.02252252</span><span class="p">,</span> <span class="mf">6.02602603</span><span class="p">,</span> <span class="mf">6.02952953</span><span class="p">,</span> <span class="mf">6.03303303</span><span class="p">,</span> <span class="mf">6.03653654</span><span class="p">,</span><span class="mf">6.04004004</span><span class="p">,</span> <span class="mf">6.04354354</span><span class="p">,</span> <span class="mf">6.04704705</span><span class="p">,</span> <span class="mf">6.05055055</span><span class="p">,</span> <span class="mf">6.05405405</span><span class="p">,</span><span class="mf">6.05755756</span><span class="p">,</span> <span class="mf">6.06106106</span><span class="p">,</span> <span class="mf">6.06456456</span><span class="p">,</span> <span class="mf">6.06806807</span><span class="p">,</span> <span class="mf">6.07157157</span><span class="p">,</span><span class="mf">6.07507508</span><span class="p">,</span> <span class="mf">6.07857858</span><span class="p">,</span> <span class="mf">6.08208208</span><span class="p">,</span> <span class="mf">6.08558559</span><span class="p">,</span> <span class="mf">6.08908909</span><span class="p">,</span><span class="mf">6.09259259</span><span class="p">,</span> <span class="mf">6.0960961</span> <span class="p">,</span> <span class="mf">6.0995996</span> <span class="p">,</span> <span class="mf">6.1031031</span> <span class="p">,</span> <span class="mf">6.10660661</span><span class="p">,</span><span class="mf">6.11011011</span><span class="p">,</span> <span class="mf">6.11361361</span><span class="p">,</span> <span class="mf">6.11711712</span><span class="p">,</span> <span class="mf">6.12062062</span><span class="p">,</span> <span class="mf">6.12412412</span><span class="p">,</span><span class="mf">6.12762763</span><span class="p">,</span> <span class="mf">6.13113113</span><span class="p">,</span> <span class="mf">6.13463463</span><span class="p">,</span> <span class="mf">6.13813814</span><span class="p">,</span> <span class="mf">6.14164164</span><span class="p">,</span><span class="mf">6.14514515</span><span class="p">,</span> <span class="mf">6.14864865</span><span class="p">,</span> <span class="mf">6.15215215</span><span class="p">,</span> <span class="mf">6.15565566</span><span class="p">,</span> <span class="mf">6.15915916</span><span class="p">,</span><span class="mf">6.16266266</span><span class="p">,</span> <span class="mf">6.16616617</span><span class="p">,</span> <span class="mf">6.16966967</span><span class="p">,</span> <span class="mf">6.17317317</span><span class="p">,</span> <span class="mf">6.17667668</span><span class="p">,</span><span class="mf">6.18018018</span><span class="p">,</span> <span class="mf">6.18368368</span><span class="p">,</span> <span class="mf">6.18718719</span><span class="p">,</span> <span class="mf">6.19069069</span><span class="p">,</span> <span class="mf">6.19419419</span><span class="p">,</span><span class="mf">6.1976977</span> <span class="p">,</span> <span class="mf">6.2012012</span> <span class="p">,</span> <span class="mf">6.2047047</span> <span class="p">,</span> <span class="mf">6.20820821</span><span class="p">,</span> <span class="mf">6.21171171</span><span class="p">,</span><span class="mf">6.21521522</span><span class="p">,</span> <span class="mf">6.21871872</span><span class="p">,</span> <span class="mf">6.22222222</span><span class="p">,</span> <span class="mf">6.22572573</span><span class="p">,</span> <span class="mf">6.22922923</span><span class="p">,</span><span class="mf">6.23273273</span><span class="p">,</span> <span class="mf">6.23623624</span><span class="p">,</span> <span class="mf">6.23973974</span><span class="p">,</span> <span class="mf">6.24324324</span><span class="p">,</span> <span class="mf">6.24674675</span><span class="p">,</span><span class="mf">6.25025025</span><span class="p">,</span> <span class="mf">6.25375375</span><span class="p">,</span> <span class="mf">6.25725726</span><span class="p">,</span> <span class="mf">6.26076076</span><span class="p">,</span> <span class="mf">6.26426426</span><span class="p">,</span><span class="mf">6.26776777</span><span class="p">,</span> <span class="mf">6.27127127</span><span class="p">,</span> <span class="mf">6.27477477</span><span class="p">,</span> <span class="mf">6.27827828</span><span class="p">,</span> <span class="mf">6.28178178</span><span class="p">,</span><span class="mf">6.28528529</span><span class="p">,</span> <span class="mf">6.28878879</span><span class="p">,</span> <span class="mf">6.29229229</span><span class="p">,</span> <span class="mf">6.2957958</span> <span class="p">,</span> <span class="mf">6.2992993</span> <span class="p">,</span><span class="mf">6.3028028</span> <span class="p">,</span> <span class="mf">6.30630631</span><span class="p">,</span> <span class="mf">6.30980981</span><span class="p">,</span> <span class="mf">6.31331331</span><span class="p">,</span> <span class="mf">6.31681682</span><span class="p">,</span><span class="mf">6.32032032</span><span class="p">,</span> <span class="mf">6.32382382</span><span class="p">,</span> <span class="mf">6.32732733</span><span class="p">,</span> <span class="mf">6.33083083</span><span class="p">,</span> <span class="mf">6.33433433</span><span class="p">,</span><span class="mf">6.33783784</span><span class="p">,</span> <span class="mf">6.34134134</span><span class="p">,</span> <span class="mf">6.34484484</span><span class="p">,</span> <span class="mf">6.34834835</span><span class="p">,</span> <span class="mf">6.35185185</span><span class="p">,</span><span class="mf">6.35535536</span><span class="p">,</span> <span class="mf">6.35885886</span><span class="p">,</span> <span class="mf">6.36236236</span><span class="p">,</span> <span class="mf">6.36586587</span><span class="p">,</span> <span class="mf">6.36936937</span><span class="p">,</span><span class="mf">6.37287287</span><span class="p">,</span> <span class="mf">6.37637638</span><span class="p">,</span> <span class="mf">6.37987988</span><span class="p">,</span> <span class="mf">6.38338338</span><span class="p">,</span> <span class="mf">6.38688689</span><span class="p">,</span><span class="mf">6.39039039</span><span class="p">,</span> <span class="mf">6.39389389</span><span class="p">,</span> <span class="mf">6.3973974</span> <span class="p">,</span> <span class="mf">6.4009009</span> <span class="p">,</span> <span class="mf">6.4044044</span> <span class="p">,</span><span class="mf">6.40790791</span><span class="p">,</span> <span class="mf">6.41141141</span><span class="p">,</span> <span class="mf">6.41491491</span><span class="p">,</span> <span class="mf">6.41841842</span><span class="p">,</span> <span class="mf">6.42192192</span><span class="p">,</span><span class="mf">6.42542543</span><span class="p">,</span> <span class="mf">6.42892893</span><span class="p">,</span> <span class="mf">6.43243243</span><span class="p">,</span> <span class="mf">6.43593594</span><span class="p">,</span> <span class="mf">6.43943944</span><span class="p">,</span><span class="mf">6.44294294</span><span class="p">,</span> <span class="mf">6.44644645</span><span class="p">,</span> <span class="mf">6.44994995</span><span class="p">,</span> <span class="mf">6.45345345</span><span class="p">,</span> <span class="mf">6.45695696</span><span class="p">,</span><span class="mf">6.46046046</span><span class="p">,</span> <span class="mf">6.46396396</span><span class="p">,</span> <span class="mf">6.46746747</span><span class="p">,</span> <span class="mf">6.47097097</span><span class="p">,</span> <span class="mf">6.47447447</span><span class="p">,</span><span class="mf">6.47797798</span><span class="p">,</span> <span class="mf">6.48148148</span><span class="p">,</span> <span class="mf">6.48498498</span><span class="p">,</span> <span class="mf">6.48848849</span><span class="p">,</span> <span class="mf">6.49199199</span><span class="p">,</span><span class="mf">6.4954955</span> <span class="p">,</span> <span class="mf">6.498999</span>  <span class="p">,</span> <span class="mf">6.5025025</span> <span class="p">,</span> <span class="mf">6.50600601</span><span class="p">,</span> <span class="mf">6.50950951</span><span class="p">,</span><span class="mf">6.51301301</span><span class="p">,</span> <span class="mf">6.51651652</span><span class="p">,</span> <span class="mf">6.52002002</span><span class="p">,</span> <span class="mf">6.52352352</span><span class="p">,</span> <span class="mf">6.52702703</span><span class="p">,</span><span class="mf">6.53053053</span><span class="p">,</span> <span class="mf">6.53403403</span><span class="p">,</span> <span class="mf">6.53753754</span><span class="p">,</span> <span class="mf">6.54104104</span><span class="p">,</span> <span class="mf">6.54454454</span><span class="p">,</span><span class="mf">6.54804805</span><span class="p">,</span> <span class="mf">6.55155155</span><span class="p">,</span> <span class="mf">6.55505506</span><span class="p">,</span> <span class="mf">6.55855856</span><span class="p">,</span> <span class="mf">6.56206206</span><span class="p">,</span><span class="mf">6.56556557</span><span class="p">,</span> <span class="mf">6.56906907</span><span class="p">,</span> <span class="mf">6.57257257</span><span class="p">,</span> <span class="mf">6.57607608</span><span class="p">,</span> <span class="mf">6.57957958</span><span class="p">,</span><span class="mf">6.58308308</span><span class="p">,</span> <span class="mf">6.58658659</span><span class="p">,</span> <span class="mf">6.59009009</span><span class="p">,</span> <span class="mf">6.59359359</span><span class="p">,</span> <span class="mf">6.5970971</span> <span class="p">,</span><span class="mf">6.6006006</span> <span class="p">,</span> <span class="mf">6.6041041</span> <span class="p">,</span> <span class="mf">6.60760761</span><span class="p">,</span> <span class="mf">6.61111111</span><span class="p">,</span> <span class="mf">6.61461461</span><span class="p">,</span><span class="mf">6.61811812</span><span class="p">,</span> <span class="mf">6.62162162</span><span class="p">,</span> <span class="mf">6.62512513</span><span class="p">,</span> <span class="mf">6.62862863</span><span class="p">,</span> <span class="mf">6.63213213</span><span class="p">,</span><span class="mf">6.63563564</span><span class="p">,</span> <span class="mf">6.63913914</span><span class="p">,</span> <span class="mf">6.64264264</span><span class="p">,</span> <span class="mf">6.64614615</span><span class="p">,</span> <span class="mf">6.64964965</span><span class="p">,</span><span class="mf">6.65315315</span><span class="p">,</span> <span class="mf">6.65665666</span><span class="p">,</span> <span class="mf">6.66016016</span><span class="p">,</span> <span class="mf">6.66366366</span><span class="p">,</span> <span class="mf">6.66716717</span><span class="p">,</span><span class="mf">6.67067067</span><span class="p">,</span> <span class="mf">6.67417417</span><span class="p">,</span> <span class="mf">6.67767768</span><span class="p">,</span> <span class="mf">6.68118118</span><span class="p">,</span> <span class="mf">6.68468468</span><span class="p">,</span><span class="mf">6.68818819</span><span class="p">,</span> <span class="mf">6.69169169</span><span class="p">,</span> <span class="mf">6.6951952</span> <span class="p">,</span> <span class="mf">6.6986987</span> <span class="p">,</span> <span class="mf">6.7022022</span> <span class="p">,</span><span class="mf">6.70570571</span><span class="p">,</span> <span class="mf">6.70920921</span><span class="p">,</span> <span class="mf">6.71271271</span><span class="p">,</span> <span class="mf">6.71621622</span><span class="p">,</span> <span class="mf">6.71971972</span><span class="p">,</span><span class="mf">6.72322322</span><span class="p">,</span> <span class="mf">6.72672673</span><span class="p">,</span> <span class="mf">6.73023023</span><span class="p">,</span> <span class="mf">6.73373373</span><span class="p">,</span> <span class="mf">6.73723724</span><span class="p">,</span><span class="mf">6.74074074</span><span class="p">,</span> <span class="mf">6.74424424</span><span class="p">,</span> <span class="mf">6.74774775</span><span class="p">,</span> <span class="mf">6.75125125</span><span class="p">,</span> <span class="mf">6.75475475</span><span class="p">,</span><span class="mf">6.75825826</span><span class="p">,</span> <span class="mf">6.76176176</span><span class="p">,</span> <span class="mf">6.76526527</span><span class="p">,</span> <span class="mf">6.76876877</span><span class="p">,</span> <span class="mf">6.77227227</span><span class="p">,</span><span class="mf">6.77577578</span><span class="p">,</span> <span class="mf">6.77927928</span><span class="p">,</span> <span class="mf">6.78278278</span><span class="p">,</span> <span class="mf">6.78628629</span><span class="p">,</span> <span class="mf">6.78978979</span><span class="p">,</span><span class="mf">6.79329329</span><span class="p">,</span> <span class="mf">6.7967968</span> <span class="p">,</span> <span class="mf">6.8003003</span> <span class="p">,</span> <span class="mf">6.8038038</span> <span class="p">,</span> <span class="mf">6.80730731</span><span class="p">,</span><span class="mf">6.81081081</span><span class="p">,</span> <span class="mf">6.81431431</span><span class="p">,</span> <span class="mf">6.81781782</span><span class="p">,</span> <span class="mf">6.82132132</span><span class="p">,</span> <span class="mf">6.82482482</span><span class="p">,</span><span class="mf">6.82832833</span><span class="p">,</span> <span class="mf">6.83183183</span><span class="p">,</span> <span class="mf">6.83533534</span><span class="p">,</span> <span class="mf">6.83883884</span><span class="p">,</span> <span class="mf">6.84234234</span><span class="p">,</span><span class="mf">6.84584585</span><span class="p">,</span> <span class="mf">6.84934935</span><span class="p">,</span> <span class="mf">6.85285285</span><span class="p">,</span> <span class="mf">6.85635636</span><span class="p">,</span> <span class="mf">6.85985986</span><span class="p">,</span><span class="mf">6.86336336</span><span class="p">,</span> <span class="mf">6.86686687</span><span class="p">,</span> <span class="mf">6.87037037</span><span class="p">,</span> <span class="mf">6.87387387</span><span class="p">,</span> <span class="mf">6.87737738</span><span class="p">,</span><span class="mf">6.88088088</span><span class="p">,</span> <span class="mf">6.88438438</span><span class="p">,</span> <span class="mf">6.88788789</span><span class="p">,</span> <span class="mf">6.89139139</span><span class="p">,</span> <span class="mf">6.89489489</span><span class="p">,</span><span class="mf">6.8983984</span> <span class="p">,</span> <span class="mf">6.9019019</span> <span class="p">,</span> <span class="mf">6.90540541</span><span class="p">,</span> <span class="mf">6.90890891</span><span class="p">,</span> <span class="mf">6.91241241</span><span class="p">,</span><span class="mf">6.91591592</span><span class="p">,</span> <span class="mf">6.91941942</span><span class="p">,</span> <span class="mf">6.92292292</span><span class="p">,</span> <span class="mf">6.92642643</span><span class="p">,</span> <span class="mf">6.92992993</span><span class="p">,</span><span class="mf">6.93343343</span><span class="p">,</span> <span class="mf">6.93693694</span><span class="p">,</span> <span class="mf">6.94044044</span><span class="p">,</span> <span class="mf">6.94394394</span><span class="p">,</span> <span class="mf">6.94744745</span><span class="p">,</span><span class="mf">6.95095095</span><span class="p">,</span> <span class="mf">6.95445445</span><span class="p">,</span> <span class="mf">6.95795796</span><span class="p">,</span> <span class="mf">6.96146146</span><span class="p">,</span> <span class="mf">6.96496496</span><span class="p">,</span><span class="mf">6.96846847</span><span class="p">,</span> <span class="mf">6.97197197</span><span class="p">,</span> <span class="mf">6.97547548</span><span class="p">,</span> <span class="mf">6.97897898</span><span class="p">,</span> <span class="mf">6.98248248</span><span class="p">,</span><span class="mf">6.98598599</span><span class="p">,</span> <span class="mf">6.98948949</span><span class="p">,</span> <span class="mf">6.99299299</span><span class="p">,</span> <span class="mf">6.9964965</span> <span class="p">,</span> <span class="mf">7.</span>        <span class="p">]),</span> <span class="n">delta</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">)</span></code>
+
+
+<a href="#scripts.spectra.plot_spectra" class="headerlink" title="Permanent link">🔗</a></h4>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>scripts/spectra.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">plot_spectra</span><span class="p">(</span>
+    <span class="n">filename</span><span class="p">,</span>
+    <span class="n">spectra</span><span class="p">,</span>
+    <span class="n">E</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span>
+    <span class="n">delta</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+<span class="p">):</span>
+
+    <span class="n">Nspectra</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">spectra</span><span class="p">)</span>
+    <span class="n">Nstate</span> <span class="o">=</span> <span class="n">spectra</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">Ostates</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Nstate</span><span class="p">):</span>
+        <span class="n">Ostate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">spectrum</span> <span class="ow">in</span> <span class="n">spectra</span><span class="p">:</span>
+            <span class="n">Ostate</span> <span class="o">+=</span> <span class="n">spectrum</span><span class="p">[</span><span class="n">state</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">lorentzian</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">[</span><span class="n">state</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">delta</span><span class="p">)</span>
+        <span class="n">Ostate</span> <span class="o">/=</span> <span class="n">Nspectra</span>
+        <span class="n">Ostates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ostate</span><span class="p">)</span>
+
+    <span class="n">Ototal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">Ostate</span> <span class="ow">in</span> <span class="n">Ostates</span><span class="p">:</span>
+        <span class="n">Ototal</span> <span class="o">+=</span> <span class="n">Ostate</span>
+
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;jet&quot;</span><span class="p">)</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">cmap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Nstate</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">Nstate</span><span class="p">)))]</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">Oind</span><span class="p">,</span> <span class="n">Ostate</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Ostates</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">Ostate</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">Oind</span><span class="p">])</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">Ototal</span><span class="p">,</span> <span class="s2">&quot;-k&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\Delta E$ [eV]&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cross Section [-]&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h4 id="scripts.spectra.plot_spectra_nm" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">plot_spectra_nm</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">spectra</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mf">3.5</span>       <span class="p">,</span> <span class="mf">3.5035035</span> <span class="p">,</span> <span class="mf">3.50700701</span><span class="p">,</span> <span class="mf">3.51051051</span><span class="p">,</span> <span class="mf">3.51401401</span><span class="p">,</span><span class="mf">3.51751752</span><span class="p">,</span> <span class="mf">3.52102102</span><span class="p">,</span> <span class="mf">3.52452452</span><span class="p">,</span> <span class="mf">3.52802803</span><span class="p">,</span> <span class="mf">3.53153153</span><span class="p">,</span><span class="mf">3.53503504</span><span class="p">,</span> <span class="mf">3.53853854</span><span class="p">,</span> <span class="mf">3.54204204</span><span class="p">,</span> <span class="mf">3.54554555</span><span class="p">,</span> <span class="mf">3.54904905</span><span class="p">,</span><span class="mf">3.55255255</span><span class="p">,</span> <span class="mf">3.55605606</span><span class="p">,</span> <span class="mf">3.55955956</span><span class="p">,</span> <span class="mf">3.56306306</span><span class="p">,</span> <span class="mf">3.56656657</span><span class="p">,</span><span class="mf">3.57007007</span><span class="p">,</span> <span class="mf">3.57357357</span><span class="p">,</span> <span class="mf">3.57707708</span><span class="p">,</span> <span class="mf">3.58058058</span><span class="p">,</span> <span class="mf">3.58408408</span><span class="p">,</span><span class="mf">3.58758759</span><span class="p">,</span> <span class="mf">3.59109109</span><span class="p">,</span> <span class="mf">3.59459459</span><span class="p">,</span> <span class="mf">3.5980981</span> <span class="p">,</span> <span class="mf">3.6016016</span> <span class="p">,</span><span class="mf">3.60510511</span><span class="p">,</span> <span class="mf">3.60860861</span><span class="p">,</span> <span class="mf">3.61211211</span><span class="p">,</span> <span class="mf">3.61561562</span><span class="p">,</span> <span class="mf">3.61911912</span><span class="p">,</span><span class="mf">3.62262262</span><span class="p">,</span> <span class="mf">3.62612613</span><span class="p">,</span> <span class="mf">3.62962963</span><span class="p">,</span> <span class="mf">3.63313313</span><span class="p">,</span> <span class="mf">3.63663664</span><span class="p">,</span><span class="mf">3.64014014</span><span class="p">,</span> <span class="mf">3.64364364</span><span class="p">,</span> <span class="mf">3.64714715</span><span class="p">,</span> <span class="mf">3.65065065</span><span class="p">,</span> <span class="mf">3.65415415</span><span class="p">,</span><span class="mf">3.65765766</span><span class="p">,</span> <span class="mf">3.66116116</span><span class="p">,</span> <span class="mf">3.66466466</span><span class="p">,</span> <span class="mf">3.66816817</span><span class="p">,</span> <span class="mf">3.67167167</span><span class="p">,</span><span class="mf">3.67517518</span><span class="p">,</span> <span class="mf">3.67867868</span><span class="p">,</span> <span class="mf">3.68218218</span><span class="p">,</span> <span class="mf">3.68568569</span><span class="p">,</span> <span class="mf">3.68918919</span><span class="p">,</span><span class="mf">3.69269269</span><span class="p">,</span> <span class="mf">3.6961962</span> <span class="p">,</span> <span class="mf">3.6996997</span> <span class="p">,</span> <span class="mf">3.7032032</span> <span class="p">,</span> <span class="mf">3.70670671</span><span class="p">,</span><span class="mf">3.71021021</span><span class="p">,</span> <span class="mf">3.71371371</span><span class="p">,</span> <span class="mf">3.71721722</span><span class="p">,</span> <span class="mf">3.72072072</span><span class="p">,</span> <span class="mf">3.72422422</span><span class="p">,</span><span class="mf">3.72772773</span><span class="p">,</span> <span class="mf">3.73123123</span><span class="p">,</span> <span class="mf">3.73473473</span><span class="p">,</span> <span class="mf">3.73823824</span><span class="p">,</span> <span class="mf">3.74174174</span><span class="p">,</span><span class="mf">3.74524525</span><span class="p">,</span> <span class="mf">3.74874875</span><span class="p">,</span> <span class="mf">3.75225225</span><span class="p">,</span> <span class="mf">3.75575576</span><span class="p">,</span> <span class="mf">3.75925926</span><span class="p">,</span><span class="mf">3.76276276</span><span class="p">,</span> <span class="mf">3.76626627</span><span class="p">,</span> <span class="mf">3.76976977</span><span class="p">,</span> <span class="mf">3.77327327</span><span class="p">,</span> <span class="mf">3.77677678</span><span class="p">,</span><span class="mf">3.78028028</span><span class="p">,</span> <span class="mf">3.78378378</span><span class="p">,</span> <span class="mf">3.78728729</span><span class="p">,</span> <span class="mf">3.79079079</span><span class="p">,</span> <span class="mf">3.79429429</span><span class="p">,</span><span class="mf">3.7977978</span> <span class="p">,</span> <span class="mf">3.8013013</span> <span class="p">,</span> <span class="mf">3.8048048</span> <span class="p">,</span> <span class="mf">3.80830831</span><span class="p">,</span> <span class="mf">3.81181181</span><span class="p">,</span><span class="mf">3.81531532</span><span class="p">,</span> <span class="mf">3.81881882</span><span class="p">,</span> <span class="mf">3.82232232</span><span class="p">,</span> <span class="mf">3.82582583</span><span class="p">,</span> <span class="mf">3.82932933</span><span class="p">,</span><span class="mf">3.83283283</span><span class="p">,</span> <span class="mf">3.83633634</span><span class="p">,</span> <span class="mf">3.83983984</span><span class="p">,</span> <span class="mf">3.84334334</span><span class="p">,</span> <span class="mf">3.84684685</span><span class="p">,</span><span class="mf">3.85035035</span><span class="p">,</span> <span class="mf">3.85385385</span><span class="p">,</span> <span class="mf">3.85735736</span><span class="p">,</span> <span class="mf">3.86086086</span><span class="p">,</span> <span class="mf">3.86436436</span><span class="p">,</span><span class="mf">3.86786787</span><span class="p">,</span> <span class="mf">3.87137137</span><span class="p">,</span> <span class="mf">3.87487487</span><span class="p">,</span> <span class="mf">3.87837838</span><span class="p">,</span> <span class="mf">3.88188188</span><span class="p">,</span><span class="mf">3.88538539</span><span class="p">,</span> <span class="mf">3.88888889</span><span class="p">,</span> <span class="mf">3.89239239</span><span class="p">,</span> <span class="mf">3.8958959</span> <span class="p">,</span> <span class="mf">3.8993994</span> <span class="p">,</span><span class="mf">3.9029029</span> <span class="p">,</span> <span class="mf">3.90640641</span><span class="p">,</span> <span class="mf">3.90990991</span><span class="p">,</span> <span class="mf">3.91341341</span><span class="p">,</span> <span class="mf">3.91691692</span><span class="p">,</span><span class="mf">3.92042042</span><span class="p">,</span> <span class="mf">3.92392392</span><span class="p">,</span> <span class="mf">3.92742743</span><span class="p">,</span> <span class="mf">3.93093093</span><span class="p">,</span> <span class="mf">3.93443443</span><span class="p">,</span><span class="mf">3.93793794</span><span class="p">,</span> <span class="mf">3.94144144</span><span class="p">,</span> <span class="mf">3.94494494</span><span class="p">,</span> <span class="mf">3.94844845</span><span class="p">,</span> <span class="mf">3.95195195</span><span class="p">,</span><span class="mf">3.95545546</span><span class="p">,</span> <span class="mf">3.95895896</span><span class="p">,</span> <span class="mf">3.96246246</span><span class="p">,</span> <span class="mf">3.96596597</span><span class="p">,</span> <span class="mf">3.96946947</span><span class="p">,</span><span class="mf">3.97297297</span><span class="p">,</span> <span class="mf">3.97647648</span><span class="p">,</span> <span class="mf">3.97997998</span><span class="p">,</span> <span class="mf">3.98348348</span><span class="p">,</span> <span class="mf">3.98698699</span><span class="p">,</span><span class="mf">3.99049049</span><span class="p">,</span> <span class="mf">3.99399399</span><span class="p">,</span> <span class="mf">3.9974975</span> <span class="p">,</span> <span class="mf">4.001001</span>  <span class="p">,</span> <span class="mf">4.0045045</span> <span class="p">,</span><span class="mf">4.00800801</span><span class="p">,</span> <span class="mf">4.01151151</span><span class="p">,</span> <span class="mf">4.01501502</span><span class="p">,</span> <span class="mf">4.01851852</span><span class="p">,</span> <span class="mf">4.02202202</span><span class="p">,</span><span class="mf">4.02552553</span><span class="p">,</span> <span class="mf">4.02902903</span><span class="p">,</span> <span class="mf">4.03253253</span><span class="p">,</span> <span class="mf">4.03603604</span><span class="p">,</span> <span class="mf">4.03953954</span><span class="p">,</span><span class="mf">4.04304304</span><span class="p">,</span> <span class="mf">4.04654655</span><span class="p">,</span> <span class="mf">4.05005005</span><span class="p">,</span> <span class="mf">4.05355355</span><span class="p">,</span> <span class="mf">4.05705706</span><span class="p">,</span><span class="mf">4.06056056</span><span class="p">,</span> <span class="mf">4.06406406</span><span class="p">,</span> <span class="mf">4.06756757</span><span class="p">,</span> <span class="mf">4.07107107</span><span class="p">,</span> <span class="mf">4.07457457</span><span class="p">,</span><span class="mf">4.07807808</span><span class="p">,</span> <span class="mf">4.08158158</span><span class="p">,</span> <span class="mf">4.08508509</span><span class="p">,</span> <span class="mf">4.08858859</span><span class="p">,</span> <span class="mf">4.09209209</span><span class="p">,</span><span class="mf">4.0955956</span> <span class="p">,</span> <span class="mf">4.0990991</span> <span class="p">,</span> <span class="mf">4.1026026</span> <span class="p">,</span> <span class="mf">4.10610611</span><span class="p">,</span> <span class="mf">4.10960961</span><span class="p">,</span><span class="mf">4.11311311</span><span class="p">,</span> <span class="mf">4.11661662</span><span class="p">,</span> <span class="mf">4.12012012</span><span class="p">,</span> <span class="mf">4.12362362</span><span class="p">,</span> <span class="mf">4.12712713</span><span class="p">,</span><span class="mf">4.13063063</span><span class="p">,</span> <span class="mf">4.13413413</span><span class="p">,</span> <span class="mf">4.13763764</span><span class="p">,</span> <span class="mf">4.14114114</span><span class="p">,</span> <span class="mf">4.14464464</span><span class="p">,</span><span class="mf">4.14814815</span><span class="p">,</span> <span class="mf">4.15165165</span><span class="p">,</span> <span class="mf">4.15515516</span><span class="p">,</span> <span class="mf">4.15865866</span><span class="p">,</span> <span class="mf">4.16216216</span><span class="p">,</span><span class="mf">4.16566567</span><span class="p">,</span> <span class="mf">4.16916917</span><span class="p">,</span> <span class="mf">4.17267267</span><span class="p">,</span> <span class="mf">4.17617618</span><span class="p">,</span> <span class="mf">4.17967968</span><span class="p">,</span><span class="mf">4.18318318</span><span class="p">,</span> <span class="mf">4.18668669</span><span class="p">,</span> <span class="mf">4.19019019</span><span class="p">,</span> <span class="mf">4.19369369</span><span class="p">,</span> <span class="mf">4.1971972</span> <span class="p">,</span><span class="mf">4.2007007</span> <span class="p">,</span> <span class="mf">4.2042042</span> <span class="p">,</span> <span class="mf">4.20770771</span><span class="p">,</span> <span class="mf">4.21121121</span><span class="p">,</span> <span class="mf">4.21471471</span><span class="p">,</span><span class="mf">4.21821822</span><span class="p">,</span> <span class="mf">4.22172172</span><span class="p">,</span> <span class="mf">4.22522523</span><span class="p">,</span> <span class="mf">4.22872873</span><span class="p">,</span> <span class="mf">4.23223223</span><span class="p">,</span><span class="mf">4.23573574</span><span class="p">,</span> <span class="mf">4.23923924</span><span class="p">,</span> <span class="mf">4.24274274</span><span class="p">,</span> <span class="mf">4.24624625</span><span class="p">,</span> <span class="mf">4.24974975</span><span class="p">,</span><span class="mf">4.25325325</span><span class="p">,</span> <span class="mf">4.25675676</span><span class="p">,</span> <span class="mf">4.26026026</span><span class="p">,</span> <span class="mf">4.26376376</span><span class="p">,</span> <span class="mf">4.26726727</span><span class="p">,</span><span class="mf">4.27077077</span><span class="p">,</span> <span class="mf">4.27427427</span><span class="p">,</span> <span class="mf">4.27777778</span><span class="p">,</span> <span class="mf">4.28128128</span><span class="p">,</span> <span class="mf">4.28478478</span><span class="p">,</span><span class="mf">4.28828829</span><span class="p">,</span> <span class="mf">4.29179179</span><span class="p">,</span> <span class="mf">4.2952953</span> <span class="p">,</span> <span class="mf">4.2987988</span> <span class="p">,</span> <span class="mf">4.3023023</span> <span class="p">,</span><span class="mf">4.30580581</span><span class="p">,</span> <span class="mf">4.30930931</span><span class="p">,</span> <span class="mf">4.31281281</span><span class="p">,</span> <span class="mf">4.31631632</span><span class="p">,</span> <span class="mf">4.31981982</span><span class="p">,</span><span class="mf">4.32332332</span><span class="p">,</span> <span class="mf">4.32682683</span><span class="p">,</span> <span class="mf">4.33033033</span><span class="p">,</span> <span class="mf">4.33383383</span><span class="p">,</span> <span class="mf">4.33733734</span><span class="p">,</span><span class="mf">4.34084084</span><span class="p">,</span> <span class="mf">4.34434434</span><span class="p">,</span> <span class="mf">4.34784785</span><span class="p">,</span> <span class="mf">4.35135135</span><span class="p">,</span> <span class="mf">4.35485485</span><span class="p">,</span><span class="mf">4.35835836</span><span class="p">,</span> <span class="mf">4.36186186</span><span class="p">,</span> <span class="mf">4.36536537</span><span class="p">,</span> <span class="mf">4.36886887</span><span class="p">,</span> <span class="mf">4.37237237</span><span class="p">,</span><span class="mf">4.37587588</span><span class="p">,</span> <span class="mf">4.37937938</span><span class="p">,</span> <span class="mf">4.38288288</span><span class="p">,</span> <span class="mf">4.38638639</span><span class="p">,</span> <span class="mf">4.38988989</span><span class="p">,</span><span class="mf">4.39339339</span><span class="p">,</span> <span class="mf">4.3968969</span> <span class="p">,</span> <span class="mf">4.4004004</span> <span class="p">,</span> <span class="mf">4.4039039</span> <span class="p">,</span> <span class="mf">4.40740741</span><span class="p">,</span><span class="mf">4.41091091</span><span class="p">,</span> <span class="mf">4.41441441</span><span class="p">,</span> <span class="mf">4.41791792</span><span class="p">,</span> <span class="mf">4.42142142</span><span class="p">,</span> <span class="mf">4.42492492</span><span class="p">,</span><span class="mf">4.42842843</span><span class="p">,</span> <span class="mf">4.43193193</span><span class="p">,</span> <span class="mf">4.43543544</span><span class="p">,</span> <span class="mf">4.43893894</span><span class="p">,</span> <span class="mf">4.44244244</span><span class="p">,</span><span class="mf">4.44594595</span><span class="p">,</span> <span class="mf">4.44944945</span><span class="p">,</span> <span class="mf">4.45295295</span><span class="p">,</span> <span class="mf">4.45645646</span><span class="p">,</span> <span class="mf">4.45995996</span><span class="p">,</span><span class="mf">4.46346346</span><span class="p">,</span> <span class="mf">4.46696697</span><span class="p">,</span> <span class="mf">4.47047047</span><span class="p">,</span> <span class="mf">4.47397397</span><span class="p">,</span> <span class="mf">4.47747748</span><span class="p">,</span><span class="mf">4.48098098</span><span class="p">,</span> <span class="mf">4.48448448</span><span class="p">,</span> <span class="mf">4.48798799</span><span class="p">,</span> <span class="mf">4.49149149</span><span class="p">,</span> <span class="mf">4.49499499</span><span class="p">,</span><span class="mf">4.4984985</span> <span class="p">,</span> <span class="mf">4.502002</span>  <span class="p">,</span> <span class="mf">4.50550551</span><span class="p">,</span> <span class="mf">4.50900901</span><span class="p">,</span> <span class="mf">4.51251251</span><span class="p">,</span><span class="mf">4.51601602</span><span class="p">,</span> <span class="mf">4.51951952</span><span class="p">,</span> <span class="mf">4.52302302</span><span class="p">,</span> <span class="mf">4.52652653</span><span class="p">,</span> <span class="mf">4.53003003</span><span class="p">,</span><span class="mf">4.53353353</span><span class="p">,</span> <span class="mf">4.53703704</span><span class="p">,</span> <span class="mf">4.54054054</span><span class="p">,</span> <span class="mf">4.54404404</span><span class="p">,</span> <span class="mf">4.54754755</span><span class="p">,</span><span class="mf">4.55105105</span><span class="p">,</span> <span class="mf">4.55455455</span><span class="p">,</span> <span class="mf">4.55805806</span><span class="p">,</span> <span class="mf">4.56156156</span><span class="p">,</span> <span class="mf">4.56506507</span><span class="p">,</span><span class="mf">4.56856857</span><span class="p">,</span> <span class="mf">4.57207207</span><span class="p">,</span> <span class="mf">4.57557558</span><span class="p">,</span> <span class="mf">4.57907908</span><span class="p">,</span> <span class="mf">4.58258258</span><span class="p">,</span><span class="mf">4.58608609</span><span class="p">,</span> <span class="mf">4.58958959</span><span class="p">,</span> <span class="mf">4.59309309</span><span class="p">,</span> <span class="mf">4.5965966</span> <span class="p">,</span> <span class="mf">4.6001001</span> <span class="p">,</span><span class="mf">4.6036036</span> <span class="p">,</span> <span class="mf">4.60710711</span><span class="p">,</span> <span class="mf">4.61061061</span><span class="p">,</span> <span class="mf">4.61411411</span><span class="p">,</span> <span class="mf">4.61761762</span><span class="p">,</span><span class="mf">4.62112112</span><span class="p">,</span> <span class="mf">4.62462462</span><span class="p">,</span> <span class="mf">4.62812813</span><span class="p">,</span> <span class="mf">4.63163163</span><span class="p">,</span> <span class="mf">4.63513514</span><span class="p">,</span><span class="mf">4.63863864</span><span class="p">,</span> <span class="mf">4.64214214</span><span class="p">,</span> <span class="mf">4.64564565</span><span class="p">,</span> <span class="mf">4.64914915</span><span class="p">,</span> <span class="mf">4.65265265</span><span class="p">,</span><span class="mf">4.65615616</span><span class="p">,</span> <span class="mf">4.65965966</span><span class="p">,</span> <span class="mf">4.66316316</span><span class="p">,</span> <span class="mf">4.66666667</span><span class="p">,</span> <span class="mf">4.67017017</span><span class="p">,</span><span class="mf">4.67367367</span><span class="p">,</span> <span class="mf">4.67717718</span><span class="p">,</span> <span class="mf">4.68068068</span><span class="p">,</span> <span class="mf">4.68418418</span><span class="p">,</span> <span class="mf">4.68768769</span><span class="p">,</span><span class="mf">4.69119119</span><span class="p">,</span> <span class="mf">4.69469469</span><span class="p">,</span> <span class="mf">4.6981982</span> <span class="p">,</span> <span class="mf">4.7017017</span> <span class="p">,</span> <span class="mf">4.70520521</span><span class="p">,</span><span class="mf">4.70870871</span><span class="p">,</span> <span class="mf">4.71221221</span><span class="p">,</span> <span class="mf">4.71571572</span><span class="p">,</span> <span class="mf">4.71921922</span><span class="p">,</span> <span class="mf">4.72272272</span><span class="p">,</span><span class="mf">4.72622623</span><span class="p">,</span> <span class="mf">4.72972973</span><span class="p">,</span> <span class="mf">4.73323323</span><span class="p">,</span> <span class="mf">4.73673674</span><span class="p">,</span> <span class="mf">4.74024024</span><span class="p">,</span><span class="mf">4.74374374</span><span class="p">,</span> <span class="mf">4.74724725</span><span class="p">,</span> <span class="mf">4.75075075</span><span class="p">,</span> <span class="mf">4.75425425</span><span class="p">,</span> <span class="mf">4.75775776</span><span class="p">,</span><span class="mf">4.76126126</span><span class="p">,</span> <span class="mf">4.76476476</span><span class="p">,</span> <span class="mf">4.76826827</span><span class="p">,</span> <span class="mf">4.77177177</span><span class="p">,</span> <span class="mf">4.77527528</span><span class="p">,</span><span class="mf">4.77877878</span><span class="p">,</span> <span class="mf">4.78228228</span><span class="p">,</span> <span class="mf">4.78578579</span><span class="p">,</span> <span class="mf">4.78928929</span><span class="p">,</span> <span class="mf">4.79279279</span><span class="p">,</span><span class="mf">4.7962963</span> <span class="p">,</span> <span class="mf">4.7997998</span> <span class="p">,</span> <span class="mf">4.8033033</span> <span class="p">,</span> <span class="mf">4.80680681</span><span class="p">,</span> <span class="mf">4.81031031</span><span class="p">,</span><span class="mf">4.81381381</span><span class="p">,</span> <span class="mf">4.81731732</span><span class="p">,</span> <span class="mf">4.82082082</span><span class="p">,</span> <span class="mf">4.82432432</span><span class="p">,</span> <span class="mf">4.82782783</span><span class="p">,</span><span class="mf">4.83133133</span><span class="p">,</span> <span class="mf">4.83483483</span><span class="p">,</span> <span class="mf">4.83833834</span><span class="p">,</span> <span class="mf">4.84184184</span><span class="p">,</span> <span class="mf">4.84534535</span><span class="p">,</span><span class="mf">4.84884885</span><span class="p">,</span> <span class="mf">4.85235235</span><span class="p">,</span> <span class="mf">4.85585586</span><span class="p">,</span> <span class="mf">4.85935936</span><span class="p">,</span> <span class="mf">4.86286286</span><span class="p">,</span><span class="mf">4.86636637</span><span class="p">,</span> <span class="mf">4.86986987</span><span class="p">,</span> <span class="mf">4.87337337</span><span class="p">,</span> <span class="mf">4.87687688</span><span class="p">,</span> <span class="mf">4.88038038</span><span class="p">,</span><span class="mf">4.88388388</span><span class="p">,</span> <span class="mf">4.88738739</span><span class="p">,</span> <span class="mf">4.89089089</span><span class="p">,</span> <span class="mf">4.89439439</span><span class="p">,</span> <span class="mf">4.8978979</span> <span class="p">,</span><span class="mf">4.9014014</span> <span class="p">,</span> <span class="mf">4.9049049</span> <span class="p">,</span> <span class="mf">4.90840841</span><span class="p">,</span> <span class="mf">4.91191191</span><span class="p">,</span> <span class="mf">4.91541542</span><span class="p">,</span><span class="mf">4.91891892</span><span class="p">,</span> <span class="mf">4.92242242</span><span class="p">,</span> <span class="mf">4.92592593</span><span class="p">,</span> <span class="mf">4.92942943</span><span class="p">,</span> <span class="mf">4.93293293</span><span class="p">,</span><span class="mf">4.93643644</span><span class="p">,</span> <span class="mf">4.93993994</span><span class="p">,</span> <span class="mf">4.94344344</span><span class="p">,</span> <span class="mf">4.94694695</span><span class="p">,</span> <span class="mf">4.95045045</span><span class="p">,</span><span class="mf">4.95395395</span><span class="p">,</span> <span class="mf">4.95745746</span><span class="p">,</span> <span class="mf">4.96096096</span><span class="p">,</span> <span class="mf">4.96446446</span><span class="p">,</span> <span class="mf">4.96796797</span><span class="p">,</span><span class="mf">4.97147147</span><span class="p">,</span> <span class="mf">4.97497497</span><span class="p">,</span> <span class="mf">4.97847848</span><span class="p">,</span> <span class="mf">4.98198198</span><span class="p">,</span> <span class="mf">4.98548549</span><span class="p">,</span><span class="mf">4.98898899</span><span class="p">,</span> <span class="mf">4.99249249</span><span class="p">,</span> <span class="mf">4.995996</span>  <span class="p">,</span> <span class="mf">4.9994995</span> <span class="p">,</span> <span class="mf">5.003003</span>  <span class="p">,</span><span class="mf">5.00650651</span><span class="p">,</span> <span class="mf">5.01001001</span><span class="p">,</span> <span class="mf">5.01351351</span><span class="p">,</span> <span class="mf">5.01701702</span><span class="p">,</span> <span class="mf">5.02052052</span><span class="p">,</span><span class="mf">5.02402402</span><span class="p">,</span> <span class="mf">5.02752753</span><span class="p">,</span> <span class="mf">5.03103103</span><span class="p">,</span> <span class="mf">5.03453453</span><span class="p">,</span> <span class="mf">5.03803804</span><span class="p">,</span><span class="mf">5.04154154</span><span class="p">,</span> <span class="mf">5.04504505</span><span class="p">,</span> <span class="mf">5.04854855</span><span class="p">,</span> <span class="mf">5.05205205</span><span class="p">,</span> <span class="mf">5.05555556</span><span class="p">,</span><span class="mf">5.05905906</span><span class="p">,</span> <span class="mf">5.06256256</span><span class="p">,</span> <span class="mf">5.06606607</span><span class="p">,</span> <span class="mf">5.06956957</span><span class="p">,</span> <span class="mf">5.07307307</span><span class="p">,</span><span class="mf">5.07657658</span><span class="p">,</span> <span class="mf">5.08008008</span><span class="p">,</span> <span class="mf">5.08358358</span><span class="p">,</span> <span class="mf">5.08708709</span><span class="p">,</span> <span class="mf">5.09059059</span><span class="p">,</span><span class="mf">5.09409409</span><span class="p">,</span> <span class="mf">5.0975976</span> <span class="p">,</span> <span class="mf">5.1011011</span> <span class="p">,</span> <span class="mf">5.1046046</span> <span class="p">,</span> <span class="mf">5.10810811</span><span class="p">,</span><span class="mf">5.11161161</span><span class="p">,</span> <span class="mf">5.11511512</span><span class="p">,</span> <span class="mf">5.11861862</span><span class="p">,</span> <span class="mf">5.12212212</span><span class="p">,</span> <span class="mf">5.12562563</span><span class="p">,</span><span class="mf">5.12912913</span><span class="p">,</span> <span class="mf">5.13263263</span><span class="p">,</span> <span class="mf">5.13613614</span><span class="p">,</span> <span class="mf">5.13963964</span><span class="p">,</span> <span class="mf">5.14314314</span><span class="p">,</span><span class="mf">5.14664665</span><span class="p">,</span> <span class="mf">5.15015015</span><span class="p">,</span> <span class="mf">5.15365365</span><span class="p">,</span> <span class="mf">5.15715716</span><span class="p">,</span> <span class="mf">5.16066066</span><span class="p">,</span><span class="mf">5.16416416</span><span class="p">,</span> <span class="mf">5.16766767</span><span class="p">,</span> <span class="mf">5.17117117</span><span class="p">,</span> <span class="mf">5.17467467</span><span class="p">,</span> <span class="mf">5.17817818</span><span class="p">,</span><span class="mf">5.18168168</span><span class="p">,</span> <span class="mf">5.18518519</span><span class="p">,</span> <span class="mf">5.18868869</span><span class="p">,</span> <span class="mf">5.19219219</span><span class="p">,</span> <span class="mf">5.1956957</span> <span class="p">,</span><span class="mf">5.1991992</span> <span class="p">,</span> <span class="mf">5.2027027</span> <span class="p">,</span> <span class="mf">5.20620621</span><span class="p">,</span> <span class="mf">5.20970971</span><span class="p">,</span> <span class="mf">5.21321321</span><span class="p">,</span><span class="mf">5.21671672</span><span class="p">,</span> <span class="mf">5.22022022</span><span class="p">,</span> <span class="mf">5.22372372</span><span class="p">,</span> <span class="mf">5.22722723</span><span class="p">,</span> <span class="mf">5.23073073</span><span class="p">,</span><span class="mf">5.23423423</span><span class="p">,</span> <span class="mf">5.23773774</span><span class="p">,</span> <span class="mf">5.24124124</span><span class="p">,</span> <span class="mf">5.24474474</span><span class="p">,</span> <span class="mf">5.24824825</span><span class="p">,</span><span class="mf">5.25175175</span><span class="p">,</span> <span class="mf">5.25525526</span><span class="p">,</span> <span class="mf">5.25875876</span><span class="p">,</span> <span class="mf">5.26226226</span><span class="p">,</span> <span class="mf">5.26576577</span><span class="p">,</span><span class="mf">5.26926927</span><span class="p">,</span> <span class="mf">5.27277277</span><span class="p">,</span> <span class="mf">5.27627628</span><span class="p">,</span> <span class="mf">5.27977978</span><span class="p">,</span> <span class="mf">5.28328328</span><span class="p">,</span><span class="mf">5.28678679</span><span class="p">,</span> <span class="mf">5.29029029</span><span class="p">,</span> <span class="mf">5.29379379</span><span class="p">,</span> <span class="mf">5.2972973</span> <span class="p">,</span> <span class="mf">5.3008008</span> <span class="p">,</span><span class="mf">5.3043043</span> <span class="p">,</span> <span class="mf">5.30780781</span><span class="p">,</span> <span class="mf">5.31131131</span><span class="p">,</span> <span class="mf">5.31481481</span><span class="p">,</span> <span class="mf">5.31831832</span><span class="p">,</span><span class="mf">5.32182182</span><span class="p">,</span> <span class="mf">5.32532533</span><span class="p">,</span> <span class="mf">5.32882883</span><span class="p">,</span> <span class="mf">5.33233233</span><span class="p">,</span> <span class="mf">5.33583584</span><span class="p">,</span><span class="mf">5.33933934</span><span class="p">,</span> <span class="mf">5.34284284</span><span class="p">,</span> <span class="mf">5.34634635</span><span class="p">,</span> <span class="mf">5.34984985</span><span class="p">,</span> <span class="mf">5.35335335</span><span class="p">,</span><span class="mf">5.35685686</span><span class="p">,</span> <span class="mf">5.36036036</span><span class="p">,</span> <span class="mf">5.36386386</span><span class="p">,</span> <span class="mf">5.36736737</span><span class="p">,</span> <span class="mf">5.37087087</span><span class="p">,</span><span class="mf">5.37437437</span><span class="p">,</span> <span class="mf">5.37787788</span><span class="p">,</span> <span class="mf">5.38138138</span><span class="p">,</span> <span class="mf">5.38488488</span><span class="p">,</span> <span class="mf">5.38838839</span><span class="p">,</span><span class="mf">5.39189189</span><span class="p">,</span> <span class="mf">5.3953954</span> <span class="p">,</span> <span class="mf">5.3988989</span> <span class="p">,</span> <span class="mf">5.4024024</span> <span class="p">,</span> <span class="mf">5.40590591</span><span class="p">,</span><span class="mf">5.40940941</span><span class="p">,</span> <span class="mf">5.41291291</span><span class="p">,</span> <span class="mf">5.41641642</span><span class="p">,</span> <span class="mf">5.41991992</span><span class="p">,</span> <span class="mf">5.42342342</span><span class="p">,</span><span class="mf">5.42692693</span><span class="p">,</span> <span class="mf">5.43043043</span><span class="p">,</span> <span class="mf">5.43393393</span><span class="p">,</span> <span class="mf">5.43743744</span><span class="p">,</span> <span class="mf">5.44094094</span><span class="p">,</span><span class="mf">5.44444444</span><span class="p">,</span> <span class="mf">5.44794795</span><span class="p">,</span> <span class="mf">5.45145145</span><span class="p">,</span> <span class="mf">5.45495495</span><span class="p">,</span> <span class="mf">5.45845846</span><span class="p">,</span><span class="mf">5.46196196</span><span class="p">,</span> <span class="mf">5.46546547</span><span class="p">,</span> <span class="mf">5.46896897</span><span class="p">,</span> <span class="mf">5.47247247</span><span class="p">,</span> <span class="mf">5.47597598</span><span class="p">,</span><span class="mf">5.47947948</span><span class="p">,</span> <span class="mf">5.48298298</span><span class="p">,</span> <span class="mf">5.48648649</span><span class="p">,</span> <span class="mf">5.48998999</span><span class="p">,</span> <span class="mf">5.49349349</span><span class="p">,</span><span class="mf">5.496997</span>  <span class="p">,</span> <span class="mf">5.5005005</span> <span class="p">,</span> <span class="mf">5.504004</span>  <span class="p">,</span> <span class="mf">5.50750751</span><span class="p">,</span> <span class="mf">5.51101101</span><span class="p">,</span><span class="mf">5.51451451</span><span class="p">,</span> <span class="mf">5.51801802</span><span class="p">,</span> <span class="mf">5.52152152</span><span class="p">,</span> <span class="mf">5.52502503</span><span class="p">,</span> <span class="mf">5.52852853</span><span class="p">,</span><span class="mf">5.53203203</span><span class="p">,</span> <span class="mf">5.53553554</span><span class="p">,</span> <span class="mf">5.53903904</span><span class="p">,</span> <span class="mf">5.54254254</span><span class="p">,</span> <span class="mf">5.54604605</span><span class="p">,</span><span class="mf">5.54954955</span><span class="p">,</span> <span class="mf">5.55305305</span><span class="p">,</span> <span class="mf">5.55655656</span><span class="p">,</span> <span class="mf">5.56006006</span><span class="p">,</span> <span class="mf">5.56356356</span><span class="p">,</span><span class="mf">5.56706707</span><span class="p">,</span> <span class="mf">5.57057057</span><span class="p">,</span> <span class="mf">5.57407407</span><span class="p">,</span> <span class="mf">5.57757758</span><span class="p">,</span> <span class="mf">5.58108108</span><span class="p">,</span><span class="mf">5.58458458</span><span class="p">,</span> <span class="mf">5.58808809</span><span class="p">,</span> <span class="mf">5.59159159</span><span class="p">,</span> <span class="mf">5.5950951</span> <span class="p">,</span> <span class="mf">5.5985986</span> <span class="p">,</span><span class="mf">5.6021021</span> <span class="p">,</span> <span class="mf">5.60560561</span><span class="p">,</span> <span class="mf">5.60910911</span><span class="p">,</span> <span class="mf">5.61261261</span><span class="p">,</span> <span class="mf">5.61611612</span><span class="p">,</span><span class="mf">5.61961962</span><span class="p">,</span> <span class="mf">5.62312312</span><span class="p">,</span> <span class="mf">5.62662663</span><span class="p">,</span> <span class="mf">5.63013013</span><span class="p">,</span> <span class="mf">5.63363363</span><span class="p">,</span><span class="mf">5.63713714</span><span class="p">,</span> <span class="mf">5.64064064</span><span class="p">,</span> <span class="mf">5.64414414</span><span class="p">,</span> <span class="mf">5.64764765</span><span class="p">,</span> <span class="mf">5.65115115</span><span class="p">,</span><span class="mf">5.65465465</span><span class="p">,</span> <span class="mf">5.65815816</span><span class="p">,</span> <span class="mf">5.66166166</span><span class="p">,</span> <span class="mf">5.66516517</span><span class="p">,</span> <span class="mf">5.66866867</span><span class="p">,</span><span class="mf">5.67217217</span><span class="p">,</span> <span class="mf">5.67567568</span><span class="p">,</span> <span class="mf">5.67917918</span><span class="p">,</span> <span class="mf">5.68268268</span><span class="p">,</span> <span class="mf">5.68618619</span><span class="p">,</span><span class="mf">5.68968969</span><span class="p">,</span> <span class="mf">5.69319319</span><span class="p">,</span> <span class="mf">5.6966967</span> <span class="p">,</span> <span class="mf">5.7002002</span> <span class="p">,</span> <span class="mf">5.7037037</span> <span class="p">,</span><span class="mf">5.70720721</span><span class="p">,</span> <span class="mf">5.71071071</span><span class="p">,</span> <span class="mf">5.71421421</span><span class="p">,</span> <span class="mf">5.71771772</span><span class="p">,</span> <span class="mf">5.72122122</span><span class="p">,</span><span class="mf">5.72472472</span><span class="p">,</span> <span class="mf">5.72822823</span><span class="p">,</span> <span class="mf">5.73173173</span><span class="p">,</span> <span class="mf">5.73523524</span><span class="p">,</span> <span class="mf">5.73873874</span><span class="p">,</span><span class="mf">5.74224224</span><span class="p">,</span> <span class="mf">5.74574575</span><span class="p">,</span> <span class="mf">5.74924925</span><span class="p">,</span> <span class="mf">5.75275275</span><span class="p">,</span> <span class="mf">5.75625626</span><span class="p">,</span><span class="mf">5.75975976</span><span class="p">,</span> <span class="mf">5.76326326</span><span class="p">,</span> <span class="mf">5.76676677</span><span class="p">,</span> <span class="mf">5.77027027</span><span class="p">,</span> <span class="mf">5.77377377</span><span class="p">,</span><span class="mf">5.77727728</span><span class="p">,</span> <span class="mf">5.78078078</span><span class="p">,</span> <span class="mf">5.78428428</span><span class="p">,</span> <span class="mf">5.78778779</span><span class="p">,</span> <span class="mf">5.79129129</span><span class="p">,</span><span class="mf">5.79479479</span><span class="p">,</span> <span class="mf">5.7982983</span> <span class="p">,</span> <span class="mf">5.8018018</span> <span class="p">,</span> <span class="mf">5.80530531</span><span class="p">,</span> <span class="mf">5.80880881</span><span class="p">,</span><span class="mf">5.81231231</span><span class="p">,</span> <span class="mf">5.81581582</span><span class="p">,</span> <span class="mf">5.81931932</span><span class="p">,</span> <span class="mf">5.82282282</span><span class="p">,</span> <span class="mf">5.82632633</span><span class="p">,</span><span class="mf">5.82982983</span><span class="p">,</span> <span class="mf">5.83333333</span><span class="p">,</span> <span class="mf">5.83683684</span><span class="p">,</span> <span class="mf">5.84034034</span><span class="p">,</span> <span class="mf">5.84384384</span><span class="p">,</span><span class="mf">5.84734735</span><span class="p">,</span> <span class="mf">5.85085085</span><span class="p">,</span> <span class="mf">5.85435435</span><span class="p">,</span> <span class="mf">5.85785786</span><span class="p">,</span> <span class="mf">5.86136136</span><span class="p">,</span><span class="mf">5.86486486</span><span class="p">,</span> <span class="mf">5.86836837</span><span class="p">,</span> <span class="mf">5.87187187</span><span class="p">,</span> <span class="mf">5.87537538</span><span class="p">,</span> <span class="mf">5.87887888</span><span class="p">,</span><span class="mf">5.88238238</span><span class="p">,</span> <span class="mf">5.88588589</span><span class="p">,</span> <span class="mf">5.88938939</span><span class="p">,</span> <span class="mf">5.89289289</span><span class="p">,</span> <span class="mf">5.8963964</span> <span class="p">,</span><span class="mf">5.8998999</span> <span class="p">,</span> <span class="mf">5.9034034</span> <span class="p">,</span> <span class="mf">5.90690691</span><span class="p">,</span> <span class="mf">5.91041041</span><span class="p">,</span> <span class="mf">5.91391391</span><span class="p">,</span><span class="mf">5.91741742</span><span class="p">,</span> <span class="mf">5.92092092</span><span class="p">,</span> <span class="mf">5.92442442</span><span class="p">,</span> <span class="mf">5.92792793</span><span class="p">,</span> <span class="mf">5.93143143</span><span class="p">,</span><span class="mf">5.93493493</span><span class="p">,</span> <span class="mf">5.93843844</span><span class="p">,</span> <span class="mf">5.94194194</span><span class="p">,</span> <span class="mf">5.94544545</span><span class="p">,</span> <span class="mf">5.94894895</span><span class="p">,</span><span class="mf">5.95245245</span><span class="p">,</span> <span class="mf">5.95595596</span><span class="p">,</span> <span class="mf">5.95945946</span><span class="p">,</span> <span class="mf">5.96296296</span><span class="p">,</span> <span class="mf">5.96646647</span><span class="p">,</span><span class="mf">5.96996997</span><span class="p">,</span> <span class="mf">5.97347347</span><span class="p">,</span> <span class="mf">5.97697698</span><span class="p">,</span> <span class="mf">5.98048048</span><span class="p">,</span> <span class="mf">5.98398398</span><span class="p">,</span><span class="mf">5.98748749</span><span class="p">,</span> <span class="mf">5.99099099</span><span class="p">,</span> <span class="mf">5.99449449</span><span class="p">,</span> <span class="mf">5.997998</span>  <span class="p">,</span> <span class="mf">6.0015015</span> <span class="p">,</span><span class="mf">6.00500501</span><span class="p">,</span> <span class="mf">6.00850851</span><span class="p">,</span> <span class="mf">6.01201201</span><span class="p">,</span> <span class="mf">6.01551552</span><span class="p">,</span> <span class="mf">6.01901902</span><span class="p">,</span><span class="mf">6.02252252</span><span class="p">,</span> <span class="mf">6.02602603</span><span class="p">,</span> <span class="mf">6.02952953</span><span class="p">,</span> <span class="mf">6.03303303</span><span class="p">,</span> <span class="mf">6.03653654</span><span class="p">,</span><span class="mf">6.04004004</span><span class="p">,</span> <span class="mf">6.04354354</span><span class="p">,</span> <span class="mf">6.04704705</span><span class="p">,</span> <span class="mf">6.05055055</span><span class="p">,</span> <span class="mf">6.05405405</span><span class="p">,</span><span class="mf">6.05755756</span><span class="p">,</span> <span class="mf">6.06106106</span><span class="p">,</span> <span class="mf">6.06456456</span><span class="p">,</span> <span class="mf">6.06806807</span><span class="p">,</span> <span class="mf">6.07157157</span><span class="p">,</span><span class="mf">6.07507508</span><span class="p">,</span> <span class="mf">6.07857858</span><span class="p">,</span> <span class="mf">6.08208208</span><span class="p">,</span> <span class="mf">6.08558559</span><span class="p">,</span> <span class="mf">6.08908909</span><span class="p">,</span><span class="mf">6.09259259</span><span class="p">,</span> <span class="mf">6.0960961</span> <span class="p">,</span> <span class="mf">6.0995996</span> <span class="p">,</span> <span class="mf">6.1031031</span> <span class="p">,</span> <span class="mf">6.10660661</span><span class="p">,</span><span class="mf">6.11011011</span><span class="p">,</span> <span class="mf">6.11361361</span><span class="p">,</span> <span class="mf">6.11711712</span><span class="p">,</span> <span class="mf">6.12062062</span><span class="p">,</span> <span class="mf">6.12412412</span><span class="p">,</span><span class="mf">6.12762763</span><span class="p">,</span> <span class="mf">6.13113113</span><span class="p">,</span> <span class="mf">6.13463463</span><span class="p">,</span> <span class="mf">6.13813814</span><span class="p">,</span> <span class="mf">6.14164164</span><span class="p">,</span><span class="mf">6.14514515</span><span class="p">,</span> <span class="mf">6.14864865</span><span class="p">,</span> <span class="mf">6.15215215</span><span class="p">,</span> <span class="mf">6.15565566</span><span class="p">,</span> <span class="mf">6.15915916</span><span class="p">,</span><span class="mf">6.16266266</span><span class="p">,</span> <span class="mf">6.16616617</span><span class="p">,</span> <span class="mf">6.16966967</span><span class="p">,</span> <span class="mf">6.17317317</span><span class="p">,</span> <span class="mf">6.17667668</span><span class="p">,</span><span class="mf">6.18018018</span><span class="p">,</span> <span class="mf">6.18368368</span><span class="p">,</span> <span class="mf">6.18718719</span><span class="p">,</span> <span class="mf">6.19069069</span><span class="p">,</span> <span class="mf">6.19419419</span><span class="p">,</span><span class="mf">6.1976977</span> <span class="p">,</span> <span class="mf">6.2012012</span> <span class="p">,</span> <span class="mf">6.2047047</span> <span class="p">,</span> <span class="mf">6.20820821</span><span class="p">,</span> <span class="mf">6.21171171</span><span class="p">,</span><span class="mf">6.21521522</span><span class="p">,</span> <span class="mf">6.21871872</span><span class="p">,</span> <span class="mf">6.22222222</span><span class="p">,</span> <span class="mf">6.22572573</span><span class="p">,</span> <span class="mf">6.22922923</span><span class="p">,</span><span class="mf">6.23273273</span><span class="p">,</span> <span class="mf">6.23623624</span><span class="p">,</span> <span class="mf">6.23973974</span><span class="p">,</span> <span class="mf">6.24324324</span><span class="p">,</span> <span class="mf">6.24674675</span><span class="p">,</span><span class="mf">6.25025025</span><span class="p">,</span> <span class="mf">6.25375375</span><span class="p">,</span> <span class="mf">6.25725726</span><span class="p">,</span> <span class="mf">6.26076076</span><span class="p">,</span> <span class="mf">6.26426426</span><span class="p">,</span><span class="mf">6.26776777</span><span class="p">,</span> <span class="mf">6.27127127</span><span class="p">,</span> <span class="mf">6.27477477</span><span class="p">,</span> <span class="mf">6.27827828</span><span class="p">,</span> <span class="mf">6.28178178</span><span class="p">,</span><span class="mf">6.28528529</span><span class="p">,</span> <span class="mf">6.28878879</span><span class="p">,</span> <span class="mf">6.29229229</span><span class="p">,</span> <span class="mf">6.2957958</span> <span class="p">,</span> <span class="mf">6.2992993</span> <span class="p">,</span><span class="mf">6.3028028</span> <span class="p">,</span> <span class="mf">6.30630631</span><span class="p">,</span> <span class="mf">6.30980981</span><span class="p">,</span> <span class="mf">6.31331331</span><span class="p">,</span> <span class="mf">6.31681682</span><span class="p">,</span><span class="mf">6.32032032</span><span class="p">,</span> <span class="mf">6.32382382</span><span class="p">,</span> <span class="mf">6.32732733</span><span class="p">,</span> <span class="mf">6.33083083</span><span class="p">,</span> <span class="mf">6.33433433</span><span class="p">,</span><span class="mf">6.33783784</span><span class="p">,</span> <span class="mf">6.34134134</span><span class="p">,</span> <span class="mf">6.34484484</span><span class="p">,</span> <span class="mf">6.34834835</span><span class="p">,</span> <span class="mf">6.35185185</span><span class="p">,</span><span class="mf">6.35535536</span><span class="p">,</span> <span class="mf">6.35885886</span><span class="p">,</span> <span class="mf">6.36236236</span><span class="p">,</span> <span class="mf">6.36586587</span><span class="p">,</span> <span class="mf">6.36936937</span><span class="p">,</span><span class="mf">6.37287287</span><span class="p">,</span> <span class="mf">6.37637638</span><span class="p">,</span> <span class="mf">6.37987988</span><span class="p">,</span> <span class="mf">6.38338338</span><span class="p">,</span> <span class="mf">6.38688689</span><span class="p">,</span><span class="mf">6.39039039</span><span class="p">,</span> <span class="mf">6.39389389</span><span class="p">,</span> <span class="mf">6.3973974</span> <span class="p">,</span> <span class="mf">6.4009009</span> <span class="p">,</span> <span class="mf">6.4044044</span> <span class="p">,</span><span class="mf">6.40790791</span><span class="p">,</span> <span class="mf">6.41141141</span><span class="p">,</span> <span class="mf">6.41491491</span><span class="p">,</span> <span class="mf">6.41841842</span><span class="p">,</span> <span class="mf">6.42192192</span><span class="p">,</span><span class="mf">6.42542543</span><span class="p">,</span> <span class="mf">6.42892893</span><span class="p">,</span> <span class="mf">6.43243243</span><span class="p">,</span> <span class="mf">6.43593594</span><span class="p">,</span> <span class="mf">6.43943944</span><span class="p">,</span><span class="mf">6.44294294</span><span class="p">,</span> <span class="mf">6.44644645</span><span class="p">,</span> <span class="mf">6.44994995</span><span class="p">,</span> <span class="mf">6.45345345</span><span class="p">,</span> <span class="mf">6.45695696</span><span class="p">,</span><span class="mf">6.46046046</span><span class="p">,</span> <span class="mf">6.46396396</span><span class="p">,</span> <span class="mf">6.46746747</span><span class="p">,</span> <span class="mf">6.47097097</span><span class="p">,</span> <span class="mf">6.47447447</span><span class="p">,</span><span class="mf">6.47797798</span><span class="p">,</span> <span class="mf">6.48148148</span><span class="p">,</span> <span class="mf">6.48498498</span><span class="p">,</span> <span class="mf">6.48848849</span><span class="p">,</span> <span class="mf">6.49199199</span><span class="p">,</span><span class="mf">6.4954955</span> <span class="p">,</span> <span class="mf">6.498999</span>  <span class="p">,</span> <span class="mf">6.5025025</span> <span class="p">,</span> <span class="mf">6.50600601</span><span class="p">,</span> <span class="mf">6.50950951</span><span class="p">,</span><span class="mf">6.51301301</span><span class="p">,</span> <span class="mf">6.51651652</span><span class="p">,</span> <span class="mf">6.52002002</span><span class="p">,</span> <span class="mf">6.52352352</span><span class="p">,</span> <span class="mf">6.52702703</span><span class="p">,</span><span class="mf">6.53053053</span><span class="p">,</span> <span class="mf">6.53403403</span><span class="p">,</span> <span class="mf">6.53753754</span><span class="p">,</span> <span class="mf">6.54104104</span><span class="p">,</span> <span class="mf">6.54454454</span><span class="p">,</span><span class="mf">6.54804805</span><span class="p">,</span> <span class="mf">6.55155155</span><span class="p">,</span> <span class="mf">6.55505506</span><span class="p">,</span> <span class="mf">6.55855856</span><span class="p">,</span> <span class="mf">6.56206206</span><span class="p">,</span><span class="mf">6.56556557</span><span class="p">,</span> <span class="mf">6.56906907</span><span class="p">,</span> <span class="mf">6.57257257</span><span class="p">,</span> <span class="mf">6.57607608</span><span class="p">,</span> <span class="mf">6.57957958</span><span class="p">,</span><span class="mf">6.58308308</span><span class="p">,</span> <span class="mf">6.58658659</span><span class="p">,</span> <span class="mf">6.59009009</span><span class="p">,</span> <span class="mf">6.59359359</span><span class="p">,</span> <span class="mf">6.5970971</span> <span class="p">,</span><span class="mf">6.6006006</span> <span class="p">,</span> <span class="mf">6.6041041</span> <span class="p">,</span> <span class="mf">6.60760761</span><span class="p">,</span> <span class="mf">6.61111111</span><span class="p">,</span> <span class="mf">6.61461461</span><span class="p">,</span><span class="mf">6.61811812</span><span class="p">,</span> <span class="mf">6.62162162</span><span class="p">,</span> <span class="mf">6.62512513</span><span class="p">,</span> <span class="mf">6.62862863</span><span class="p">,</span> <span class="mf">6.63213213</span><span class="p">,</span><span class="mf">6.63563564</span><span class="p">,</span> <span class="mf">6.63913914</span><span class="p">,</span> <span class="mf">6.64264264</span><span class="p">,</span> <span class="mf">6.64614615</span><span class="p">,</span> <span class="mf">6.64964965</span><span class="p">,</span><span class="mf">6.65315315</span><span class="p">,</span> <span class="mf">6.65665666</span><span class="p">,</span> <span class="mf">6.66016016</span><span class="p">,</span> <span class="mf">6.66366366</span><span class="p">,</span> <span class="mf">6.66716717</span><span class="p">,</span><span class="mf">6.67067067</span><span class="p">,</span> <span class="mf">6.67417417</span><span class="p">,</span> <span class="mf">6.67767768</span><span class="p">,</span> <span class="mf">6.68118118</span><span class="p">,</span> <span class="mf">6.68468468</span><span class="p">,</span><span class="mf">6.68818819</span><span class="p">,</span> <span class="mf">6.69169169</span><span class="p">,</span> <span class="mf">6.6951952</span> <span class="p">,</span> <span class="mf">6.6986987</span> <span class="p">,</span> <span class="mf">6.7022022</span> <span class="p">,</span><span class="mf">6.70570571</span><span class="p">,</span> <span class="mf">6.70920921</span><span class="p">,</span> <span class="mf">6.71271271</span><span class="p">,</span> <span class="mf">6.71621622</span><span class="p">,</span> <span class="mf">6.71971972</span><span class="p">,</span><span class="mf">6.72322322</span><span class="p">,</span> <span class="mf">6.72672673</span><span class="p">,</span> <span class="mf">6.73023023</span><span class="p">,</span> <span class="mf">6.73373373</span><span class="p">,</span> <span class="mf">6.73723724</span><span class="p">,</span><span class="mf">6.74074074</span><span class="p">,</span> <span class="mf">6.74424424</span><span class="p">,</span> <span class="mf">6.74774775</span><span class="p">,</span> <span class="mf">6.75125125</span><span class="p">,</span> <span class="mf">6.75475475</span><span class="p">,</span><span class="mf">6.75825826</span><span class="p">,</span> <span class="mf">6.76176176</span><span class="p">,</span> <span class="mf">6.76526527</span><span class="p">,</span> <span class="mf">6.76876877</span><span class="p">,</span> <span class="mf">6.77227227</span><span class="p">,</span><span class="mf">6.77577578</span><span class="p">,</span> <span class="mf">6.77927928</span><span class="p">,</span> <span class="mf">6.78278278</span><span class="p">,</span> <span class="mf">6.78628629</span><span class="p">,</span> <span class="mf">6.78978979</span><span class="p">,</span><span class="mf">6.79329329</span><span class="p">,</span> <span class="mf">6.7967968</span> <span class="p">,</span> <span class="mf">6.8003003</span> <span class="p">,</span> <span class="mf">6.8038038</span> <span class="p">,</span> <span class="mf">6.80730731</span><span class="p">,</span><span class="mf">6.81081081</span><span class="p">,</span> <span class="mf">6.81431431</span><span class="p">,</span> <span class="mf">6.81781782</span><span class="p">,</span> <span class="mf">6.82132132</span><span class="p">,</span> <span class="mf">6.82482482</span><span class="p">,</span><span class="mf">6.82832833</span><span class="p">,</span> <span class="mf">6.83183183</span><span class="p">,</span> <span class="mf">6.83533534</span><span class="p">,</span> <span class="mf">6.83883884</span><span class="p">,</span> <span class="mf">6.84234234</span><span class="p">,</span><span class="mf">6.84584585</span><span class="p">,</span> <span class="mf">6.84934935</span><span class="p">,</span> <span class="mf">6.85285285</span><span class="p">,</span> <span class="mf">6.85635636</span><span class="p">,</span> <span class="mf">6.85985986</span><span class="p">,</span><span class="mf">6.86336336</span><span class="p">,</span> <span class="mf">6.86686687</span><span class="p">,</span> <span class="mf">6.87037037</span><span class="p">,</span> <span class="mf">6.87387387</span><span class="p">,</span> <span class="mf">6.87737738</span><span class="p">,</span><span class="mf">6.88088088</span><span class="p">,</span> <span class="mf">6.88438438</span><span class="p">,</span> <span class="mf">6.88788789</span><span class="p">,</span> <span class="mf">6.89139139</span><span class="p">,</span> <span class="mf">6.89489489</span><span class="p">,</span><span class="mf">6.8983984</span> <span class="p">,</span> <span class="mf">6.9019019</span> <span class="p">,</span> <span class="mf">6.90540541</span><span class="p">,</span> <span class="mf">6.90890891</span><span class="p">,</span> <span class="mf">6.91241241</span><span class="p">,</span><span class="mf">6.91591592</span><span class="p">,</span> <span class="mf">6.91941942</span><span class="p">,</span> <span class="mf">6.92292292</span><span class="p">,</span> <span class="mf">6.92642643</span><span class="p">,</span> <span class="mf">6.92992993</span><span class="p">,</span><span class="mf">6.93343343</span><span class="p">,</span> <span class="mf">6.93693694</span><span class="p">,</span> <span class="mf">6.94044044</span><span class="p">,</span> <span class="mf">6.94394394</span><span class="p">,</span> <span class="mf">6.94744745</span><span class="p">,</span><span class="mf">6.95095095</span><span class="p">,</span> <span class="mf">6.95445445</span><span class="p">,</span> <span class="mf">6.95795796</span><span class="p">,</span> <span class="mf">6.96146146</span><span class="p">,</span> <span class="mf">6.96496496</span><span class="p">,</span><span class="mf">6.96846847</span><span class="p">,</span> <span class="mf">6.97197197</span><span class="p">,</span> <span class="mf">6.97547548</span><span class="p">,</span> <span class="mf">6.97897898</span><span class="p">,</span> <span class="mf">6.98248248</span><span class="p">,</span><span class="mf">6.98598599</span><span class="p">,</span> <span class="mf">6.98948949</span><span class="p">,</span> <span class="mf">6.99299299</span><span class="p">,</span> <span class="mf">6.9964965</span> <span class="p">,</span> <span class="mf">7.</span>        <span class="p">]),</span> <span class="n">delta</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">)</span></code>
+
+
+<a href="#scripts.spectra.plot_spectra_nm" class="headerlink" title="Permanent link">🔗</a></h4>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>scripts/spectra.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">plot_spectra_nm</span><span class="p">(</span>
+    <span class="n">filename</span><span class="p">,</span>
+    <span class="n">spectra</span><span class="p">,</span>
+    <span class="n">E</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span>
+    <span class="n">delta</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">Nspectra</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">spectra</span><span class="p">)</span>
+    <span class="n">Nstate</span> <span class="o">=</span> <span class="n">spectra</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">Ostates</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Nstate</span><span class="p">):</span>
+        <span class="n">Ostate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">spectrum</span> <span class="ow">in</span> <span class="n">spectra</span><span class="p">:</span>
+            <span class="n">Ostate</span> <span class="o">+=</span> <span class="n">spectrum</span><span class="p">[</span><span class="n">state</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">lorentzian</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">[</span><span class="n">state</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">delta</span><span class="p">)</span>
+        <span class="n">Ostate</span> <span class="o">/=</span> <span class="n">Nspectra</span>
+        <span class="n">Ostates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ostate</span><span class="p">)</span>
+
+    <span class="n">Ototal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">Ostate</span> <span class="ow">in</span> <span class="n">Ostates</span><span class="p">:</span>
+        <span class="n">Ototal</span> <span class="o">+=</span> <span class="n">Ostate</span>
+
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;jet&quot;</span><span class="p">)</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">cmap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Nstate</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">Nstate</span><span class="p">)))]</span>
+
+    <span class="n">nm</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1239.84193</span><span class="p">)</span> <span class="o">/</span> <span class="n">E</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">Oind</span><span class="p">,</span> <span class="n">Ostate</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Ostates</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nm</span><span class="p">,</span> <span class="n">Ostate</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">Oind</span><span class="p">])</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nm</span><span class="p">,</span> <span class="n">Ototal</span><span class="p">,</span> <span class="s2">&quot;-k&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\lambda$ [nm]&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cross Section [-]&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h4 id="scripts.spectra.read_fomo_outfile" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">read_fomo_outfile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></code>
+
+
+<a href="#scripts.spectra.read_fomo_outfile" class="headerlink" title="Permanent link">🔗</a></h4>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>scripts/spectra.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">read_fomo_outfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+
+    <span class="n">lines</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\s+Job finished&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">Es</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">re_ex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\s*(\d+)\s+singlet\s+\S+\s+\S+\s+(\S+)\s+\S+\s*$&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">mobj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">re_ex</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mobj</span><span class="p">:</span>
+            <span class="n">Es</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">mobj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+            <span class="k">assert</span> <span class="nb">int</span><span class="p">(</span><span class="n">mobj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">Es</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">Os</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">re_osc</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\s*1\s+-&gt;\s+(\d+)\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+)\s*$&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">mobj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">re_osc</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mobj</span><span class="p">:</span>
+            <span class="n">Os</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">mobj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+            <span class="k">assert</span> <span class="nb">int</span><span class="p">(</span><span class="n">mobj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">Os</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">Os</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">Es</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">Es</span><span class="p">,</span> <span class="n">Os</span><span class="p">)])</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h4 id="scripts.spectra.read_tddft_outfile" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">read_tddft_outfile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></code>
+
+
+<a href="#scripts.spectra.read_tddft_outfile" class="headerlink" title="Permanent link">🔗</a></h4>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>scripts/spectra.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">read_tddft_outfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+
+    <span class="n">lines</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\s+Job finished&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span>
+        <span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">x</span>
+                <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\s+Final Excited State Results:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="o">+</span> <span class="mi">4</span>
+        <span class="p">)</span> <span class="p">:</span>
+    <span class="p">]</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">mobj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\s*(\d+)\s+\S+\s+(\S+)\s+(\S+)&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mobj</span><span class="p">:</span>
+            <span class="n">vals</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">mobj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span> <span class="nb">float</span><span class="p">(</span><span class="n">mobj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">))])</span>
+            <span class="k">assert</span> <span class="nb">int</span><span class="p">(</span><span class="n">mobj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../convert_geomdat/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Convert from Amber restart to Geometry.dat file for AIMS
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.instant", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+    
+  </body>
+</html>
