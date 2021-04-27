@@ -4,7 +4,7 @@ from . import formfactor, rotation
 
 
 def compute_diffraction(
-    traj,
+    bundle,
     key,
     s,
     eta,
@@ -17,11 +17,11 @@ def compute_diffraction(
     print_level=False,
 ):
 
-    """Compute the I(s, eta) elastic scattering signal for a Trajectory.
+    """Compute the I(s, eta) elastic scattering signal for a Bundle.
          See aimsprop/notes/ued for details on this property.
 
     Notes:
-        * All frames for each initial condition (IC) in traj should be aligned so
+        * All frames for each initial condition (IC) in bundle should be aligned so
         that the transition dipole moment from S0 -> Sex at t=0 is on z. This
         is required for proper computation of anisotropy.
         * All frames should be weighted by geometric considerations at the IC
@@ -31,7 +31,7 @@ def compute_diffraction(
         to non-adiabatic dynamics.
 
     Params:
-        traj (Trajectory) - the Trajectory object to compute the property for (modified in
+        bundle (Bundle) - the Bundle object to compute the property for (modified in
             place)
         key (str) - the name of the property.
         s (np.ndarray) - list of scattering vector norms in Angstrom^-1. The
@@ -53,7 +53,7 @@ def compute_diffraction(
         print_level (bool) - print progress if true (useful to track long
             property computations)
     Result/Return:
-        traj - reference to the input Trajectory object. The properties
+        bundle - reference to the input Bundle object. The properties
     """
 
     # Validity checks
@@ -83,7 +83,7 @@ def compute_diffraction(
         Rs, ws = rotation.rotation_quadrature(nlebedev=nlebedev, nomega=nomega)
 
     # Get atomic form factors for appropriate x-ray/ued mode
-    factors = formfactor.AtomicFormFactor.build_factors(traj.frames[0], mode=mode)
+    factors = formfactor.AtomicFormFactor.build_factors(bundle.frames[0], mode=mode)
 
     # Compute atomic scattering Iat
     D = np.zeros_like(sx)
@@ -92,9 +92,9 @@ def compute_diffraction(
         D += (np.abs(F) ** 2).real
 
     # Compute IAM scattering, integrating over all orientation angles
-    for find, frame in enumerate(traj.frames):
+    for find, frame in enumerate(bundle.frames):
         if print_level:
-            print(("Frame %5d of %5d" % (find, len(traj.frames))))
+            print(("Frame %5d of %5d" % (find, len(bundle.frames))))
         I = np.zeros_like(sx)
         for R, w in zip(Rs, ws):
             # cos(z)^2 pump anisotropy
@@ -114,11 +114,11 @@ def compute_diffraction(
             I += w * cos2 * F
         frame.properties[key] = I
 
-    return traj
+    return bundle
 
 
 def compute_diffraction_fast(
-    traj,
+    bundle,
     key,
     s,
     eta,
@@ -131,11 +131,11 @@ def compute_diffraction_fast(
     print_level=False,
 ):
 
-    """Compute the I(s, eta) elastic scattering signal for a Trajectory.
+    """Compute the I(s, eta) elastic scattering signal for a Bundle.
          See aimsprop/notes/ued for details on this property.
 
     Notes:
-        * All frames for each initial condition (IC) in traj should be aligned so
+        * All frames for each initial condition (IC) in bundle should be aligned so
         that the transition dipole moment from S0 -> Sex at t=0 is on z. This
         is required for proper computation of anisotropy.
         * All frames should be weighted by geometric considerations at the IC
@@ -145,7 +145,7 @@ def compute_diffraction_fast(
         to non-adiabatic dynamics.
 
     Params:
-        traj (Trajectory) - the Trajectory object to compute the property for (modified in
+        bundle (Bundle) - the Bundle object to compute the property for (modified in
             place)
         key (str) - the name of the property.
         s (np.ndarray) - list of scattering vector norms in Angstrom^-1. The
@@ -167,7 +167,7 @@ def compute_diffraction_fast(
         print_level (bool) - print progress if true (useful to track long
             property computations)
     Result/Return:
-        traj - reference to the input Trajectory object. The properties
+        bundle - reference to the input Bundle object. The properties
     """
 
     # Validity checks
@@ -188,7 +188,7 @@ def compute_diffraction_fast(
         Rs, ws = rotation.rotation_quadrature(nlebedev=nlebedev, nomega=nomega)
 
     # Get atomic form factors for appropriate x-ray/ued mode
-    factors = formfactor.AtomicFormFactor.build_factors(traj.frames[0], mode=mode)
+    factors = formfactor.AtomicFormFactor.build_factors(bundle.frames[0], mode=mode)
 
     import lightspeed as ls
 
@@ -210,9 +210,9 @@ def compute_diffraction_fast(
         fA[A, :] = factor.evaluate(qx=0.0, qy=0.0, qz=s)
 
     # Compute IAM scattering, integrating over all orientation angles
-    for find, frame in enumerate(traj.frames):
+    for find, frame in enumerate(bundle.frames):
         if print_level:
-            print(("Frame %5d of %5d" % (find, len(traj.frames))))
+            print(("Frame %5d of %5d" % (find, len(bundle.frames))))
         xyz = ls.Tensor.array(frame.xyz)
         I = ext.compute_diffraction(
             L,
@@ -227,11 +227,11 @@ def compute_diffraction_fast(
         )
         frame.properties[key] = np.array(I)
 
-    return traj
+    return bundle
 
 
 def compute_diffraction_moments_fast(
-    traj,
+    bundle,
     key,
     s,
     L,
@@ -243,11 +243,11 @@ def compute_diffraction_moments_fast(
     print_level=False,
 ):
 
-    """Compute the I(s, eta) elastic scattering moments for a Trajectory.
+    """Compute the I(s, eta) elastic scattering moments for a Bundle.
          See aimsprop/notes/ued for details on this property.
 
     Notes:
-        * All frames for each initial condition (IC) in traj should be aligned so
+        * All frames for each initial condition (IC) in bundle should be aligned so
         that the transition dipole moment from S0 -> Sex at t=0 is on z. This
         is required for proper computation of anisotropy.
         * All frames should be weighted by geometric considerations at the IC
@@ -257,7 +257,7 @@ def compute_diffraction_moments_fast(
         to non-adiabatic dynamics.
 
     Params:
-        traj (Trajectory) - the Trajectory object to compute the property for (modified in
+        bundle (Bundle) - the Bundle object to compute the property for (modified in
             place)
         key (str) - the name of the property.
         s (np.ndarray) - list of scattering vector norms in Angstrom^-1. The
@@ -278,8 +278,8 @@ def compute_diffraction_moments_fast(
         print_level (bool) - print progress if true (useful to track long
             property computations)
     Result/Return:
-        traj - reference to the input Trajectory object. The properties "key-0"
-            and "key-2" are added to each frame of the Trajectory.
+        bundle - reference to the input Bundle object. The properties "key-0"
+            and "key-2" are added to each frame of the Bundle.
     """
 
     # Validity checks
@@ -303,7 +303,7 @@ def compute_diffraction_moments_fast(
         Rs, ws = rotation.rotation_quadrature(nlebedev=nlebedev, nomega=nomega)
 
     # Get atomic form factors for appropriate x-ray/ued mode
-    factors = formfactor.AtomicFormFactor.build_factors(traj.frames[0], mode=mode)
+    factors = formfactor.AtomicFormFactor.build_factors(bundle.frames[0], mode=mode)
 
     import lightspeed as ls
 
@@ -325,9 +325,9 @@ def compute_diffraction_moments_fast(
         fA[A, :] = factor.evaluate(qx=0.0, qy=0.0, qz=s)
 
     # Compute IAM scattering, integrating over all orientation angles
-    for find, frame in enumerate(traj.frames):
+    for find, frame in enumerate(bundle.frames):
         if print_level:
-            print(("Frame %5d of %5d" % (find, len(traj.frames))))
+            print(("Frame %5d of %5d" % (find, len(bundle.frames))))
         xyz = ls.Tensor.array(frame.xyz)
         I = ext.compute_diffraction(
             L,
@@ -346,26 +346,26 @@ def compute_diffraction_moments_fast(
         frame.properties["%s-0" % key] = I0
         frame.properties["%s-2" % key] = I1
 
-    return traj
+    return bundle
 
 
 def compute_diffraction_from_moments(
-    traj,
+    bundle,
     key,
     eta,
 ):
 
-    for find, frame in enumerate(traj.frames):
+    for find, frame in enumerate(bundle.frames):
         I = np.outer(frame.properties["%s-0" % key], np.cos(0 * eta)) + np.outer(
             frame.properties["%s-2" % key], np.cos(2 * eta)
         )
         frame.properties[key] = I
 
-    return traj
+    return bundle
 
 
 def compute_diffraction_moments_analytical(
-    traj,
+    bundle,
     key,
     s,
     L,
@@ -375,11 +375,11 @@ def compute_diffraction_moments_analytical(
     print_level=False,
 ):
 
-    """Compute the I(s, eta) elastic scattering moments for a Trajectory.
+    """Compute the I(s, eta) elastic scattering moments for a Bundle.
          See aimsprop/notes/ued for details on this property.
 
     Notes:
-        * All frames for each initial condition (IC) in traj should be aligned so
+        * All frames for each initial condition (IC) in bundle should be aligned so
         that the transition dipole moment from S0 -> Sex at t=0 is on z. This
         is required for proper computation of anisotropy.
         * All frames should be weighted by geometric considerations at the IC
@@ -389,7 +389,7 @@ def compute_diffraction_moments_analytical(
         to non-adiabatic dynamics.
 
     Params:
-        traj (Trajectory) - the Trajectory object to compute the property for (modified in
+        bundle (Bundle) - the Bundle object to compute the property for (modified in
             place)
         key (str) - the name of the property.
         s (np.ndarray) - list of scattering vector norms in Angstrom^-1. The
@@ -409,8 +409,8 @@ def compute_diffraction_moments_analytical(
         print_level (bool) - print progress if true (useful to track long
             property computations)
     Result/Return:
-        traj - reference to the input Trajectory object. The properties "key-0"
-            and "key-2" are added to each frame of the Trajectory.
+        bundle - reference to the input Bundle object. The properties "key-0"
+            and "key-2" are added to each frame of the Bundle.
     """
 
     # Validity checks
@@ -425,7 +425,7 @@ def compute_diffraction_moments_analytical(
     theta = 2.0 * np.arcsin(s * L / (4.0 * np.pi))
 
     # Get atomic form factors for appropriate x-ray/ued mode
-    factors = formfactor.AtomicFormFactor.build_factors(traj.frames[0], mode=mode)
+    factors = formfactor.AtomicFormFactor.build_factors(bundle.frames[0], mode=mode)
 
     # Collocate the atomic form factors
     f = np.zeros((len(factors), s.size))
@@ -442,16 +442,16 @@ def compute_diffraction_moments_analytical(
 
     # Pairs to include
     ABpairs = []
-    for A in range(traj.frames[0].xyz.shape[0]):
-        for B in range(traj.frames[0].xyz.shape[0]):
+    for A in range(bundle.frames[0].xyz.shape[0]):
+        for B in range(bundle.frames[0].xyz.shape[0]):
             if A >= B:
                 continue
             ABpairs.append((A, B))
 
     # Diffraction moment computation
-    for find, frame in enumerate(traj.frames):
+    for find, frame in enumerate(bundle.frames):
         if print_level:
-            print(("Frame %5d of %5d" % (find, len(traj.frames))))
+            print(("Frame %5d of %5d" % (find, len(bundle.frames))))
         # Geometry
         xyz = frame.xyz
         # Target
@@ -511,12 +511,12 @@ def compute_diffraction_moments_analytical(
         frame.properties["%s-0" % (key)] = I0
         frame.properties["%s-2" % (key)] = I2
 
-    return traj
+    return bundle
 
 
 # TODO: These are deprecated, as they are not fully correct for elastic scattering
 # def compute_diffraction_moments(
-#     traj,
+#     bundle,
 #     key,
 #     q,
 #     factors,
@@ -531,7 +531,7 @@ def compute_diffraction_moments_analytical(
 #         aimsprop/notes/xray for details on these moments.
 #
 #     Notes:
-#         * All frames for each initial condition (IC) in traj should be aligned so
+#         * All frames for each initial condition (IC) in bundle should be aligned so
 #         that the transition dipole moment from S0 -> Sex at t=0 is on z. This
 #         is required for proper computation of I2 (I0 is invariant to this).
 #         * All frames should be weighted by geometric considerations at the IC
@@ -541,7 +541,7 @@ def compute_diffraction_moments_analytical(
 #         to non-adiabatic dynamics.
 #
 #     Params:
-#         traj (Trajectory) - the Trajectory object to compute the property for (modified in
+#         bundle (Bundle) - the Bundle object to compute the property for (modified in
 #             place)
 #         key (str) - the name of the property.
 #         q (np.ndarray) - the 1d array of |q| values to collocate the
@@ -561,7 +561,7 @@ def compute_diffraction_moments_analytical(
 #         print_level (bool) - print progress if true (useful to track long
 #             property computations)
 #     Result/Return:
-#         traj - reference to the input Trajectory object. The properties
+#         bundle - reference to the input Bundle object. The properties
 #             key-l are set where l is [0, 2, ..., nlegendre].
 #     """
 #     if nlegendre % 2: raise ValueError('Can only ask for even Legendre functions')
@@ -576,9 +576,9 @@ def compute_diffraction_moments_analytical(
 #     # Rotation quadrature
 #     Rs, ws = rotation.rotation_quadrature(nomega=nomega2, nlebedev=nlebedev2)
 #
-#     for find, frame in enumerate(traj.frames):
+#     for find, frame in enumerate(bundle.frames):
 #         if print_level:
-#             print 'Frame %5d of %5d' % (find, len(traj.frames))
+#             print 'Frame %5d of %5d' % (find, len(bundle.frames))
 #         # Compute N(\vec q) = \sum_{A} f_A (\vec q) * \exp(-1.j * \vec q * \vec r)
 #         N = np.zeros((len(q), len(leb.x)), dtype=complex)
 #         for A, factor in enumerate(factors):
@@ -609,10 +609,10 @@ def compute_diffraction_moments_analytical(
 #         for l in range(0, nlegendre+1, 2):
 #             frame.properties['%s-%d' % (key, l)] = Ils[l]
 #
-#     return traj
+#     return bundle
 #
 # def compute_diffraction_moment0(
-#     traj,
+#     bundle,
 #     key,
 #     q,
 #     factors,
@@ -633,7 +633,7 @@ def compute_diffraction_moments_analytical(
 #         to non-adiabatic dynamics.
 #
 #     Params:
-#         traj (Trajectory) - the Trajectory object to compute the property for (modified in
+#         bundle (Bundle) - the Bundle object to compute the property for (modified in
 #             place)
 #         key (str) - the name of the property.
 #         q (np.ndarray) - the 1d array of |q| values to collocate the
@@ -646,7 +646,7 @@ def compute_diffraction_moments_analytical(
 #         print_level (bool) - print progress if true (useful to track long
 #             property computations)
 #     Result/Return:
-#         traj - reference to the input Trajectory object. The property
+#         bundle - reference to the input Bundle object. The property
 #             key-0 is set
 #     """
 #
@@ -657,9 +657,9 @@ def compute_diffraction_moments_analytical(
 #     qy = np.outer(q, leb.y)
 #     qz = np.outer(q, leb.z)
 #
-#     for find, frame in enumerate(traj.frames):
+#     for find, frame in enumerate(bundle.frames):
 #         if print_level:
-#             print 'Frame %5d of %5d' % (find, len(traj.frames))
+#             print 'Frame %5d of %5d' % (find, len(bundle.frames))
 #         # Compute N(\vec q) = \sum_{A} f_A (\vec q) * \exp(-1.j * \vec q * \vec r)
 #         N = np.zeros((len(q), len(leb.x)), dtype=complex)
 #         for A, factor in enumerate(factors):
@@ -676,4 +676,4 @@ def compute_diffraction_moments_analytical(
 #         # Assign the property to frame
 #         frame.properties['%s-%d' % (key, 0)] = I0
 #
-#     return traj
+#     return bundle

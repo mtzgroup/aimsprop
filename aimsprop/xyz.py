@@ -3,7 +3,7 @@ import re
 
 import numpy as np
 
-from . import atom_data, traj
+from . import atom_data, bundle
 
 # TODO: Maybe should be in atom data
 _N_table = {val: key for key, val in list(atom_data.atom_symbol_table.items())}
@@ -18,13 +18,13 @@ def parse_xyz(
     dt=20.0,
     ts=None,
     N_table=None,
-) -> traj.Trajectory:
+) -> bundle.Bundle:
 
-    """Parse an XYZ adiabatic trajectory file directly into a Trajectory.
+    """Parse an XYZ adiabatic bundle file directly into a Bundle.
 
         filename (str): the absolute or relative path to the xyz file.
-        label (hashable): the label of this trajectory
-        w (float): the weight of this trajectory
+        label (hashable): the label of this bundle
+        w (float): the weight of this bundle
         I (int): electronic state label
         t0 (float): the initial time in au
         dt (float): the timestep in au
@@ -33,7 +33,7 @@ def parse_xyz(
             symbol to atomic number, used for non-standard atom names.
 
     Returns:
-        trajectory (Trajectory): the Trajectory object.
+        bundle (Bundle): the Bundle object.
     """
 
     lines = open(filename).readlines()
@@ -64,37 +64,39 @@ def parse_xyz(
     for ind, xyz in enumerate(xyzs):
         Z = Zs[ind]
         Ns = [N_table2[key] for key in Z]
-        frame2 = traj.Frame(
+        widths = atom_data.from_Ns_to_widths(Ns)
+        frame2 = bundle.Frame(
             label=label,
             t=dt * ind + t0 if ts is None else ts[ind],
             w=w,
             I=I,
             N=Ns,
             xyz=xyz,
+            widths=widths,
         )
         frames2.append(frame2)
 
-    trajectory = traj.Trajectory(frames2)
+    parsed_bundle = bundle.Bundle(frames2)
 
-    return trajectory
+    return parsed_bundle
 
 
 def write_xyzs(
-    traj: traj.Trajectory,
+    bundle: bundle.Bundle,
     dirname: str,
     atom_format_str: str = "%-3s %24.16E %24.16E %24.16E\n",
 ):
 
-    """Write a directory of xyz files to represent a Trajectory, with
+    """Write a directory of xyz files to represent a Bundle, with
         one xyz file containing all frames for each label
 
     Params:
-        traj: Trajectory to write xyz file representation of
+        bundle: Bundle to write xyz file representation of
         dirname: the directory to place the xyz files in (created if does not exist)
         atom_format_str: the format string for each atom line in the xyz
             file (useful to change precision).
     Result:
-        xyz files are written for each label in traj. Each xyz
+        xyz files are written for each label in bundle. Each xyz
         file contains all frames for the label, in time-order
     """
 
@@ -103,8 +105,8 @@ def write_xyzs(
         os.makedirs(dirname)
 
     # Write xyz files
-    for label in traj.labels:
-        traj2 = traj.subset_by_label(label)
+    for label in bundle.labels:
+        bundle2 = bundle.subset_by_label(label)
         xyzfilename = str(label)
         # Munging with filename label
         xyzfilename = xyzfilename.replace(" ", "")
@@ -112,7 +114,7 @@ def write_xyzs(
         xyzfilename = xyzfilename.replace(")", "")
         xyzfilename = xyzfilename.replace(",", "-")
         fh = open("%s/%s.xyz" % (dirname, xyzfilename), "w")
-        for frame in traj2.frames:
+        for frame in bundle2.frames:
             fh.write("%d\n" % frame.xyz.shape[0])
             fh.write(
                 "t = %24.16E, w = %24.16E, I = %d\n"

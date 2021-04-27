@@ -4,8 +4,8 @@ import aimsprop as ai
 
 # Parse a series of FMS90 trajectories that Hayley has run for Stilbene
 trajs = [ai.parse_fms90("/u/hweir/138253", cutoff_time=18000.0)]
-# Merge the trajectories into one super-big Trajectory with uniform weights
-traj = ai.Trajectory.merge(trajs, [1.0 / len(trajs)] * len(trajs))
+# Merge the trajectories into one super-big Bundle with uniform weights
+traj = ai.Bundle.merge(trajs, [1.0 / len(trajs)] * len(trajs))
 # Compute properties at ~1 fs intervals, removing nonsense due to adaptive timesteps
 ts = np.arange(0.0, 18000.1, 40.0)  # TODO: Cleaner edges
 traj = traj.interpolate_nearest(ts)

@@ -2,7 +2,7 @@
 
 ## Description
 
-A repository for the representation and manipulation of AIMS-type trajectories,
+A repository for the representation and manipulation of AIMS-type simulations,
 particularly for use in computing time-dependent properties (bond lengths,
 angles, torsions, X-ray scattering, UED, photoelectron, UV-Vis, etc) in a
 semi-uniform manner.
@@ -15,9 +15,9 @@ pip install aimsprop
 
 ## Basic Information
 
-### Trajectory Skeleton
+### Bundle Skeleton
 
-traj.py - Frame/Trajectory classes to represent AIMS trajectories
+bundle.py - Frame/Bundle classes to represent AIMS simulations
 
 ### Parsers
 

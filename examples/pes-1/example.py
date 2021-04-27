@@ -16,8 +16,8 @@ trajs = [
     for x in [1]
 ]
 # TODO: Align trajectories to IC transition dipole moment (on z) and weight by oscillator strength at IC
-# Merge the trajectories into one super-big Trajectory with uniform weights
-traj = ai.Trajectory.merge(trajs, [1.0 / len(trajs)] * len(trajs))
+# Merge the trajectories into one super-big Bundle with uniform weights
+traj = ai.Bundle.merge(trajs, [1.0 / len(trajs)] * len(trajs))
 # Compute properties at ~10 fs intervals, removing nonsense due to adaptive timesteps
 ts = np.arange(0.0, max(traj.ts), 400.0)  # TODO: Cleaner edges
 traj = traj.interpolate_nearest(ts)

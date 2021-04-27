@@ -2,7 +2,7 @@ import math
 
 import numpy as np
 
-from .traj import Trajectory
+from .bundle import Bundle
 
 # => Utility Math functions <= #
 
@@ -10,7 +10,7 @@ from .traj import Trajectory
 def _normalize(
     vec,
 ):
-    """ Return a normalized version of vec """
+    """Return a normalized version of vec"""
 
     return vec / math.sqrt(sum(vec ** 2))
 
@@ -19,7 +19,7 @@ def _dot(
     vec1,
     vec2,
 ):
-    """ Dot product between vec1 and vec2 """
+    """Dot product between vec1 and vec2"""
 
     return sum(vec1 * vec2)
 
@@ -28,7 +28,7 @@ def _cross(
     vec1,
     vec2,
 ):
-    """ Cross product between vec1 and vec2 in R^3 """
+    """Cross product between vec1 and vec2 in R^3"""
 
     vec3 = np.zeros((3,))
     vec3[0] = +(vec1[1] * vec2[2] - vec1[2] * vec2[1])
@@ -39,61 +39,61 @@ def _cross(
 
 # => Geometric Properties <= #
 
-""" Compute common geometric properties of Trajectory objects, such as bond
+""" Compute common geometric properties of Bundle objects, such as bond
     distances, bond angles, torsion angles, and out-of-plane angles. 
 """
 
 
 def compute_bond(
-    traj: Trajectory,
+    bundle: Bundle,
     key: str,
     A: int,
     B: int,
-) -> Trajectory:
-    """Compute the a bond-length property for a Trajectory.
+) -> Bundle:
+    """Compute the a bond-length property for a Bundle.
 
     Params:
-        traj: the Trajectory object to compute the property for (modified in
+        bundle: the Bundle object to compute the property for (modified in
             place)
         key: the name of the property
         A: the index of the first atom
         B: the index of the second atom
     Return:
-        traj - reference to the input Trajectory object. The property
+        bundle - reference to the input Bundle object. The property
             key is set to the float value of the bond length for the
             indices A and B.
     """
 
-    for frame in traj.frames:
+    for frame in bundle.frames:
         xyz = frame.xyz
         rAB = xyz[B, :] - xyz[A, :]
         frame.properties[key] = math.sqrt(sum(rAB ** 2))
-    return traj
+    return bundle
 
 
 def compute_angle(
-    traj: Trajectory,
+    bundle: Bundle,
     key: str,
     A: int,
     B: int,
     C: int,
-) -> Trajectory:
-    """Compute the a bond-angle property for a Trajectory (in degrees).
+) -> Bundle:
+    """Compute the a bond-angle property for a Bundle (in degrees).
 
     Params:
-        traj: the Trajectory object to compute the property for (modified in
+        bundle: the Bundle object to compute the property for (modified in
             place)
         key: the name of the property
         A: the index of the first atom
         B: the index of the second atom
         C: the index of the third atom
     Return:
-        traj: reference to the input Trajectory object. The property
+        bundle: reference to the input Bundle object. The property
             key is set to the float value of the bond angle for the
             indices A, B and C
     """
 
-    for frame in traj.frames:
+    for frame in bundle.frames:
         xyz = frame.xyz
         rAB = xyz[B, :] - xyz[A, :]
         rCB = xyz[B, :] - xyz[C, :]
@@ -102,21 +102,21 @@ def compute_angle(
             / math.pi
             * math.acos(sum(rAB * rCB) / math.sqrt(sum(rAB ** 2) * sum(rCB ** 2)))
         )
-    return traj
+    return bundle
 
 
 def compute_torsion(
-    traj: Trajectory,
+    bundle: Bundle,
     key: str,
     A: int,
     B: int,
     C: int,
     D: int,
-) -> Trajectory:
-    """Compute the a torsion-angle property for a Trajectory (in degrees).
+) -> Bundle:
+    """Compute the a torsion-angle property for a Bundle (in degrees).
 
     Params:
-        traj: the Trajectory object to compute the property for (modified in
+        bundle: the Bundle object to compute the property for (modified in
             place)
         key: the name of the property
         A: the index of the first atom
@@ -124,12 +124,12 @@ def compute_torsion(
         C: the index of the third atom
         D: the index of the fourth atom
     Return:
-        traj: reference to the input Trajectory object. The property
+        bundle: reference to the input Bundle object. The property
             key is set to the float value of the torsion angle for the
             indices A, B, C, and D
     """
 
-    for frame in traj.frames:
+    for frame in bundle.frames:
         xyz = frame.xyz
         rAB = xyz[B, :] - xyz[A, :]
         rBC = xyz[C, :] - xyz[B, :]
@@ -145,21 +145,21 @@ def compute_torsion(
         theta = 180.0 / math.pi * math.atan2(y, x)
         frame.properties[key] = theta
 
-    return traj
+    return bundle
 
 
 def compute_oop(
-    traj: Trajectory,
+    bundle: Bundle,
     key: str,
     A: int,
     B: int,
     C: int,
     D: int,
-) -> Trajectory:
-    """Compute the a out-of-plane-angle property for a Trajectory (in degrees).
+) -> Bundle:
+    """Compute the a out-of-plane-angle property for a Bundle (in degrees).
 
     Params:
-        traj: the Trajectory object to compute the property for (modified in
+        bundle: the Bundle object to compute the property for (modified in
             place)
         key: the name of the property
         A: the index of the first atom (OOP atom)
@@ -167,14 +167,14 @@ def compute_oop(
         C: the index of the third atom
         D: the index of the fourth atom (Defines vector to A)
     Return:
-        traj: reference to the input Trajectory object. The property
+        bundle: reference to the input Bundle object. The property
             key is set to the float value of the out-of-plane angle for the
             indices A, B, C, and D
     """
 
-    traj = compute_angle(traj, "AngleBDC", B, D, C)
+    bundle = compute_angle(bundle, "AngleBDC", B, D, C)
 
-    for frame in traj.frames:
+    for frame in bundle.frames:
         xyz = frame.xyz
         rDA = xyz[A, :] - xyz[D, :]
         rDB = xyz[B, :] - xyz[D, :]
@@ -190,38 +190,38 @@ def compute_oop(
 
         frame.properties[key] = OOP
 
-    return traj
+    return bundle
 
 
 def compute_transfer_coord(
-    traj: Trajectory,
+    bundle: Bundle,
     key: str,
     A: int,
     B: int,
     C: int,
-) -> Trajectory:
-    """Compute the a proton transfer coordinate property for a Trajectory (au).
+) -> Bundle:
+    """Compute the a proton transfer coordinate property for a Bundle (au).
 
     Params:
-        traj: the Trajectory object to compute the property for (modified in
+        bundle: the Bundle object to compute the property for (modified in
             place)
         key: the name of the property
         A: the index of the first atom
         B: the index of the second atom
         C: the index of the transfered atom
     Return:
-        traj: reference to the input Trajectory object. The property
+        bundle: reference to the input Bundle object. The property
             key is set to the proton transfer coordinate for the
             indices A, B, C
     """
 
-    traj = compute_bond(traj, "dAC", A, C)
-    traj = compute_bond(traj, "dBC", B, C)
-    traj = compute_bond(traj, "dAB", A, B)
-    for frame in traj.frames:
+    bundle = compute_bond(bundle, "dAC", A, C)
+    bundle = compute_bond(bundle, "dBC", B, C)
+    bundle = compute_bond(bundle, "dAB", A, B)
+    for frame in bundle.frames:
         dAC = frame.properties["dAC"]
         dBC = frame.properties["dBC"]
         dAB = frame.properties["dAB"]
         tau = (dBC - dAC) / dAB
         frame.properties[key] = np.array([tau])
-    return traj
+    return bundle
