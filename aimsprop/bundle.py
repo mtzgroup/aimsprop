@@ -20,7 +20,7 @@ class Frame(object):
             label: label identifying basis function [e.g., TBF
                 index (int), TBF pair index (int, int), etc]
             t: simulation time in au.
-            w: weight of frame (e.g., Mulliken population, trajectory
+            w: weight of frame (e.g., Mulliken population, bundle
                 weight, etc)
             I: electronic state label
             N: list of atomic numbers of molecule
@@ -80,13 +80,13 @@ class Frame(object):
         return "<p>" + str(self).replace("\n", "<br>") + "</p>"
 
 
-class Trajectory(object):
-    """Class Trajectory represents a list of Frames, with utility methods to
-    extract and merge Trajectories.
+class Bundle(object):
+    """Class Bundle represents a list of Frames, with utility methods to
+    extract and merge Bundles.
 
     Note that many methods below (e.g., subset_by_*) return shallow copies
-    or "views" of the current Trajectory object's frames. If a deeper copy
-    is needed, one can easily call Trajectory.copy(), which relies on
+    or "views" of the current Bundle object's frames. If a deeper copy
+    is needed, one can easily call Bundle.copy(), which relies on
     Frame.copy().
     """
 
@@ -97,44 +97,44 @@ class Trajectory(object):
         """Verbatim constructor.
 
         Params:
-            frames: list of Frames in this Trajectory.
+            frames: list of Frames in this Bundle.
         """
 
         self.frames = frames
 
     @property
     def labels(self):
-        """ Return all unique labels in this trajectory, in sorted order. """
+        """ Return all unique labels in this bundle, in sorted order. """
         return list(sorted(set([x.label for x in self.frames])))
 
     @property
     def ts(self):
-        """ Return all unique times in this trajectory, in sorted order. """
+        """ Return all unique times in this bundle, in sorted order. """
         return np.array(sorted(set([x.t for x in self.frames])))
 
     @property
     def Is(self):
-        """ return all unique Is in this trajectory, in sorted order. """
+        """ return all unique Is in this bundle, in sorted order. """
         return list(sorted(set([x.I for x in self.frames])))
 
     def copy(self):
-        """ Return a new Trajectory with frames copied according to Frame.copy()."""
-        return Trajectory([frame.copy() for frame in self.frames])
+        """ Return a new Bundle with frames copied according to Frame.copy()."""
+        return Bundle([frame.copy() for frame in self.frames])
 
     def subset_by_label(
         self,
         label,
     ):
-        """ Return a subset of this trajectory containing all frames with a given label (Frame-sorted) (view) """
-        return Trajectory(list(sorted([x for x in self.frames if x.label == label])))
+        """ Return a subset of this bundle containing all frames with a given label (Frame-sorted) (view) """
+        return Bundle(list(sorted([x for x in self.frames if x.label == label])))
 
     def subset_by_sublabel(
         self,
         label,
         index,
     ):
-        """ Return a subset of this trajectory containing all frames with a given partial label (Frame-sorted) (view) """
-        return Trajectory(
+        """ Return a subset of this bundle containing all frames with a given partial label (Frame-sorted) (view) """
+        return Bundle(
             list(sorted([x for x in self.frames if x.label[index] == label]))
         )
 
@@ -143,12 +143,12 @@ class Trajectory(object):
         t,
         delta=1.0e-11,
     ):
-        """Return a subset of this trajectory containing all frames with a given time (Frame-sorted) (view).
+        """Return a subset of this bundle containing all frames with a given time (Frame-sorted) (view).
 
         Note that due to possible weirdness with ULP errors in float t
         values, we grab all times within delta absolute error of t
         """
-        return Trajectory(
+        return Bundle(
             list(sorted([x for x in self.frames if abs(x.t - t) < delta]))
         )
 
@@ -156,21 +156,21 @@ class Trajectory(object):
         self,
         I,
     ):
-        """ Return a subset of this trajectory containing all frames with a given I (Frame-sorted) (view) """
-        return Trajectory(list(sorted([x for x in self.frames if x.I == I])))
+        """ Return a subset of this bundle containing all frames with a given I (Frame-sorted) (view) """
+        return Bundle(list(sorted([x for x in self.frames if x.I == I])))
 
     def __add__(
         self,
         other,
     ):
-        """ Concatenation operator to merge two trajectories (view-based) """
-        return Trajectory(self.frames + other.frames)
+        """ Concatenation operator to merge two bundles (view-based) """
+        return Bundle(self.frames + other.frames)
 
     def __mul__(
         self,
         w,
     ):
-        """Return a new Trajectory with all Frame objects multiplied by
+        """Return a new Bundle with all Frame objects multiplied by
         weight (new copy). This is useful to provide a weight on the initial
         condition due to e.g., oscillator strength and/or conformational population.
         """
@@ -179,46 +179,46 @@ class Trajectory(object):
             frame2 = frame.copy()
             frame2.w *= w
             frames.append(frame2)
-        return Trajectory(frames)
+        return Bundle(frames)
 
     __rmul__ = __mul__
 
     @staticmethod
     def merge(
-        trajs,
+        bundles,
         ws,
         labels=None,
     ):
-        """Merge a list of trajectories together, with weighting factors (new copy).
+        """Merge a list of bundles together, with weighting factors (new copy).
 
         Params:
-            trajs (list of Trajectory): trajectories to merge
+            bundles (list of Bundle): bundles to merge
 
-            ws (list of float): weight factors of trajectories (e.g., from
+            ws (list of float): weight factors of bundles (e.g., from
                 oscillator strength or conformational well).
             labels (list of label): if provided, labels are updated to (label,
                 frame.label). This is used, e.g., to label the frame by IC as
-                well as by any trajectory-specific labeling.
+                well as by any bundle-specific labeling.
         Returns:
-            Trajectory: a single merged Trajectory with updated weights (and labels)
+            Bundle: a single merged Bundle with updated weights (and labels)
         """
 
         frames = []
-        for I, traj in enumerate(trajs):
-            for frame in traj.frames:
+        for I, bundle in enumerate(bundles):
+            for frame in bundle.frames:
                 frame2 = frame.copy()
                 frame2.w *= ws[I]
                 if labels:
                     frame2.label = (labels[I], frame2.label)
                 frames.append(frame2)
-        return Trajectory(frames)
+        return Bundle(frames)
 
     def interpolate_nearest(
         self,
         ts,
         delta=1.0e-11,
     ):
-        """Return a new trajectory with frame objects interpolated by nearest
+        """Return a new bundle with frame objects interpolated by nearest
             neighbor interpolation if t is inside the range of times of self's
             frames for each label (e.g., no extrapolation is performed). (new
             copy).
@@ -227,30 +227,30 @@ class Trajectory(object):
             values, we grab all times within delta absolute error of t
 
         Params:
-            ts (list of float): times to interpolated new Trajectory to
+            ts (list of float): times to interpolated new Bundle to
         Returns:
-            Trajectory: new trajectory with interpolated frames.
+            Bundle: new bundle with interpolated frames.
         """
 
         frames = []
         for label in self.labels:
-            traj2 = self.subset_by_label(label)
-            t2s = traj2.ts
+            bundle2 = self.subset_by_label(label)
+            t2s = bundle2.ts
             for t in ts:
                 if t < min(t2s - delta) or t > max(t2s + delta):
                     continue  # Out of range (no extrapolation)
                 t2 = min(t2s, key=lambda x: abs(x - t))  # Closest value in t2s
-                frames2 = traj2.subset_by_t(t2).copy().frames
+                frames2 = bundle2.subset_by_t(t2).copy().frames
                 for frame2 in frames2:
                     frame2.t = t
                 frames += frames2
-        return Trajectory(list(sorted(frames)))
+        return Bundle(list(sorted(frames)))
 
     def interpolate_linear(
         self,
         ts,
     ):
-        """Return a new trajectory with frame objects interpolated by linear
+        """Return a new bundle with frame objects interpolated by linear
             interpolation if t is inside the range of times of self's
             frames for each label (e.g., no extrapolation is performed). (new
             copy).
@@ -261,15 +261,15 @@ class Trajectory(object):
                 Not suitable for properties with large second derivative
 
         Arguments:
-            ts (list of float): times to interpolated new Trajectory to
+            ts (list of float): times to interpolated new Bundle to
         Returns:
-            Trajectory: new trajectory with interpolated frames.
+            Bundle: new bundle with interpolated frames.
         """
 
         frames = []
         for label in self.labels:
-            traj2 = self.subset_by_label(label)
-            t2s = traj2.ts
+            bundle2 = self.subset_by_label(label)
+            t2s = bundle2.ts
             for t in ts:
                 if t < min(t2s) or t >= max(t2s):
                     continue  # Out of range (no extrapolation)
@@ -277,8 +277,8 @@ class Trajectory(object):
                 t3 = t2s[np.where(t2s <= t)[0][-1]]
                 t4 = t2s[np.where(t2s > t)[0][0]]
                 # Retrieve frames at points of linear interpolation for all labels
-                framei = traj2.subset_by_t(t3).copy().frames
-                framej = traj2.subset_by_t(t4).copy().frames
+                framei = bundle2.subset_by_t(t3).copy().frames
+                framej = bundle2.subset_by_t(t4).copy().frames
 
                 # TODO: Instead of this eliminate duplicate frames at beginning of method?
                 if len(framei) >= 1:
@@ -315,7 +315,7 @@ class Trajectory(object):
                 )
                 frames.append(nframe)
 
-        return Trajectory(list(sorted(frames)))
+        return Bundle(list(sorted(frames)))
 
     def extract_property(
         self,
@@ -340,10 +340,10 @@ class Trajectory(object):
 
         Vs = []
         for t in self.ts:
-            traj = self.subset_by_t(t)
-            V = np.zeros_like(traj.frames[0].properties[key])
+            bundle = self.subset_by_t(t)
+            V = np.zeros_like(bundle.frames[0].properties[key])
             W = 0.0
-            for frame in traj.frames:
+            for frame in bundle.frames:
                 V += frame.w * frame.properties[key]
                 W += frame.w
             if normalize:
@@ -358,11 +358,11 @@ class Trajectory(object):
     def remove_duplicates(
         self,
     ):
-        """Return a new trajectory with duplicate frame objects removed
+        """Return a new bundle with duplicate frame objects removed
             based on frame label and time index
 
         Returns:
-            Trajectory: new trajectory with interpolated frames.
+            Bundle: new bundle with interpolated frames.
         """
 
         frames = []
@@ -374,4 +374,4 @@ class Trajectory(object):
             if unique:
                 frames.append(frame1)
 
-        return Trajectory(frames)
+        return Bundle(frames)

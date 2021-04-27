@@ -100,7 +100,7 @@ def output_geom(
     filename: str,
 ):
 
-    """This function takes output from read_rst and read_prmtop as input and creates a Geometry.dat file, with appropriate numerical conversions to Bohr coordinates and a.u. time, to be used for AIMS trajectories.
+    """This function takes output from read_rst and read_prmtop as input and creates a Geometry.dat file, with appropriate numerical conversions to Bohr coordinates and a.u. time, to be used for AIMS simulations.
 
     Params:
       namelist: the vector of atom names as strings

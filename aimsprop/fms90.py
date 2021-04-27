@@ -4,7 +4,7 @@ from typing import Any, Dict, List
 
 import numpy as np
 
-from . import atom_data, traj
+from . import atom_data, bundle
 
 _N_table = {val: key for key, val in list(atom_data.atom_symbol_table.items())}
 
@@ -21,7 +21,7 @@ def _parse_positions(filepath: Path, cutoff_time: float = None) -> Dict[Any, Any
 
     Arguments:
         filepath: the path to the FMS run directory
-        cutoff_time: cutoff time to stop reading trajectory info after
+        cutoff_time: cutoff time to stop reading bundle info after
             (None reads all times).
     Returns:
         (N2s, xyz2s): Tuple of atomic indices and list of xyzs for each timme and state (dict of dict)
@@ -74,7 +74,7 @@ def _parse_Cs(filepath: Path, cutoff_time: float = None) -> Dict[Any, Any]:
 
     Arguments:
         filepath: the path to the FMS run directory
-        cutoff_time: cutoff time to stop reading trajectory info after
+        cutoff_time: cutoff time to stop reading bundle info after
             (None reads all times).
     Returns:
         C2s: Amps (dict of dicts)
@@ -117,7 +117,7 @@ def _parse_Ss(filepath: Path, cutoff_time: float = None) -> Dict[Any, Any]:
 
     Arguments:
         filepath: the path to the FMS run directory
-        cutoff_time: cutoff time to stop reading trajectory info after
+        cutoff_time: cutoff time to stop reading bundle info after
             (None reads all times).
     Returns:
         S2s: Overlap matrix (dict of dicts)
@@ -213,7 +213,7 @@ def _create_frames_mulliken(
     xyz3s: Dict[Any, Any],
     N3s: Dict[Any, Any],
     states: Dict[Any, Any],
-) -> List[traj.Frame]:
+) -> List[bundle.Frame]:
     """Build list of Frames from parsed data using mulliken scheme
 
     Arguments:
@@ -253,7 +253,7 @@ def _create_frames_mulliken(
                     0.5 * np.conj(Cs[I]) * S[I2, J2] * Cs[J]
                     + 0.5 * np.conj(Cs[J]) * S[J2, I2] * Cs[I]
                 )
-            frame = traj.Frame(
+            frame = bundle.Frame(
                 label=I,
                 t=t,
                 w=q,
@@ -273,7 +273,7 @@ def _create_frames_saddle(
     N3s: Dict[Any, Any],
     states: Dict[Any, Any],
     cutoff_saddle: float,
-) -> List[traj.Frame]:
+) -> List[bundle.Frame]:
     """Build list of Frames from parsed data using saddle scheme
 
     Arguments:
@@ -320,7 +320,7 @@ def _create_frames_saddle(
                     q *= 2.0  # Upper/lower triangle
                 if abs(q) < cutoff_saddle:
                     continue  # Vanishing weight
-                frame = traj.Frame(
+                frame = bundle.Frame(
                     label=(I, J),
                     t=t,
                     w=q,
@@ -339,8 +339,8 @@ def parse_fms90(
     cutoff_time: float = None,
     cutoff_saddle: float = 1.0e-4,
     initial_I: int = None,
-) -> traj.Trajectory:
-    """Parse an FMS90 results directory into a Trajectory.
+) -> bundle.Bundle:
+    """Parse an FMS90 results directory into a Bundle.
 
     This uses information in positions.*.xyz, Amps.*, S.dat, and Spawn.log to
     populate a density matrix by mulliken or saddle point rules.
@@ -349,7 +349,7 @@ def parse_fms90(
         filepath: the path to the FMS run directory
         scheme: 'mulliken' or 'saddle' to indicate the approximation
             used for property evaluation.
-        cutoff_time: cutoff time to stop reading trajectory info after
+        cutoff_time: cutoff time to stop reading bundle info after
             (None reads all times).
         cutoff_saddle: cutoff for centroid TBF pair in the saddle
             point approach.
@@ -357,7 +357,7 @@ def parse_fms90(
             no Spawn.log (e.g., if no spawning has happened yet) to place
             electronic label.
     Returns:
-        Trajectory: The Trajectory object.
+        Bundle: The Bundle object.
     """
 
     # Read in FMS output files: positions*, Amp.*, S.dat and Spawn.log
@@ -382,6 +382,6 @@ def parse_fms90(
     else:
         raise RuntimeError(f"Invalid scheme: {scheme}")
 
-    trajectory = traj.Trajectory(frames)
+    processed_bundle = bundle.Bundle(frames)
 
-    return trajectory
+    return processed_bundle

@@ -2,36 +2,36 @@ import copy
 
 import numpy as np
 
-from . import traj
+from . import bundle
 
 
 def bootstrap(
-    input_traj: traj.Trajectory,
+    input_bundle: bundle.Bundle,
     nsamples: int,
     ICs: list,
     label_ind: int = 0,
 ):
-    """Resample Trajectory Subset According to Bootstrap Algorithm
+    """Resample Bundle Subset According to Bootstrap Algorithm
 
     Params:
-        input_traj: the Trajectory object to resample with replacement
+        input_bundle: the Bundle object to resample with replacement
         nsamples: number of resampling sets to conduct
         label_ind: sub label index from which to sample (IC = 0)
     Returns:
-        resampled_trajs (list of Trajectories [nsamples]):  re-weighted list of trajectories
+        resampled_bundles (list of Bundles [nsamples]):  re-weighted list of bundles
 
     Note:
-        Removed parameters: sample_labels - list of trajectory labels from which to resample
+        Removed parameters: sample_labels - list of bundle labels from which to resample
     """
 
     # accumulate samples
-    labels = input_traj.labels
+    labels = input_bundle.labels
     nICs = len(ICs)
-    resampled_input_trajs = []
+    resampled_input_bundles = []
     for ind in range(nsamples):
 
-        # copy of traj to modify
-        traj1 = copy.copy(input_traj)
+        # copy of bundle to modify
+        bundle1 = copy.copy(input_bundle)
 
         # generate random numbers for resampling
         samples_inds = np.random.randint(low=0, high=nICs, size=nICs)
@@ -44,36 +44,36 @@ def bootstrap(
             [samples.append(label) for label in labels if label[label_ind] == IC]
             [new_labels.append(ind1) for label in labels if label[label_ind] == IC]
 
-        # separate new sample set from input_trajectory
+        # separate new sample set from input_bundle
         ws = 0.0
-        input_trajs = [traj1.subset_by_label(sample) for sample in samples]
-        t0 = traj1.ts[0]
-        # re-weight trajectories
-        for input_traj_t in input_trajs:
-            input_trajs_t0 = input_traj_t.subset_by_t(t0)
-            for frame in input_trajs_t0.frames:
+        input_bundles = [bundle1.subset_by_label(sample) for sample in samples]
+        t0 = bundle1.ts[0]
+        # re-weight bundles
+        for input_bundle_t in input_bundles:
+            input_bundles_t0 = input_bundle_t.subset_by_t(t0)
+            for frame in input_bundles_t0.frames:
                 ws += frame.w
         ws = 1.0 / ws
 
-        # merge input_trajectories
-        traj1 = traj.Trajectory.merge(
-            input_trajs, [ws] * len(traj1.frames), labels=new_labels
+        # merge input_bundles
+        bundle1 = bundle.Bundle.merge(
+            input_bundles, [ws] * len(bundle1.frames), labels=new_labels
         )
-        resampled_input_trajs.append(traj1)
+        resampled_input_bundles.append(bundle1)
         print((ind + 1, "/", nsamples, "complete"))
 
-    return resampled_input_trajs
+    return resampled_input_bundles
 
 
 def extract_stats(
-    trajs: list,
+    bundles: list,
     key: str,
     diff=False,
 ):
-    """Extract Standard Deviation and Average of Property from Set of Resampled Trajectories
+    """Extract Standard Deviation and Average of Property from Set of Resampled Bundles
 
     Params:
-        trajs: re-weighted list of trajectories
+        bundles: re-weighted list of bundles
         key: the property key
         diff: difference property (zeroth-time value subtracted)?
     Returns:
@@ -83,8 +83,8 @@ def extract_stats(
     """
 
     props = []
-    for ind, traj in enumerate(trajs):
-        PROP = traj.extract_property(key)
+    for ind, bundle in enumerate(bundles):
+        PROP = bundle.extract_property(key)
         if diff == True:
             PROP -= np.outer(np.ones((PROP.shape[0],)), PROP[0, :])
         props.append(PROP)

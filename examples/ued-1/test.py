@@ -15,14 +15,14 @@ def build_I2_traj(
     dz=0.5,
 ):
 
-    """Provides a Trajectory representing I2 aligned in z oscillating over one full cycle.
+    """Provides a Bundle representing I2 aligned in z oscillating over one full cycle.
 
     Params:
         tmax (float) - maximum time
         nframe (int) - total number of frames
         dz (float) - amplitude of oscillation in Angstrom
     Returns:
-        Trajectory with I2 oscillating in z
+        Bundle with I2 oscillating in z
     """
 
     # I2 in z
@@ -55,7 +55,7 @@ def build_I2_traj(
         )
         frames.append(frame)
 
-    traj = ai.Trajectory(frames)
+    traj = ai.Bundle(frames)
 
     return traj
 
@@ -65,7 +65,7 @@ def test_ued():
     """Demonstration of UED molecular movie computation.
 
     Steps:
-    1 - get a Trajectory
+    1 - get a Bundle
     2 - setup a grid in s and eta, for an e- beam with deBroglie wavelength L
     3 - compute diffraction moments I0(s, t) and I2(s, t)
     4 - compute diffraction pattern I(s, eta, t)
@@ -85,7 +85,7 @@ def test_ued():
     experiment at SLAC.
     """
 
-    # => 1 - Trajectory <= #
+    # => 1 - Bundle <= #
 
     # Get I2 oscillation trajectory
     traj = build_I2_traj(

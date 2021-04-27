@@ -10,8 +10,8 @@ trajs = [
     ai.parse_fms90("/home/hweir/stilbene/5-aims/s0_extension/aims_%04d/job1" % x)
     for x in ICs
 ]
-# Merge the trajectories into one super-big Trajectory with uniform weights
-traj = ai.Trajectory.merge(trajs, ws=[1.0 / len(trajs)] * len(trajs), labels=ICs)
+# Merge the trajectories into one super-big Bundle with uniform weights
+traj = ai.Bundle.merge(trajs, ws=[1.0 / len(trajs)] * len(trajs), labels=ICs)
 # Compute properties at ~1 fs intervals, removing nonsense due to adaptive timesteps
 ts = np.arange(0.0, max(traj.ts), 40.0)
 trajs = [traj2.interpolate_nearest(ts) for traj2 in trajs]

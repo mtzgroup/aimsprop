@@ -9,8 +9,8 @@ import aimsprop as ai
 # trajs = [ai.parse_fms90('/home/hweir/stilbene/5-aims/s0_extension/aims_%04d/job1' % x) for x in range(1,16+1) if x not in [11, 12, 15]]
 trajs = [ai.parse_fms90("/home/parrish/chem/stil/6-aims/%04d" % x) for x in [1, 2]]
 # TODO: Align trajectories to IC transition dipole moment (on z) and weight by oscillator strength at IC
-# Merge the trajectories into one super-big Trajectory with uniform weights
-traj = ai.Trajectory.merge(trajs, ws=[1.0 / len(trajs)] * len(trajs), labels=[1, 2])
+# Merge the trajectories into one super-big Bundle with uniform weights
+traj = ai.Bundle.merge(trajs, ws=[1.0 / len(trajs)] * len(trajs), labels=[1, 2])
 # Compute properties at ~1 fs intervals, removing nonsense due to adaptive timesteps
 ts = np.arange(0.0, max(traj.ts), 400.0)  # TODO: Cleaner edges
 traj = traj.interpolate_nearest(ts)

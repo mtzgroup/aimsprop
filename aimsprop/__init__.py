@@ -10,7 +10,7 @@ from .plot import *  # noqa
 from .pop import *  # noqa
 from .rotate import *  # noqa
 from .sine import *  # noqa
-from .traj import *  # noqa
+from .bundle import *  # noqa
 from .ued import *  # noqa
 from .wrap import *  # noqa
 from .xyz import *  # noqa
