@@ -213,6 +213,7 @@ def _create_frames_mulliken(
     xyz3s: Dict[Any, Any],
     N3s: Dict[Any, Any],
     states: Dict[Any, Any],
+    widths: List[float],
 ) -> List[bundle.Frame]:
     """Build list of Frames from parsed data using mulliken scheme
 
@@ -260,6 +261,7 @@ def _create_frames_mulliken(
                 I=states[I],
                 N=Ns[I],
                 xyz=xyzs[I],
+                widths=widths,
             )
             frames.append(frame)
 
@@ -273,6 +275,7 @@ def _create_frames_saddle(
     N3s: Dict[Any, Any],
     states: Dict[Any, Any],
     cutoff_saddle: float,
+    widths: List[float],
 ) -> List[bundle.Frame]:
     """Build list of Frames from parsed data using saddle scheme
 
@@ -327,10 +330,33 @@ def _create_frames_saddle(
                     I=states[I],
                     N=Ns[I],
                     xyz=0.5 * (xyzs[I] + xyzs[J]),  # centroid
+                    widths=widths,
                 )
                 frames.append(frame)
 
     return frames
+
+
+def _parse_widths(filepath) -> List[float]:
+    """
+    parse the FMS.out tio get widths
+    """
+    fms_out = filepath / "FMS.out"
+
+    if fms_out.exists():
+        print(f"reading {fms_out}")
+        widths = []
+        with open(fms_out, "r") as f:
+            for line in f:
+                if re.search("Width:", line):
+                    a = float(line.split()[1])
+                    widths.append(a)
+
+    else:
+        print(f"{fms_out} does not exist.")
+        # TODO AV make a lookup table of usual widths
+        raise FileNotFoundError()
+    return widths
 
 
 def parse_fms90(
@@ -369,6 +395,8 @@ def parse_fms90(
 
     states = _parse_spawnlog(filepath, initial_I)
 
+    widths = _parse_widths(filepath)
+
     if len(C2s) != len(N2s):
         raise RuntimeError("xyz and C files not same number of TBF")
 
@@ -376,9 +404,11 @@ def parse_fms90(
     C3s, xyz3s, N3s = [_swap_dic_axis(x) for x in [C2s, xyz2s, N2s]]
 
     if scheme == "mulliken":
-        frames = _create_frames_mulliken(Ss, C3s, xyz3s, N3s, states)
+        frames = _create_frames_mulliken(Ss, C3s, xyz3s, N3s, states, widths)
     elif scheme == "saddle":
-        frames = _create_frames_saddle(Ss, C3s, xyz3s, N3s, states, cutoff_saddle)
+        frames = _create_frames_saddle(
+            Ss, C3s, xyz3s, N3s, states, cutoff_saddle, widths
+        )
     else:
         raise RuntimeError(f"Invalid scheme: {scheme}")
 

@@ -1,4 +1,5 @@
 import numpy as np
+from typing import List
 
 
 class Frame(object):
@@ -12,6 +13,7 @@ class Frame(object):
         I: int,
         N: list,
         xyz: np.ndarray,
+        widths: List[float],
         properties={},
     ):
         """Verbatim constructor.
@@ -37,6 +39,7 @@ class Frame(object):
         self.N = N
         self.xyz = xyz
         self.properties = properties.copy()
+        self.widths = widths
 
     def copy(self):
         """Make a copy of self that is sufficiently deep to prevent
@@ -49,6 +52,7 @@ class Frame(object):
             I=self.I,
             N=self.N,
             xyz=self.xyz,
+            widths=self.widths,
             properties=self.properties,  # __init__ makes a copy of this
         )
 
@@ -72,6 +76,7 @@ class Frame(object):
         state: {self.I}
         atomic number: {self.N}
         xyz: {self.xyz}
+        widths: {self.widths}
         properties: {self.properties}
         """
 
@@ -104,28 +109,28 @@ class Bundle(object):
 
     @property
     def labels(self):
-        """ Return all unique labels in this bundle, in sorted order. """
+        """Return all unique labels in this bundle, in sorted order."""
         return list(sorted(set([x.label for x in self.frames])))
 
     @property
     def ts(self):
-        """ Return all unique times in this bundle, in sorted order. """
+        """Return all unique times in this bundle, in sorted order."""
         return np.array(sorted(set([x.t for x in self.frames])))
 
     @property
     def Is(self):
-        """ return all unique Is in this bundle, in sorted order. """
+        """return all unique Is in this bundle, in sorted order."""
         return list(sorted(set([x.I for x in self.frames])))
 
     def copy(self):
-        """ Return a new Bundle with frames copied according to Frame.copy()."""
+        """Return a new Bundle with frames copied according to Frame.copy()."""
         return Bundle([frame.copy() for frame in self.frames])
 
     def subset_by_label(
         self,
         label,
     ):
-        """ Return a subset of this bundle containing all frames with a given label (Frame-sorted) (view) """
+        """Return a subset of this bundle containing all frames with a given label (Frame-sorted) (view)"""
         return Bundle(list(sorted([x for x in self.frames if x.label == label])))
 
     def subset_by_sublabel(
@@ -133,10 +138,8 @@ class Bundle(object):
         label,
         index,
     ):
-        """ Return a subset of this bundle containing all frames with a given partial label (Frame-sorted) (view) """
-        return Bundle(
-            list(sorted([x for x in self.frames if x.label[index] == label]))
-        )
+        """Return a subset of this bundle containing all frames with a given partial label (Frame-sorted) (view)"""
+        return Bundle(list(sorted([x for x in self.frames if x.label[index] == label])))
 
     def subset_by_t(
         self,
@@ -148,22 +151,20 @@ class Bundle(object):
         Note that due to possible weirdness with ULP errors in float t
         values, we grab all times within delta absolute error of t
         """
-        return Bundle(
-            list(sorted([x for x in self.frames if abs(x.t - t) < delta]))
-        )
+        return Bundle(list(sorted([x for x in self.frames if abs(x.t - t) < delta])))
 
     def subset_by_I(
         self,
         I,
     ):
-        """ Return a subset of this bundle containing all frames with a given I (Frame-sorted) (view) """
+        """Return a subset of this bundle containing all frames with a given I (Frame-sorted) (view)"""
         return Bundle(list(sorted([x for x in self.frames if x.I == I])))
 
     def __add__(
         self,
         other,
     ):
-        """ Concatenation operator to merge two bundles (view-based) """
+        """Concatenation operator to merge two bundles (view-based)"""
         return Bundle(self.frames + other.frames)
 
     def __mul__(

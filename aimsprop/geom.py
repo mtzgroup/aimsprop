@@ -10,7 +10,7 @@ from .bundle import Bundle
 def _normalize(
     vec,
 ):
-    """ Return a normalized version of vec """
+    """Return a normalized version of vec"""
 
     return vec / math.sqrt(sum(vec ** 2))
 
@@ -19,7 +19,7 @@ def _dot(
     vec1,
     vec2,
 ):
-    """ Dot product between vec1 and vec2 """
+    """Dot product between vec1 and vec2"""
 
     return sum(vec1 * vec2)
 
@@ -28,7 +28,7 @@ def _cross(
     vec1,
     vec2,
 ):
-    """ Cross product between vec1 and vec2 in R^3 """
+    """Cross product between vec1 and vec2 in R^3"""
 
     vec3 = np.zeros((3,))
     vec3[0] = +(vec1[1] * vec2[2] - vec1[2] * vec2[1])
