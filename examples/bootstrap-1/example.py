@@ -49,9 +49,7 @@ def build_traj(
                 traj = ai.parse_fms90_dumpfile("%s" % run, scheme="mulliken")
             trajs_IC.append(copy.copy(traj))
         print("merging restarts")
-        traj_IC = ai.Bundle.merge(
-            trajs_IC, [1.0] * len(trajs_IC), [IC] * len(trajs_IC)
-        )
+        traj_IC = ai.Bundle.merge(trajs_IC, [1.0] * len(trajs_IC), [IC] * len(trajs_IC))
 
         print("removing duplicate frames")
         traj_IC = traj_IC.remove_duplicates()
