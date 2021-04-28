@@ -222,7 +222,7 @@ def write_render(
 # TODO: add more options
 def run_vmd_render():
 
-    """ Loads VMD and renders images, also composites into gif format """
+    """Loads VMD and renders images, also composites into gif format"""
 
     os.system("mkdir snapshots")
     os.system("module load VMD/1.9.2")

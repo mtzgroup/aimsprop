@@ -127,7 +127,7 @@ _atom_symbol_table_ = {
 
 class AtomicFormFactor(object):
 
-    """ Atomic form factors for X-Ray scattering or UED. """
+    """Atomic form factors for X-Ray scattering or UED."""
 
     def __init__(
         self,
@@ -181,7 +181,7 @@ class AtomicFormFactor(object):
         z,
     ):
 
-        """ Evaluate N(qx,qy,qz) due to this atom being at (x,y,z). """
+        """Evaluate N(qx,qy,qz) due to this atom being at (x,y,z)."""
 
         return self.evaluate(qx, qy, qz) * np.exp(-1.0j * (qx * x + qy * y + qz * z))
 
