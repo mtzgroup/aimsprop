@@ -1,8 +1,8 @@
-from .traj import Trajectory
+from .bundle import Bundle
 
 
 def unwrap_property(
-    traj: Trajectory,
+    bundle: Bundle,
     key: str,
     period: float,
     N: int = 1,
@@ -12,25 +12,25 @@ def unwrap_property(
         each label.
 
     Params:
-        traj: the Trajectory object to compute the property for (modified in
+        bundle: the Bundle object to compute the property for (modified in
             place)
         key: the name of the original property
         period: the periodicity of the property
         N: the number of images to try in +/- wings
         match_all: whether to wrap all labels to same sign
     Return:
-        traj: reference to the input Trajectory object. The
+        bundle: reference to the input Bundle object. The
             property key is overwritten with the unwrapped property.
     """
 
     if match_all:
-        ref_frame = traj.subset_by_label(traj.labels[0]).frames[0]
+        ref_frame = bundle.subset_by_label(bundle.labels[0]).frames[0]
     else:
         ref_frame = None
 
-    for label in traj.labels:
+    for label in bundle.labels:
         frame_old = ref_frame
-        for frame in traj.subset_by_label(label).frames:
+        for frame in bundle.subset_by_label(label).frames:
             if frame_old is None:  # Property has just started
                 frame_old = frame
                 continue
@@ -39,4 +39,4 @@ def unwrap_property(
             vals = [prop + k * period for k in range(-N, +N + 1)]
             frame.properties[key] = min(vals, key=lambda x: abs(x - prop_old))
             frame_old = frame
-    return traj
+    return bundle

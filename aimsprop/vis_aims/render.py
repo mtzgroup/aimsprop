@@ -20,3 +20,4 @@ def render():
     # Options:
     # render without opening vmd
     # open vmd before sourcing file
+    raise NotImplementedError()

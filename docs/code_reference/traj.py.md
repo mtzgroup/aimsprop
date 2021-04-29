@@ -1,5 +1,5 @@
-# traj.py
+# bundle.py
 
-::: aimsprop.traj:Trajectory
+::: aimsprop.bundle:Bundle
 
-::: aimsprop.traj:Frame
+::: aimsprop.bundle:Frame

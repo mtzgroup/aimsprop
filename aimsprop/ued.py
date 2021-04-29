@@ -2,7 +2,7 @@ import math
 
 import numpy as np
 
-from .traj import Trajectory
+from .bundle import Bundle
 
 # UED cross sections (computed by ELSEPA for a 3.7 MeV e- beam with default settings)
 _ued_cross_sections = {
@@ -104,17 +104,17 @@ _ued_cross_sections = {
 
 
 def compute_ued_simple(
-    traj: Trajectory,
+    bundle: Bundle,
     key: str,
     R: np.ndarray,
     alpha: float,
     ABpairs=None,
-) -> Trajectory:
+) -> Bundle:
     """Compute the simple pairwise-distance form of the UED cross section,
         with Gaussian blurring in R.
 
     Params:
-        traj: the Trajectory object to compute the property for (modified in
+        bundle: the Bundle object to compute the property for (modified in
             place)
         key: the name of the property
         R: the distances to collocate the
@@ -123,11 +123,11 @@ def compute_ued_simple(
         ABpairs: a restricted list of atom pair indices
             to include in the computation, or None for all atom pairs.
     Return:
-        traj: reference to the input Trajectory object. The property
+        bundle: reference to the input Bundle object. The property
             key is set to computed UED property.
     """
 
-    for frame in traj.frames:
+    for frame in bundle.frames:
         N = frame.N
         xyz = frame.xyz
         # Which pair indices?
@@ -146,4 +146,4 @@ def compute_ued_simple(
             SAB = math.sqrt(_ued_cross_sections[N[A]] * _ued_cross_sections[N[B]]) / RAB
             V += SAB * math.sqrt(alpha / math.pi) * np.exp(-alpha * (R - RAB) ** 2)
         frame.properties[key] = V
-    return traj
+    return bundle

@@ -2,6 +2,6 @@
 
 set -x
 
-black scripts aimsprop tests
-isort scripts aimsprop tests
+black scripts aimsprop tests examples
+isort scripts aimsprop tests examples
 flake8 tests aimsprop/fms90.py scripts

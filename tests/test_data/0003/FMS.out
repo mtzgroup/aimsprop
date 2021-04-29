@@ -1,0 +1,2213 @@
+ ENTERED FMS CODE
+ RanB seeded with           1
+  Initializing electronic structure ...
+ Reading Geometry from Geometry.dat...
+ Reading momenta from Geometry.dat...
+      Generating initial conditions:
+ 
+------------------------------------
+ initialcond=0: No Sampling for initial conditions
+ 
+ 
+ 
+ ***********************************************
+ ********* FMS90 is under SVN control **********
+ This output is brought to you by hg 
+ revision number 
+ fms_tc 88abcbaf7ef1+                              
+ and the host:
+ fire-13-00                                        
+ 
+ ********************************************
+ --------------------------------------------
+                     FMS90                   
+ --------------------------------------------
+               FMS for the Masses...         
+               Courtesy TJM and MBN          
+  
+  
+          Unknown potential model           14
+  Number Electronic States:            2
+  Potential Model:                    14
+  Maximum Number of Trajectories:          50
+ --------------------------------------------
+  Trajectory #                  1
+  Electronic State:            2
+  Initial Weight:      1.00000000000000     
+ --------------------------------------------
+  Particle #              1
+      ID:           1
+      Mass:      21874.64355469
+      Width:        22.50000000
+      Element:     C 
+      At. Num:    6.
+      Dimens:       3
+      Position:     -1.20260900
+                    -0.00624900
+                    -0.07221000
+      Momentum:     -3.61503400
+                    -3.39520900
+                    -9.67327700
+  Particle #              2
+      ID:           2
+      Mass:      21874.64355469
+      Width:        22.50000000
+      Element:     C 
+      At. Num:    6.
+      Dimens:       3
+      Position:      1.23329200
+                     0.01098100
+                     0.08505900
+      Momentum:      0.72082000
+                    -0.13207500
+                     7.02763400
+  Particle #              3
+      ID:           3
+      Mass:       1822.88696289
+      Width:         4.50000000
+      Element:     H 
+      At. Num:    1.
+      Dimens:       3
+      Position:      2.10333200
+                     0.23092200
+                     2.10976400
+      Momentum:      0.92376500
+                     0.12764000
+                    -2.30812500
+  Particle #              4
+      ID:           4
+      Mass:       1822.88696289
+      Width:         4.50000000
+      Element:     H 
+      At. Num:    1.
+      Dimens:       3
+      Position:      2.15299500
+                    -0.40509600
+                    -1.59764600
+      Momentum:      4.24323700
+                     0.65702100
+                    -1.23983400
+  Particle #              5
+      ID:           5
+      Mass:       1822.88696289
+      Width:         4.50000000
+      Element:     H 
+      At. Num:    1.
+      Dimens:       3
+      Position:     -2.76767200
+                     0.04465300
+                     1.46758500
+      Momentum:     -0.67679600
+                     1.68560100
+                     4.02784200
+  Particle #              6
+      ID:           6
+      Mass:       1822.88696289
+      Width:         4.50000000
+      Element:     H 
+      At. Num:    1.
+      Dimens:       3
+      Position:     -1.85495800
+                     0.07308900
+                    -2.13534800
+      Momentum:     -1.59599300
+                     1.05702300
+                     2.16576000
+ --------------------------------------------
+ Propagate until:    20000.0000000000     
+ Saving the first bundle
+ 
+ --Time:       0.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:      20.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:      40.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:      60.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:      80.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     980.00 Timestep:  20.00 (  1 trajectory)
+========================================================
+WARNING: Trajectory jumped an intersection.
+    Trajectory #  1
+SCI_ 1 1:  0.303084 SCI_ 1 2:  0.946131
+SCI_ 2 1: -0.950743 SCI_ 2 2:  0.306250
+========================================================
+Timestep was rejected - will integrate until t=        1000.00
+with timestep of   5.00.
+ 
+ --Time:     980.00 Timestep:   5.00 (  1 trajectory)
+ 
+ --Time:     985.00 Timestep:   5.00 (  1 trajectory)
+********************
+SPAWNING: Trajectory   1 exceeded threshold
+Parent on state  2 spawning to state  1
+  time    coup    overlap  new
+  990.00   0.0217 0.812 *
+  995.00   0.1874 0.992 *
+========================================================
+WARNING: Trajectory jumped an intersection.
+    Trajectory #  1
+SCI_ 1 1:  0.675018 SCI_ 1 2:  0.737280
+SCI_ 2 1: -0.737447 SCI_ 2 2:  0.675291
+========================================================
+ 1000.00   0.0527 0.954  
+ 1005.00   0.0121 -
+Spawn successful : child created at   995.00
+ Propagating child backwards
+ nstep           1
+Time:   995.00
+ Done backpropagating
+ 
+ --Time:     990.00 Timestep:   5.00 (  2 trajectories)
+ Significant overlap with traj           2
+ Significant overlap with traj           1
+ 
+ --Time:     995.00 Timestep:   5.00 (  2 trajectories)
+========================================================
+WARNING: Trajectory jumped an intersection.
+    Trajectory #  1
+SCI_ 1 1:  0.675018 SCI_ 1 2:  0.737280
+SCI_ 2 1: -0.737447 SCI_ 2 2:  0.675291
+========================================================
+Timestep was rejected - will integrate until t=        1000.00
+with timestep of   2.50.
+ 
+ --Time:     995.00 Timestep:   2.50 (  2 trajectories)
+ Significant overlap with traj           2
+ Significant overlap with traj           1
+ 
+ --Time:     997.50 Timestep:   2.50 (  2 trajectories)
+ Significant overlap with traj           2
+ Significant overlap with traj           1
+Adaptive integration until      1000.00 successful.
+Adaptive integration until      1000.00 successful.
+ 
+ --Time:    1000.00 Timestep:   5.00 (  2 trajectories)
+ Significant overlap with traj           2
+ Significant overlap with traj           1
+ 
+ --Time:    1005.00 Timestep:   5.00 (  2 trajectories)
+ Significant overlap with traj           2
+ Significant overlap with traj           1
+ 
+ --Time:    1010.00 Timestep:   5.00 (  2 trajectories)
+ 
+ --Time:    1015.00 Timestep:   5.00 (  2 trajectories)
+ 
+ --Time:    1020.00 Timestep:  20.00 (  2 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1040.00 Timestep:  20.00 (  2 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1060.00 Timestep:  20.00 (  2 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1080.00 Timestep:  20.00 (  2 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1100.00 Timestep:  20.00 (  2 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1120.00 Timestep:  20.00 (  2 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1140.00 Timestep:  20.00 (  2 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1160.00 Timestep:  20.00 (  2 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1180.00 Timestep:  20.00 (  2 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1200.00 Timestep:  20.00 (  2 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1220.00 Timestep:  20.00 (  2 trajectories)
+ Traj           1 was marked for death
+** Killing trajectory   1 pop < .05000
+Reconstructing trajectory bundle.
+Living trajectories:
+     2 S=0 Ms= 0 CBF  1
+ 
+ --Time:    1240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    1980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    2980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    3980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    4980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    5980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    6980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    7980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    8980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:    9980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   10980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   11980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   12980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   13980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   14980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   15980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   16980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   17980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   18980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19000.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19020.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19040.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19060.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19080.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19880.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19900.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19920.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19940.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19960.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:   19980.00 Timestep:  20.00 (  1 trajectory)
+ 
+ == FMS DONE ==
+ 
+ -------------- Timing Info: -------------------
+# electronic structure calls:       1046
+# rejected timesteps:                  2
+Spawning- Forward propagation:        11.15
+Spawning- Backward propagation:        1.62
+S inversion time:                      0.02
+BuildHS time:                          7.17
+Overlap time:                          0.04
+V matrix element time:                 7.88
+Electronic structure time:           765.52
+Total runtime:                       777.48
+Final # of trajectories:               1

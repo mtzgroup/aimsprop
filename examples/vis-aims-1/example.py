@@ -14,7 +14,7 @@ def vis_aims(
     # => Writing vmd scripts <= #
     os.system("mkdir xyzs")
 
-    # => Write Trajectory Files (for vmd to read) <= #
+    # => Write Bundle Files (for vmd to read) <= #
     filenames = []
     opacities = {}
     states = {}
@@ -76,8 +76,8 @@ def test():
         ai.parse_fms90("/home/monikaw/chem/o-np/6-aims/%04d/1-run" % x) for x in ICs
     ]
 
-    # Merge the trajectories into one super-big Trajectory with uniform weights
-    traj = ai.Trajectory.merge(trajs, [1.0 / len(trajs)] * len(trajs), labels=ICs)
+    # Merge the trajectories into one super-big Bundle with uniform weights
+    traj = ai.Bundle.merge(trajs, [1.0 / len(trajs)] * len(trajs), labels=ICs)
 
     # Compute properties at ~1 fs intervals, removing nonsense due to adaptive timesteps
     ts = np.arange(np.min(traj.ts), np.max(traj.ts), 800.0)
