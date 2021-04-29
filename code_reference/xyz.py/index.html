@@ -369,7 +369,7 @@
   
     <li class="md-nav__item">
       <a href="../traj.py/" class="md-nav__link">
-        traj.py
+        bundle.py
       </a>
     </li>
   
@@ -668,17 +668,17 @@
 
 
 <h4 id="aimsprop.xyz.parse_xyz" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">parse_xyz</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t0</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dt</span> <span class="o">=</span> <span class="mf">20.0</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">N_table</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span></code>
+<code class="highlight language-python"><span class="n">parse_xyz</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t0</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dt</span> <span class="o">=</span> <span class="mf">20.0</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">N_table</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span></code>
 
 
 <a href="#aimsprop.xyz.parse_xyz" class="headerlink" title="Permanent link">🔗</a></h4>
 
     <div class="doc doc-contents ">
 
-      <p>Parse an XYZ adiabatic trajectory file directly into a Trajectory.</p>
+      <p>Parse an XYZ adiabatic bundle file directly into a Bundle.</p>
 <div class="highlight"><pre><span></span><code>filename (str): the absolute or relative path to the xyz file.
-label (hashable): the label of this trajectory
-w (float): the weight of this trajectory
+label (hashable): the label of this bundle
+w (float): the weight of this bundle
 I (int): electronic state label
 t0 (float): the initial time in au
 dt (float): the timestep in au
@@ -697,8 +697,8 @@ N_table (dict of str : int): an optional dictionary mapping atomic
   </thead>
   <tbody>
     <tr>
-      <td><code>Trajectory</code></td>
-      <td><p>trajectory (Trajectory): the Trajectory object.</p></td>
+      <td><code>Bundle</code></td>
+      <td><p>bundle (Bundle): the Bundle object.</p></td>
     </tr>
   </tbody>
 </table>
@@ -713,13 +713,13 @@ N_table (dict of str : int): an optional dictionary mapping atomic
     <span class="n">dt</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span>
     <span class="n">ts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">N_table</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">traj</span><span class="o">.</span><span class="n">Trajectory</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">bundle</span><span class="o">.</span><span class="n">Bundle</span><span class="p">:</span>
 
-    <span class="sd">&quot;&quot;&quot;Parse an XYZ adiabatic trajectory file directly into a Trajectory.</span>
+    <span class="sd">&quot;&quot;&quot;Parse an XYZ adiabatic bundle file directly into a Bundle.</span>
 
 <span class="sd">        filename (str): the absolute or relative path to the xyz file.</span>
-<span class="sd">        label (hashable): the label of this trajectory</span>
-<span class="sd">        w (float): the weight of this trajectory</span>
+<span class="sd">        label (hashable): the label of this bundle</span>
+<span class="sd">        w (float): the weight of this bundle</span>
 <span class="sd">        I (int): electronic state label</span>
 <span class="sd">        t0 (float): the initial time in au</span>
 <span class="sd">        dt (float): the timestep in au</span>
@@ -728,7 +728,7 @@ N_table (dict of str : int): an optional dictionary mapping atomic
 <span class="sd">            symbol to atomic number, used for non-standard atom names.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        trajectory (Trajectory): the Trajectory object.</span>
+<span class="sd">        bundle (Bundle): the Bundle object.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">lines</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
@@ -759,19 +759,21 @@ N_table (dict of str : int): an optional dictionary mapping atomic
     <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">xyz</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">xyzs</span><span class="p">):</span>
         <span class="n">Z</span> <span class="o">=</span> <span class="n">Zs</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
         <span class="n">Ns</span> <span class="o">=</span> <span class="p">[</span><span class="n">N_table2</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">Z</span><span class="p">]</span>
-        <span class="n">frame2</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+        <span class="n">widths</span> <span class="o">=</span> <span class="n">atom_data</span><span class="o">.</span><span class="n">from_Ns_to_widths</span><span class="p">(</span><span class="n">Ns</span><span class="p">)</span>
+        <span class="n">frame2</span> <span class="o">=</span> <span class="n">bundle</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
             <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
             <span class="n">t</span><span class="o">=</span><span class="n">dt</span> <span class="o">*</span> <span class="n">ind</span> <span class="o">+</span> <span class="n">t0</span> <span class="k">if</span> <span class="n">ts</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">ts</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span>
             <span class="n">w</span><span class="o">=</span><span class="n">w</span><span class="p">,</span>
             <span class="n">I</span><span class="o">=</span><span class="n">I</span><span class="p">,</span>
             <span class="n">N</span><span class="o">=</span><span class="n">Ns</span><span class="p">,</span>
             <span class="n">xyz</span><span class="o">=</span><span class="n">xyz</span><span class="p">,</span>
+            <span class="n">widths</span><span class="o">=</span><span class="n">widths</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">frames2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame2</span><span class="p">)</span>
 
-    <span class="n">trajectory</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">Trajectory</span><span class="p">(</span><span class="n">frames2</span><span class="p">)</span>
+    <span class="n">parsed_bundle</span> <span class="o">=</span> <span class="n">bundle</span><span class="o">.</span><span class="n">Bundle</span><span class="p">(</span><span class="n">frames2</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">trajectory</span>
+    <span class="k">return</span> <span class="n">parsed_bundle</span>
 </code></pre></div>
         </details>
     </div>
@@ -785,14 +787,14 @@ N_table (dict of str : int): an optional dictionary mapping atomic
 
 
 <h4 id="aimsprop.xyz.write_xyzs" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">write_xyzs</span><span class="p">(</span><span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">dirname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">atom_format_str</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%-3s</span><span class="s1"> </span><span class="si">%24.16E</span><span class="s1"> </span><span class="si">%24.16E</span><span class="s1"> </span><span class="si">%24.16E</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">write_xyzs</span><span class="p">(</span><span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span> <span class="n">dirname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">atom_format_str</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%-3s</span><span class="s1"> </span><span class="si">%24.16E</span><span class="s1"> </span><span class="si">%24.16E</span><span class="s1"> </span><span class="si">%24.16E</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></code>
 
 
 <a href="#aimsprop.xyz.write_xyzs" class="headerlink" title="Permanent link">🔗</a></h4>
 
     <div class="doc doc-contents ">
 
-      <p>Write a directory of xyz files to represent a Trajectory, with
+      <p>Write a directory of xyz files to represent a Bundle, with
     one xyz file containing all frames for each label</p>
 
 <p><strong>Parameters:</strong></p>
@@ -807,9 +809,9 @@ N_table (dict of str : int): an optional dictionary mapping atomic
   </thead>
   <tbody>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>Trajectory to write xyz file representation of</p></td>
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>Bundle to write xyz file representation of</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
@@ -828,28 +830,28 @@ file (useful to change precision).</p></td>
   </tbody>
 </table>      <div class="admonition result">
 <p class="admonition-title">Result</p>
-<p>xyz files are written for each label in traj. Each xyz
+<p>xyz files are written for each label in bundle. Each xyz
 file contains all frames for the label, in time-order</p>
 </div>
 
         <details class="quote">
           <summary>Source code in <code>aimsprop/xyz.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">write_xyzs</span><span class="p">(</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">traj</span><span class="o">.</span><span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">bundle</span><span class="o">.</span><span class="n">Bundle</span><span class="p">,</span>
     <span class="n">dirname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">atom_format_str</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%-3s</span><span class="s2"> </span><span class="si">%24.16E</span><span class="s2"> </span><span class="si">%24.16E</span><span class="s2"> </span><span class="si">%24.16E</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
 <span class="p">):</span>
 
-    <span class="sd">&quot;&quot;&quot;Write a directory of xyz files to represent a Trajectory, with</span>
+    <span class="sd">&quot;&quot;&quot;Write a directory of xyz files to represent a Bundle, with</span>
 <span class="sd">        one xyz file containing all frames for each label</span>
 
 <span class="sd">    Params:</span>
-<span class="sd">        traj: Trajectory to write xyz file representation of</span>
+<span class="sd">        bundle: Bundle to write xyz file representation of</span>
 <span class="sd">        dirname: the directory to place the xyz files in (created if does not exist)</span>
 <span class="sd">        atom_format_str: the format string for each atom line in the xyz</span>
 <span class="sd">            file (useful to change precision).</span>
 <span class="sd">    Result:</span>
-<span class="sd">        xyz files are written for each label in traj. Each xyz</span>
+<span class="sd">        xyz files are written for each label in bundle. Each xyz</span>
 <span class="sd">        file contains all frames for the label, in time-order</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -858,8 +860,8 @@ file contains all frames for the label, in time-order</p>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dirname</span><span class="p">)</span>
 
     <span class="c1"># Write xyz files</span>
-    <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">labels</span><span class="p">:</span>
-        <span class="n">traj2</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">subset_by_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">bundle</span><span class="o">.</span><span class="n">labels</span><span class="p">:</span>
+        <span class="n">bundle2</span> <span class="o">=</span> <span class="n">bundle</span><span class="o">.</span><span class="n">subset_by_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
         <span class="n">xyzfilename</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
         <span class="c1"># Munging with filename label</span>
         <span class="n">xyzfilename</span> <span class="o">=</span> <span class="n">xyzfilename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -867,7 +869,7 @@ file contains all frames for the label, in time-order</p>
         <span class="n">xyzfilename</span> <span class="o">=</span> <span class="n">xyzfilename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="n">xyzfilename</span> <span class="o">=</span> <span class="n">xyzfilename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
         <span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">.xyz&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">xyzfilename</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj2</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">bundle2</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
             <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">frame</span><span class="o">.</span><span class="n">xyz</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
             <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
                 <span class="s2">&quot;t = </span><span class="si">%24.16E</span><span class="s2">, w = </span><span class="si">%24.16E</span><span class="s2">, I = </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span>

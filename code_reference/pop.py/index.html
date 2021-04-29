@@ -433,7 +433,7 @@
   
     <li class="md-nav__item">
       <a href="../traj.py/" class="md-nav__link">
-        traj.py
+        bundle.py
       </a>
     </li>
   
@@ -654,14 +654,14 @@
 
 
 <h4 id="aimsprop.pop.compute_population" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">compute_population</span><span class="p">(</span><span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">compute_population</span><span class="p">(</span><span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">)</span></code>
 
 
 <a href="#aimsprop.pop.compute_population" class="headerlink" title="Permanent link">🔗</a></h4>
 
     <div class="doc doc-contents ">
 
-      <p>Compute the state populations for a trajectory</p>
+      <p>Compute the state populations for a bundle</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -675,9 +675,9 @@
   </thead>
   <tbody>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>the Trajectory object to compute the property for</p></td>
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>the Bundle object to compute the property for</p></td>
         <td><em>required</em></td>
       </tr>
   </tbody>
@@ -694,32 +694,32 @@
     <tr>
       <td><code>populations</code></td>
       <td><p>dictionary from I to time population of I. The indices of each vector in populations
-corresponds to the set of traj.ts</p></td>
+corresponds to the set of bundle.ts</p></td>
     </tr>
   </tbody>
 </table>
         <details class="quote">
           <summary>Source code in <code>aimsprop/pop.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_population</span><span class="p">(</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute the state populations for a trajectory</span>
+    <span class="sd">&quot;&quot;&quot;Compute the state populations for a bundle</span>
 
 <span class="sd">    Params:</span>
-<span class="sd">        traj: the Trajectory object to compute the property for</span>
+<span class="sd">        bundle: the Bundle object to compute the property for</span>
 <span class="sd">    Returns:</span>
 <span class="sd">        populations: dictionary from I to time population of I. The indices of each vector in populations</span>
-<span class="sd">        corresponds to the set of traj.ts</span>
+<span class="sd">        corresponds to the set of bundle.ts</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">ts</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">ts</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">bundle</span><span class="o">.</span><span class="n">ts</span>
     <span class="n">populations</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">:</span>
-        <span class="n">traj2</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">subset_by_I</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">bundle</span><span class="o">.</span><span class="n">Is</span><span class="p">:</span>
+        <span class="n">bundle2</span> <span class="o">=</span> <span class="n">bundle</span><span class="o">.</span><span class="n">subset_by_I</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
         <span class="n">populations</span><span class="p">[</span><span class="n">I</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">),))</span>
         <span class="k">for</span> <span class="n">tind</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ts</span><span class="p">):</span>
-            <span class="n">traj3</span> <span class="o">=</span> <span class="n">traj2</span><span class="o">.</span><span class="n">subset_by_t</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-            <span class="n">populations</span><span class="p">[</span><span class="n">I</span><span class="p">][</span><span class="n">tind</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">frame</span><span class="o">.</span><span class="n">w</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj3</span><span class="o">.</span><span class="n">frames</span><span class="p">])</span>
+            <span class="n">bundle3</span> <span class="o">=</span> <span class="n">bundle2</span><span class="o">.</span><span class="n">subset_by_t</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+            <span class="n">populations</span><span class="p">[</span><span class="n">I</span><span class="p">][</span><span class="n">tind</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">frame</span><span class="o">.</span><span class="n">w</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">bundle3</span><span class="o">.</span><span class="n">frames</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">populations</span>
 </code></pre></div>
         </details>

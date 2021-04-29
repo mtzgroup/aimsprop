@@ -275,8 +275,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#creating-a-subset-of-the-trajectory" class="md-nav__link">
-    Creating a Subset of the Trajectory
+  <a href="#creating-a-subset-of-the-bundle" class="md-nav__link">
+    Creating a Subset of the Bundle
   </a>
   
 </li>
@@ -486,7 +486,7 @@
   
     <li class="md-nav__item">
       <a href="../code_reference/traj.py/" class="md-nav__link">
-        traj.py
+        bundle.py
       </a>
     </li>
   
@@ -662,8 +662,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#creating-a-subset-of-the-trajectory" class="md-nav__link">
-    Creating a Subset of the Trajectory
+  <a href="#creating-a-subset-of-the-bundle" class="md-nav__link">
+    Creating a Subset of the Bundle
   </a>
   
 </li>
@@ -792,25 +792,25 @@
 <h3 id="steps-to-add-a-feature">Steps to Add a Feature<a class="headerlink" href="#steps-to-add-a-feature" title="Permanent link">🔗</a></h3>
 <ol>
 <li>Determine what kind of feature you are hoping to add. Features are usually one of the following:<ol>
-<li>A property computed on each <code>Frame</code> of your <code>Trajectory</code>. Examples include <a href="../code_reference/geom.py/#aimsprop.geom.compute_bond">compute_bond</a> or <a href="../code_reference/blur.py/#aimsprop.blur.blur_property">blur_property</a>.</li>
+<li>A property computed on each <code>Frame</code> of your <code>Bundle</code>. Examples include <a href="../code_reference/geom.py/#aimsprop.geom.compute_bond">compute_bond</a> or <a href="../code_reference/blur.py/#aimsprop.blur.blur_property">blur_property</a>.</li>
 <li>A plotting feature. Note that the current plotting functions <a href="../code_reference/plot.py/#aimsprop.plot.plot_scalar">plot_scalar</a>, <a href="../code_reference/plot.py/#aimsprop.plot.plot_vector">plot_vector</a>, and <a href="../code_reference/plot.py/#aimsprop.plot.plot_population">plot_population</a> should already be able to plot any new properties you compute.</li>
-<li>Creating a subset of the <code>Trajectory</code> by some value of interest, like a subset by time. <a href="../code_reference/traj.py/#aimsprop.traj.Trajectory.subset_by_t">subset_by_t</a> is an example.</li>
+<li>Creating a subset of the <code>Bundle</code> by some value of interest, like a subset by time. <a href="../code_reference/traj.py/#aimsprop.bundle.Bundle.subset_by_t">subset_by_t</a> is an example.</li>
 </ol>
 </li>
 <li>Follow the basic outline below for creating your new feature. Note that all new functions require documentation.</li>
 </ol>
 <h4 id="property-computations">Property Computations<a class="headerlink" href="#property-computations" title="Permanent link">🔗</a></h4>
-<p>New property computation functions take as parameters a <code>Trajectory</code> object, a <code>key</code> that acts as the name for the property, and the relevant parameters to make a calculation. See <a href="../code_reference/geom.py/#aimsprop.geom.compute_bond">compute_bond</a> code below as an example. The function then performs the desired calculation on each <a href="../code_reference/traj.py/#aimsprop.traj.Frame">Frame</a> object and sets the value in the <code>Frame's</code> properties dictionary using the <code>key</code> passed. See the example in the source code below under <a href="#documenting-your-function">Documenting your Function</a>.</p>
+<p>New property computation functions take as parameters a <code>Bundle</code> object, a <code>key</code> that acts as the name for the property, and the relevant parameters to make a calculation. See <a href="../code_reference/geom.py/#aimsprop.geom.compute_bond">compute_bond</a> code below as an example. The function then performs the desired calculation on each <a href="../code_reference/traj.py/#aimsprop.bundle.Frame">Frame</a> object and sets the value in the <code>Frame's</code> properties dictionary using the <code>key</code> passed. See the example in the source code below under <a href="#documenting-your-function">Documenting your Function</a>.</p>
 <h4 id="new-plotting-function">New Plotting Function<a class="headerlink" href="#new-plotting-function" title="Permanent link">🔗</a></h4>
 <p>If you feel the existing plot functions <a href="../code_reference/plot.py/#aimsprop.plot.plot_scalar">plot_scalar</a>, <a href="../code_reference/plot.py/#aimsprop.plot.plot_vector">plot_vector</a>, and <a href="../code_reference/plot.py/#aimsprop.plot.plot_population">plot_population</a> cannot work for your needs, you can add a new plot generation function to the <code>plot.py</code> module.</p>
-<h4 id="creating-a-subset-of-the-trajectory">Creating a Subset of the Trajectory<a class="headerlink" href="#creating-a-subset-of-the-trajectory" title="Permanent link">🔗</a></h4>
-<p>To add this feature you would add a new method to the <a href="../code_reference/traj.py/#aimsprop.traj.Trajectory">Trajectory</a> object that takes <code>self</code>, and whatever other parameters are required to create your subset, and returns a new <code>Trajectory</code> object containing the <code>Frames</code> of interest. See the <code>subset_by_x</code> methods on <code>Trajectory</code> for examples.</p>
+<h4 id="creating-a-subset-of-the-bundle">Creating a Subset of the Bundle<a class="headerlink" href="#creating-a-subset-of-the-bundle" title="Permanent link">🔗</a></h4>
+<p>To add this feature you would add a new method to the <a href="../code_reference/traj.py/#aimsprop.bundle.Bundle">Bundle</a> object that takes <code>self</code>, and whatever other parameters are required to create your subset, and returns a new <code>Bundle</code> object containing the <code>Frames</code> of interest. See the <code>subset_by_x</code> methods on <code>Bundle</code> for examples.</p>
 <h4 id="documenting-your-function">Documenting Your Function<a class="headerlink" href="#documenting-your-function" title="Permanent link">🔗</a></h4>
 <p>Each new function, whether a property computation or a new plotting function, requires proper documentation. The code below demonstrates how to properly document a function.</p>
 <p>Documentation should include:</p>
 <ol>
-<li>An initial "docstring" that, in a single sentence, describes what the function does. Optionally, additional prose can be added underneath this docstring. In the example below this corresponds to the text: "Compute the a bond-angle property for a Trajectory (in degrees)."</li>
-<li>The function signature (the <code>def my_function_name(...)</code> part) must contain type annotations that describe the data types passed to your new function. This corresponds to the <code>traj: Trajectory, key: str, ...</code> part of the example below.</li>
+<li>An initial "docstring" that, in a single sentence, describes what the function does. Optionally, additional prose can be added underneath this docstring. In the example below this corresponds to the text: "Compute the a bond-angle property for a Bundle (in degrees)."</li>
+<li>The function signature (the <code>def my_function_name(...)</code> part) must contain type annotations that describe the data types passed to your new function. This corresponds to the <code>bundle: Bundle, key: str, ...</code> part of the example below.</li>
 <li>You must describe the parameters and return value of your function using the conventions noted in the example below. This allows for documentation to be generated for your new function and describes to other users what basic values your function requires to operate.</li>
 </ol>
 
@@ -820,14 +820,14 @@
 
 
 <h2 id="aimsprop.geom.compute_angle" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">aimsprop</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">compute_angle</span><span class="p">(</span><span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span></code>
+<code class="highlight language-python"><span class="n">aimsprop</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">compute_angle</span><span class="p">(</span><span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span></code>
 
 
 <a href="#aimsprop.geom.compute_angle" class="headerlink" title="Permanent link">🔗</a></h2>
 
     <div class="doc doc-contents first">
 
-      <p>Compute the a bond-angle property for a Trajectory (in degrees).</p>
+      <p>Compute the a bond-angle property for a Bundle (in degrees).</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -841,9 +841,9 @@
   </thead>
   <tbody>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>the Trajectory object to compute the property for (modified in
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>the Bundle object to compute the property for (modified in
 place)</p></td>
         <td><em>required</em></td>
       </tr>
@@ -883,8 +883,8 @@ place)</p></td>
   </thead>
   <tbody>
     <tr>
-      <td><code>Trajectory</code></td>
-      <td><p>traj: reference to the input Trajectory object. The property
+      <td><code>Bundle</code></td>
+      <td><p>bundle: reference to the input Bundle object. The property
     key is set to the float value of the bond angle for the
     indices A, B and C</p></td>
     </tr>
@@ -893,28 +893,28 @@ place)</p></td>
         <details class="quote">
           <summary>Source code in <code>aimsprop/geom.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_angle</span><span class="p">(</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span>
     <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Compute the a bond-angle property for a Trajectory (in degrees).</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Compute the a bond-angle property for a Bundle (in degrees).</span>
 
 <span class="sd">    Params:</span>
-<span class="sd">        traj: the Trajectory object to compute the property for (modified in</span>
+<span class="sd">        bundle: the Bundle object to compute the property for (modified in</span>
 <span class="sd">            place)</span>
 <span class="sd">        key: the name of the property</span>
 <span class="sd">        A: the index of the first atom</span>
 <span class="sd">        B: the index of the second atom</span>
 <span class="sd">        C: the index of the third atom</span>
 <span class="sd">    Return:</span>
-<span class="sd">        traj: reference to the input Trajectory object. The property</span>
+<span class="sd">        bundle: reference to the input Bundle object. The property</span>
 <span class="sd">            key is set to the float value of the bond angle for the</span>
 <span class="sd">            indices A, B and C</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">bundle</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
         <span class="n">xyz</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">xyz</span>
         <span class="n">rAB</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">xyz</span><span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="p">:]</span>
         <span class="n">rCB</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">xyz</span><span class="p">[</span><span class="n">C</span><span class="p">,</span> <span class="p">:]</span>
@@ -923,7 +923,7 @@ place)</p></td>
             <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
             <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">rAB</span> <span class="o">*</span> <span class="n">rCB</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">rAB</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">(</span><span class="n">rCB</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)))</span>
         <span class="p">)</span>
-    <span class="k">return</span> <span class="n">traj</span>
+    <span class="k">return</span> <span class="n">bundle</span>
 </code></pre></div>
         </details>
     </div>

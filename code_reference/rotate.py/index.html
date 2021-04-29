@@ -440,7 +440,7 @@
   
     <li class="md-nav__item">
       <a href="../traj.py/" class="md-nav__link">
-        traj.py
+        bundle.py
       </a>
     </li>
   
@@ -668,14 +668,14 @@
 
 
 <h4 id="aimsprop.rotate.rotate_frames" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">rotate_frames</span><span class="p">(</span><span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">R</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span></code>
+<code class="highlight language-python"><span class="n">rotate_frames</span><span class="p">(</span><span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span> <span class="n">R</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span></code>
 
 
 <a href="#aimsprop.rotate.rotate_frames" class="headerlink" title="Permanent link">🔗</a></h4>
 
     <div class="doc doc-contents ">
 
-      <p>Rotate xyz coordinates for all frames in trajectory by rotation matrix R.</p>
+      <p>Rotate xyz coordinates for all frames in bundle by rotation matrix R.</p>
 <p>Performs xyz = xyz * R</p>
 
 <p><strong>Parameters:</strong></p>
@@ -690,9 +690,9 @@
   </thead>
   <tbody>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>the Trajectory object to rotate coordinates in
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>the Bundle object to rotate coordinates in
 place (modified in place).</p></td>
         <td><em>required</em></td>
       </tr>
@@ -714,8 +714,8 @@ place (modified in place).</p></td>
   </thead>
   <tbody>
     <tr>
-      <td><code>Trajectory</code></td>
-      <td><p>traj: reference to the input Trajectory object. The
+      <td><code>Bundle</code></td>
+      <td><p>bundle: reference to the input Bundle object. The
     xyz coordinates are overwritten with the transformed xyz
     coordinates.</p></td>
     </tr>
@@ -724,26 +724,26 @@ place (modified in place).</p></td>
         <details class="quote">
           <summary>Source code in <code>aimsprop/rotate.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rotate_frames</span><span class="p">(</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span>
     <span class="n">R</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Rotate xyz coordinates for all frames in trajectory by rotation matrix R.</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Rotate xyz coordinates for all frames in bundle by rotation matrix R.</span>
 
 <span class="sd">    Performs xyz = xyz * R</span>
 
 <span class="sd">    Params:</span>
-<span class="sd">        traj: the Trajectory object to rotate coordinates in</span>
+<span class="sd">        bundle: the Bundle object to rotate coordinates in</span>
 <span class="sd">            place (modified in place).</span>
 <span class="sd">        R: rotation or transformation matrix, shape (3,3).</span>
 <span class="sd">    Return:</span>
-<span class="sd">        traj: reference to the input Trajectory object. The</span>
+<span class="sd">        bundle: reference to the input Bundle object. The</span>
 <span class="sd">            xyz coordinates are overwritten with the transformed xyz</span>
 <span class="sd">            coordinates.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">bundle</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
         <span class="n">frame</span><span class="o">.</span><span class="n">xyz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">xyz</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">traj</span>
+    <span class="k">return</span> <span class="n">bundle</span>
 </code></pre></div>
         </details>
     </div>
@@ -757,14 +757,14 @@ place (modified in place).</p></td>
 
 
 <h4 id="aimsprop.rotate.rotate_frames_to_z" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">rotate_frames_to_z</span><span class="p">(</span><span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">vec</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span></code>
+<code class="highlight language-python"><span class="n">rotate_frames_to_z</span><span class="p">(</span><span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span> <span class="n">vec</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span></code>
 
 
 <a href="#aimsprop.rotate.rotate_frames_to_z" class="headerlink" title="Permanent link">🔗</a></h4>
 
     <div class="doc doc-contents ">
 
-      <p>Rotate xyz coordinates for all frames in trajectory so that vec is
+      <p>Rotate xyz coordinates for all frames in bundle so that vec is
     rotated onto z. Useful to align molecules to z according to transition
     dipole moment vector.</p>
 
@@ -780,9 +780,9 @@ place (modified in place).</p></td>
   </thead>
   <tbody>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>the Trajectory object to rotate coordinates in
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>the Bundle object to rotate coordinates in
 place (modified in place).</p></td>
         <td><em>required</em></td>
       </tr>
@@ -805,8 +805,8 @@ onto +z, shape (3,)</p></td>
   </thead>
   <tbody>
     <tr>
-      <td><code>Trajectory</code></td>
-      <td><p>traj: reference to the input Trajectory object. The
+      <td><code>Bundle</code></td>
+      <td><p>bundle: reference to the input Bundle object. The
     xyz coordinates are overwritten with the transformed xyz
     coordinates.</p></td>
     </tr>
@@ -815,20 +815,20 @@ onto +z, shape (3,)</p></td>
         <details class="quote">
           <summary>Source code in <code>aimsprop/rotate.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rotate_frames_to_z</span><span class="p">(</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span>
     <span class="n">vec</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Rotate xyz coordinates for all frames in trajectory so that vec is</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Rotate xyz coordinates for all frames in bundle so that vec is</span>
 <span class="sd">        rotated onto z. Useful to align molecules to z according to transition</span>
 <span class="sd">        dipole moment vector.</span>
 
 <span class="sd">    Params:</span>
-<span class="sd">        traj: the Trajectory object to rotate coordinates in</span>
+<span class="sd">        bundle: the Bundle object to rotate coordinates in</span>
 <span class="sd">            place (modified in place).</span>
 <span class="sd">        vec: vector in current coordinates to rotate</span>
 <span class="sd">            onto +z, shape (3,)</span>
 <span class="sd">    Return:</span>
-<span class="sd">        traj: reference to the input Trajectory object. The</span>
+<span class="sd">        bundle: reference to the input Bundle object. The</span>
 <span class="sd">            xyz coordinates are overwritten with the transformed xyz</span>
 <span class="sd">            coordinates.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -840,7 +840,7 @@ onto +z, shape (3,)</p></td>
     <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
     <span class="n">R</span> <span class="o">-=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
     <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># preserve chirality</span>
-    <span class="k">return</span> <span class="n">rotate_frames</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rotate_frames</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>

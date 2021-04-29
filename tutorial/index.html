@@ -260,23 +260,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-a-trajectory-object-from-an-aims-run" class="md-nav__link">
-    Creating a trajectory object from an AIMS run
+  <a href="#creating-a-bundle-object-from-an-aims-run" class="md-nav__link">
+    Creating a Bundle object from an AIMS run
   </a>
   
-    <nav class="md-nav" aria-label="Creating a trajectory object from an AIMS run">
+    <nav class="md-nav" aria-label="Creating a Bundle object from an AIMS run">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cleaning-the-trajectory-object" class="md-nav__link">
-    Cleaning the trajectory object
+  <a href="#cleaning-the-simulation" class="md-nav__link">
+    Cleaning the simulation
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#using-the-trajectory-object" class="md-nav__link">
-    Using the trajectory object
+  <a href="#using-the-bundle-object" class="md-nav__link">
+    Using the Bundle object
   </a>
   
 </li>
@@ -389,11 +389,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reading-and-writing-trajectory-objects" class="md-nav__link">
-    Reading and Writing trajectory objects
+  <a href="#reading-and-writing-bundle-objects" class="md-nav__link">
+    Reading and Writing Bundle objects
   </a>
   
-    <nav class="md-nav" aria-label="Reading and Writing trajectory objects">
+    <nav class="md-nav" aria-label="Reading and Writing Bundle objects">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -554,7 +554,7 @@
   
     <li class="md-nav__item">
       <a href="../code_reference/traj.py/" class="md-nav__link">
-        traj.py
+        bundle.py
       </a>
     </li>
   
@@ -700,23 +700,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-a-trajectory-object-from-an-aims-run" class="md-nav__link">
-    Creating a trajectory object from an AIMS run
+  <a href="#creating-a-bundle-object-from-an-aims-run" class="md-nav__link">
+    Creating a Bundle object from an AIMS run
   </a>
   
-    <nav class="md-nav" aria-label="Creating a trajectory object from an AIMS run">
+    <nav class="md-nav" aria-label="Creating a Bundle object from an AIMS run">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cleaning-the-trajectory-object" class="md-nav__link">
-    Cleaning the trajectory object
+  <a href="#cleaning-the-simulation" class="md-nav__link">
+    Cleaning the simulation
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#using-the-trajectory-object" class="md-nav__link">
-    Using the trajectory object
+  <a href="#using-the-bundle-object" class="md-nav__link">
+    Using the Bundle object
   </a>
   
 </li>
@@ -829,11 +829,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reading-and-writing-trajectory-objects" class="md-nav__link">
-    Reading and Writing trajectory objects
+  <a href="#reading-and-writing-bundle-objects" class="md-nav__link">
+    Reading and Writing Bundle objects
   </a>
   
-    <nav class="md-nav" aria-label="Reading and Writing trajectory objects">
+    <nav class="md-nav" aria-label="Reading and Writing Bundle objects">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -867,64 +867,65 @@
                 
                 <h1 id="getting-started-with-aimsprop">Getting Started with aimsprop<a class="headerlink" href="#getting-started-with-aimsprop" title="Permanent link">🔗</a></h1>
 <h2 id="what-is-aimsprop">What is aimsprop?<a class="headerlink" href="#what-is-aimsprop" title="Permanent link">🔗</a></h2>
-<p>This package was developed to analyse data from AIMS trajectories. The functionality revolves around a trajectory object which properties can be calculated on, for example geometric properties, time dependent spectra, population decay etc. The trajectory object consists of a list of Frame objects, which contain the properties.</p>
+<p>This package was developed to analyse data from AIMS simulations. The functionality revolves around a Bundle object which properties can be calculated on, for example geometric properties, time dependent spectra, population decay etc. The Bundle object consists of a list of Frame objects, which contain the properties.</p>
 <p>The documentation for the package can be found <a href="https://mtzgroup.github.io/aimsprop/">here</a>.</p>
-<h2 id="creating-a-trajectory-object-from-an-aims-run">Creating a trajectory object from an AIMS run<a class="headerlink" href="#creating-a-trajectory-object-from-an-aims-run" title="Permanent link">🔗</a></h2>
+<h2 id="creating-a-bundle-object-from-an-aims-run">Creating a Bundle object from an AIMS run<a class="headerlink" href="#creating-a-bundle-object-from-an-aims-run" title="Permanent link">🔗</a></h2>
 <p>First, make sure that you have the package installed:
 <code>pip install aimsprop</code></p>
 <p>Then you can import the package into your file:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">aimsprop</span> <span class="k">as</span> <span class="nn">ai</span>
 </code></pre></div>
-<p>The documentation for creating and manipulating trajectory objects can be
-found <a href="https://mtzgroup.github.io/aimsprop/code_reference/traj.py/">here</a>.</p>
-<p>You can read in an AIMS trajectory from and FMS90 run. As an example, we will read in the data used for testing, so we set <code>aims_dir = "tests/test_data/"</code> and we set <code>IC = "0002"</code>. These should be changed to the path to your AIMS output.</p>
-<p>First, to create a Path object to the AIMS data (this is better than using simple the str since it manages file/dir paths well).</p>
+<p>The documentation for creating and manipulating bundle objects can be
+found <a href="https://mtzgroup.github.io/aimsprop/code_reference/bundle.py/">here</a>.</p>
+<p>You can read in an AIMS simulation from and FMS90 run. As an example, we will read in the data used for testing, so we set <code>aims_dir = "tests/test_data/"</code> and we set <code>IC = "0002"</code>. These should be changed to the path to your AIMS output.</p>
+<p>First, to create a Path object to the AIMS data (this is better than using a simple string since it manages file/dir paths well).</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">aims_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">aims_dir</span><span class="p">)</span>
 </code></pre></div>
 <p>We can then pass the Path object into aimsprop:</p>
-<div class="highlight"><pre><span></span><code><span class="n">traj</span> <span class="o">=</span> <span class="n">ai</span><span class="o">.</span><span class="n">parse_fms90</span><span class="p">(</span><span class="n">aims_path</span> <span class="o">/</span> <span class="n">IC</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">bundle</span> <span class="o">=</span> <span class="n">ai</span><span class="o">.</span><span class="n">parse_fms90</span><span class="p">(</span><span class="n">aims_path</span> <span class="o">/</span> <span class="n">IC</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;mulliken&#39;</span><span class="p">)</span>
 </code></pre></div>
 <p>We can also read in a collection AIMS runs from different initial conditions. We can set <code>ICs = ["0002","0003"]</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">trajs</span> <span class="o">=</span> <span class="p">[</span><span class="n">ai</span><span class="o">.</span><span class="n">parse_fms90</span><span class="p">(</span><span class="n">aims_path</span> <span class="o">/</span> <span class="n">IC</span><span class="p">)</span> <span class="k">for</span> <span class="n">IC</span> <span class="ow">in</span> <span class="n">ICs</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">bundles</span> <span class="o">=</span> <span class="p">[</span><span class="n">ai</span><span class="o">.</span><span class="n">parse_fms90</span><span class="p">(</span><span class="n">aims_path</span> <span class="o">/</span> <span class="n">IC</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;mulliken&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">IC</span> <span class="ow">in</span> <span class="n">ICs</span><span class="p">]</span>
 </code></pre></div>
-<p>Here, trajs is a list of trajectory objects which can be merged together to form the AIMS trajectory, containing the\
-AIMS runs for all the specified initial conditions. The weights of each trajectory are specified, which can be set\
+<p>Here, the variable bundles is a list of Bundle objects which can be merged together to form the AIMS simulation, containing the
+data for all the specified initial conditions. The weights of each bundle are specified, which can be set
 according to the IC oscillator strength or the ICs can be weighted evenly as below:</p>
-<div class="highlight"><pre><span></span><code><span class="n">traj</span> <span class="o">=</span> <span class="n">ai</span><span class="o">.</span><span class="n">Trajectory</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">trajs</span><span class="p">,</span> <span class="n">ws</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">trajs</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">trajs</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="n">ICs</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">simulation</span> <span class="o">=</span> <span class="n">ai</span><span class="o">.</span><span class="n">Bundle</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">bundles</span><span class="p">,</span> <span class="n">ws</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">bundles</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">bundles</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="n">ICs</span><span class="p">)</span>
 </code></pre></div>
-<p>If you have terminated your trajectories on the ground state and run adiabatic extensions, you can pass the xyz files
-from\
-these using <code>ai.parse_xyz</code>. The time should be set to when the ground state trajectory begins and then this can be\
-merged into <code>traj</code> for the IC it is associated with using the <code>ai.Trajectory.merge</code> function as above.</p>
-<h3 id="cleaning-the-trajectory-object">Cleaning the trajectory object<a class="headerlink" href="#cleaning-the-trajectory-object" title="Permanent link">🔗</a></h3>
-<p>FMS90 AIMS trajectories include adaptive time steps in regions of high non-adiabatic coupling. It is often useful to\
-remove these adaptive timesteps and have evenly spaced time steps for your trajectory object. First we can define the\
-times that we want our trajectory frames to be, e.g. <code>ts = np.arange(0.0, max(traj.ts), 40.0)</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">traj</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">interpolate_linear</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+<p>If you have terminated your TBFs on the ground state and run adiabatic extensions, you can pass the xyz files
+from
+these using <code>ai.parse_xyz</code>. The time should be set to when the ground state TBF begins and then this can be
+merged into <code>simulation</code> for the IC it is associated with using the <code>ai.Bundle.merge</code> function as above.</p>
+<h3 id="cleaning-the-simulation">Cleaning the simulation<a class="headerlink" href="#cleaning-the-simulation" title="Permanent link">🔗</a></h3>
+<p>FMS90 AIMS simulations include adaptive time steps in regions of high non-adiabatic coupling. It is often useful to
+remove these adaptive timesteps and have evenly spaced time steps for your Bundle object. First we can define the
+times that we want our Bundle frames to be, e.g. <code>ts = np.arange(0.0, max(simulation.ts), 40.0)</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">simulation</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">interpolate_linear</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
 </code></pre></div>
 <p>We can also remove duplicates incase any exist, e.g. from AIMS restarts:</p>
-<div class="highlight"><pre><span></span><code><span class="n">traj</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">remove_duplicates</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">simulation</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">remove_duplicates</span><span class="p">()</span>
 </code></pre></div>
-<h3 id="using-the-trajectory-object">Using the trajectory object<a class="headerlink" href="#using-the-trajectory-object" title="Permanent link">🔗</a></h3>
-<p>As noted previously, the trajectory object consists of a list of Frame objects. Therefore you can iterate through the\
+<h3 id="using-the-bundle-object">Using the Bundle object<a class="headerlink" href="#using-the-bundle-object" title="Permanent link">🔗</a></h3>
+<p>As noted previously, the Bundle object consists of a list of Frame objects. Therefore you can iterate through the
 frames and print or extract frame properties:</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">simulation</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
     <span class="n">label</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">label</span>
     <span class="n">time</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">t</span>
     <span class="n">weight</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">w</span>
     <span class="n">state</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">I</span>
+    <span class="n">widths</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">widths</span>
 </code></pre></div>
-<p>You can also extract the list of properties for the entire trajectory using, for example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">labels</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">labels</span>
-<span class="n">times</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">ts</span>
-<span class="n">weights</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">ws</span>
-<span class="n">states</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">Is</span>
+<p>You can also extract the list of properties for the entire Bundle <code>simulation</code> using, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">labels</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">labels</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">ts</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">ws</span>
+<span class="n">states</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">Is</span>
 </code></pre></div>
-<p>You can select only a portion of the total <code>traj</code> using the <code>subset_by_&lt;&gt;</code> functions:</p>
-<div class="highlight"><pre><span></span><code><span class="n">traj_s0</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">subset_by_I</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">traj_500au</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">subset_by_t</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<p>You can select only a portion of the total <code>simulation</code> using the <code>subset_by_&lt;&gt;</code> functions:</p>
+<div class="highlight"><pre><span></span><code><span class="n">simulation_s0</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">subset_by_I</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">simulation_500au</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">subset_by_t</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="computing-geometric-properties">Computing geometric properties<a class="headerlink" href="#computing-geometric-properties" title="Permanent link">🔗</a></h2>
 <p>The geometric properties that are supported are:</p>
@@ -939,46 +940,46 @@ frames and print or extract frame properties:</p>
 found <a href="https://mtzgroup.github.io/aimsprop/code_reference/geom.py/">here</a>.</p>
 <h3 id="bond-length">Bond length<a class="headerlink" href="#bond-length" title="Permanent link">🔗</a></h3>
 <p>You can calculate the bond length between two atoms, e.g atom indices <code>0</code> and <code>1</code> and name the property, e.g. "R01":</p>
-<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">compute_bond</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;R01&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">compute_bond</span><span class="p">(</span><span class="n">simulation</span><span class="p">,</span> <span class="s2">&quot;R01&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="bond-angle">Bond angle<a class="headerlink" href="#bond-angle" title="Permanent link">🔗</a></h3>
 <p>You can calculate the bond angle between three atoms, e.g atom indices <code>0</code>, <code>1</code> and <code>2</code> name the property, e.g. "A012":</p>
-<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">compute_angle</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;A012&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">compute_angle</span><span class="p">(</span><span class="n">simulation</span><span class="p">,</span> <span class="s2">&quot;A012&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="torsion-angle">Torsion angle<a class="headerlink" href="#torsion-angle" title="Permanent link">🔗</a></h3>
 <p>You can calculate the torsion angle between four atoms, e.g atom indices <code>0</code>, <code>1</code>, <code>2</code> and <code>3</code> and name the property,
 e.g. "
 T0123":</p>
-<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">compute_torsion</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;T0123&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">compute_torsion</span><span class="p">(</span><span class="n">simulation</span><span class="p">,</span> <span class="s2">&quot;T0123&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
 <p>You can also unwrap properties so that it continues beyond 180 degrees rather than jumping back down to -180:</p>
-<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">unwrap_property</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;T0123&quot;</span><span class="p">,</span> <span class="mf">360.0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">unwrap_property</span><span class="p">(</span><span class="n">simulation</span><span class="p">,</span> <span class="s2">&quot;T0123&quot;</span><span class="p">,</span> <span class="mf">360.0</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="transfer-coordinate">Transfer coordinate<a class="headerlink" href="#transfer-coordinate" title="Permanent link">🔗</a></h3>
 <p>You can calculate the transfer coordinate between atoms, e.g atom indices <code>0</code>, <code>1</code>, and <code>2</code> and name the property,
 e.g. "PT012":</p>
-<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">compute_transfer_coord</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;PT012&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">compute_transfer_coord</span><span class="p">(</span><span class="n">simulation</span><span class="p">,</span> <span class="s2">&quot;PT012&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="extracting-properties">Extracting properties<a class="headerlink" href="#extracting-properties" title="Permanent link">🔗</a></h3>
-<p>Once a property has been added to the trajectory object, it can be extracted with its key id:</p>
-<div class="highlight"><pre><span></span><code><span class="n">r01</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="s2">&quot;R01&quot;</span><span class="p">)</span>
+<p>Once a property has been added to the Bundle object, it can be extracted with its key id:</p>
+<div class="highlight"><pre><span></span><code><span class="n">r01</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="s2">&quot;R01&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="calculate-population">Calculate Population<a class="headerlink" href="#calculate-population" title="Permanent link">🔗</a></h2>
 <p>Documentation for the population can be found <a href="https://mtzgroup.github.io/aimsprop/code_reference/pop.py/">here</a>.</p>
 <p>If you want to calculate the population use</p>
-<div class="highlight"><pre><span></span><code><span class="n">pop</span> <span class="o">=</span> <span class="n">ai</span><span class="o">.</span><span class="n">compute_population</span><span class="p">(</span><span class="n">traj</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">pop</span> <span class="o">=</span> <span class="n">ai</span><span class="o">.</span><span class="n">compute_population</span><span class="p">(</span><span class="n">simulation</span><span class="p">)</span>
 </code></pre></div>
 <p>If you just want to plot the population to a file, e.g. <code>P.png</code>, you can instead run:</p>
 <div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">plot_population</span><span class="p">(</span>
     <span class="s2">&quot;P.png&quot;</span><span class="p">,</span>
-    <span class="n">traj</span><span class="p">,</span>
-    <span class="n">trajs</span><span class="p">,</span>
+    <span class="n">simulation</span><span class="p">,</span>
+    <span class="n">bundles</span><span class="p">,</span>
     <span class="n">time_units</span><span class="o">=</span><span class="s2">&quot;fs&quot;</span><span class="p">,</span>
     <span class="n">state_colors</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span>
 <span class="p">)</span>
 </code></pre></div>
-<p>where <code>traj</code> is the merged trajectory object, and <code>trajs</code> is the list of parsed AIMS trajectories. The file can also\
-be saved as a PDF.</p>
+<p>where <code>simulation</code> is the merged Bundle object, and <code>bundles</code> is the list of parsed Bundle objects. The file can also
+be saved as a PDF or PNG.</p>
 <p><img alt="P.png" src="../images/P.png" /></p>
 <h2 id="plotting-properties">Plotting properties<a class="headerlink" href="#plotting-properties" title="Permanent link">🔗</a></h2>
 <p>Documentation for the plotting functions can be
@@ -987,7 +988,7 @@ You can plot scalar properties and blurred properties. The files can be written 
 <h3 id="plot-scalar-properties">Plot scalar properties<a class="headerlink" href="#plot-scalar-properties" title="Permanent link">🔗</a></h3>
 <p>You can plot the properties that you calculated above, for example plotting the bond angle:</p>
 <div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">plot_scalar</span><span class="p">(</span><span class="s2">&quot;R.png&quot;</span><span class="p">,</span>
-               <span class="n">traj</span><span class="p">,</span>
+               <span class="n">simulation</span><span class="p">,</span>
                <span class="s2">&quot;R01&quot;</span><span class="p">,</span>
                <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$R_</span><span class="si">{CC}</span><span class="s2"> [\AA</span><span class="si">{}</span><span class="s2">]$&quot;</span><span class="p">,</span>
                <span class="n">time_units</span><span class="o">=</span><span class="s2">&quot;fs&quot;</span><span class="p">,</span>
@@ -1004,13 +1005,13 @@ is <a href="https://mtzgroup.github.io/aimsprop/code_reference/blur.py/">here</a
 <p>In order to blur a property using a Gaussian convolution, first create a space over which the property can be blurred,
 and then computer the blurred property:</p>
 <div class="highlight"><pre><span></span><code><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">ai</span><span class="o">.</span><span class="n">blur_property</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;R01&quot;</span><span class="p">,</span> <span class="s2">&quot;R01blur&quot;</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">8.0</span><span class="p">)</span>
+<span class="n">ai</span><span class="o">.</span><span class="n">blur_property</span><span class="p">(</span><span class="n">simulation</span><span class="p">,</span> <span class="s2">&quot;R01&quot;</span><span class="p">,</span> <span class="s2">&quot;R01blur&quot;</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">8.0</span><span class="p">)</span>
 </code></pre></div>
 <p>The blurred property is written with key, <code>"R01blur"</code>.</p>
 <p>To plot a blurred property use:</p>
 <div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">plot_vector</span><span class="p">(</span>
     <span class="s2">&quot;Rblur.png&quot;</span><span class="p">,</span>
-    <span class="n">traj</span><span class="p">,</span>
+    <span class="n">simulation</span><span class="p">,</span>
     <span class="s2">&quot;R01blur&quot;</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="n">R</span><span class="p">,</span>
     <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$R [\AA</span><span class="si">{}</span><span class="s2">]$&quot;</span><span class="p">,</span>
@@ -1028,14 +1029,14 @@ There is more information on these techniques <a href="https://pubs.acs.org/doi/
 <p>The Ultrafast electron diffraction (UED) signal can be generated by defining a bond length range and then computing the
 signal:</p>
 <div class="highlight"><pre><span></span><code><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">ai</span><span class="o">.</span><span class="n">compute_ued_simple</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;UED&quot;</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">8.0</span><span class="p">)</span>
+<span class="n">ai</span><span class="o">.</span><span class="n">compute_ued_simple</span><span class="p">(</span><span class="n">simulation</span><span class="p">,</span> <span class="s2">&quot;UED&quot;</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">8.0</span><span class="p">)</span>
 </code></pre></div>
 <p>Notes on how the UED signal is computed can be
 found <a href="https://github.com/mtzgroup/aimsprop/blob/feature-tutorial-doc/notes/ued/report.png">here</a>.</p>
 <p>You can then plot the signal:</p>
 <div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">plot_vector</span><span class="p">(</span>
     <span class="s2">&quot;UED.png&quot;</span><span class="p">,</span>
-    <span class="n">traj</span><span class="p">,</span>
+    <span class="n">simulation</span><span class="p">,</span>
     <span class="s2">&quot;UED&quot;</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="n">R</span><span class="p">,</span>
     <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$R [\AA</span><span class="si">{}</span><span class="s2">]$&quot;</span><span class="p">,</span>
@@ -1045,27 +1046,26 @@ found <a href="https://github.com/mtzgroup/aimsprop/blob/feature-tutorial-doc/no
 </code></pre></div>
 <p><img alt="UED.png" src="../images/UED.png" /></p>
 <p>The figure will be saved in <code>UED.png</code>.</p>
-<h2 id="reading-and-writing-trajectory-objects">Reading and Writing trajectory objects<a class="headerlink" href="#reading-and-writing-trajectory-objects" title="Permanent link">🔗</a></h2>
-<p>You can use pickle to write/read in the trajectory object so you dont have to re-generate it again each\
+<h2 id="reading-and-writing-bundle-objects">Reading and Writing Bundle objects<a class="headerlink" href="#reading-and-writing-bundle-objects" title="Permanent link">🔗</a></h2>
+<p>You can use pickle to write/read in the Bundle object so you dont have to re-generate it again each
 time.</p>
 <p>First, load pickle:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pickle</span>
 </code></pre></div>
-<p>Writing traj to a file:</p>
-<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;traj.out&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<p>Writing the Bundle object <code>simulation</code> to a file:</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;simulation.out&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">simulation</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 </code></pre></div>
-<p>Reading traj from a file:</p>
-<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;traj.out&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">traj</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<p>Reading it back from a file:</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;simulation.out&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">simulation</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </code></pre></div>
-<p>When the <code>traj</code> object is written to a file, all of its properties are also written. Therefore when a trajectory
-object\
-read from a pickle file, it contains all information that was stored in the trajectory.</p>
+<p>When the Bundle object is written to a file, all of its properties are also written. Therefore when it is
+read from a pickle file, it contains all information that was stored in it, including its properties.</p>
 <h3 id="writing-xyz-files">Writing xyz files<a class="headerlink" href="#writing-xyz-files" title="Permanent link">🔗</a></h3>
 <p>The documentation for xyz files can be found <a href="https://mtzgroup.github.io/aimsprop/code_reference/xyz.py/">here</a>. You can
-parse xyz files into aimsprop to build a trajectory object. You can also write them:</p>
-<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">write_xyzs</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+parse xyz files into aimsprop to build a Bundle object. You can also write them:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ai</span><span class="o">.</span><span class="n">write_xyzs</span><span class="p">(</span><span class="n">simulation</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
 </code></pre></div>
                 
               

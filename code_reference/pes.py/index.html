@@ -433,7 +433,7 @@
   
     <li class="md-nav__item">
       <a href="../traj.py/" class="md-nav__link">
-        traj.py
+        bundle.py
       </a>
     </li>
   
@@ -654,7 +654,7 @@
 
 
 <h4 id="aimsprop.pes.compute_pes" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">compute_pes</span><span class="p">(</span><span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">carrier_frequency</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">eKT</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span></code>
+<code class="highlight language-python"><span class="n">compute_pes</span><span class="p">(</span><span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span> <span class="n">carrier_frequency</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">eKT</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span></code>
 
 
 <a href="#aimsprop.pes.compute_pes" class="headerlink" title="Permanent link">🔗</a></h4>
@@ -662,7 +662,7 @@
     <div class="doc doc-contents ">
 
       <p>Compute the simple photoelectron spectroscopy, with Guassian blurring</p>
-<p>User is responsible for calculating and assigning properties to the trajectory frames:
+<p>User is responsible for calculating and assigning properties to the bundle frames:
         Dyson Orbitals
         Ionization Potential (IP)</p>
 
@@ -678,9 +678,9 @@
   </thead>
   <tbody>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>the Trajectory object to compute the property for (modified in
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>the Bundle object to compute the property for (modified in
 place)</p></td>
         <td><em>required</em></td>
       </tr>
@@ -714,8 +714,8 @@ place)</p></td>
   </thead>
   <tbody>
     <tr>
-      <td><code>Trajectory</code></td>
-      <td><p>traj: reference to the input Trajectory object. The property
+      <td><code>Bundle</code></td>
+      <td><p>bundle: reference to the input Bundle object. The property
     key "pes" is set to computed PES property.</p></td>
     </tr>
   </tbody>
@@ -723,31 +723,31 @@ place)</p></td>
         <details class="quote">
           <summary>Source code in <code>aimsprop/pes.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_pes</span><span class="p">(</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span>
     <span class="n">carrier_frequency</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">eKT</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot;Compute the simple photoelectron spectroscopy, with Guassian blurring</span>
 
-<span class="sd">    User is responsible for calculating and assigning properties to the trajectory frames:</span>
+<span class="sd">    User is responsible for calculating and assigning properties to the bundle frames:</span>
 <span class="sd">            Dyson Orbitals</span>
 <span class="sd">            Ionization Potential (IP)</span>
 
 <span class="sd">    Params:</span>
-<span class="sd">        traj: the Trajectory object to compute the property for (modified in</span>
+<span class="sd">        bundle: the Bundle object to compute the property for (modified in</span>
 <span class="sd">            place)</span>
 <span class="sd">        carrier_frequency: experimental probe pulse carrier frequency (hbar*omega)</span>
 <span class="sd">        alpha: the Guassian blurring exponent</span>
 <span class="sd">        eKT: electron energies</span>
 
 <span class="sd">    Return:</span>
-<span class="sd">        traj: reference to the input Trajectory object. The property</span>
+<span class="sd">        bundle: reference to the input Bundle object. The property</span>
 <span class="sd">            key &quot;pes&quot; is set to computed PES property.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">bundle</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
         <span class="n">IPs</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">&quot;IP&quot;</span><span class="p">]</span>
         <span class="n">dyson_norms</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">&quot;dyson_norms&quot;</span><span class="p">]</span>
         <span class="n">pes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">eKT</span><span class="p">)</span>
@@ -760,7 +760,7 @@ place)</p></td>
             <span class="p">)</span>
         <span class="n">frame</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">&quot;pes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pes</span>
 
-    <span class="k">return</span> <span class="n">traj</span>
+    <span class="k">return</span> <span class="n">bundle</span>
 </code></pre></div>
         </details>
     </div>

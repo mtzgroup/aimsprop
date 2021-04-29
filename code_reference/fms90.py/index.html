@@ -433,7 +433,7 @@
   
     <li class="md-nav__item">
       <a href="../traj.py/" class="md-nav__link">
-        traj.py
+        bundle.py
       </a>
     </li>
   
@@ -654,15 +654,15 @@
 
 
 <h4 id="aimsprop.fms90.parse_fms90" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">parse_fms90</span><span class="p">(</span><span class="n">filepath</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">scheme</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;mulliken&#39;</span><span class="p">,</span> <span class="n">cutoff_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cutoff_saddle</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">initial_I</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span></code>
+<code class="highlight language-python"><span class="n">parse_fms90</span><span class="p">(</span><span class="n">filepath</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">scheme</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cutoff_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cutoff_saddle</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">initial_I</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span></code>
 
 
 <a href="#aimsprop.fms90.parse_fms90" class="headerlink" title="Permanent link">🔗</a></h4>
 
     <div class="doc doc-contents ">
 
-      <p>Parse an FMS90 results directory into a Trajectory.</p>
-<p>This uses information in positions.<em>.xyz, Amps.</em>, S.dat, and Spawn.log to
+      <p>Parse an FMS90 results directory into a Bundle.</p>
+<p>This uses information in positions.<em>.xyz, Amps.</em>, S.dat, FMS.out and Spawn.log to
 populate a density matrix by mulliken or saddle point rules.</p>
 
 <p><strong>Parameters:</strong></p>
@@ -687,12 +687,12 @@ populate a density matrix by mulliken or saddle point rules.</p>
         <td><code>str</code></td>
         <td><p>'mulliken' or 'saddle' to indicate the approximation
 used for property evaluation.</p></td>
-        <td><code>&#39;mulliken&#39;</code></td>
+        <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>cutoff_time</code></td>
         <td><code>float</code></td>
-        <td><p>cutoff time to stop reading trajectory info after
+        <td><p>cutoff time to stop reading bundle info after
 (None reads all times).</p></td>
         <td><code>None</code></td>
       </tr>
@@ -723,8 +723,8 @@ electronic label.</p></td>
   </thead>
   <tbody>
     <tr>
-      <td><code>Trajectory</code></td>
-      <td><p>Trajectory: The Trajectory object.</p></td>
+      <td><code>Bundle</code></td>
+      <td><p>Bundle: The Bundle object.</p></td>
     </tr>
   </tbody>
 </table>
@@ -732,21 +732,21 @@ electronic label.</p></td>
           <summary>Source code in <code>aimsprop/fms90.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_fms90</span><span class="p">(</span>
     <span class="n">filepath</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
-    <span class="n">scheme</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mulliken&quot;</span><span class="p">,</span>
+    <span class="n">scheme</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">cutoff_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">cutoff_saddle</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0e-4</span><span class="p">,</span>
     <span class="n">initial_I</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">traj</span><span class="o">.</span><span class="n">Trajectory</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Parse an FMS90 results directory into a Trajectory.</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">bundle</span><span class="o">.</span><span class="n">Bundle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Parse an FMS90 results directory into a Bundle.</span>
 
-<span class="sd">    This uses information in positions.*.xyz, Amps.*, S.dat, and Spawn.log to</span>
+<span class="sd">    This uses information in positions.*.xyz, Amps.*, S.dat, FMS.out and Spawn.log to</span>
 <span class="sd">    populate a density matrix by mulliken or saddle point rules.</span>
 
 <span class="sd">    Arguments:</span>
 <span class="sd">        filepath: the path to the FMS run directory</span>
 <span class="sd">        scheme: &#39;mulliken&#39; or &#39;saddle&#39; to indicate the approximation</span>
 <span class="sd">            used for property evaluation.</span>
-<span class="sd">        cutoff_time: cutoff time to stop reading trajectory info after</span>
+<span class="sd">        cutoff_time: cutoff time to stop reading bundle info after</span>
 <span class="sd">            (None reads all times).</span>
 <span class="sd">        cutoff_saddle: cutoff for centroid TBF pair in the saddle</span>
 <span class="sd">            point approach.</span>
@@ -754,7 +754,7 @@ electronic label.</p></td>
 <span class="sd">            no Spawn.log (e.g., if no spawning has happened yet) to place</span>
 <span class="sd">            electronic label.</span>
 <span class="sd">    Returns:</span>
-<span class="sd">        Trajectory: The Trajectory object.</span>
+<span class="sd">        Bundle: The Bundle object.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Read in FMS output files: positions*, Amp.*, S.dat and Spawn.log</span>
@@ -766,6 +766,12 @@ electronic label.</p></td>
 
     <span class="n">states</span> <span class="o">=</span> <span class="n">_parse_spawnlog</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">initial_I</span><span class="p">)</span>
 
+    <span class="n">widths</span> <span class="o">=</span> <span class="n">_parse_widths</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">widths</span> <span class="o">==</span> <span class="p">[]:</span>  <span class="c1"># this code is beautiful.</span>
+        <span class="n">widths</span> <span class="o">=</span> <span class="n">atom_data</span><span class="o">.</span><span class="n">from_Ns_to_widths</span><span class="p">(</span>
+            <span class="n">N2s</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">N2s</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]][</span><span class="nb">list</span><span class="p">(</span><span class="n">N2s</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">N2s</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="p">)</span>
+
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">C2s</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">N2s</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;xyz and C files not same number of TBF&quot;</span><span class="p">)</span>
 
@@ -773,15 +779,17 @@ electronic label.</p></td>
     <span class="n">C3s</span><span class="p">,</span> <span class="n">xyz3s</span><span class="p">,</span> <span class="n">N3s</span> <span class="o">=</span> <span class="p">[</span><span class="n">_swap_dic_axis</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="n">C2s</span><span class="p">,</span> <span class="n">xyz2s</span><span class="p">,</span> <span class="n">N2s</span><span class="p">]]</span>
 
     <span class="k">if</span> <span class="n">scheme</span> <span class="o">==</span> <span class="s2">&quot;mulliken&quot;</span><span class="p">:</span>
-        <span class="n">frames</span> <span class="o">=</span> <span class="n">_create_frames_mulliken</span><span class="p">(</span><span class="n">Ss</span><span class="p">,</span> <span class="n">C3s</span><span class="p">,</span> <span class="n">xyz3s</span><span class="p">,</span> <span class="n">N3s</span><span class="p">,</span> <span class="n">states</span><span class="p">)</span>
+        <span class="n">frames</span> <span class="o">=</span> <span class="n">_create_frames_mulliken</span><span class="p">(</span><span class="n">Ss</span><span class="p">,</span> <span class="n">C3s</span><span class="p">,</span> <span class="n">xyz3s</span><span class="p">,</span> <span class="n">N3s</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">widths</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">scheme</span> <span class="o">==</span> <span class="s2">&quot;saddle&quot;</span><span class="p">:</span>
-        <span class="n">frames</span> <span class="o">=</span> <span class="n">_create_frames_saddle</span><span class="p">(</span><span class="n">Ss</span><span class="p">,</span> <span class="n">C3s</span><span class="p">,</span> <span class="n">xyz3s</span><span class="p">,</span> <span class="n">N3s</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">cutoff_saddle</span><span class="p">)</span>
+        <span class="n">frames</span> <span class="o">=</span> <span class="n">_create_frames_saddle</span><span class="p">(</span>
+            <span class="n">Ss</span><span class="p">,</span> <span class="n">C3s</span><span class="p">,</span> <span class="n">xyz3s</span><span class="p">,</span> <span class="n">N3s</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">cutoff_saddle</span><span class="p">,</span> <span class="n">widths</span>
+        <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid scheme: </span><span class="si">{</span><span class="n">scheme</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="n">trajectory</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">Trajectory</span><span class="p">(</span><span class="n">frames</span><span class="p">)</span>
+    <span class="n">processed_bundle</span> <span class="o">=</span> <span class="n">bundle</span><span class="o">.</span><span class="n">Bundle</span><span class="p">(</span><span class="n">frames</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">trajectory</span>
+    <span class="k">return</span> <span class="n">processed_bundle</span>
 </code></pre></div>
         </details>
     </div>

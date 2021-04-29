@@ -447,7 +447,7 @@
   
     <li class="md-nav__item">
       <a href="../traj.py/" class="md-nav__link">
-        traj.py
+        bundle.py
       </a>
     </li>
   
@@ -682,7 +682,7 @@
 
 
 <h4 id="aimsprop.plot.plot_population" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">plot_population</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">trajs</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">time_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;au&#39;</span><span class="p">,</span> <span class="n">legend_loc</span> <span class="o">=</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">state_colors</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">plot_total</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">clf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">tmax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span></code>
+<code class="highlight language-python"><span class="n">plot_population</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span> <span class="n">bundles</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">time_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;au&#39;</span><span class="p">,</span> <span class="n">legend_loc</span> <span class="o">=</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">state_colors</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">plot_total</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">clf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">tmax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span></code>
 
 
 <a href="#aimsprop.plot.plot_population" class="headerlink" title="Permanent link">🔗</a></h4>
@@ -709,15 +709,15 @@
         <td><em>required</em></td>
       </tr>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>the Trajectory to plot populations for</p></td>
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>the Bundle to plot populations for</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
-        <td><code>trajs</code></td>
+        <td><code>bundles</code></td>
         <td><code>list</code></td>
-        <td><p>a list of Trajectory objects, one for each
+        <td><p>a list of Bundle objects, one for each
 IC. This is used for the "spaghetti" plots.</p></td>
         <td><em>required</em></td>
       </tr>
@@ -775,8 +775,8 @@ saves figure to filename</p></td>
           <summary>Source code in <code>aimsprop/plot.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">plot_population</span><span class="p">(</span>
     <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
-    <span class="n">trajs</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span>
+    <span class="n">bundles</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
     <span class="n">time_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;au&quot;</span><span class="p">,</span>
     <span class="n">legend_loc</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
     <span class="n">state_colors</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -788,8 +788,8 @@ saves figure to filename</p></td>
 
 <span class="sd">    Params:</span>
 <span class="sd">        filename: the output PDF file</span>
-<span class="sd">        traj: the Trajectory to plot populations for</span>
-<span class="sd">        trajs: a list of Trajectory objects, one for each</span>
+<span class="sd">        bundle: the Bundle to plot populations for</span>
+<span class="sd">        bundles: a list of Bundle objects, one for each</span>
 <span class="sd">            IC. This is used for the &quot;spaghetti&quot; plots.</span>
 <span class="sd">        time_units: &quot;au&quot; or &quot;fs&quot;</span>
 <span class="sd">        legend_loc (legend location): location indicator for legend</span>
@@ -815,26 +815,26 @@ saves figure to filename</p></td>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">cmap</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;jet&quot;</span><span class="p">)</span>
         <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">cmap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
-            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">))))</span>
+            <span class="n">cmap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bundle</span><span class="o">.</span><span class="n">Is</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bundle</span><span class="o">.</span><span class="n">Is</span><span class="p">))))</span>
         <span class="p">]</span>
 
     <span class="k">if</span> <span class="n">clf</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
 
-    <span class="c1"># Spaghetti plots from trajs</span>
-    <span class="n">Imap</span> <span class="o">=</span> <span class="p">{</span><span class="n">I</span><span class="p">:</span> <span class="n">Iind</span> <span class="k">for</span> <span class="n">Iind</span><span class="p">,</span> <span class="n">I</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">)}</span>
-    <span class="k">for</span> <span class="n">traj2</span> <span class="ow">in</span> <span class="n">trajs</span><span class="p">:</span>
-        <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traj2</span><span class="o">.</span><span class="n">ts</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">traj2</span><span class="o">.</span><span class="n">Is</span><span class="p">:</span>
-            <span class="n">traj3</span> <span class="o">=</span> <span class="n">traj2</span><span class="o">.</span><span class="n">subset_by_I</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
-            <span class="n">t3s</span> <span class="o">=</span> <span class="n">traj3</span><span class="o">.</span><span class="n">ts</span>
-            <span class="n">w3s</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">w</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj3</span><span class="o">.</span><span class="n">subset_by_t</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">frames</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t3s</span><span class="p">]</span>
+    <span class="c1"># Spaghetti plots from bundles</span>
+    <span class="n">Imap</span> <span class="o">=</span> <span class="p">{</span><span class="n">I</span><span class="p">:</span> <span class="n">Iind</span> <span class="k">for</span> <span class="n">Iind</span><span class="p">,</span> <span class="n">I</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bundle</span><span class="o">.</span><span class="n">Is</span><span class="p">)}</span>
+    <span class="k">for</span> <span class="n">bundle2</span> <span class="ow">in</span> <span class="n">bundles</span><span class="p">:</span>
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bundle2</span><span class="o">.</span><span class="n">ts</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">bundle2</span><span class="o">.</span><span class="n">Is</span><span class="p">:</span>
+            <span class="n">bundle3</span> <span class="o">=</span> <span class="n">bundle2</span><span class="o">.</span><span class="n">subset_by_I</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+            <span class="n">t3s</span> <span class="o">=</span> <span class="n">bundle3</span><span class="o">.</span><span class="n">ts</span>
+            <span class="n">w3s</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">w</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">bundle3</span><span class="o">.</span><span class="n">subset_by_t</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">frames</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t3s</span><span class="p">]</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_scale</span> <span class="o">*</span> <span class="n">t3s</span><span class="p">,</span> <span class="n">w3s</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">Imap</span><span class="p">[</span><span class="n">I</span><span class="p">]],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 
     <span class="c1"># State populations</span>
-    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">ts</span><span class="p">)</span>
-    <span class="n">populations</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">compute_population</span><span class="p">(</span><span class="n">traj</span><span class="p">)</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bundle</span><span class="o">.</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">populations</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">compute_population</span><span class="p">(</span><span class="n">bundle</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">Iind</span><span class="p">,</span> <span class="n">I</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">populations</span><span class="o">.</span><span class="n">keys</span><span class="p">())):</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
             <span class="n">time_scale</span> <span class="o">*</span> <span class="n">ts</span><span class="p">,</span>
@@ -876,7 +876,7 @@ saves figure to filename</p></td>
 
 
 <h4 id="aimsprop.plot.plot_scalar" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">plot_scalar</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">time_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;au&#39;</span><span class="p">,</span> <span class="n">legend_loc</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">state_colors</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">plot_average</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">clf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span></code>
+<code class="highlight language-python"><span class="n">plot_scalar</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">time_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;au&#39;</span><span class="p">,</span> <span class="n">legend_loc</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">state_colors</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">plot_average</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">clf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span></code>
 
 
 <a href="#aimsprop.plot.plot_scalar" class="headerlink" title="Permanent link">🔗</a></h4>
@@ -903,9 +903,9 @@ saves figure to filename</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>the Trajectory to plot properties for</p></td>
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>the Bundle to plot properties for</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
@@ -974,7 +974,7 @@ saves figure to filename</p></td>
           <summary>Source code in <code>aimsprop/plot.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">plot_scalar</span><span class="p">(</span>
     <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span>
     <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">ylabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">time_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;au&quot;</span><span class="p">,</span>
@@ -987,7 +987,7 @@ saves figure to filename</p></td>
 
 <span class="sd">    Params:</span>
 <span class="sd">        filename: the output PDF file</span>
-<span class="sd">        traj: the Trajectory to plot properties for</span>
+<span class="sd">        bundle: the Bundle to plot properties for</span>
 <span class="sd">        key: the key of the property</span>
 <span class="sd">        ylabel: the label of the y-axis (defaults to key)</span>
 <span class="sd">        time_units: &quot;au&quot; or &quot;fs&quot;</span>
@@ -1014,8 +1014,8 @@ saves figure to filename</p></td>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">cmap</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;jet&quot;</span><span class="p">)</span>
         <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">cmap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
-            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">))))</span>
+            <span class="n">cmap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bundle</span><span class="o">.</span><span class="n">Is</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bundle</span><span class="o">.</span><span class="n">Is</span><span class="p">))))</span>
         <span class="p">]</span>
 
     <span class="k">if</span> <span class="n">clf</span><span class="p">:</span>
@@ -1023,31 +1023,31 @@ saves figure to filename</p></td>
     <span class="k">if</span> <span class="n">plot_average</span><span class="p">:</span>
         <span class="c1"># Plot average</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-            <span class="n">time_scale</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">ts</span><span class="p">),</span>
-            <span class="n">traj</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+            <span class="n">time_scale</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bundle</span><span class="o">.</span><span class="n">ts</span><span class="p">),</span>
+            <span class="n">bundle</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
             <span class="s2">&quot;-k&quot;</span><span class="p">,</span>
             <span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="c1"># Plot state averages</span>
-        <span class="k">for</span> <span class="n">Iind</span><span class="p">,</span> <span class="n">I</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">):</span>
-            <span class="n">traj2</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">subset_by_I</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">Iind</span><span class="p">,</span> <span class="n">I</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bundle</span><span class="o">.</span><span class="n">Is</span><span class="p">):</span>
+            <span class="n">bundle2</span> <span class="o">=</span> <span class="n">bundle</span><span class="o">.</span><span class="n">subset_by_I</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
             <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">Iind</span><span class="p">]</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-                <span class="n">time_scale</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traj2</span><span class="o">.</span><span class="n">ts</span><span class="p">),</span>
-                <span class="n">traj2</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+                <span class="n">time_scale</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bundle2</span><span class="o">.</span><span class="n">ts</span><span class="p">),</span>
+                <span class="n">bundle2</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
                 <span class="s2">&quot;-&quot;</span><span class="p">,</span>
                 <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
                 <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
             <span class="p">)</span>
     <span class="c1"># Plot individual frames</span>
-    <span class="k">for</span> <span class="n">Iind</span><span class="p">,</span> <span class="n">I</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">Is</span><span class="p">):</span>
-        <span class="n">traj2</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">subset_by_I</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">Iind</span><span class="p">,</span> <span class="n">I</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bundle</span><span class="o">.</span><span class="n">Is</span><span class="p">):</span>
+        <span class="n">bundle2</span> <span class="o">=</span> <span class="n">bundle</span><span class="o">.</span><span class="n">subset_by_I</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
         <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">Iind</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">lind</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">traj2</span><span class="o">.</span><span class="n">labels</span><span class="p">):</span>
-            <span class="n">traj3</span> <span class="o">=</span> <span class="n">traj2</span><span class="o">.</span><span class="n">subset_by_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">lind</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bundle2</span><span class="o">.</span><span class="n">labels</span><span class="p">):</span>
+            <span class="n">bundle3</span> <span class="o">=</span> <span class="n">bundle2</span><span class="o">.</span><span class="n">subset_by_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-                <span class="n">time_scale</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traj3</span><span class="o">.</span><span class="n">ts</span><span class="p">),</span>
-                <span class="n">traj3</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+                <span class="n">time_scale</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bundle3</span><span class="o">.</span><span class="n">ts</span><span class="p">),</span>
+                <span class="n">bundle3</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
                 <span class="s2">&quot;-&quot;</span><span class="p">,</span>
                 <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
                 <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
@@ -1073,7 +1073,7 @@ saves figure to filename</p></td>
 
 
 <h4 id="aimsprop.plot.plot_vector" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">plot_vector</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">time_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;au&#39;</span><span class="p">,</span> <span class="n">diff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x117464ee0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">levels</span><span class="p">:</span> <span class="n">ndarray</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">nlevel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">65</span><span class="p">,</span> <span class="n">twosided</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">clf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span></code>
+<code class="highlight language-python"><span class="n">plot_vector</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">time_units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;au&#39;</span><span class="p">,</span> <span class="n">diff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x116765610</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">levels</span><span class="p">:</span> <span class="n">ndarray</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">nlevel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">65</span><span class="p">,</span> <span class="n">twosided</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">clf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span></code>
 
 
 <a href="#aimsprop.plot.plot_vector" class="headerlink" title="Permanent link">🔗</a></h4>
@@ -1100,9 +1100,9 @@ saves figure to filename</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>the Trajectory to plot properties for</p></td>
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>the Bundle to plot properties for</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
@@ -1140,7 +1140,7 @@ like it)</p></td>
         <td><code>cmap</code></td>
         <td><code></code></td>
         <td><p>the desired colormap</p></td>
-        <td><code>&lt;matplotlib.colors.LinearSegmentedColormap object at 0x117464ee0&gt;</code></td>
+        <td><code>&lt;matplotlib.colors.LinearSegmentedColormap object at 0x116765610&gt;</code></td>
       </tr>
       <tr>
         <td><code>levels</code></td>
@@ -1190,7 +1190,7 @@ saves figure to filename</p></td>
           <summary>Source code in <code>aimsprop/plot.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">plot_vector</span><span class="p">(</span>
     <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span>
     <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">ylabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1206,7 +1206,7 @@ saves figure to filename</p></td>
 
 <span class="sd">    Params:</span>
 <span class="sd">        filename: the output PDF file</span>
-<span class="sd">        traj: the Trajectory to plot properties for</span>
+<span class="sd">        bundle: the Bundle to plot properties for</span>
 <span class="sd">        key: the key of the property</span>
 <span class="sd">        y: the indices of the y axis (e.g., R or Q or something</span>
 <span class="sd">            like it)</span>
@@ -1233,9 +1233,9 @@ saves figure to filename</p></td>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown time units: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">time_units</span><span class="p">)</span>
 
     <span class="c1"># Extract data to plot</span>
-    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bundle</span><span class="o">.</span><span class="n">ts</span><span class="p">)</span>
     <span class="n">ys</span> <span class="o">=</span> <span class="n">y</span>
-    <span class="n">Vs</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="n">Vs</span> <span class="o">=</span> <span class="n">bundle</span><span class="o">.</span><span class="n">extract_property</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
     <span class="c1"># Difference properties</span>
     <span class="k">if</span> <span class="n">diff</span><span class="p">:</span>

@@ -369,7 +369,7 @@
   
     <li class="md-nav__item">
       <a href="../traj.py/" class="md-nav__link">
-        traj.py
+        bundle.py
       </a>
     </li>
   
@@ -654,7 +654,7 @@
 
 
 <h4 id="aimsprop.ued.compute_ued_simple" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">compute_ued_simple</span><span class="p">(</span><span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">R</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ABpairs</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span></code>
+<code class="highlight language-python"><span class="n">compute_ued_simple</span><span class="p">(</span><span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">R</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ABpairs</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span></code>
 
 
 <a href="#aimsprop.ued.compute_ued_simple" class="headerlink" title="Permanent link">🔗</a></h4>
@@ -676,9 +676,9 @@
   </thead>
   <tbody>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>the Trajectory object to compute the property for (modified in
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>the Bundle object to compute the property for (modified in
 place)</p></td>
         <td><em>required</em></td>
       </tr>
@@ -720,8 +720,8 @@ to include in the computation, or None for all atom pairs.</p></td>
   </thead>
   <tbody>
     <tr>
-      <td><code>Trajectory</code></td>
-      <td><p>traj: reference to the input Trajectory object. The property
+      <td><code>Bundle</code></td>
+      <td><p>bundle: reference to the input Bundle object. The property
     key is set to computed UED property.</p></td>
     </tr>
   </tbody>
@@ -729,17 +729,17 @@ to include in the computation, or None for all atom pairs.</p></td>
         <details class="quote">
           <summary>Source code in <code>aimsprop/ued.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_ued_simple</span><span class="p">(</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span>
     <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">R</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">ABpairs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Compute the simple pairwise-distance form of the UED cross section,</span>
 <span class="sd">        with Gaussian blurring in R.</span>
 
 <span class="sd">    Params:</span>
-<span class="sd">        traj: the Trajectory object to compute the property for (modified in</span>
+<span class="sd">        bundle: the Bundle object to compute the property for (modified in</span>
 <span class="sd">            place)</span>
 <span class="sd">        key: the name of the property</span>
 <span class="sd">        R: the distances to collocate the</span>
@@ -748,11 +748,11 @@ to include in the computation, or None for all atom pairs.</p></td>
 <span class="sd">        ABpairs: a restricted list of atom pair indices</span>
 <span class="sd">            to include in the computation, or None for all atom pairs.</span>
 <span class="sd">    Return:</span>
-<span class="sd">        traj: reference to the input Trajectory object. The property</span>
+<span class="sd">        bundle: reference to the input Bundle object. The property</span>
 <span class="sd">            key is set to computed UED property.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">bundle</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
         <span class="n">N</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">N</span>
         <span class="n">xyz</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">xyz</span>
         <span class="c1"># Which pair indices?</span>
@@ -771,7 +771,7 @@ to include in the computation, or None for all atom pairs.</p></td>
             <span class="n">SAB</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">_ued_cross_sections</span><span class="p">[</span><span class="n">N</span><span class="p">[</span><span class="n">A</span><span class="p">]]</span> <span class="o">*</span> <span class="n">_ued_cross_sections</span><span class="p">[</span><span class="n">N</span><span class="p">[</span><span class="n">B</span><span class="p">]])</span> <span class="o">/</span> <span class="n">RAB</span>
             <span class="n">V</span> <span class="o">+=</span> <span class="n">SAB</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">alpha</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="n">R</span> <span class="o">-</span> <span class="n">RAB</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
         <span class="n">frame</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">V</span>
-    <span class="k">return</span> <span class="n">traj</span>
+    <span class="k">return</span> <span class="n">bundle</span>
 </code></pre></div>
         </details>
     </div>
@@ -814,7 +814,7 @@ to include in the computation, or None for all atom pairs.</p></td>
               <span class="md-footer__direction">
                 Previous
               </span>
-              traj.py
+              bundle.py
             </div>
           </div>
         </a>

@@ -461,7 +461,7 @@
   
     <li class="md-nav__item">
       <a href="../traj.py/" class="md-nav__link">
-        traj.py
+        bundle.py
       </a>
     </li>
   
@@ -710,14 +710,14 @@
 
 
 <h4 id="aimsprop.geom.compute_angle" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">compute_angle</span><span class="p">(</span><span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span></code>
+<code class="highlight language-python"><span class="n">compute_angle</span><span class="p">(</span><span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span></code>
 
 
 <a href="#aimsprop.geom.compute_angle" class="headerlink" title="Permanent link">🔗</a></h4>
 
     <div class="doc doc-contents ">
 
-      <p>Compute the a bond-angle property for a Trajectory (in degrees).</p>
+      <p>Compute the a bond-angle property for a Bundle (in degrees).</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -731,9 +731,9 @@
   </thead>
   <tbody>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>the Trajectory object to compute the property for (modified in
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>the Bundle object to compute the property for (modified in
 place)</p></td>
         <td><em>required</em></td>
       </tr>
@@ -773,8 +773,8 @@ place)</p></td>
   </thead>
   <tbody>
     <tr>
-      <td><code>Trajectory</code></td>
-      <td><p>traj: reference to the input Trajectory object. The property
+      <td><code>Bundle</code></td>
+      <td><p>bundle: reference to the input Bundle object. The property
     key is set to the float value of the bond angle for the
     indices A, B and C</p></td>
     </tr>
@@ -783,28 +783,28 @@ place)</p></td>
         <details class="quote">
           <summary>Source code in <code>aimsprop/geom.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_angle</span><span class="p">(</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span>
     <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Compute the a bond-angle property for a Trajectory (in degrees).</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Compute the a bond-angle property for a Bundle (in degrees).</span>
 
 <span class="sd">    Params:</span>
-<span class="sd">        traj: the Trajectory object to compute the property for (modified in</span>
+<span class="sd">        bundle: the Bundle object to compute the property for (modified in</span>
 <span class="sd">            place)</span>
 <span class="sd">        key: the name of the property</span>
 <span class="sd">        A: the index of the first atom</span>
 <span class="sd">        B: the index of the second atom</span>
 <span class="sd">        C: the index of the third atom</span>
 <span class="sd">    Return:</span>
-<span class="sd">        traj: reference to the input Trajectory object. The property</span>
+<span class="sd">        bundle: reference to the input Bundle object. The property</span>
 <span class="sd">            key is set to the float value of the bond angle for the</span>
 <span class="sd">            indices A, B and C</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">bundle</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
         <span class="n">xyz</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">xyz</span>
         <span class="n">rAB</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">xyz</span><span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="p">:]</span>
         <span class="n">rCB</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">xyz</span><span class="p">[</span><span class="n">C</span><span class="p">,</span> <span class="p">:]</span>
@@ -813,7 +813,7 @@ place)</p></td>
             <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
             <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">rAB</span> <span class="o">*</span> <span class="n">rCB</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">rAB</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">(</span><span class="n">rCB</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)))</span>
         <span class="p">)</span>
-    <span class="k">return</span> <span class="n">traj</span>
+    <span class="k">return</span> <span class="n">bundle</span>
 </code></pre></div>
         </details>
     </div>
@@ -827,14 +827,14 @@ place)</p></td>
 
 
 <h4 id="aimsprop.geom.compute_bond" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">compute_bond</span><span class="p">(</span><span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span></code>
+<code class="highlight language-python"><span class="n">compute_bond</span><span class="p">(</span><span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span></code>
 
 
 <a href="#aimsprop.geom.compute_bond" class="headerlink" title="Permanent link">🔗</a></h4>
 
     <div class="doc doc-contents ">
 
-      <p>Compute the a bond-length property for a Trajectory.</p>
+      <p>Compute the a bond-length property for a Bundle.</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -848,9 +848,9 @@ place)</p></td>
   </thead>
   <tbody>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>the Trajectory object to compute the property for (modified in
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>the Bundle object to compute the property for (modified in
 place)</p></td>
         <td><em>required</em></td>
       </tr>
@@ -884,8 +884,8 @@ place)</p></td>
   </thead>
   <tbody>
     <tr>
-      <td><code>Trajectory</code></td>
-      <td><p>traj - reference to the input Trajectory object. The property
+      <td><code>Bundle</code></td>
+      <td><p>bundle - reference to the input Bundle object. The property
     key is set to the float value of the bond length for the
     indices A and B.</p></td>
     </tr>
@@ -894,30 +894,30 @@ place)</p></td>
         <details class="quote">
           <summary>Source code in <code>aimsprop/geom.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_bond</span><span class="p">(</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span>
     <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Compute the a bond-length property for a Trajectory.</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Compute the a bond-length property for a Bundle.</span>
 
 <span class="sd">    Params:</span>
-<span class="sd">        traj: the Trajectory object to compute the property for (modified in</span>
+<span class="sd">        bundle: the Bundle object to compute the property for (modified in</span>
 <span class="sd">            place)</span>
 <span class="sd">        key: the name of the property</span>
 <span class="sd">        A: the index of the first atom</span>
 <span class="sd">        B: the index of the second atom</span>
 <span class="sd">    Return:</span>
-<span class="sd">        traj - reference to the input Trajectory object. The property</span>
+<span class="sd">        bundle - reference to the input Bundle object. The property</span>
 <span class="sd">            key is set to the float value of the bond length for the</span>
 <span class="sd">            indices A and B.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">bundle</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
         <span class="n">xyz</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">xyz</span>
         <span class="n">rAB</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">xyz</span><span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="p">:]</span>
         <span class="n">frame</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">rAB</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">traj</span>
+    <span class="k">return</span> <span class="n">bundle</span>
 </code></pre></div>
         </details>
     </div>
@@ -931,14 +931,14 @@ place)</p></td>
 
 
 <h4 id="aimsprop.geom.compute_oop" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">compute_oop</span><span class="p">(</span><span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">D</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span></code>
+<code class="highlight language-python"><span class="n">compute_oop</span><span class="p">(</span><span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">D</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span></code>
 
 
 <a href="#aimsprop.geom.compute_oop" class="headerlink" title="Permanent link">🔗</a></h4>
 
     <div class="doc doc-contents ">
 
-      <p>Compute the a out-of-plane-angle property for a Trajectory (in degrees).</p>
+      <p>Compute the a out-of-plane-angle property for a Bundle (in degrees).</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -952,9 +952,9 @@ place)</p></td>
   </thead>
   <tbody>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>the Trajectory object to compute the property for (modified in
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>the Bundle object to compute the property for (modified in
 place)</p></td>
         <td><em>required</em></td>
       </tr>
@@ -1000,8 +1000,8 @@ place)</p></td>
   </thead>
   <tbody>
     <tr>
-      <td><code>Trajectory</code></td>
-      <td><p>traj: reference to the input Trajectory object. The property
+      <td><code>Bundle</code></td>
+      <td><p>bundle: reference to the input Bundle object. The property
     key is set to the float value of the out-of-plane angle for the
     indices A, B, C, and D</p></td>
     </tr>
@@ -1010,17 +1010,17 @@ place)</p></td>
         <details class="quote">
           <summary>Source code in <code>aimsprop/geom.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_oop</span><span class="p">(</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span>
     <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">D</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Compute the a out-of-plane-angle property for a Trajectory (in degrees).</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Compute the a out-of-plane-angle property for a Bundle (in degrees).</span>
 
 <span class="sd">    Params:</span>
-<span class="sd">        traj: the Trajectory object to compute the property for (modified in</span>
+<span class="sd">        bundle: the Bundle object to compute the property for (modified in</span>
 <span class="sd">            place)</span>
 <span class="sd">        key: the name of the property</span>
 <span class="sd">        A: the index of the first atom (OOP atom)</span>
@@ -1028,14 +1028,14 @@ place)</p></td>
 <span class="sd">        C: the index of the third atom</span>
 <span class="sd">        D: the index of the fourth atom (Defines vector to A)</span>
 <span class="sd">    Return:</span>
-<span class="sd">        traj: reference to the input Trajectory object. The property</span>
+<span class="sd">        bundle: reference to the input Bundle object. The property</span>
 <span class="sd">            key is set to the float value of the out-of-plane angle for the</span>
 <span class="sd">            indices A, B, C, and D</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">traj</span> <span class="o">=</span> <span class="n">compute_angle</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;AngleBDC&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+    <span class="n">bundle</span> <span class="o">=</span> <span class="n">compute_angle</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="s2">&quot;AngleBDC&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">bundle</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
         <span class="n">xyz</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">xyz</span>
         <span class="n">rDA</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">xyz</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="p">:]</span>
         <span class="n">rDB</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">xyz</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="p">:]</span>
@@ -1051,7 +1051,7 @@ place)</p></td>
 
         <span class="n">frame</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">OOP</span>
 
-    <span class="k">return</span> <span class="n">traj</span>
+    <span class="k">return</span> <span class="n">bundle</span>
 </code></pre></div>
         </details>
     </div>
@@ -1065,14 +1065,14 @@ place)</p></td>
 
 
 <h4 id="aimsprop.geom.compute_torsion" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">compute_torsion</span><span class="p">(</span><span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">D</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span></code>
+<code class="highlight language-python"><span class="n">compute_torsion</span><span class="p">(</span><span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">D</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span></code>
 
 
 <a href="#aimsprop.geom.compute_torsion" class="headerlink" title="Permanent link">🔗</a></h4>
 
     <div class="doc doc-contents ">
 
-      <p>Compute the a torsion-angle property for a Trajectory (in degrees).</p>
+      <p>Compute the a torsion-angle property for a Bundle (in degrees).</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -1086,9 +1086,9 @@ place)</p></td>
   </thead>
   <tbody>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>the Trajectory object to compute the property for (modified in
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>the Bundle object to compute the property for (modified in
 place)</p></td>
         <td><em>required</em></td>
       </tr>
@@ -1134,8 +1134,8 @@ place)</p></td>
   </thead>
   <tbody>
     <tr>
-      <td><code>Trajectory</code></td>
-      <td><p>traj: reference to the input Trajectory object. The property
+      <td><code>Bundle</code></td>
+      <td><p>bundle: reference to the input Bundle object. The property
     key is set to the float value of the torsion angle for the
     indices A, B, C, and D</p></td>
     </tr>
@@ -1144,17 +1144,17 @@ place)</p></td>
         <details class="quote">
           <summary>Source code in <code>aimsprop/geom.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_torsion</span><span class="p">(</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span>
     <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">D</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Compute the a torsion-angle property for a Trajectory (in degrees).</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Compute the a torsion-angle property for a Bundle (in degrees).</span>
 
 <span class="sd">    Params:</span>
-<span class="sd">        traj: the Trajectory object to compute the property for (modified in</span>
+<span class="sd">        bundle: the Bundle object to compute the property for (modified in</span>
 <span class="sd">            place)</span>
 <span class="sd">        key: the name of the property</span>
 <span class="sd">        A: the index of the first atom</span>
@@ -1162,12 +1162,12 @@ place)</p></td>
 <span class="sd">        C: the index of the third atom</span>
 <span class="sd">        D: the index of the fourth atom</span>
 <span class="sd">    Return:</span>
-<span class="sd">        traj: reference to the input Trajectory object. The property</span>
+<span class="sd">        bundle: reference to the input Bundle object. The property</span>
 <span class="sd">            key is set to the float value of the torsion angle for the</span>
 <span class="sd">            indices A, B, C, and D</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">bundle</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
         <span class="n">xyz</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">xyz</span>
         <span class="n">rAB</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">xyz</span><span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="p">:]</span>
         <span class="n">rBC</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">C</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">xyz</span><span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="p">:]</span>
@@ -1183,7 +1183,7 @@ place)</p></td>
         <span class="n">theta</span> <span class="o">=</span> <span class="mf">180.0</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
         <span class="n">frame</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">theta</span>
 
-    <span class="k">return</span> <span class="n">traj</span>
+    <span class="k">return</span> <span class="n">bundle</span>
 </code></pre></div>
         </details>
     </div>
@@ -1197,14 +1197,14 @@ place)</p></td>
 
 
 <h4 id="aimsprop.geom.compute_transfer_coord" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">compute_transfer_coord</span><span class="p">(</span><span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span></code>
+<code class="highlight language-python"><span class="n">compute_transfer_coord</span><span class="p">(</span><span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span></code>
 
 
 <a href="#aimsprop.geom.compute_transfer_coord" class="headerlink" title="Permanent link">🔗</a></h4>
 
     <div class="doc doc-contents ">
 
-      <p>Compute the a proton transfer coordinate property for a Trajectory (au).</p>
+      <p>Compute the a proton transfer coordinate property for a Bundle (au).</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -1218,9 +1218,9 @@ place)</p></td>
   </thead>
   <tbody>
       <tr>
-        <td><code>traj</code></td>
-        <td><code>Trajectory</code></td>
-        <td><p>the Trajectory object to compute the property for (modified in
+        <td><code>bundle</code></td>
+        <td><code>Bundle</code></td>
+        <td><p>the Bundle object to compute the property for (modified in
 place)</p></td>
         <td><em>required</em></td>
       </tr>
@@ -1260,8 +1260,8 @@ place)</p></td>
   </thead>
   <tbody>
     <tr>
-      <td><code>Trajectory</code></td>
-      <td><p>traj: reference to the input Trajectory object. The property
+      <td><code>Bundle</code></td>
+      <td><p>bundle: reference to the input Bundle object. The property
     key is set to the proton transfer coordinate for the
     indices A, B, C</p></td>
     </tr>
@@ -1270,37 +1270,37 @@ place)</p></td>
         <details class="quote">
           <summary>Source code in <code>aimsprop/geom.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_transfer_coord</span><span class="p">(</span>
-    <span class="n">traj</span><span class="p">:</span> <span class="n">Trajectory</span><span class="p">,</span>
+    <span class="n">bundle</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">,</span>
     <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">A</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">B</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">C</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Trajectory</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Compute the a proton transfer coordinate property for a Trajectory (au).</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bundle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Compute the a proton transfer coordinate property for a Bundle (au).</span>
 
 <span class="sd">    Params:</span>
-<span class="sd">        traj: the Trajectory object to compute the property for (modified in</span>
+<span class="sd">        bundle: the Bundle object to compute the property for (modified in</span>
 <span class="sd">            place)</span>
 <span class="sd">        key: the name of the property</span>
 <span class="sd">        A: the index of the first atom</span>
 <span class="sd">        B: the index of the second atom</span>
 <span class="sd">        C: the index of the transfered atom</span>
 <span class="sd">    Return:</span>
-<span class="sd">        traj: reference to the input Trajectory object. The property</span>
+<span class="sd">        bundle: reference to the input Bundle object. The property</span>
 <span class="sd">            key is set to the proton transfer coordinate for the</span>
 <span class="sd">            indices A, B, C</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">traj</span> <span class="o">=</span> <span class="n">compute_bond</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;dAC&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
-    <span class="n">traj</span> <span class="o">=</span> <span class="n">compute_bond</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;dBC&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
-    <span class="n">traj</span> <span class="o">=</span> <span class="n">compute_bond</span><span class="p">(</span><span class="n">traj</span><span class="p">,</span> <span class="s2">&quot;dAB&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">traj</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
+    <span class="n">bundle</span> <span class="o">=</span> <span class="n">compute_bond</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="s2">&quot;dAC&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+    <span class="n">bundle</span> <span class="o">=</span> <span class="n">compute_bond</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="s2">&quot;dBC&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+    <span class="n">bundle</span> <span class="o">=</span> <span class="n">compute_bond</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="s2">&quot;dAB&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">bundle</span><span class="o">.</span><span class="n">frames</span><span class="p">:</span>
         <span class="n">dAC</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">&quot;dAC&quot;</span><span class="p">]</span>
         <span class="n">dBC</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">&quot;dBC&quot;</span><span class="p">]</span>
         <span class="n">dAB</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">&quot;dAB&quot;</span><span class="p">]</span>
         <span class="n">tau</span> <span class="o">=</span> <span class="p">(</span><span class="n">dBC</span> <span class="o">-</span> <span class="n">dAC</span><span class="p">)</span> <span class="o">/</span> <span class="n">dAB</span>
         <span class="n">frame</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">tau</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">traj</span>
+    <span class="k">return</span> <span class="n">bundle</span>
 </code></pre></div>
         </details>
     </div>
