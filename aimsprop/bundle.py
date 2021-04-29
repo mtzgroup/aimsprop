@@ -314,6 +314,7 @@ class Bundle(object):
                     N=framei.N,
                     xyz=xyz,
                     properties=properties,
+                    widths=framei.widths,
                 )
                 frames.append(nframe)
 
