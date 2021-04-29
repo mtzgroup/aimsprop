@@ -10,7 +10,10 @@ import aimsprop as ap
 def bundle():
     # 1.  Parse a series of FMS90 trajectories that Hayley has run for ethylene
     trajs = [
-        ap.parse_fms90(Path(__file__).parent / "test_data" / f"000{x}") for x in [2, 3]
+        ap.parse_fms90(
+            Path(__file__).parent / "test_data" / f"000{x}", scheme="mulliken"
+        )
+        for x in [2, 3]
     ]
     # 2. Merge the trajectories into one super-big Bundle with uniform weights
     traj = ap.Bundle.merge(trajs, ws=[1.0 / len(trajs)] * len(trajs), labels=[2, 3])

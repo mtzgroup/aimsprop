@@ -223,6 +223,8 @@ def _create_frames_mulliken(
         xyz3s (dic): positions
         N3s (dic): atomic numbers
         states: electronic states
+        widths: the gaussian widths of the atoms in this frame,
+
     Returns:
         Frames: list of frame objects
     """
@@ -342,33 +344,28 @@ def _parse_widths(filepath) -> List[float]:
     parse the FMS.out tio get widths
     """
     fms_out = filepath / "FMS.out"
+    widths = []
 
     if fms_out.exists():
         print(f"reading {fms_out}")
-        widths = []
         with open(fms_out, "r") as f:
             for line in f:
                 if re.search("Width:", line):
                     a = float(line.split()[1])
                     widths.append(a)
-
-    else:
-        print(f"{fms_out} does not exist.")
-        # TODO AV make a lookup table of usual widths
-        raise FileNotFoundError()
     return widths
 
 
 def parse_fms90(
     filepath: Path,
-    scheme: str = "mulliken",
+    scheme: str,
     cutoff_time: float = None,
     cutoff_saddle: float = 1.0e-4,
     initial_I: int = None,
 ) -> bundle.Bundle:
     """Parse an FMS90 results directory into a Bundle.
 
-    This uses information in positions.*.xyz, Amps.*, S.dat, and Spawn.log to
+    This uses information in positions.*.xyz, Amps.*, S.dat, FMS.out and Spawn.log to
     populate a density matrix by mulliken or saddle point rules.
 
     Arguments:
@@ -396,6 +393,10 @@ def parse_fms90(
     states = _parse_spawnlog(filepath, initial_I)
 
     widths = _parse_widths(filepath)
+    if widths == []:  # this code is beautiful.
+        widths = atom_data.from_Ns_to_widths(
+            N2s[list(N2s.keys())[0]][list(N2s[list(N2s.keys())[0]].keys())[0]]
+        )
 
     if len(C2s) != len(N2s):
         raise RuntimeError("xyz and C files not same number of TBF")

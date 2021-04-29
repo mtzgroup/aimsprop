@@ -33,13 +33,13 @@ aims_path = Path(aims_dir)
 We can then pass the Path object into aimsprop:
 
 ```python
-bundle = ai.parse_fms90(aims_path / IC)
+bundle = ai.parse_fms90(aims_path / IC, scheme='mulliken')
 ```
 
 We can also read in a collection AIMS runs from different initial conditions. We can set `ICs = ["0002","0003"]`:
 
 ```python
-bundles = [ai.parse_fms90(aims_path / IC) for IC in ICs]
+bundles = [ai.parse_fms90(aims_path / IC, scheme='mulliken') for IC in ICs]
 ```
 
 Here, the variable bundles is a list of Bundle objects which can be merged together to form the AIMS simulation, containing the
@@ -82,6 +82,7 @@ for frame in simulation.frames:
     time = frame.t
     weight = frame.w
     state = frame.I
+    widths = frame.widths
 ```
 
 You can also extract the list of properties for the entire Bundle `simulation` using, for example:

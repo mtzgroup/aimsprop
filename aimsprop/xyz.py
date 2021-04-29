@@ -64,6 +64,7 @@ def parse_xyz(
     for ind, xyz in enumerate(xyzs):
         Z = Zs[ind]
         Ns = [N_table2[key] for key in Z]
+        widths = atom_data.from_Ns_to_widths(Ns)
         frame2 = bundle.Frame(
             label=label,
             t=dt * ind + t0 if ts is None else ts[ind],
@@ -71,6 +72,7 @@ def parse_xyz(
             I=I,
             N=Ns,
             xyz=xyz,
+            widths=widths,
         )
         frames2.append(frame2)
 
