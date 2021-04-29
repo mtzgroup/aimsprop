@@ -186,13 +186,13 @@ def _parse_spawnlog(filepath: Path, initial_I: int = None) -> Dict[Any, Any]:
     else:
         with open(Spawnfile) as f:
             lines = f.readlines()[1:]
-
-    for lind, line in enumerate(lines):
-        # match groups are TBF ID, state, parent TBF ID, parent TBF state
-        mobj = re.match(r"^\s*\S+\s+\S+\s+\S+\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)", line)
-        states[int(mobj.group(1))] = int(mobj.group(2))
-        # Redundant, but captures IC TBFs
-        states[int(mobj.group(3))] = int(mobj.group(4))
+        # CB: if we have the Spawn.log, read its content
+        for lind, line in enumerate(lines):
+            # match groups are TBF ID, state, parent TBF ID, parent TBF state
+            mobj = re.match(r"^\s*\S+\s+\S+\s+\S+\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)", line)
+            states[int(mobj.group(1))] = int(mobj.group(2))
+            # Redundant, but captures IC TBFs
+            states[int(mobj.group(3))] = int(mobj.group(4))
 
     return states
 
