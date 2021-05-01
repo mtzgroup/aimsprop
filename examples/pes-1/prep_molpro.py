@@ -1,8 +1,5 @@
 import os
 import re
-import sys
-
-import numpy as np
 
 import aimsprop.atom_data as atom_data
 import aimsprop.manage_xyz as manage_xyz

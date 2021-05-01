@@ -1,8 +1,6 @@
 import get_dyson
 import get_molpro
 import numpy as np
-import prep_dyson
-import prep_molpro
 
 import aimsprop as ai
 
@@ -100,7 +98,6 @@ traj = ai.pes.compute_pes(
 
 # => Plot Results <= #
 
-import os
 
 import matplotlib.pyplot as plt
 
