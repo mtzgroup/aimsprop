@@ -134,9 +134,9 @@ def compute_torsion(
         rAB = xyz[B, :] - xyz[A, :]
         rBC = xyz[C, :] - xyz[B, :]
         rCD = xyz[D, :] - xyz[C, :]
-        eAB = _normalize(rAB)
+        _normalize(rAB)
         eBC = _normalize(rBC)
-        eCD = _normalize(rCD)
+        _normalize(rCD)
         n1 = _normalize(_cross(rAB, rBC))
         n2 = _normalize(_cross(rBC, rCD))
         m1 = _cross(n1, eBC)

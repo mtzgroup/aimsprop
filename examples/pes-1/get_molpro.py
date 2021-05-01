@@ -1,6 +1,5 @@
 import os
 import re
-import sys
 
 import numpy as np
 
@@ -11,7 +10,6 @@ def get_caspt2_energies(
 ):
 
     ev_per_h = 27.211385
-    nm_per_bohr = 0.052917721092
 
     # TODO: check whether computation finished
     all_lines = open(fn_in).readlines()

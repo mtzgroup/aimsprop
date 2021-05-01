@@ -1,12 +1,7 @@
-import glob
 import os
 import re
-import sys
 
-import numpy as np
 import pkg_resources
-
-import aimsprop as ai
 
 
 def write_vmd(
@@ -47,8 +42,8 @@ def write_vmd(
     fn_footer = options["fn_footer"]
     fn_mol = options["fn_mol"]
     fn_vmd = options["fn_vmd"]
-    render = options["render"]
-    opacities = options["opacities"]
+    options["render"]
+    options["opacities"]
     exit_vmd = options["exit_vmd"]  # whether to render and exit vmd
 
     # Lines from vmd Templates
@@ -90,7 +85,7 @@ def write_vmd(
             fh.write(lh)
 
     # Looping through trajectories
-    j = 1.0 / ntrajs
+    1.0 / ntrajs
     for n in range(ntrajs):
         # Writing vmd segment for each trajecotry
         for ml in mol_lines:
