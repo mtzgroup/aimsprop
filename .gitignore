@@ -156,3 +156,7 @@ cython_debug/
 *.o
 *.so
 *.d
+# Cython
+*.c
+*.html
+wheelhouse/

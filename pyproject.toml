@@ -1,6 +1,6 @@
 [build-system]
-build-backend = "flit_core.buildapi"
-requires = ["flit_core >=2,<4"]
+build-backend = "setuptools.build_meta"
+requires = ["flit_core >=2,<4", "setuptools", "wheel", "numpy>=1.19.0", " Cython>=0.29.21"]
 
 [tool.flit.metadata]
 author = "Rob Parrish"
