@@ -1,0 +1,17 @@
+cython
+numpy
+wheel
+autoflake
+black
+flake8
+twine
+isort
+jupyterlab
+ipython
+pre-commit
+pytest
+pytest-cov
+coverage
+mkdocs
+mkdocs-material
+mkdocstrings
