@@ -6,12 +6,12 @@ import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 
 from . import pop  # for pop.compute_population
-from .traj import Trajectory
+from .bundle import Bundle
 
 
 def plot_scalar(
     filename: str,
-    traj: Trajectory,
+    bundle: Bundle,
     key: str,
     ylabel: str = None,
     time_units: str = "au",
@@ -24,7 +24,7 @@ def plot_scalar(
 
     Params:
         filename: the output PDF file
-        traj: the Trajectory to plot properties for
+        bundle: the Bundle to plot properties for
         key: the key of the property
         ylabel: the label of the y-axis (defaults to key)
         time_units: "au" or "fs"
@@ -51,8 +51,8 @@ def plot_scalar(
     else:
         cmap = matplotlib.cm.get_cmap("jet")
         colors = [
-            cmap(float(x) / (len(traj.Is) - 1))
-            for x in reversed(list(range(len(traj.Is))))
+            cmap(float(x) / (len(bundle.Is) - 1))
+            for x in reversed(list(range(len(bundle.Is))))
         ]
 
     if clf:
@@ -60,31 +60,31 @@ def plot_scalar(
     if plot_average:
         # Plot average
         plt.plot(
-            time_scale * np.array(traj.ts),
-            traj.extract_property(key),
+            time_scale * np.array(bundle.ts),
+            bundle.extract_property(key),
             "-k",
             linewidth=3.0,
         )
         # Plot state averages
-        for Iind, I in enumerate(traj.Is):
-            traj2 = traj.subset_by_I(I)
+        for Iind, I in enumerate(bundle.Is):
+            bundle2 = bundle.subset_by_I(I)
             color = colors[Iind]
             plt.plot(
-                time_scale * np.array(traj2.ts),
-                traj2.extract_property(key),
+                time_scale * np.array(bundle2.ts),
+                bundle2.extract_property(key),
                 "-",
                 color=color,
                 linewidth=2.0,
             )
     # Plot individual frames
-    for Iind, I in enumerate(traj.Is):
-        traj2 = traj.subset_by_I(I)
+    for Iind, I in enumerate(bundle.Is):
+        bundle2 = bundle.subset_by_I(I)
         color = colors[Iind]
-        for lind, label in enumerate(traj2.labels):
-            traj3 = traj2.subset_by_label(label)
+        for lind, label in enumerate(bundle2.labels):
+            bundle3 = bundle2.subset_by_label(label)
             plt.plot(
-                time_scale * np.array(traj3.ts),
-                traj3.extract_property(key),
+                time_scale * np.array(bundle3.ts),
+                bundle3.extract_property(key),
                 "-",
                 color=color,
                 linewidth=1.0,
@@ -101,7 +101,7 @@ def plot_scalar(
 
 def plot_vector(
     filename: str,
-    traj: Trajectory,
+    bundle: Bundle,
     key: str,
     y: np.ndarray,
     ylabel: str = None,
@@ -117,7 +117,7 @@ def plot_vector(
 
     Params:
         filename: the output PDF file
-        traj: the Trajectory to plot properties for
+        bundle: the Bundle to plot properties for
         key: the key of the property
         y: the indices of the y axis (e.g., R or Q or something
             like it)
@@ -144,9 +144,9 @@ def plot_vector(
         raise ValueError("Unknown time units: %s" % time_units)
 
     # Extract data to plot
-    ts = np.array(traj.ts)
+    ts = np.array(bundle.ts)
     ys = y
-    Vs = traj.extract_property(key)
+    Vs = bundle.extract_property(key)
 
     # Difference properties
     if diff:
@@ -185,8 +185,8 @@ def plot_vector(
 
 def plot_population(
     filename: str,
-    traj: Trajectory,
-    trajs: list,
+    bundle: Bundle,
+    bundles: list,
     time_units: str = "au",
     legend_loc="right",
     state_colors: list = None,
@@ -198,8 +198,8 @@ def plot_population(
 
     Params:
         filename: the output PDF file
-        traj: the Trajectory to plot populations for
-        trajs: a list of Trajectory objects, one for each
+        bundle: the Bundle to plot populations for
+        bundles: a list of Bundle objects, one for each
             IC. This is used for the "spaghetti" plots.
         time_units: "au" or "fs"
         legend_loc (legend location): location indicator for legend
@@ -225,26 +225,26 @@ def plot_population(
     else:
         cmap = matplotlib.cm.get_cmap("jet")
         colors = [
-            cmap(float(x) / (len(traj.Is) - 1))
-            for x in reversed(list(range(len(traj.Is))))
+            cmap(float(x) / (len(bundle.Is) - 1))
+            for x in reversed(list(range(len(bundle.Is))))
         ]
 
     if clf:
         plt.clf()
 
-    # Spaghetti plots from trajs
-    Imap = {I: Iind for Iind, I in enumerate(traj.Is)}
-    for traj2 in trajs:
-        ts = np.array(traj2.ts)
-        for I in traj2.Is:
-            traj3 = traj2.subset_by_I(I)
-            t3s = traj3.ts
-            w3s = [sum(frame.w for frame in traj3.subset_by_t(t).frames) for t in t3s]
+    # Spaghetti plots from bundles
+    Imap = {I: Iind for Iind, I in enumerate(bundle.Is)}
+    for bundle2 in bundles:
+        ts = np.array(bundle2.ts)
+        for I in bundle2.Is:
+            bundle3 = bundle2.subset_by_I(I)
+            t3s = bundle3.ts
+            w3s = [sum(frame.w for frame in bundle3.subset_by_t(t).frames) for t in t3s]
             plt.plot(time_scale * t3s, w3s, "-", color=colors[Imap[I]], linewidth=1.0)
 
     # State populations
-    ts = np.array(traj.ts)
-    populations = pop.compute_population(traj)
+    ts = np.array(bundle.ts)
+    populations = pop.compute_population(bundle)
     for Iind, I in enumerate(sorted(populations.keys())):
         plt.plot(
             time_scale * ts,

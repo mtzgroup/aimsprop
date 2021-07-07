@@ -1,0 +1,744 @@
+ ENTERED FMS CODE
+ RanB seeded with           1
+  Initializing electronic structure ...
+ Reading Geometry from Geometry.dat...
+ Reading momenta from Geometry.dat...
+      Generating initial conditions:
+ 
+------------------------------------
+ initialcond=0: No Sampling for initial conditions
+ 
+ 
+ 
+ ***********************************************
+ ********* FMS90 is under SVN control **********
+ This output is brought to you by hg 
+ revision number 
+ fms_tc 88abcbaf7ef1+                              
+ and the host:
+ fire-12-01                                        
+ 
+ ********************************************
+ --------------------------------------------
+                     FMS90                   
+ --------------------------------------------
+               FMS for the Masses...         
+               Courtesy TJM and MBN          
+  
+  
+          Unknown potential model           14
+  Number Electronic States:            2
+  Potential Model:                    14
+  Maximum Number of Trajectories:          50
+ --------------------------------------------
+  Trajectory #                  1
+  Electronic State:            2
+  Initial Weight:      1.00000000000000     
+ --------------------------------------------
+  Particle #              1
+      ID:           1
+      Mass:      21874.64355469
+      Width:        22.50000000
+      Element:     C 
+      At. Num:    6.
+      Dimens:       3
+      Position:     -1.21439100
+                     0.06729100
+                    -0.12231000
+      Momentum:     -3.16472700
+                     1.66816100
+                    -0.67694400
+  Particle #              2
+      ID:           2
+      Mass:      21874.64355469
+      Width:        22.50000000
+      Element:     C 
+      At. Num:    6.
+      Dimens:       3
+      Position:      1.19244800
+                    -0.08127900
+                     0.11625900
+      Momentum:      6.74581800
+                    -5.42627100
+                    -1.15292300
+  Particle #              3
+      ID:           3
+      Mass:       1822.88696289
+      Width:         4.50000000
+      Element:     H 
+      At. Num:    1.
+      Dimens:       3
+      Position:      2.14682500
+                     0.50898200
+                     1.76862800
+      Momentum:     -0.76008500
+                     2.01770900
+                    -0.86819100
+  Particle #              4
+      ID:           4
+      Mass:       1822.88696289
+      Width:         4.50000000
+      Element:     H 
+      At. Num:    1.
+      Dimens:       3
+      Position:      2.93513200
+                    -0.03799400
+                    -1.28076500
+      Momentum:     -0.90755200
+                     1.60350100
+                     0.41974400
+  Particle #              5
+      ID:           5
+      Mass:       1822.88696289
+      Width:         4.50000000
+      Element:     H 
+      At. Num:    1.
+      Dimens:       3
+      Position:     -2.34543600
+                    -0.15917100
+                     1.49061500
+      Momentum:     -3.36201800
+                    -0.13859700
+                     1.36193600
+  Particle #              6
+      ID:           6
+      Mass:       1822.88696289
+      Width:         4.50000000
+      Element:     H 
+      At. Num:    1.
+      Dimens:       3
+      Position:     -2.47620600
+                    -0.14535300
+                    -1.90909100
+      Momentum:      1.44856500
+                     0.27549600
+                     0.91637800
+ --------------------------------------------
+ Propagate until:    20000.0000000000     
+ Saving the first bundle
+ 
+ --Time:       0.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:      20.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:      40.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:      60.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:      80.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     100.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     120.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     140.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     160.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     180.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     200.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     220.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     240.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     260.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     280.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     300.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     320.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     340.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     360.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     380.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     400.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     420.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     440.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     460.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     480.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     500.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     520.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     540.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     560.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     580.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     600.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     620.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     640.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     660.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     680.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     700.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     720.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     740.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     760.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     780.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     800.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     820.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     840.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     860.00 Timestep:  20.00 (  1 trajectory)
+ 
+ --Time:     880.00 Timestep:  20.00 (  1 trajectory)
+========================================================
+WARNING: Trajectory jumped an intersection.
+    Trajectory #  1
+SCI_ 1 1:  0.060226 SCI_ 1 2:  0.990009
+SCI_ 2 1: -0.994967 SCI_ 2 2:  0.052840
+========================================================
+Timestep was rejected - will integrate until t=         900.00
+with timestep of   5.00.
+ 
+ --Time:     880.00 Timestep:   5.00 (  1 trajectory)
+ 
+ --Time:     885.00 Timestep:   5.00 (  1 trajectory)
+ 
+ --Time:     890.00 Timestep:   5.00 (  1 trajectory)
+********************
+SPAWNING: Trajectory   1 exceeded threshold
+Parent on state  2 spawning to state  1
+  time    coup    overlap  new
+  895.00   0.0233 0.224
+========================================================
+WARNING: Trajectory jumped an intersection.
+    Trajectory #  1
+SCI_ 1 1:  0.144256 SCI_ 1 2:  0.989059
+SCI_ 2 1: -0.989379 SCI_ 2 2:  0.143853
+========================================================
+========================================================
+WARNING: Trajectory jumped an intersection.
+    Trajectory #  1
+SCI_ 1 1:  0.393368 SCI_ 1 2:  0.919253
+SCI_ 2 1: -0.919355 SCI_ 2 2:  0.393292
+========================================================
+========================================================
+WARNING: Trajectory jumped an intersection.
+    Trajectory #  1
+SCI_ 1 1:  0.524754 SCI_ 1 2:  0.851224
+SCI_ 2 1: -0.851247 SCI_ 2 2:  0.524732
+========================================================
+  900.00   0.0484 0.954 *
+  905.00   0.0053 -
+Spawn successful : child created at   900.00
+ Propagating child backwards
+ nstep           1
+Time:   900.00
+========================================================
+WARNING: Trajectory jumped an intersection.
+    Trajectory #  1
+SCI_ 1 1:  0.195099 SCI_ 1 2: -0.980641
+SCI_ 2 1:  0.980283 SCI_ 2 2:  0.194709
+========================================================
+========================================================
+WARNING: Trajectory jumped an intersection.
+    Trajectory #  1
+SCI_ 1 1:  0.441130 SCI_ 1 2: -0.897418
+SCI_ 2 1:  0.897309 SCI_ 2 2:  0.441059
+========================================================
+========================================================
+WARNING: Trajectory jumped an intersection.
+    Trajectory #  1
+SCI_ 1 1:  0.616805 SCI_ 1 2: -0.787109
+SCI_ 2 1:  0.787085 SCI_ 2 2:  0.616782
+========================================================
+ Done backpropagating
+ 
+ --Time:     895.00 Timestep:   5.00 (  2 trajectories)
+========================================================
+WARNING: Trajectory jumped an intersection.
+    Trajectory #  1
+SCI_ 1 1:  0.144256 SCI_ 1 2:  0.989059
+SCI_ 2 1: -0.989379 SCI_ 2 2:  0.143853
+========================================================
+Timestep was rejected - will integrate until t=         900.00
+with timestep of   2.50.
+ 
+ --Time:     895.00 Timestep:   2.50 (  2 trajectories)
+ Significant overlap with traj           2
+ Significant overlap with traj           1
+ 
+ --Time:     897.50 Timestep:   2.50 (  2 trajectories)
+========================================================
+WARNING: Trajectory jumped an intersection.
+    Trajectory #  1
+SCI_ 1 1:  0.393368 SCI_ 1 2:  0.919253
+SCI_ 2 1: -0.919355 SCI_ 2 2:  0.393292
+========================================================
+Timestep was rejected - will integrate until t=         900.00
+with timestep of   1.25.
+ 
+ --Time:     897.50 Timestep:   1.25 (  2 trajectories)
+========================================================
+WARNING: Trajectory jumped an intersection.
+    Trajectory #  1
+SCI_ 1 1:  0.524754 SCI_ 1 2:  0.851224
+SCI_ 2 1: -0.851247 SCI_ 2 2:  0.524732
+========================================================
+Timestep was rejected - will integrate until t=         898.75
+with timestep of   0.62.
+ 
+ --Time:     897.50 Timestep:   0.62 (  2 trajectories)
+ Significant overlap with traj           2
+ Significant overlap with traj           1
+ 
+ --Time:     898.12 Timestep:   0.62 (  2 trajectories)
+ Significant overlap with traj           2
+ Significant overlap with traj           1
+Adaptive integration until       898.75 successful.
+ 
+ --Time:     898.75 Timestep:   1.25 (  2 trajectories)
+ Significant overlap with traj           2
+ Significant overlap with traj           1
+Adaptive integration until       900.00 successful.
+Adaptive integration until       900.00 successful.
+Adaptive integration until       900.00 successful.
+ 
+ --Time:     900.00 Timestep:   5.00 (  2 trajectories)
+ Significant overlap with traj           2
+ Significant overlap with traj           1
+ 
+ --Time:     905.00 Timestep:   5.00 (  2 trajectories)
+ Significant overlap with traj           2
+ Significant overlap with traj           1
+ 
+ --Time:     910.00 Timestep:   5.00 (  2 trajectories)
+ Significant overlap with traj           2
+ Significant overlap with traj           1
+ 
+ --Time:     915.00 Timestep:   5.00 (  2 trajectories)
+ 
+ --Time:     920.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:     940.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:     960.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:     980.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1000.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1020.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1040.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1060.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1080.00 Timestep:  20.00 (  2 trajectories)
+========================================================
+WARNING: Trajectory jumped an intersection.
+    Trajectory #  1
+SCI_ 1 1:  0.553521 SCI_ 1 2: -0.830959
+SCI_ 2 1:  0.825615 SCI_ 2 2:  0.553678
+========================================================
+Timestep was rejected - will integrate until t=        1100.00
+with timestep of   5.00.
+ 
+ --Time:    1080.00 Timestep:   5.00 (  2 trajectories)
+ 
+ --Time:    1085.00 Timestep:   5.00 (  2 trajectories)
+********************
+SPAWNING: Trajectory   1 exceeded threshold
+Parent on state  2 spawning to state  1
+  time    coup    overlap  new
+ 1090.00   0.0216 0.795 *
+ 1095.00   0.0812 0.968 *
+ 1100.00   0.1136 0.980 *
+ 1105.00   0.0282 -
+Spawn successful : child created at  1100.00
+ Propagating child backwards
+ nstep           2
+Time:  1100.00
+Time:  1095.00
+ Done backpropagating
+ 
+ --Time:    1090.00 Timestep:   5.00 (  3 trajectories)
+ Significant overlap with traj           3
+ Significant overlap with traj           1
+ 
+ --Time:    1095.00 Timestep:   5.00 (  3 trajectories)
+ Significant overlap with traj           3
+ Significant overlap with traj           1
+Adaptive integration until      1100.00 successful.
+ 
+ --Time:    1100.00 Timestep:   5.00 (  3 trajectories)
+ Significant overlap with traj           3
+ Significant overlap with traj           1
+ 
+ --Time:    1105.00 Timestep:   5.00 (  3 trajectories)
+ Significant overlap with traj           3
+ Significant overlap with traj           1
+ 
+ --Time:    1110.00 Timestep:   5.00 (  3 trajectories)
+ Significant overlap with traj           3
+ Significant overlap with traj           1
+ 
+ --Time:    1115.00 Timestep:   5.00 (  3 trajectories)
+ 
+ --Time:    1120.00 Timestep:  20.00 (  3 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1140.00 Timestep:  20.00 (  3 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1160.00 Timestep:  20.00 (  3 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1180.00 Timestep:  20.00 (  3 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1200.00 Timestep:  20.00 (  3 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1220.00 Timestep:  20.00 (  3 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1240.00 Timestep:  20.00 (  3 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1260.00 Timestep:  20.00 (  3 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1280.00 Timestep:  20.00 (  3 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1300.00 Timestep:  20.00 (  3 trajectories)
+ Traj           1 was marked for death
+ 
+ --Time:    1320.00 Timestep:  20.00 (  3 trajectories)
+ Traj           1 was marked for death
+** Killing trajectory   1 pop < .05000
+Reconstructing trajectory bundle.
+Living trajectories:
+     2 S=0 Ms= 0 CBF  1
+     3 S=0 Ms= 0 CBF  2
+ 
+ --Time:    1340.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1360.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1380.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1400.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1420.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1440.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1460.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1480.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1500.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1520.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1540.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1560.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1580.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1600.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1620.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1640.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1660.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1680.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1700.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1720.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1740.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1760.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1780.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1800.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1820.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1840.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1860.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1880.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1900.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1920.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1940.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1960.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    1980.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2000.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2020.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2040.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2060.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2080.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2100.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2120.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2140.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2160.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2180.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2200.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2220.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2240.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2260.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2280.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2300.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2320.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2340.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2360.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2380.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2400.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2420.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2440.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2460.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2480.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2500.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2520.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2540.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2560.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2580.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2600.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2620.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2640.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2660.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2680.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2700.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2720.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2740.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2760.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2780.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2800.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2820.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2840.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2860.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2880.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2900.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2920.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2940.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2960.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    2980.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3000.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3020.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3040.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3060.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3080.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3100.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3120.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3140.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3160.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3180.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3200.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3220.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3240.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3260.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3280.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3300.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3320.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3340.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3360.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3380.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3400.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3420.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3440.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3460.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3480.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3500.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3520.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3540.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3560.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3580.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3600.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3620.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3640.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3660.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3680.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3700.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3720.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3740.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3760.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3780.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3800.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3820.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3840.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3860.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3880.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3900.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3920.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3940.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3960.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    3980.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    4000.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    4020.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    4040.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    4060.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    4080.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    4100.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    4120.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    4140.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    4160.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    4180.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    4200.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    4220.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    4240.00 Timestep:  20.00 (  2 trajectories)
+ 
+ --Time:    4260.00 Timestep:  20.00 (  2 trajectories)
+Energy jumped by       0.184D-01 Hartrees for trajectory #  3
+Timestep was rejected - will integrate until t=        4280.00
+with timestep of   5.00.
+ 
+ --Time:    4260.00 Timestep:   5.00 (  2 trajectories)
+ 
+ --Time:    4265.00 Timestep:   5.00 (  2 trajectories)
+ 
+ --Time:    4270.00 Timestep:   5.00 (  2 trajectories)
+ 
+ --Time:    4275.00 Timestep:   5.00 (  2 trajectories)

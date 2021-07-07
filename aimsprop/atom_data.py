@@ -858,3 +858,27 @@ for k, v in list(extended_mass_table.items()):
         val2 = val[0] * units.units["au_per_amu"]
         new_v.append((val2, val[1]))
     extended_mass_table[k] = new_v
+
+
+def from_Ns_to_widths(Ns):
+    """
+    Colton is a sweet boi.
+    From the code of FMS
+    case(‘H’,‘h’)      = 4.7d0
+    case(‘D’,‘d’)      = 6.3d0 # TODO what is the number of this?
+    case(‘T’,‘t’)      = 6.3d0 # TODO what is the number of this?
+    case(‘C’,‘c’)      = 22.7d0
+    case(‘N’,‘n’)      = 19.0d0
+    case(‘O’,‘o’)      = 12.2d0
+    case(‘S’,‘s’)      = 16.7d0
+    case(‘F’,‘f’)      = 8.5d0
+    """
+    d = {
+        1: 4.7,
+        6: 22.7,
+        7: 9.0,
+        8: 12.2,
+        9: 8.5,
+        16: 16.7,
+    }
+    return [d[x] for x in Ns]

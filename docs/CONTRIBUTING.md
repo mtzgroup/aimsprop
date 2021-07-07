@@ -18,7 +18,13 @@ If you would like to add code to `aimsprop` please follow the steps below.
     source ./env/bin/activate
     ```
 
-1. Install `flit`. Flit is used to manage package dependencies
+4. Install the latest version of `pip`. Since we will be installing `matplotlib`, having the latest version of `pip` can help avoid issues.
+
+    ```sh
+    pip install -U pip
+    ```
+
+3. Install `flit`. Flit is used to manage package dependencies
 
     ```sh
     python3 -m pip install flit
@@ -65,22 +71,22 @@ If you would like to add code to `aimsprop` please follow the steps below.
 ### Steps to Add a Feature
 
 1. Determine what kind of feature you are hoping to add. Features are usually one of the following:
-    1. A property computed on each `Frame` of your `Trajectory`. Examples include [compute_bond][aimsprop.geom:compute_bond] or [blur_property][aimsprop.blur:blur_property].
+    1. A property computed on each `Frame` of your `Bundle`. Examples include [compute_bond][aimsprop.geom:compute_bond] or [blur_property][aimsprop.blur:blur_property].
     2. A plotting feature. Note that the current plotting functions [plot_scalar][aimsprop.plot:plot_scalar], [plot_vector][aimsprop.plot:plot_vector], and [plot_population][aimsprop.plot:plot_population] should already be able to plot any new properties you compute.
-    3. Creating a subset of the `Trajectory` by some value of interest, like a subset by time. [subset_by_t][aimsprop.traj:Trajectory.subset_by_t] is an example.
+    3. Creating a subset of the `Bundle` by some value of interest, like a subset by time. [subset_by_t][aimsprop.bundle:Bundle.subset_by_t] is an example.
 1. Follow the basic outline below for creating your new feature. Note that all new functions require documentation.
 
 #### Property Computations
 
-New property computation functions take as parameters a `Trajectory` object, a `key` that acts as the name for the property, and the relevant parameters to make a calculation. See [compute_bond][aimsprop.geom:compute_bond] code below as an example. The function then performs the desired calculation on each [Frame][aimsprop.traj:Frame] object and sets the value in the `Frame's` properties dictionary using the `key` passed. See the example in the source code below under [Documenting your Function](#documenting-your-function).
+New property computation functions take as parameters a `Bundle` object, a `key` that acts as the name for the property, and the relevant parameters to make a calculation. See [compute_bond][aimsprop.geom:compute_bond] code below as an example. The function then performs the desired calculation on each [Frame][aimsprop.bundle:Frame] object and sets the value in the `Frame's` properties dictionary using the `key` passed. See the example in the source code below under [Documenting your Function](#documenting-your-function).
 
 #### New Plotting Function
 
 If you feel the existing plot functions [plot_scalar][aimsprop.plot:plot_scalar], [plot_vector][aimsprop.plot:plot_vector], and [plot_population][aimsprop.plot:plot_population] cannot work for your needs, you can add a new plot generation function to the `plot.py` module.
 
-#### Creating a Subset of the Trajectory
+#### Creating a Subset of the Bundle
 
-To add this feature you would add a new method to the [Trajectory][aimsprop.traj:Trajectory] object that takes `self`, and whatever other parameters are required to create your subset, and returns a new `Trajectory` object containing the `Frames` of interest. See the `subset_by_x` methods on `Trajectory` for examples.
+To add this feature you would add a new method to the [Bundle][aimsprop.bundle:Bundle] object that takes `self`, and whatever other parameters are required to create your subset, and returns a new `Bundle` object containing the `Frames` of interest. See the `subset_by_x` methods on `Bundle` for examples.
 
 #### Documenting Your Function
 
@@ -88,11 +94,21 @@ Each new function, whether a property computation or a new plotting function, re
 
 Documentation should include:
 
-1. An initial "docstring" that, in a single sentence, describes what the function does. Optionally, additional prose can be added underneath this docstring. In the example below this corresponds to the text: "Compute the a bond-angle property for a Trajectory (in degrees)."
-2. The function signature (the `def my_function_name(...)` part) must contain type annotations that describe the data types passed to your new function. This corresponds to the `traj: Trajectory, key: str, ...` part of the example below.
+1. An initial "docstring" that, in a single sentence, describes what the function does. Optionally, additional prose can be added underneath this docstring. In the example below this corresponds to the text: "Compute the a bond-angle property for a Bundle (in degrees)."
+2. The function signature (the `def my_function_name(...)` part) must contain type annotations that describe the data types passed to your new function. This corresponds to the `bundle: Bundle, key: str, ...` part of the example below.
 3. You must describe the parameters and return value of your function using the conventions noted in the example below. This allows for documentation to be generated for your new function and describes to other users what basic values your function requires to operate.
 
 ::: aimsprop.geom:compute_angle
+
+#### Formatting Your Code
+
+To assist in creating a clean code format we have created a script for you that will sort your imports, format your code, and notify you of any style violations that you need to fix. To run it, execute the following from the root directory:
+
+```sh
+bash ./scripts/format.sh
+```
+
+You should run this script frequently as you write your code to help keep your formatting clean.
 
 ## Documentation
 

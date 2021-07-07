@@ -1,20 +1,20 @@
 import numpy as np
 
-from .traj import Trajectory
+from .bundle import Bundle
 
 
 def blur_property(
-    traj: Trajectory,
+    bundle: Bundle,
     key: str,
     key2: str,
     R: np.ndarray,
     alpha: float,
-) -> Trajectory:
+) -> Bundle:
 
     """Blur a property via Gaussian convolution (blurring applied in the "spatial" coordinate).
 
     Pararms:
-        traj: the Trajectory object to compute the property for (modified in
+        bundle: the Bundle object to compute the property for (modified in
             place)
         key: the name of the original property
         key2: the name of the blurred property
@@ -22,13 +22,13 @@ def blur_property(
             theta or Q).
         alpha: the Gaussian blurring exponent
     Result/Return:
-        traj (Trajectory): reference to the input Trajectory object. The
+        bundle (Bundle): reference to the input Bundle object. The
             property key2 is set to the np.ndarray value of the blurred
             property.
 
     """
 
-    for frame in traj.frames:
+    for frame in bundle.frames:
         V = frame.properties[key]
         V2 = np.zeros_like(R)
         if np.array(V).ndim == 0:
@@ -38,7 +38,7 @@ def blur_property(
             for RAB in V:
                 V2 += np.sqrt(alpha / np.pi) * np.exp(-alpha * (R - RAB) ** 2)
         frame.properties[key2] = V2
-    return traj
+    return bundle
 
 
 def compute_time_blur(

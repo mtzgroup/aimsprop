@@ -49,9 +49,7 @@ def build_traj(
                 traj = ai.parse_fms90_dumpfile("%s" % run, scheme="mulliken")
             trajs_IC.append(copy.copy(traj))
         print("merging restarts")
-        traj_IC = ai.Trajectory.merge(
-            trajs_IC, [1.0] * len(trajs_IC), [IC] * len(trajs_IC)
-        )
+        traj_IC = ai.Bundle.merge(trajs_IC, [1.0] * len(trajs_IC), [IC] * len(trajs_IC))
 
         print("removing duplicate frames")
         traj_IC = traj_IC.remove_duplicates()
@@ -82,9 +80,9 @@ def build_traj(
     # Compute the normalized oscillator strength weights
     ws = np.array([dat[0, 1] for dat in dats])
     ws /= np.sum(ws)
-    # Merge the trajectories into one super-big Trajectory with uniform weights
+    # Merge the trajectories into one super-big Bundle with uniform weights
     print("merging ICs")
-    traj = ai.Trajectory.merge(trajs, ws)
+    traj = ai.Bundle.merge(trajs, ws)
     print(("nframes", len(traj.frames)))
 
     return traj, trajs

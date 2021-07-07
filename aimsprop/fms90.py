@@ -4,7 +4,7 @@ from typing import Any, Dict, List
 
 import numpy as np
 
-from . import atom_data, traj
+from . import atom_data, bundle
 
 _N_table = {val: key for key, val in list(atom_data.atom_symbol_table.items())}
 
@@ -21,7 +21,7 @@ def _parse_positions(filepath: Path, cutoff_time: float = None) -> Dict[Any, Any
 
     Arguments:
         filepath: the path to the FMS run directory
-        cutoff_time: cutoff time to stop reading trajectory info after
+        cutoff_time: cutoff time to stop reading bundle info after
             (None reads all times).
     Returns:
         (N2s, xyz2s): Tuple of atomic indices and list of xyzs for each timme and state (dict of dict)
@@ -74,7 +74,7 @@ def _parse_Cs(filepath: Path, cutoff_time: float = None) -> Dict[Any, Any]:
 
     Arguments:
         filepath: the path to the FMS run directory
-        cutoff_time: cutoff time to stop reading trajectory info after
+        cutoff_time: cutoff time to stop reading bundle info after
             (None reads all times).
     Returns:
         C2s: Amps (dict of dicts)
@@ -117,7 +117,7 @@ def _parse_Ss(filepath: Path, cutoff_time: float = None) -> Dict[Any, Any]:
 
     Arguments:
         filepath: the path to the FMS run directory
-        cutoff_time: cutoff time to stop reading trajectory info after
+        cutoff_time: cutoff time to stop reading bundle info after
             (None reads all times).
     Returns:
         S2s: Overlap matrix (dict of dicts)
@@ -186,13 +186,13 @@ def _parse_spawnlog(filepath: Path, initial_I: int = None) -> Dict[Any, Any]:
     else:
         with open(Spawnfile) as f:
             lines = f.readlines()[1:]
-
-    for lind, line in enumerate(lines):
-        # match groups are TBF ID, state, parent TBF ID, parent TBF state
-        mobj = re.match(r"^\s*\S+\s+\S+\s+\S+\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)", line)
-        states[int(mobj.group(1))] = int(mobj.group(2))
-        # Redundant, but captures IC TBFs
-        states[int(mobj.group(3))] = int(mobj.group(4))
+        # CB: if we have the Spawn.log, read its content
+        for lind, line in enumerate(lines):
+            # match groups are TBF ID, state, parent TBF ID, parent TBF state
+            mobj = re.match(r"^\s*\S+\s+\S+\s+\S+\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)", line)
+            states[int(mobj.group(1))] = int(mobj.group(2))
+            # Redundant, but captures IC TBFs
+            states[int(mobj.group(3))] = int(mobj.group(4))
 
     return states
 
@@ -213,7 +213,8 @@ def _create_frames_mulliken(
     xyz3s: Dict[Any, Any],
     N3s: Dict[Any, Any],
     states: Dict[Any, Any],
-) -> List[traj.Frame]:
+    widths: List[float],
+) -> List[bundle.Frame]:
     """Build list of Frames from parsed data using mulliken scheme
 
     Arguments:
@@ -222,6 +223,8 @@ def _create_frames_mulliken(
         xyz3s (dic): positions
         N3s (dic): atomic numbers
         states: electronic states
+        widths: the gaussian widths of the atoms in this frame,
+
     Returns:
         Frames: list of frame objects
     """
@@ -253,13 +256,14 @@ def _create_frames_mulliken(
                     0.5 * np.conj(Cs[I]) * S[I2, J2] * Cs[J]
                     + 0.5 * np.conj(Cs[J]) * S[J2, I2] * Cs[I]
                 )
-            frame = traj.Frame(
+            frame = bundle.Frame(
                 label=I,
                 t=t,
                 w=q,
                 I=states[I],
                 N=Ns[I],
                 xyz=xyzs[I],
+                widths=widths,
             )
             frames.append(frame)
 
@@ -273,7 +277,8 @@ def _create_frames_saddle(
     N3s: Dict[Any, Any],
     states: Dict[Any, Any],
     cutoff_saddle: float,
-) -> List[traj.Frame]:
+    widths: List[float],
+) -> List[bundle.Frame]:
     """Build list of Frames from parsed data using saddle scheme
 
     Arguments:
@@ -320,36 +325,54 @@ def _create_frames_saddle(
                     q *= 2.0  # Upper/lower triangle
                 if abs(q) < cutoff_saddle:
                     continue  # Vanishing weight
-                frame = traj.Frame(
+                frame = bundle.Frame(
                     label=(I, J),
                     t=t,
                     w=q,
                     I=states[I],
                     N=Ns[I],
                     xyz=0.5 * (xyzs[I] + xyzs[J]),  # centroid
+                    widths=widths,
                 )
                 frames.append(frame)
 
     return frames
 
 
+def _parse_widths(filepath) -> List[float]:
+    """
+    parse the FMS.out tio get widths
+    """
+    fms_out = filepath / "FMS.out"
+    widths = []
+
+    if fms_out.exists():
+        print(f"reading {fms_out}")
+        with open(fms_out, "r") as f:
+            for line in f:
+                if re.search("Width:", line):
+                    a = float(line.split()[1])
+                    widths.append(a)
+    return widths
+
+
 def parse_fms90(
     filepath: Path,
-    scheme: str = "mulliken",
+    scheme: str,
     cutoff_time: float = None,
     cutoff_saddle: float = 1.0e-4,
     initial_I: int = None,
-) -> traj.Trajectory:
-    """Parse an FMS90 results directory into a Trajectory.
+) -> bundle.Bundle:
+    """Parse an FMS90 results directory into a Bundle.
 
-    This uses information in positions.*.xyz, Amps.*, S.dat, and Spawn.log to
+    This uses information in positions.*.xyz, Amps.*, S.dat, FMS.out and Spawn.log to
     populate a density matrix by mulliken or saddle point rules.
 
     Arguments:
         filepath: the path to the FMS run directory
         scheme: 'mulliken' or 'saddle' to indicate the approximation
             used for property evaluation.
-        cutoff_time: cutoff time to stop reading trajectory info after
+        cutoff_time: cutoff time to stop reading bundle info after
             (None reads all times).
         cutoff_saddle: cutoff for centroid TBF pair in the saddle
             point approach.
@@ -357,7 +380,7 @@ def parse_fms90(
             no Spawn.log (e.g., if no spawning has happened yet) to place
             electronic label.
     Returns:
-        Trajectory: The Trajectory object.
+        Bundle: The Bundle object.
     """
 
     # Read in FMS output files: positions*, Amp.*, S.dat and Spawn.log
@@ -369,6 +392,12 @@ def parse_fms90(
 
     states = _parse_spawnlog(filepath, initial_I)
 
+    widths = _parse_widths(filepath)
+    if widths == []:  # this code is beautiful.
+        widths = atom_data.from_Ns_to_widths(
+            N2s[list(N2s.keys())[0]][list(N2s[list(N2s.keys())[0]].keys())[0]]
+        )
+
     if len(C2s) != len(N2s):
         raise RuntimeError("xyz and C files not same number of TBF")
 
@@ -376,12 +405,14 @@ def parse_fms90(
     C3s, xyz3s, N3s = [_swap_dic_axis(x) for x in [C2s, xyz2s, N2s]]
 
     if scheme == "mulliken":
-        frames = _create_frames_mulliken(Ss, C3s, xyz3s, N3s, states)
+        frames = _create_frames_mulliken(Ss, C3s, xyz3s, N3s, states, widths)
     elif scheme == "saddle":
-        frames = _create_frames_saddle(Ss, C3s, xyz3s, N3s, states, cutoff_saddle)
+        frames = _create_frames_saddle(
+            Ss, C3s, xyz3s, N3s, states, cutoff_saddle, widths
+        )
     else:
         raise RuntimeError(f"Invalid scheme: {scheme}")
 
-    trajectory = traj.Trajectory(frames)
+    processed_bundle = bundle.Bundle(frames)
 
-    return trajectory
+    return processed_bundle

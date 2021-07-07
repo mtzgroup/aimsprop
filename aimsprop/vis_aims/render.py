@@ -1,10 +1,3 @@
-import os
-import re
-import sys
-
-import numpy as np
-
-
 def render():
 
     """Runs vmd and renders images
@@ -20,3 +13,4 @@ def render():
     # Options:
     # render without opening vmd
     # open vmd before sourcing file
+    raise NotImplementedError()
