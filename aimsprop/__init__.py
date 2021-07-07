@@ -15,4 +15,4 @@ from .ued import *  # noqa
 from .wrap import *  # noqa
 from .xyz import *  # noqa
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
