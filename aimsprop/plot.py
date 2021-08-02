@@ -1,3 +1,5 @@
+from typing import List, Optional
+
 import matplotlib
 import numpy as np
 
@@ -189,7 +191,7 @@ def plot_population(
     bundles: list,
     time_units: str = "au",
     legend_loc="right",
-    state_colors: list = None,
+    state_colors: Optional[List[str]] = None,
     plot_total: bool = True,
     clf: bool = True,
     tmax: float = None,
@@ -220,6 +222,7 @@ def plot_population(
     else:
         raise ValueError("Unknown time units: %s" % time_units)
 
+    state_colors = state_colors or []
     if state_colors:
         colors = state_colors
     else:
@@ -234,6 +237,10 @@ def plot_population(
 
     # Spaghetti plots from bundles
     Imap = {I: Iind for Iind, I in enumerate(bundle.Is)}
+    for bundle2 in bundles:
+        for Iind, I in enumerate(bundle2.Is):
+            if I not in Imap.keys():
+                Imap[I] = Iind
     for bundle2 in bundles:
         ts = np.array(bundle2.ts)
         for I in bundle2.Is:

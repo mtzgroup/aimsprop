@@ -1,6 +1,7 @@
+import copy
 import re
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 import numpy as np
 
@@ -189,7 +190,9 @@ def _parse_spawnlog(filepath: Path, initial_I: int = None) -> Dict[Any, Any]:
         # CB: if we have the Spawn.log, read its content
         for lind, line in enumerate(lines):
             # match groups are TBF ID, state, parent TBF ID, parent TBF state
-            mobj = re.match(r"^\s*\S+\s+\S+\s+\S+\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)", line)
+            mobj = re.match(
+                r"^\s*\S+\s+\S+\s+\S+\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)", line
+            )
             states[int(mobj.group(1))] = int(mobj.group(2))
             # Redundant, but captures IC TBFs
             states[int(mobj.group(3))] = int(mobj.group(4))
@@ -356,12 +359,66 @@ def _parse_widths(filepath) -> List[float]:
     return widths
 
 
+def _create_multistate_dict(tbfs: List[int], all_states: List[int]) -> Dict[int, int]:
+    """Creates a lookup table between all states and parent (main) state"""
+
+    multi_state_dict = {}
+    i = 0
+    j = 0
+    while j < len(all_states) and i < len(tbfs):
+        # If the state exists - increment small list
+        if all_states[j] in tbfs:
+            if all_states[j] > tbfs[i]:
+                i += 1
+        # Only add non-duplicates
+        if all_states[j] > tbfs[i]:
+            multi_state_dict[all_states[j]] = tbfs[i]
+        j += 1
+
+    return multi_state_dict
+
+
+def _account_for_multiplets(
+    states, N2s, xyz2s, C2s
+) -> Tuple[Dict[int, Any], Dict[int, Any], Dict[int, Any]]:
+    """Will check if there are any gaps due to multiplets
+    and fill those gaps
+
+    Arguments:
+        states: Dict of main states
+        N2s: Dict of atom data
+        xyz2s: Dict of position data
+        C2s: Dict of amplitude data
+
+    Returns:
+        N2s: Dict of atom data
+        xyz2s: Dict of position data
+        C2s: Dict of amplitude data
+    """
+    # if there are NO triplet states - just return
+    tbfs = sorted(list(states.keys()))
+    all_states = sorted(list(C2s.keys()))
+    if len(tbfs) == len(all_states):
+        return
+
+    multi_state_dict = _create_multistate_dict(tbfs, all_states)
+
+    # Create new data for remaining multiplet states
+    for new_state, _tbf in multi_state_dict.items():
+        states[new_state] = copy.deepcopy(states[_tbf])
+        N2s[new_state] = copy.deepcopy(N2s[_tbf])
+        xyz2s[new_state] = copy.deepcopy(xyz2s[_tbf])
+
+    return states, N2s, xyz2s
+
+
 def parse_fms90(
     filepath: Path,
     scheme: str,
     cutoff_time: float = None,
     cutoff_saddle: float = 1.0e-4,
     initial_I: int = None,
+    runtype: str = "aims",
 ) -> bundle.Bundle:
     """Parse an FMS90 results directory into a Bundle.
 
@@ -379,9 +436,18 @@ def parse_fms90(
         initial_I: initial electronic state, used only if there is
             no Spawn.log (e.g., if no spawning has happened yet) to place
             electronic label.
+        runtype: what dynamics type to parse, default 'aims'
     Returns:
         Bundle: The Bundle object.
     """
+
+    # Runtype parsing
+    runtype = runtype.lower()
+    possible_runtypes = ["aims", "gaims"]
+    if runtype not in possible_runtypes:
+        raise NotImplementedError(
+            f"Runtype {runtype} not implemented. Available: {possible_runtypes}"
+        )
 
     # Read in FMS output files: positions*, Amp.*, S.dat and Spawn.log
     N2s, xyz2s = _parse_positions(filepath, cutoff_time)
@@ -393,6 +459,11 @@ def parse_fms90(
     states = _parse_spawnlog(filepath, initial_I)
 
     widths = _parse_widths(filepath)
+
+    # If GAIMS dynamics, add missing multiplet states
+    if runtype == "gaims":
+        _account_for_multiplets(states, N2s, xyz2s, C2s)
+
     if widths == []:  # this code is beautiful.
         widths = atom_data.from_Ns_to_widths(
             N2s[list(N2s.keys())[0]][list(N2s[list(N2s.keys())[0]].keys())[0]]
