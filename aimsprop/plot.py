@@ -53,8 +53,7 @@ def plot_scalar(
     else:
         cmap = matplotlib.cm.get_cmap("jet")
         colors = [
-            cmap(float(x) / (len(bundle.Is) - 1))
-            for x in reversed(list(range(len(bundle.Is))))
+            cmap(x) for x in np.linspace(1,0,len(bundle.Is))
         ]
 
     if clf:
