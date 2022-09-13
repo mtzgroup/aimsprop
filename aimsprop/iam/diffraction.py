@@ -405,7 +405,7 @@ def compute_diffraction_moments_analytical(
         mode (str) - 'xray' or 'ued' for selection of form factors
         form (str) - 'raw' or 'mod' for modified/raw diffraction intensities
             I(s) or M(s).
-        anisotropy (str) - 'none' or 'perpendicular' or 'parallel'
+        anisotropy (str) - 'isotropic' or 'perpendicular' or 'parallel'
         print_level (bool) - print progress if true (useful to track long
             property computations)
     Result/Return:
@@ -418,7 +418,7 @@ def compute_diffraction_moments_analytical(
         raise ValueError("Unknown mode: %s" % mode)
     if form not in ["raw", "mod"]:
         raise ValueError("Unknown form: %s" % form)
-    if anisotropy not in ["none", "perpendicular", "parallel"]:
+    if anisotropy not in ["isotropic", "perpendicular", "parallel"]:
         raise ValueError("Unknown anisotropy: %s" % anisotropy)
 
     # Compute scattering angles via Bragg equation
