@@ -46,9 +46,9 @@ def rotate_frames_to_z(
     """
 
     n = np.array(vec)
-    n /= np.sqrt(np.sum(n ** 2))
+    n /= np.sqrt(np.sum(n**2))
     v = 0.5 * (n + np.array((0.0, 0.0, 1.0)))
-    v /= np.sqrt(np.sum(v ** 2))
+    v /= np.sqrt(np.sum(v**2))
     R = np.eye(3)
     R -= 2.0 * np.outer(v, v)
     R = np.dot(R, -np.eye(3))  # preserve chirality

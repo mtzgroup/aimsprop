@@ -460,16 +460,16 @@ def compute_diffraction_moments_analytical(
         for A, B in ABpairs:
             # Geometry
             d = xyz[A, :] - xyz[B, :]
-            r2 = np.sum(d ** 2)
+            r2 = np.sum(d**2)
             r = np.sqrt(r2)
             sg2 = np.sum(d[:2] ** 2) / r2
             sr = s * r
             # Bessel functions
             J0 = np.sin(sr) / sr
             J0[sr == 0.0] = 1.0
-            J1sr = np.sin(sr) / sr ** 3 - np.cos(sr) / sr ** 2
+            J1sr = np.sin(sr) / sr**3 - np.cos(sr) / sr**2
             J1sr[sr == 0.0] = 1.0 / 3.0
-            J2 = (3.0 / sr ** 2 - 1.0) * np.sin(sr) / sr - 3.0 * np.cos(sr) / sr ** 2
+            J2 = (3.0 / sr**2 - 1.0) * np.sin(sr) / sr - 3.0 * np.cos(sr) / sr**2
             J2[sr == 0.0] = 0.0
             # Kernels
             if anisotropy == "isotropic":

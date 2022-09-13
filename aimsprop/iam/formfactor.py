@@ -162,7 +162,7 @@ class AtomicFormFactor(object):
             1/q^2 (Z - f(q)) is evaluated.
         """
 
-        q2 = qx ** 2 + qy ** 2 + qz ** 2
+        q2 = qx**2 + qy**2 + qz**2
         f = np.zeros_like(q2)
         for a, b in zip(self.avals, self.bvals):
             f += a * np.exp(-b * q2 / (4.0 * np.pi) ** 2)

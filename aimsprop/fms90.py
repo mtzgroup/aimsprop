@@ -155,7 +155,7 @@ def _parse_Ss(filepath: Path, cutoff_time: float = None) -> Dict[Any, Any]:
         Smat = np.array(Spart)
         # Reshape to square array
         n = int(np.sqrt(len(Smat)))
-        if n ** 2 != len(Smat):
+        if n**2 != len(Smat):
             raise RuntimeError("S matrix is not square")
         Smat = np.reshape(Smat, (n, n))
         Ss[t] = Smat
