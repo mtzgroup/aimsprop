@@ -142,7 +142,7 @@ def compute_ued_simple(
         V = np.zeros_like(R)
         for A, B in ABpairs2:
             rAB = xyz[A, :] - xyz[B, :]
-            RAB = math.sqrt(sum(rAB ** 2))
+            RAB = math.sqrt(sum(rAB**2))
             SAB = math.sqrt(_ued_cross_sections[N[A]] * _ued_cross_sections[N[B]]) / RAB
             V += SAB * math.sqrt(alpha / math.pi) * np.exp(-alpha * (R - RAB) ** 2)
         frame.properties[key] = V

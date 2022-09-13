@@ -31,7 +31,7 @@ def compute_sine_transform(
     w[:-1] += 0.5 * ds
     w[1:] += 0.5 * ds
 
-    V = I * np.outer(np.ones((I.shape[0],)), w * np.exp(-a * s ** 2))
+    V = I * np.outer(np.ones((I.shape[0],)), w * np.exp(-a * s**2))
     rr, ss = np.meshgrid(r, s, indexing="ij")
     K = np.sin(rr * ss)
     I2 = np.dot(V, K.T)

@@ -12,7 +12,7 @@ def _normalize(
 ):
     """Return a normalized version of vec"""
 
-    return vec / math.sqrt(sum(vec ** 2))
+    return vec / math.sqrt(sum(vec**2))
 
 
 def _dot(
@@ -67,7 +67,7 @@ def compute_bond(
     for frame in bundle.frames:
         xyz = frame.xyz
         rAB = xyz[B, :] - xyz[A, :]
-        frame.properties[key] = math.sqrt(sum(rAB ** 2))
+        frame.properties[key] = math.sqrt(sum(rAB**2))
     return bundle
 
 
@@ -100,7 +100,7 @@ def compute_angle(
         frame.properties[key] = (
             180.0
             / math.pi
-            * math.acos(sum(rAB * rCB) / math.sqrt(sum(rAB ** 2) * sum(rCB ** 2)))
+            * math.acos(sum(rAB * rCB) / math.sqrt(sum(rAB**2) * sum(rCB**2)))
         )
     return bundle
 

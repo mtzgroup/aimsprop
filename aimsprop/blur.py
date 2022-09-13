@@ -69,7 +69,7 @@ def compute_time_blur(
     w[1:] += 0.5 * dt
 
     # Gaussian exponent corresponding to fwhm
-    a = 4.0 * np.log(2.0) / (fwhm ** 2)
+    a = 4.0 * np.log(2.0) / (fwhm**2)
 
     # Blurring kernel
     tt1, tt2 = np.meshgrid(t1, t2, indexing="ij")
