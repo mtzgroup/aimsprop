@@ -16,7 +16,6 @@ def compute_diffraction(
     anisotropy="cos2",
     print_level=False,
 ):
-
     """Compute the I(s, eta) elastic scattering signal for a Bundle.
          See aimsprop/notes/ued for details on this property.
 
@@ -130,7 +129,6 @@ def compute_diffraction_fast(
     anisotropy="cos2",
     print_level=False,
 ):
-
     """Compute the I(s, eta) elastic scattering signal for a Bundle.
          See aimsprop/notes/ued for details on this property.
 
@@ -242,7 +240,6 @@ def compute_diffraction_moments_fast(
     anisotropy="cos2",
     print_level=False,
 ):
-
     """Compute the I(s, eta) elastic scattering moments for a Bundle.
          See aimsprop/notes/ued for details on this property.
 
@@ -354,7 +351,6 @@ def compute_diffraction_from_moments(
     key,
     eta,
 ):
-
     for find, frame in enumerate(bundle.frames):
         I = np.outer(frame.properties["%s-0" % key], np.cos(0 * eta)) + np.outer(
             frame.properties["%s-2" % key], np.cos(2 * eta)
@@ -374,7 +370,6 @@ def compute_diffraction_moments_analytical(
     anisotropy="perpendicular",
     print_level=False,
 ):
-
     """Compute the I(s, eta) elastic scattering moments for a Bundle.
          See aimsprop/notes/ued for details on this property.
 
