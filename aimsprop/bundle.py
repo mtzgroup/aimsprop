@@ -249,10 +249,10 @@ class Bundle(object):
         return Bundle(list(sorted(frames)))
 
     def extend_states(
-            self,
-            ts,
-            states=[],
-        ):
+        self,
+        ts,
+        states=[],
+    ):
 
         """Return a new bundle with frame objects extended until end time
             for each state given in states. (new copy).
@@ -282,7 +282,8 @@ class Bundle(object):
                 continue
 
             for t in ts:
-                if t <= last_frame.t: continue
+                if t <= last_frame.t:
+                    continue
 
                 # copy, update time and add to list
                 new_frame = last_frame.copy()
@@ -290,7 +291,6 @@ class Bundle(object):
                 frames.append(new_frame)
 
         return Bundle(list(sorted(frames)))
-
 
     def interpolate_linear(
         self,
