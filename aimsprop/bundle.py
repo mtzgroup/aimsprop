@@ -248,6 +248,50 @@ class Bundle(object):
                 frames += frames2
         return Bundle(list(sorted(frames)))
 
+    def extend_states(
+            self,
+            ts,
+            states=[],
+        ):
+
+        """Return a new bundle with frame objects extended until end time
+            for each state given in states. (new copy).
+            Remaining states will be untouched.
+
+        Arguments:
+            ts (list of float): timespan to extend over
+            states (list of int): states to extend
+
+        Returns:
+            Bundle: new bundle with extended frames.
+        """
+
+        frames = []
+
+        for label in self.labels:
+            bundle2 = self.subset_by_label(label)
+
+            # Start by just copying over the frames that exists
+            frames.extend(bundle2.frames)
+
+            # Get last frame
+            last_frame = bundle2.frames[-1]
+
+            # If not in the states list - go to next
+            if last_frame.I not in states:
+                continue
+
+            for t in ts:
+                if t <= last_frame.t: continue
+
+                # copy, update time and add to list
+                new_frame = last_frame.copy()
+                new_frame.t = t
+                frames.append(new_frame)
+
+        return Bundle(list(sorted(frames)))
+
+
     def interpolate_linear(
         self,
         ts,
