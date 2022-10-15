@@ -406,19 +406,23 @@ class Bundle(object):
         self,
     ):
         """Return a new bundle with duplicate frame objects removed
-            based on frame label and time index
+            based on frame label and time index.
+            NOTE: parse_fms90 uses dicts with timesteps as keys.
+            Therefore any time duplicates upon read-in are unlikely.
 
         Returns:
             Bundle: new bundle with interpolated frames.
         """
 
         frames = []
-        for ind1, frame1 in enumerate(self.frames):
+        org_frames = sorted(self.frames)
+        for ind1, frame1 in enumerate(org_frames):
             unique = True
-            for ind2, frame2 in enumerate(self.frames[ind1 + 1 :]):
+            for ind2, frame2 in enumerate(org_frames[ind1 + 1 :]):
+                if frame2.t > frame1.t:
+                    break
                 if frame1.label == frame2.label and frame1.t == frame2.t:
                     unique = False
             if unique:
                 frames.append(frame1)
-
         return Bundle(frames)
