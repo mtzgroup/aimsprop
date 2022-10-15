@@ -424,6 +424,7 @@ def parse_fms90(
 
     This uses information in positions.*.xyz, Amps.*, S.dat, FMS.out and Spawn.log to
     populate a density matrix by mulliken or saddle point rules.
+    NOTE: Ignores duplicate timesteps (e.g. from restarts) by using dicts
 
     Arguments:
         filepath: the path to the FMS run directory
