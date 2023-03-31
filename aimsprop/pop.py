@@ -1,13 +1,10 @@
 import numpy as np
-
 from .bundle import Bundle
+from collections import defaultdict
 
 
-def compute_population(
-    bundle: Bundle,
-):
+def compute_population(bundle: Bundle):
     """Compute the state populations for a bundle
-
     Params:
         bundle: the Bundle object to compute the property for
     Returns:
@@ -16,11 +13,17 @@ def compute_population(
     """
 
     ts = bundle.ts
-    populations = {}
-    for I in bundle.Is:
-        bundle2 = bundle.subset_by_I(I)
-        populations[I] = np.zeros((len(ts),))
-        for tind, t in enumerate(ts):
-            bundle3 = bundle2.subset_by_t(t)
-            populations[I][tind] += sum([frame.w for frame in bundle3.frames])
-    return populations
+    populations = defaultdict(lambda: np.zeros(len(ts),))
+
+    # Group frames by I and t
+    frames_by_I_and_t = defaultdict(list)
+    for frame in bundle.frames:
+        I, t = frame.I, frame.t
+        frames_by_I_and_t[(I, t)].append(frame.w)
+
+    # Calculate populations for each I at each t
+    for (I, t), weights in frames_by_I_and_t.items():
+        t_index = np.searchsorted(ts, t)
+        populations[I][t_index] += sum(weights)
+
+    return dict(populations)
